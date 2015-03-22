@@ -1,10 +1,9 @@
+angular.module('EcoApp', ['templates', 'ui.router'])
+  .config ($stateProvider, $urlRouterProvider) ->
+    $urlRouterProvider.otherwise('/')
 
-angular.module("EcoDriverApp").config ($stateProvider, $urlRouterProvider) ->
-	$urlRouterProvider.otherwise('trips');
-
-	$stateProvider
-	.state('trips', {
-		url: '/trips',
-		controller: 'TripsCtrl',
-		templateUrl: 'trips/index.html'
-  })
+    $stateProvider
+      .state 'trips',
+        url: '/',
+        controller: 'TripsCtrl',
+        templateUrl: 'trips/index.html'
