@@ -2,6 +2,5 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-angular.module("EcoDriverApp", ['templates', 'ui.router'])
-.controller 'TripsCtrl', ($http, $scope)->
-	$scope.nnn="gdfgh"
+angular.module('EcoApp').controller 'TripsCtrl', ($http, $scope)->
+    $scope.test = "gdfgh"
