@@ -5605,3 +5605,1879 @@ Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-23 23:23:33 +0100
 
 
 Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-23 23:23:33 +0100
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-03-23 23:50:44 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (210.2ms)
+Completed 200 OK in 1289ms (Views: 1200.3ms | ActiveRecord: 18.8ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-23 23:50:47 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:50:47 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-23 23:50:47 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:50:47 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-23 23:50:47 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:50:47 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:50:47 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-23 23:50:47 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-23 23:50:47 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-23 23:50:47 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-23 23:50:47 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-23 23:50:47 +0100
+
+
+Started POST "/users" for 127.0.0.1 at 2015-03-23 23:51:05 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gNaO46VzI34gFZBFA2v3wtPQOduMtp7JLBAX9oiaMv4=", "user"=>{"email"=>"mentosso@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: email
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (205.5ms)[0m  [1mSELECT  1 AS one FROM `users`  WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[35m (13.6ms)[0m  ROLLBACK
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (0.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 527ms (Views: 118.4ms | ActiveRecord: 219.3ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:06 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:06 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:06 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:06 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:06 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:06 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:06 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:06 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:06 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:06 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:06 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:06 +0100
+
+
+Started POST "/users" for 127.0.0.1 at 2015-03-23 23:51:32 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gNaO46VzI34gFZBFA2v3wtPQOduMtp7JLBAX9oiaMv4=", "user"=>{"email"=>"mentosso@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: email
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (13.7ms)[0m  SELECT  1 AS one FROM `users`  WHERE `users`.`username` IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (0.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 185ms (Views: 80.6ms | ActiveRecord: 13.9ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:32 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:32 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:32 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:32 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:32 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:32 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:32 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:32 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:32 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:32 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:32 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:32 +0100
+
+
+Started POST "/users" for 127.0.0.1 at 2015-03-23 23:51:39 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gNaO46VzI34gFZBFA2v3wtPQOduMtp7JLBAX9oiaMv4=", "user"=>{"email"=>"mentosso@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: email
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM `users`  WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (0.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 186ms (Views: 69.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:39 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:39 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:39 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:39 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:39 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:39 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:39 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:39 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:39 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:39 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:39 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:39 +0100
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-03-23 23:51:42 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (2.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 82ms (Views: 80.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:43 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:43 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:43 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:43 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:43 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:43 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:43 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:43 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:43 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:43 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:43 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:43 +0100
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-03-23 23:51:43 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (0.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 71ms (Views: 69.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (0.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 68ms (Views: 66.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (4.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 87ms (Views: 85.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-23 23:51:44 +0100
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-03-24 00:02:55 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (65.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered users/shared/_links.html.erb (1.0ms)
+  Rendered users/registrations/new.html.erb within layouts/application (245.0ms)
+Completed 200 OK in 2454ms (Views: 2322.1ms | ActiveRecord: 56.1ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:02:59 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:02:59 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:02:59 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:02:59 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:00 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:00 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:00 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:00 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:00 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:00 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:00 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:00 +0100
+
+
+Started POST "/users" for 127.0.0.1 at 2015-03-24 00:03:14 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gNaO46VzI34gFZBFA2v3wtPQOduMtp7JLBAX9oiaMv4=", "user"=>{"username"=>"mentos", "email"=>"mentosso@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: username, email
+  [1m[35m (30.1ms)[0m  BEGIN
+  [1m[36mUser Exists (48.5ms)[0m  [1mSELECT  1 AS one FROM `users`  WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[35m (44.3ms)[0m  ROLLBACK
+  Rendered users/shared/_links.html.erb (0.2ms)
+  Rendered users/registrations/new.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 437ms (Views: 72.8ms | ActiveRecord: 122.9ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:03:15 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:15 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:15 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:15 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:15 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:15 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:15 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:15 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:03:15 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:15 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:15 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:03:15 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+
+
+Started POST "/users" for 127.0.0.1 at 2015-03-24 00:06:16 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gNaO46VzI34gFZBFA2v3wtPQOduMtp7JLBAX9oiaMv4=", "user"=>{"username"=>"mentos", "email"=>"mentosso@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: username, email
+  [1m[35m (13.4ms)[0m  BEGIN
+  [1m[36mUser Exists (41.5ms)[0m  [1mSELECT  1 AS one FROM `users`  WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[35m (57.2ms)[0m  ROLLBACK
+  Rendered users/shared/_links.html.erb (1.4ms)
+  Rendered users/registrations/new.html.erb within layouts/application (113.3ms)
+Completed 200 OK in 1517ms (Views: 911.9ms | ActiveRecord: 115.7ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:06:19 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:19 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:19 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:19 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:06:19 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:19 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:19 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:19 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:19 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:19 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:19 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:19 +0100
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-03-24 00:06:24 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered users/shared/_links.html.erb (0.2ms)
+  Rendered users/registrations/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 76ms (Views: 74.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:06:25 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:06:25 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:25 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:25 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:25 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:25 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:25 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:25 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:25 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:25 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:25 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:25 +0100
+
+
+Started POST "/users" for 127.0.0.1 at 2015-03-24 00:06:36 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gNaO46VzI34gFZBFA2v3wtPQOduMtp7JLBAX9oiaMv4=", "user"=>{"username"=>"mentos", "email"=>"mentosso@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: username, email
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM `users`  WHERE `users`.`username` IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  Rendered users/shared/_links.html.erb (0.2ms)
+  Rendered users/registrations/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 164ms (Views: 75.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:06:36 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:36 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:36 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:36 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:36 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:06:36 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:36 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:36 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:36 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:36 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:36 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:06:36 +0100
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-03-24 00:08:19 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered users/shared/_links.html.erb (0.3ms)
+  Rendered users/registrations/new.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 116ms (Views: 83.6ms | ActiveRecord: 27.3ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:08:20 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:08:20 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:20 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:20 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:20 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:20 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:20 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:20 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:20 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:20 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:20 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:20 +0100
+
+
+Started POST "/users" for 127.0.0.1 at 2015-03-24 00:08:30 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gNaO46VzI34gFZBFA2v3wtPQOduMtp7JLBAX9oiaMv4=", "user"=>{"username"=>"mentos", "email"=>"mentosso@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: username, email
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM `users`  WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  Rendered users/shared/_links.html.erb (0.2ms)
+  Rendered users/registrations/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 163ms (Views: 68.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:08:30 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:30 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:30 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:30 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:30 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:30 +0100
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:08:30 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:30 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:30 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:30 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:30 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:08:30 +0100
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-03-24 00:09:55 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered users/shared/_links.html.erb (1.0ms)
+  Rendered users/registrations/new.html.erb within layouts/application (153.9ms)
+Completed 200 OK in 2113ms (Views: 2083.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:09:57 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:09:58 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:09:58 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:09:58 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:09:58 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:09:58 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:09:58 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:09:58 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:09:58 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:09:58 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:09:58 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:09:58 +0100
+
+
+Started POST "/users" for 127.0.0.1 at 2015-03-24 00:10:06 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gNaO46VzI34gFZBFA2v3wtPQOduMtp7JLBAX9oiaMv4=", "user"=>{"username"=>"mentos", "email"=>"mentosso@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: username, email
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM `users`  WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  Rendered users/shared/_links.html.erb (0.2ms)
+  Rendered users/registrations/new.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 311ms (Views: 93.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:10:07 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:10:07 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:10:07 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:10:07 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:10:07 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:10:07 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:10:07 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:10:07 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:10:07 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:10:07 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:10:07 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:10:07 +0100
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-03-24 00:14:01 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (23.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered users/shared/_links.html.erb (1.4ms)
+  Rendered users/registrations/new.html.erb within layouts/application (234.2ms)
+Completed 200 OK in 3574ms (Views: 3438.7ms | ActiveRecord: 63.3ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:14:12 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:12 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:12 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:12 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:12 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:14:12 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:12 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:12 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:12 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:12 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:12 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:12 +0100
+
+
+Started POST "/users" for 127.0.0.1 at 2015-03-24 00:14:38 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gNaO46VzI34gFZBFA2v3wtPQOduMtp7JLBAX9oiaMv4=", "user"=>{"username"=>"marcin", "email"=>"mentosso@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (975.7ms)[0m  BEGIN
+  [1m[36mUser Exists (666.1ms)[0m  [1mSELECT  1 AS one FROM `users`  WHERE `users`.`email` = BINARY 'mentosso@gmail.com' LIMIT 1[0m
+  [1m[35mUser Exists (31.0ms)[0m  SELECT  1 AS one FROM `users`  WHERE `users`.`username` = 'marcin' LIMIT 1
+  [1m[36mSQL (283.2ms)[0m  [1mINSERT INTO `users` (`created_at`, `email`, `encrypted_password`, `updated_at`, `username`) VALUES ('2015-03-23 23:14:41', 'mentosso@gmail.com', '$2a$10$a48sEcq7gp1B.h44Ctm6jeFEsE5A0z8K60xQNZDj/GzNcCwh.cKlS', '2015-03-23 23:14:41', 'marcin')[0m
+  [1m[35m (91.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (105.5ms)[0m  UPDATE `users` SET `current_sign_in_at` = '2015-03-23 23:14:41', `current_sign_in_ip` = '127.0.0.1', `last_sign_in_at` = '2015-03-23 23:14:41', `last_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2015-03-23 23:14:41' WHERE `users`.`id` = 1
+  [1m[36m (12.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 2885ms (ActiveRecord: 2166.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-24 00:14:41 +0100
+Processing by TripsController#index as HTML
+  Rendered trips/index.html.slim within layouts/application (7.6ms)
+Completed 200 OK in 221ms (Views: 220.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:14:42 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:14:42 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:42 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:42 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:42 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:42 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:42 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:42 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:42 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:42 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:42 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:42 +0100
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2015-03-24 00:14:49 +0100
+
+ActionController::RoutingError (No route matches [GET] "/sign_in"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (27.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (92.0ms)
+
+
+Started GET "/users/sign_in/" for 127.0.0.1 at 2015-03-24 00:14:56 +0100
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (34.2ms)[0m  SELECT  `users`.* FROM `users`  WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 69ms (ActiveRecord: 34.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-24 00:14:57 +0100
+Processing by TripsController#index as HTML
+  Rendered trips/index.html.slim within layouts/application (0.1ms)
+Completed 200 OK in 187ms (Views: 186.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:14:57 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:57 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:57 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:57 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:57 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:57 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:14:57 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:57 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:57 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:57 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:57 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:14:57 +0100
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2015-03-24 00:17:22 +0100
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (47.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (17.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (14.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (490.9ms)
+
+
+Started GET "/users/sign_in/" for 127.0.0.1 at 2015-03-24 00:19:10 +0100
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (201.0ms)[0m  [1mSELECT  `users`.* FROM `users`  WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 450ms (ActiveRecord: 201.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-24 00:19:11 +0100
+Processing by TripsController#index as HTML
+  Rendered trips/index.html.slim within layouts/application (0.2ms)
+Completed 200 OK in 627ms (Views: 626.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:19:11 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:19:11 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:19:11 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:19:11 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:19:11 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:19:11 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:19:11 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:19:11 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:19:11 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:19:11 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:19:11 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:19:11 +0100
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2015-03-24 00:19:19 +0100
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (29.8ms)
+
+
+Started GET "/users/logout" for 127.0.0.1 at 2015-03-24 00:19:23 +0100
+
+ActionController::RoutingError (No route matches [GET] "/users/logout"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (50.8ms)
+
+
+Started GET "/users/log_out" for 127.0.0.1 at 2015-03-24 00:19:29 +0100
+
+ActionController::RoutingError (No route matches [GET] "/users/log_out"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (22.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (68.6ms)
+
+
+Started GET "/users/signout" for 127.0.0.1 at 2015-03-24 00:19:34 +0100
+
+ActionController::RoutingError (No route matches [GET] "/users/signout"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (22.2ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2015-03-24 00:19:56 +0100
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (27.1ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2015-03-24 00:20:09 +0100
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (21.6ms)
+
+
+Started GET "/users/sign_out/" for 127.0.0.1 at 2015-03-24 00:20:10 +0100
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (20.8ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2015-03-24 00:20:40 +0100
+
+ActionController::RoutingError (No route matches [GET] "/users"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (23.4ms)
+
+
+Started GET "/users/cancel" for 127.0.0.1 at 2015-03-24 00:20:47 +0100
+Processing by Devise::RegistrationsController#cancel as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users`  WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-24 00:20:47 +0100
+Processing by TripsController#index as HTML
+  Rendered trips/index.html.slim within layouts/application (0.2ms)
+Completed 200 OK in 266ms (Views: 265.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:20:48 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:20:48 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:48 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:48 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:48 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:48 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:48 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:48 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:48 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:48 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:48 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:48 +0100
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users`  WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 13ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+Processing by TripsController#index as HTML
+  Rendered trips/index.html.slim within layouts/application (0.1ms)
+Completed 200 OK in 56ms (Views: 56.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:20:51 +0100
+
+
+Started GET "/users/sign_out/" for 127.0.0.1 at 2015-03-24 00:20:57 +0100
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (28.3ms)
+
+
+Started GET "/users/sign_out/" for 127.0.0.1 at 2015-03-24 00:21:52 +0100
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (29.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (183.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (476.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-24 00:21:56 +0100
+Processing by TripsController#index as HTML
+  Rendered trips/index.html.slim within layouts/application (0.2ms)
+Completed 200 OK in 785ms (Views: 784.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:22:07 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:09 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:22:12 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:12 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:12 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:12 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:13 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:16 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:16 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:16 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:16 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:16 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-24 00:22:17 +0100
+Processing by TripsController#index as HTML
+  Rendered trips/index.html.slim within layouts/application (0.1ms)
+Completed 200 OK in 322ms (Views: 321.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:22:17 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:22:17 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:17 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:17 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:18 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:18 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:18 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:18 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:18 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:18 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:20 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:20 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-24 00:22:27 +0100
+Processing by TripsController#index as HTML
+  Rendered trips/index.html.slim within layouts/application (0.1ms)
+Completed 200 OK in 2791ms (Views: 2784.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:30 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:30 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:30 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:30 +0100
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:22:30 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:22:30 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:30 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:30 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:30 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:30 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:31 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:31 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-24 00:22:32 +0100
+Processing by TripsController#index as HTML
+  Rendered trips/index.html.slim within layouts/application (0.2ms)
+Completed 200 OK in 185ms (Views: 184.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:22:33 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:33 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:33 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:33 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:33 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:33 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:33 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:22:33 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:33 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:33 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:33 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:22:33 +0100
+
+
+Started GET "/users/sign_in/" for 127.0.0.1 at 2015-03-24 00:24:19 +0100
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (565.3ms)[0m  SELECT  `users`.* FROM `users`  WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3976ms (ActiveRecord: 565.3ms)
+
+
+Started GET "/users/sign_out/" for 127.0.0.1 at 2015-03-24 00:24:24 +0100
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (227.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (67.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (77.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (1165.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-24 00:24:26 +0100
+Processing by TripsController#index as HTML
+  Rendered trips/index.html.slim within layouts/application (20.9ms)
+Completed 200 OK in 346ms (Views: 345.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:24:29 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:29 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:29 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:24:29 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:29 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:29 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:30 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:30 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:30 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:30 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:30 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:30 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-24 00:24:32 +0100
+Processing by TripsController#index as HTML
+  Rendered trips/index.html.slim within layouts/application (0.1ms)
+Completed 200 OK in 818ms (Views: 816.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:24:33 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:33 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:33 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:34 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:34 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:34 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:34 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:24:34 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:34 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:34 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:34 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:24:34 +0100
+
+
+Started GET "/users/sign_in/" for 127.0.0.1 at 2015-03-24 00:25:02 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered users/shared/_links.html.erb (15.1ms)
+  Rendered users/sessions/new.html.erb within layouts/application (1949.9ms)
+Completed 200 OK in 3214ms (Views: 2946.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:25:05 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:06 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:06 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:06 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:06 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:25:06 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:06 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:06 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:06 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:06 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:06 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:06 +0100
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-03-24 00:25:19 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xTnI+eNdD9FxV9uOjivWNIcM0olGoNHqhhndAPIi2/k=", "user"=>{"login"=>"marcin", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1702.7ms)[0m  [1mSELECT  `users`.* FROM `users`  WHERE (lower(username) = 'marcin' OR lower(email) = 'marcin')  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1315.4ms)[0m  [1mUPDATE `users` SET `current_sign_in_at` = '2015-03-23 23:25:21', `sign_in_count` = 2, `updated_at` = '2015-03-23 23:25:21' WHERE `users`.`id` = 1[0m
+  [1m[35m (205.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 4130ms (ActiveRecord: 3223.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-24 00:25:23 +0100
+Processing by TripsController#index as HTML
+  Rendered trips/index.html.slim within layouts/application (0.1ms)
+Completed 200 OK in 199ms (Views: 198.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/trips.css?body=1" for 127.0.0.1 at 2015-03-24 00:25:23 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-24 00:25:23 +0100
+
+
+Started GET "/assets/angular/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:23 +0100
+
+
+Started GET "/assets/angular.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:23 +0100
+
+
+Started GET "/assets/angular-rails-templates.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:23 +0100
+
+
+Started GET "/assets/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:23 +0100
+
+
+Started GET "/assets/angular-ui-router/angular-ui-router.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:23 +0100
+
+
+Started GET "/assets/trips.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:23 +0100
+
+
+Started GET "/assets/app.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:23 +0100
+
+
+Started GET "/assets/routes.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:24 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:24 +0100
+
+
+Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:24 +0100
