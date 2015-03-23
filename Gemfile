@@ -43,3 +43,6 @@ gem 'rails-assets-angular-ui-router'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'execjs'
+
+gem 'therubyracer'
