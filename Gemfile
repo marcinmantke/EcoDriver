@@ -46,3 +46,5 @@ gem 'rails-assets-angular-ui-router'
 gem 'execjs'
 
 gem 'therubyracer'
+
+gem 'devise'
