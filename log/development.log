@@ -7481,3 +7481,55 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:24
 
 
 Started GET "/assets/trips/index.js?body=1" for 127.0.0.1 at 2015-03-24 00:25:24 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (131.0ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to Trips (20150324174006)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to Trips (20150324174006)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to Trips (20150324174006)
+  [1m[35m (805.6ms)[0m  CREATE TABLE `trips` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `distance` float NOT NULL, `avg_speed` float NOT NULL, `avg_rpm` float NOT NULL, `avg_fuel` float NOT NULL, `date` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (64.1ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20150324174006')
+  [1m[36m (42.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateTrips (20150324182419)
+  [1m[35m (0.5ms)[0m  CREATE TABLE `trips` (`id` int(11) auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+Mysql2::Error: Table 'trips' already exists: CREATE TABLE `trips` (`id` int(11) auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateTrips (20150324182419)
+  [1m[35m (340.3ms)[0m  ALTER TABLE `trip` ADD `user_id` int(11)
+Mysql2::Error: Table 'EcoDriver_development.trip' doesn't exist: ALTER TABLE `trip` ADD `user_id` int(11)
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateTrips (20150324182419)
+  [1m[35m (398.2ms)[0m  ALTER TABLE `trips` ADD `user_id` int(11)
+  [1m[36m (425.5ms)[0m  [1mCREATE  INDEX `index_trips_on_user_id`  ON `trips` (`user_id`) [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (18.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20150324182419')[0m
+  [1m[35m (29.0ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36mUser Load (16.2ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mTrips Load (0.5ms)[0m  SELECT `trips`.* FROM `trips`
+  [1m[36mTrips Load (0.1ms)[0m  [1mSELECT `trips`.* FROM `trips`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (16.1ms)[0m  [1mINSERT INTO `trips` VALUES ()[0m
+Mysql2::Error: Field 'name' doesn't have a default value: INSERT INTO `trips` VALUES ()
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `trips` VALUES ()
+Mysql2::Error: Field 'name' doesn't have a default value: INSERT INTO `trips` VALUES ()
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mTrips Load (0.1ms)[0m  SELECT `trips`.* FROM `trips`
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mTrip Load (0.1ms)[0m  SELECT `trips`.* FROM `trips`
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (114.6ms)[0m  INSERT INTO `trips` (`avg_fuel`, `avg_rpm`, `avg_speed`, `date`, `distance`, `name`) VALUES (7.45, 2534.0, 34.5, '2015-03-24 19:02:05', 120.0, 'abc')
+  [1m[36m (68.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mTrip Load (0.3ms)[0m  SELECT `trips`.* FROM `trips`
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (22.2ms)[0m  [1mINSERT INTO `trips` (`avg_fuel`, `avg_rpm`, `avg_speed`, `date`, `distance`, `name`, `user_id`) VALUES (7.45, 2534.0, 34.5, '2015-03-24 19:02:55', 120.0, 'abc', 1)[0m
+  [1m[35m (29.1ms)[0m  COMMIT
+  [1m[36mUser Load (107.2ms)[0m  [1mSELECT  `users`.* FROM `users`  WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mTrip Load (33.5ms)[0m  SELECT `trips`.* FROM `trips`  WHERE `trips`.`user_id` = 1

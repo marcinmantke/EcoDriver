@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     :case_sensitive => false
   }
 
+  has_many :trips, dependent: :destroy
 
 attr_accessor :login
 
