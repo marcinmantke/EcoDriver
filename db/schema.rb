@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323221805) do
+ActiveRecord::Schema.define(version: 20150324182419) do
+
+  create_table "trips", force: true do |t|
+    t.string   "name",                 null: false
+    t.float    "distance",  limit: 24, null: false
+    t.float    "avg_speed", limit: 24, null: false
+    t.float    "avg_rpm",   limit: 24, null: false
+    t.float    "avg_fuel",  limit: 24, null: false
+    t.datetime "date",                 null: false
+    t.integer  "user_id"
+  end
+
+  add_index "trips", ["user_id"], name: "index_trips_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
