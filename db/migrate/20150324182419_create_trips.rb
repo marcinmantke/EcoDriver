@@ -1,4 +1,4 @@
-class CreateTrip < ActiveRecord::Migration
+class CreateTrips < ActiveRecord::Migration
   def change
    	add_reference :trips, :user, index: true
   end
