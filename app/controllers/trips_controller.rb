@@ -8,7 +8,10 @@ class TripsController < ApplicationController
 		user_id: 1
 	}
 	def index
+		@trips=Trip.all
+		render :json=>@trips
 	end
+
 	def show
 		render :json=>@@first_trip
 	end
