@@ -7533,3 +7533,73 @@ Mysql2::Error: Field 'name' doesn't have a default value: INSERT INTO `trips` VA
   [1m[35m (29.1ms)[0m  COMMIT
   [1m[36mUser Load (107.2ms)[0m  [1mSELECT  `users`.* FROM `users`  WHERE `users`.`id` = 1 LIMIT 1[0m
   [1m[35mTrip Load (33.5ms)[0m  SELECT `trips`.* FROM `trips`  WHERE `trips`.`user_id` = 1
+  [1m[36m (158.5ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (466.4ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to DeviseCreateUsers (20150323221218)
+  [1m[35m (151.9ms)[0m  CREATE TABLE `users` (`id` int(11) auto_increment PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (265.4ms)[0m  [1mCREATE UNIQUE INDEX `index_users_on_email`  ON `users` (`email`) [0m
+  [1m[35m (398.5ms)[0m  CREATE UNIQUE INDEX `index_users_on_reset_password_token`  ON `users` (`reset_password_token`) 
+  [1m[36m (0.8ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (106.9ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20150323221218')
+  [1m[36m (59.2ms)[0m  [1mCOMMIT[0m
+Migrating to AddUsernameToUsers (20150323221805)
+  [1m[35m (542.2ms)[0m  ALTER TABLE `users` ADD `username` varchar(255)
+  [1m[36m (468.6ms)[0m  [1mCREATE UNIQUE INDEX `index_users_on_username`  ON `users` (`username`) [0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20150323221805')[0m
+  [1m[35m (149.4ms)[0m  COMMIT
+Migrating to Trips (20150324174006)
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to Trips (20150324174006)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to AddUsernameToUsers (20150323221805)
+  [1m[36m (284.9ms)[0m  [1mDROP INDEX `index_users_on_username` ON `users`[0m
+  [1m[35m (532.0ms)[0m  ALTER TABLE `users` DROP `username`
+  [1m[36mSQL (156.5ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20150323221805'[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddUsernameToUsers (20150323221805)
+  [1m[35m (652.4ms)[0m  ALTER TABLE `users` ADD `username` varchar(255)
+  [1m[36m (419.9ms)[0m  [1mCREATE UNIQUE INDEX `index_users_on_username`  ON `users` (`username`) [0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (2.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20150323221805')[0m
+  [1m[35m (111.5ms)[0m  COMMIT
+Migrating to Trips (20150324174006)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to Trips (20150324174006)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to AddUsernameToUsers (20150323221805)
+  [1m[36m (353.5ms)[0m  [1mDROP INDEX `index_users_on_username` ON `users`[0m
+  [1m[35m (588.1ms)[0m  ALTER TABLE `users` DROP `username`
+  [1m[36mSQL (102.9ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20150323221805'[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddUsernameToUsers (20150323221805)
+  [1m[35m (483.3ms)[0m  ALTER TABLE `users` ADD `username` varchar(255)
+  [1m[36m (344.3ms)[0m  [1mCREATE UNIQUE INDEX `index_users_on_username`  ON `users` (`username`) [0m
+  [1m[35m (0.9ms)[0m  BEGIN
+  [1m[36mSQL (6.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20150323221805')[0m
+  [1m[35m (152.4ms)[0m  COMMIT
+Migrating to Trips (20150324174006)
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to Trips (20150324174006)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to Trips (20150324174006)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to Trips (20150324174006)
+  [1m[35m (189.4ms)[0m  CREATE TABLE `trips` (`id` int(11) auto_increment PRIMARY KEY, `distance` float NOT NULL, `avg_rpm` float NOT NULL, `avg_fuel` float NOT NULL, `date` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.7ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20150324174006')
+  [1m[36m (111.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreateTrips (20150324182419)
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateTrips (20150324182419)
+  [1m[35m (555.3ms)[0m  ALTER TABLE `trips` ADD `user_id` int(11)
+  [1m[36m (386.6ms)[0m  [1mCREATE  INDEX `index_trips_on_user_id`  ON `trips` (`user_id`) [0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (3.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20150324182419')[0m
+  [1m[35m (111.7ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m

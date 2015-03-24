@@ -14,12 +14,10 @@
 ActiveRecord::Schema.define(version: 20150324182419) do
 
   create_table "trips", force: true do |t|
-    t.string   "name",                 null: false
-    t.float    "distance",  limit: 24, null: false
-    t.float    "avg_speed", limit: 24, null: false
-    t.float    "avg_rpm",   limit: 24, null: false
-    t.float    "avg_fuel",  limit: 24, null: false
-    t.datetime "date",                 null: false
+    t.float    "distance", limit: 24, null: false
+    t.float    "avg_rpm",  limit: 24, null: false
+    t.float    "avg_fuel", limit: 24, null: false
+    t.datetime "date",                null: false
     t.integer  "user_id"
   end
 
