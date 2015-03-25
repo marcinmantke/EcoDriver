@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  root 'trips#index'
-
-  resources :trips, only: [:index, :show, :create, :destroy, :update]
+   
+    # Przekierowanie devise na domain/login itp -> usunięcie /users/ z linku
+	devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout', :sign_up => 'register'}
+  
+	# You can have the root of your site routed with "root"
+	root 'trips#index'
+	resources :trips, only: [:index, :show, :create, :destroy, :update]
 
 end
