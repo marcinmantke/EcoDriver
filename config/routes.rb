@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'trips#index'
 
-  get 'trips/:id' 	=> 'trips#show'
-  get 'trips' 		=> 'trips#index'
+  resources :trips, only: [:index, :show, :create, :destroy, :update, :new]
+
 end
