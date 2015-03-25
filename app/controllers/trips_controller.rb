@@ -10,4 +10,11 @@ class TripsController < ApplicationController
 		render :json=>@trip
 	end
 
+	def create
+		@trip = Trip.new(params.permit(:distance, :avg_rpm, :avg_fuel, :date, :user_id))
+		p @trip
+		@trip.save
+		render :json =>@trip
+	end
+
 end
