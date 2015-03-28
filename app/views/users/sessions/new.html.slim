@@ -5,7 +5,7 @@ html
     = stylesheet_link_tag    "welcome_page", media: "all"
     = javascript_include_tag 'application', media: 'all'
     = csrf_meta_tags
-body
+body.page
   #headerwrap
     .container
       h1.headerwrap__main-header
@@ -44,5 +44,5 @@ body
       .col-lg-4.col-md-4.col-xs-12.desc
     		h2 Simple start
     		.div
-        	= image_tag("Android_logo.png", :alt => "", :width => 350, :height => 350, :title => "title")
+        	= image_tag("Android_logo.jpg", :alt => "", :width => 350, :height => 350, :title => "title")
         	p.lead To join the fun you need OBDII device and mobile phone with Android. Download our free app now from Google Play.
