@@ -1,21 +1,48 @@
 doctype html
-html ng-app=""
+html
   head
     title EcoDriver
     = stylesheet_link_tag    "welcome_page", media: "all"
     = javascript_include_tag 'application', media: 'all'
     = csrf_meta_tags
-body.welcome-page
-
-  h2 Log in
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    = f.label :login 
-    br/
-    = f.text_field :login 
-    = f.label :password
-    br/
-    = f.password_field :password, autocomplete: "off"
-    - if devise_mapping.rememberable?
-        = f.check_box :remember_me
-        = f.label :remember_me
-        = f.submit "Log in"
+body
+  #headerwrap
+    .container
+      h1.headerwrap__main-header
+        | Become the best EcoDriver, right now!
+      .login-box
+        .form__header Log in
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form__row
+          = f.text_field :login, autofocus: true, placeholder: 'username or email', class: 'form__input'
+          .form__row
+          = f.password_field :password, autocomplete: "off", placeholder: 'password', class: 'form__input'
+          - if devise_mapping.rememberable?
+              .form__row
+              = f.check_box :remember_me
+              = f.label :remember_me
+          .form__buttons
+            .grid
+              .grid__item.one-half
+                = f.submit "Sign in", class: "form__button form__button--green"
+          .grid__item.one-half.grid--right
+                =link_to "Sign up", new_user_registration_path, :class => 'form__button'
+  .container
+  	br
+  	br
+    .row.mt
+      .col-lg-4.col-md-4.col-xs-12.desc
+      	h2	Save money and enviorment
+      	.div
+          = image_tag("eco.jpg", :alt => "", :width => 350, :height => 350, :title => "title")
+          p.lead Ecodriving is a combination of economical and ecological driving. Everything is based on the appropriate use of the gear lever. We will teach you it.
+      .col-lg-4.col-md-4.col-xs-12.desc
+      	h2 Play with other users
+      	.div
+          = image_tag("champion.jpg", :alt => "", :width => 350, :height => 350, :title => "title")
+          p.lead Record your tours and compete with others for the title of The Best EcoDriver.
+      .col-lg-4.col-md-4.col-xs-12.desc
+    		h2 Simple start
+    		.div
+        	= image_tag("Android_logo.png", :alt => "", :width => 350, :height => 350, :title => "title")
+        	p.lead To join the fun you need OBDII device and mobile phone with Android. Download our free app now from Google Play.
