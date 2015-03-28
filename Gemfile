@@ -30,6 +30,8 @@ gem 'spring',        group: :development
 gem 'rails-assets-angular'
 gem 'angular-rails-templates'
 gem 'rails-assets-angular-ui-router'
+gem 'rails-assets-csswizardry-grids'
+gem 'rails-assets-normalize-scss'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
