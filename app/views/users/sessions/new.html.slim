@@ -10,7 +10,7 @@ body.page
     .container
       h1.headerwrap__main-header
         | Become the best EcoDriver, right now!
-      .login-box
+      .login-box.form
         .form__header Log in
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .form__row
@@ -32,17 +32,37 @@ body.page
   	br
     .row.mt
       .col-lg-4.col-md-4.col-xs-12.desc
-      	h2	Save money and enviorment
+      	.h2__images	Save money and environment
       	.div
           = image_tag("eco.jpg", :alt => "", :width => 350, :height => 350, :title => "title")
-          p.lead Ecodriving is a combination of economical and ecological driving. Everything is based on the appropriate use of the gear lever. We will teach you it.
+          .p__images.lead Ecodriving is a combination of economical and ecological driving. Everything is based on the appropriate use of the gear lever. We will teach you it.
       .col-lg-4.col-md-4.col-xs-12.desc
-      	h2 Play with other users
+      	.h2__images Play with other users
       	.div
           = image_tag("champion.jpg", :alt => "", :width => 350, :height => 350, :title => "title")
-          p.lead Record your tours and compete with others for the title of The Best EcoDriver.
+          .p__images.lead Record your tours and compete with others for the title of The Best EcoDriver.
       .col-lg-4.col-md-4.col-xs-12.desc
-    		h2 Simple start
+    		.h2__images Simple start
     		.div
         	= image_tag("Android_logo.jpg", :alt => "", :width => 350, :height => 350, :title => "title")
-        	p.lead To join the fun you need OBDII device and mobile phone with Android. Download our free app now from Google Play.
+        	p__images.lead To join the fun you need OBDII device and mobile phone with Android. Download our free app now from Google Play.
+
+  br/
+  br/
+  #footer
+	  .container
+	    .row
+	      .col-lg-3
+	      	| © Copyright 2015, All rights reserved.
+	      .col-lg-3
+	      .col-lg-3
+	      .col-lg-3
+	        h4 Created by
+	        p
+	          | Mikołaj Grygiel
+	          br/
+	          | Marcin Mantke
+	          br/
+	          | Dawid Sibiński
+	          br/
+	          | Bartłomiej Grzegorek
