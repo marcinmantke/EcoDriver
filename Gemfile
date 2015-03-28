@@ -32,6 +32,9 @@ gem 'angular-rails-templates'
 gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-csswizardry-grids'
 gem 'rails-assets-normalize-scss'
+gem 'rails-assets-bootstrap'
+gem 'rails-assets-angular-material',              '~> 0.6.1'
+gem 'rails-assets-angular-animate'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
