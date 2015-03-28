@@ -1,16 +1,16 @@
 doctype html
-html
+html  ng-app=""
   head
     title EcoDriver
     = stylesheet_link_tag    "welcome_page", media: "all"
     = javascript_include_tag 'application', media: 'all'
     = csrf_meta_tags
-body.page
+body.page  ng-init="isLoginPage=true"
   #headerwrap
     .container
       h1.headerwrap__main-header
         | Become the best EcoDriver, right now!
-      .login-box.form
+      .login-box.form ng-show="isLoginPage"
         .form__header Log in
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .form__row
@@ -26,7 +26,28 @@ body.page
               .grid__item.one-half
                 = f.submit "Sign in", class: "form__button form__button--green"
           .grid__item.one-half.grid--right
-                =link_to "Sign up", new_user_registration_path, :class => 'form__button'
+          	button.form__button type="button" ng-click="isLoginPage=false"
+            	| Sign up
+
+      .login-box.form ng-hide="isLoginPage"
+        .form__header Create account
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          .form__row
+          = f.text_field :username, autofocus: true, placeholder: 'username', class: 'form__input'
+          .form__row
+          = f.email_field :email, placeholder: 'email', class: 'form__input'
+          .form__row
+          = f.password_field :password, autocomplete: "off", placeholder: 'password', class: 'form__input', for: ""
+          .form__row
+          = f.password_field :password_confirmation, autocomplete: "off", placeholder: 'repeat password', class: 'form__input'
+          .form__buttons
+            .grid
+              .grid__item.one-half
+                = f.submit "Sign up", class: "form__button form__button--green"
+          .grid__item.one-half.grid--right
+          	button.form__button type="button" ng-click="isLoginPage=true"
+              | Sign in
+
   .container
   	br
   	br
