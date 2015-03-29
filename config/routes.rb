@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 	root 'trips#index'
 	resources :trips, only: [:index, :show, :create]
 	post 'trips/by_car_type', to: 'trips#getTripsByCarType'
+	post 'trips/by_distance', to: 'trips#getTripsByDistance'
 
 end
