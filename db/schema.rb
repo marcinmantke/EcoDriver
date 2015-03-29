@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329112241) do
+ActiveRecord::Schema.define(version: 20150329172644) do
 
   create_table "car_types", force: true do |t|
     t.string "engine_type"
@@ -19,14 +19,16 @@ ActiveRecord::Schema.define(version: 20150329112241) do
   end
 
   create_table "trips", force: true do |t|
-    t.float    "distance",  limit: 24, null: false
-    t.float    "avg_rpm",   limit: 24, null: false
-    t.float    "avg_fuel",  limit: 24, null: false
-    t.datetime "date",                 null: false
+    t.float    "distance",    limit: 24, null: false
+    t.float    "avg_rpm",     limit: 24, null: false
+    t.float    "avg_fuel",    limit: 24, null: false
+    t.datetime "date",                   null: false
     t.integer  "user_id"
-    t.integer  "avg_speed",            null: false
+    t.integer  "avg_speed",              null: false
+    t.integer  "car_type_id"
   end
 
+  add_index "trips", ["car_type_id"], name: "index_trips_on_car_type_id", using: :btree
   add_index "trips", ["user_id"], name: "index_trips_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
