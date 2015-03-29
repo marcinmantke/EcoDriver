@@ -257,7 +257,10 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
-  config.authentication_keys = [ :login ]
+  # Defines name of the authentication token params key
+  #config.token_authentication_key = :auth_token
+
+
   config.scoped_views = true
   config.reset_password_keys = [ :username ]
   config.confirmation_keys = [ :username ]

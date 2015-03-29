@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 
   has_many :trips, dependent: :destroy
 
+  
 attr_accessor :login
 
   def self.find_first_by_auth_conditions(warden_conditions)
