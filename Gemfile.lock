@@ -171,6 +171,7 @@ DEPENDENCIES
   rails-assets-angular-ui-router
   rails-assets-bootstrap
   rails-assets-csswizardry-grids
+  rails-assets-jquery
   rails-assets-normalize-scss
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
