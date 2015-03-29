@@ -9,7 +9,7 @@ body.page  ng-init="isLoginPage=true"
   #headerwrap
     .container
       h1.headerwrap__main-header
-        | Become the best EcoDriver, right now!
+        | Become the best EcoDriver!
       .login-box.form ng-show="isLoginPage"
         .form__header Log in
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
