@@ -12,3 +12,27 @@ Trip.create(distance: 2.1, avg_rpm: 2000, avg_fuel: 12, avg_speed: 110, date: Da
 Trip.create(distance: 3.1, avg_rpm: 3000, avg_fuel: 13, avg_speed: 120, date: Date.today, user_id: 1)
 Trip.create(distance: 4.1, avg_rpm: 4000, avg_fuel: 14, avg_speed: 130, date: Date.today, user_id: 1)
 Trip.create(distance: 5.1, avg_rpm: 5000, avg_fuel: 15, avg_speed: 140, date: Date.today, user_id: 1)
+
+CarType.create(engine_type: 'diesel', engine_displacement: '<1.0')
+CarType.create(engine_type: 'gas', engine_displacement: '<1.0')
+CarType.create(engine_type: 'petrol', engine_displacement: '<1.0')
+
+CarType.create(engine_type: 'diesel', engine_displacement: '1.0-1.5')
+CarType.create(engine_type: 'gas', engine_displacement: '1.0-1.5')
+CarType.create(engine_type: 'petrol', engine_displacement: '1.0-1.5')
+
+CarType.create(engine_type: 'diesel', engine_displacement: '1.6-2.0')
+CarType.create(engine_type: 'gas', engine_displacement: '1.6-2.0')
+CarType.create(engine_type: 'petrol', engine_displacement: '1.6-2.0')
+
+CarType.create(engine_type: 'diesel', engine_displacement: '2.1-2.5')
+CarType.create(engine_type: 'gas', engine_displacement: '2.1-2.5')
+CarType.create(engine_type: 'petrol', engine_displacement: '2.1-2.5')
+
+CarType.create(engine_type: 'diesel', engine_displacement: '2.6-3.0')
+CarType.create(engine_type: 'gas', engine_displacement: '2.6-3.0')
+CarType.create(engine_type: 'petrol', engine_displacement: '2.6-3.0')
+
+CarType.create(engine_type: 'diesel', engine_displacement: '>3.0')
+CarType.create(engine_type: 'gas', engine_displacement: '>3.0')
+CarType.create(engine_type: 'petrol', engine_displacement: '>3.0')
