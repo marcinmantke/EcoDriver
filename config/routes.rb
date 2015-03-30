@@ -25,7 +25,10 @@ Rails.application.routes.draw do
 
 	# You can have the root of your site routed with "root"
 	root 'trips#index'
-	resources :trips, only: [:index, :show, :create, :destroy, :update]
 	get '/mytrips' => "trips#mytrips"
+	
+	resources :trips, only: [:index, :show, :create]
+	post 'trips/by_car_type', to: 'trips#getTripsByCarType'
+	post 'trips/by_distance', to: 'trips#getTripsByDistance'
 
 end 
