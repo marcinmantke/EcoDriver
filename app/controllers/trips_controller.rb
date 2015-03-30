@@ -11,7 +11,7 @@ class TripsController < ApplicationController
 	end
 
 	def create
-		@trip = Trip.new(params.permit(:distance, :avg_rpm, :avg_fuel, :avg_speed, :date, :user_id))
+		@trip = Trip.new(params.permit(:distance, :avg_rpm, :avg_fuel, :avg_speed, :date, :user_id, :car_type_id))
 		@trip.save
 		render :json =>@trip
 	end
