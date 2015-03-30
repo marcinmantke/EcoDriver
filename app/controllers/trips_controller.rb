@@ -17,4 +17,12 @@ class TripsController < ApplicationController
 		render :json =>@trip
 	end
 
+	def mytrips
+		if user_signed_in?
+    		@trip = Trip.where(user_id: current_user.id)
+    		render :json=>@trip
+    	else
+    		render :json=>"You have to be logged in."
+    	end
+  	end
 end
