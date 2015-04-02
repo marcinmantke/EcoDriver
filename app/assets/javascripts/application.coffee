@@ -19,8 +19,9 @@
 #= require routes
 #= requrie images
 #= require_tree ../templates
-#= require_tree ./controllers
 #= require_tree ./services
+#= require_tree ./controllers
+
 
 
 
