@@ -15,11 +15,13 @@
 #= require angular-ui-router
 #= require jquery
 #= require bootstrap
-#= require_tree ../templates
 #= require app
 #= require routes
-#= require trips
 #= requrie images
+#= require_tree ../templates
+#= require_tree ./controllers
+#= require_tree ./services
+
 
 
 
