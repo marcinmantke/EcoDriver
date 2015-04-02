@@ -1,6 +1,9 @@
 class TripsController < ApplicationController
 
 	def index
+	end
+
+	def all
 		@trips=Trip.all
 		render :json=>@trips
 	end
