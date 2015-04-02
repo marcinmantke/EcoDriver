@@ -69,4 +69,20 @@ class TripsController < ApplicationController
 		render :json => trips_to_render
 	end
 
+	def WhoAmI
+		if user_signed_in?
+			render :json => current_user.username #User.find(current_user)
+		else
+			render :json => 'You have to log in.'
+		end
+	end
+
+	def LoginTest
+		if user_signed_in?
+			render :json => 'Tekst testowy'
+		else
+			render :json => 'Error'
+		end
+	end
+
 end
