@@ -35,4 +35,11 @@ Rails.application.routes.draw do
 	post 'trips/by_car_type', to: 'trips#getTripsByCarType'
 	post 'trips/by_distance', to: 'trips#getTripsByDistance'
 
+	namespace :android do
+    devise_scope :user do
+    	post 'registration' => 'registrations#create', :as => 'register'
+    	post 'login' => 'sessions#create', :as => 'login'
+  	end
+	end
+
 end 
