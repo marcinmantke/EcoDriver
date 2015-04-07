@@ -10,18 +10,22 @@
 # Read Sprockets README (https:#github.com/sstephenson/sprockets#sprockets-directives) for details
 # about supported directives.
 #
+#= require_self
+#= require jquery
 #= require angular
 #= require angular-rails-templates
+#= require angular-ui-bootstrap-bower
+#= require bootstrap-css
 #= require angular-ui-router
-#= require jquery
-#= require bootstrap
 #= require app
 #= require routes
 #= requrie images
+
+
 #= require_tree ../templates
 #= require_tree ./services
 #= require_tree ./controllers
-
+#= require_tree .
 
 
 
