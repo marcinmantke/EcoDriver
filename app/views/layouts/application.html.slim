@@ -3,9 +3,10 @@ html ng-app="EcoApp"
   head
     title EcoDriver
     = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
+    = javascript_include_tag 'application', media: 'all'
     = csrf_meta_tags
   body
 
-  = yield
+    =yield
+
 
