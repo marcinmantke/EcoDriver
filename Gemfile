@@ -27,15 +27,13 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # ASSETS
-gem 'rails-assets-angular'
+gem 'rails-assets-angular',							'< 1.3.0'
 gem 'angular-rails-templates'
 gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-csswizardry-grids'
 gem 'rails-assets-normalize-scss'
-gem 'rails-assets-bootstrap'
-gem 'rails-assets-angular-material',              '~> 0.6.1'
-gem 'rails-assets-angular-animate'
-gem 'rails-assets-jquery'
+gem 'rails-assets-angular-ui-bootstrap-bower',	'~> 0.12.1'
+gem 'rails-assets-bootstrap-css'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
