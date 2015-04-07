@@ -1,4 +1,4 @@
-angular.module('EcoApp', ['templates', 'ui.router'])
+angular.module('EcoApp')
   .config ($stateProvider, $urlRouterProvider) ->
     $urlRouterProvider.otherwise('/')
 
@@ -7,7 +7,7 @@ angular.module('EcoApp', ['templates', 'ui.router'])
         url: '/',
         controller: 'TripsCtrl',
         templateUrl: 'trips/index.html'
-       .state 'ranking',
+      .state 'ranking',
         url: '/ranking',
         controller: 'TripsCtrl',
         templateUrl: 'ranking/index.html'
