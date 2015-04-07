@@ -14,9 +14,15 @@ class TripsController < ApplicationController
 	end
 
 	def create
-		@trip = Trip.new(params.permit(:distance, :avg_rpm, :avg_fuel, :avg_speed, :date, :user_id, :car_type_id))
-		@trip.save
-		render :json =>@trip
+		if user_signed_in?
+			@trip = Trip.new(params.permit(:distance, :avg_rpm, :avg_fuel, :avg_speed, :date))
+			@trip.car_type_id = current_user.car_type_id
+			@trip.user_id = current_user.id
+			@trip.save
+			render :json =>@trip
+		else
+			render :json=> {status: 500, info: "You have to be logged in."}
+    	end
 	end
 
 	def mytrips
