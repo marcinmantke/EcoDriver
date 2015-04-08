@@ -1,5 +1,7 @@
 class TripsController < ApplicationController
 
+before_action :authenticate_user!
+
 	def index
 	end
 
@@ -30,7 +32,7 @@ class TripsController < ApplicationController
     		@trip = Trip.where(user_id: current_user.id)
     		render :json=>@trip
     	else
-    		render :json=>"You have to be logged in."
+    		render :json=> {status: 500, info: "You have to be logged in."}
     	end
   	end
 
