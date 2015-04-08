@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     	post 'registration' => 'registrations#create', :as => 'register'
     	post 'login' => 'sessions#create', :as => 'login'
     	delete 'logout' => 'sessions#destroy', :as => 'logout'
+    	post 'update_car_type' => 'users#updateCarType'
   	end
 	end
 
