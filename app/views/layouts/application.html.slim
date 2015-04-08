@@ -7,5 +7,24 @@ html ng-app="EcoApp"
     = csrf_meta_tags
   body
 
+  .header
+    .header__top
+      .grid.grid--middle
+        .grid__item.one-quarter.grid--left
+          a.header__route ui-sref="mytrips"
+            | My trips
+          a.header__route ui-sref="ranking"
+            | Ranking
+        .grid__item.five-twelfths.grid--center
+          header__account
+            | Logged in as
+            span.header__account--lighter
+              |  #{current_user.username}
+        .grid__item.one-quarter.grid--right
+          header__account
+            = link_to destroy_user_session_path, method: :delete, :class => 'header__account--link', :title => 'logout'
+              span>
+                | logout
+
   = yield
 

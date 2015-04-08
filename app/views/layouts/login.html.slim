@@ -1,0 +1,89 @@
+doctype html
+html  ng-app=""
+  head
+    title EcoDriver
+    = stylesheet_link_tag    "welcome_page", media: "all"
+    = javascript_include_tag 'application', media: 'all'
+    = csrf_meta_tags
+body.page  ng-init="isLoginPage=true"
+  #headerwrap
+    .container
+      h1.headerwrap__main-header
+        | Become the best EcoDriver!
+      .login-box.form ng-show="isLoginPage"
+        .form__header Log in
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form__row
+          = f.text_field :login, autofocus: true, placeholder: 'username or email', class: 'form__input'
+          .form__row
+          = f.password_field :password, autocomplete: "off", placeholder: 'password', class: 'form__input'
+          - if devise_mapping.rememberable?
+              .form__row
+              = f.check_box :remember_me
+              = f.label :remember_me
+          .form__buttons
+            .grid
+              .grid__item.one-half
+                = f.submit "Sign in", class: "form__button form__button--green"
+          .grid__item.one-half.grid--right
+          	button.form__button type="button" ng-click="isLoginPage=false"
+            	| Sign up
+
+      .login-box.form ng-hide="isLoginPage"
+        .form__header Create account
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          .form__row
+          = f.text_field :username, autofocus: true, placeholder: 'username', class: 'form__input'
+          .form__row
+          = f.email_field :email, placeholder: 'email', class: 'form__input'
+          .form__row
+          = f.password_field :password, autocomplete: "off", placeholder: 'password', class: 'form__input', for: ""
+          .form__row
+          = f.password_field :password_confirmation, autocomplete: "off", placeholder: 'repeat password', class: 'form__input'
+          .form__buttons
+            .grid
+              .grid__item.one-half
+                = f.submit "Sign up", class: "form__button form__button--green"
+          .grid__item.one-half.grid--right
+          	button.form__button type="button" ng-click="isLoginPage=true"
+              | Sign in
+
+  .container
+  	br
+  	br
+    .row.mt
+      .col-lg-4.col-md-4.col-xs-12.desc
+      	.h2__images	Save money and environment
+      	.div
+          = image_tag("eco.jpg", :alt => "", :width => 350, :height => 350, :title => "title")
+          .p__images.lead Ecodriving is a combination of economical and ecological driving. Everything is based on the appropriate use of the gear lever. We will teach you it.
+      .col-lg-4.col-md-4.col-xs-12.desc
+      	.h2__images Play with other users
+      	.div
+          = image_tag("champion.jpg", :alt => "", :width => 350, :height => 350, :title => "title")
+          .p__images.lead Record your tours and compete with others for the title of The Best EcoDriver.
+      .col-lg-4.col-md-4.col-xs-12.desc
+    		.h2__images Simple start
+    		.div
+        	= image_tag("Android_logo.jpg", :alt => "", :width => 350, :height => 350, :title => "title")
+        	p__images.lead To join the fun you need OBDII device and mobile phone with Android. Download our free app now from Google Play.
+
+  br/
+  br/
+  #footer
+	  .container
+	    .row
+	      .col-lg-3
+	      	| © Copyright 2015, All rights reserved.
+	      .col-lg-3
+	      .col-lg-3
+	      .col-lg-3
+	        h4 Created by
+	        p
+	          | Mikołaj Grygiel
+	          br/
+	          | Marcin Mantke
+	          br/
+	          | Dawid Sibiński
+	          br/
+	          | Bartłomiej Grzegorek
