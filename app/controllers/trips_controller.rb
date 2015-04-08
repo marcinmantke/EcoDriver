@@ -84,7 +84,7 @@ before_action :authenticate_user!
 		if user_signed_in?
 			render :json => current_user.username #User.find(current_user)
 		else
-			render :json => 'You have to log in.'
+			{status: 500, info: "You have to be logged in."}
 		end
 	end
 
