@@ -8,3 +8,12 @@ angular.module('EcoApp').controller 'TripsCtrl', ($http, $scope, Trip)->
     Trip.getTripsByDistance(0, 1000).success (data)->
     	console.log(data)
     	$scope.trips_by_distance = data
+
+.controller 'MyTripsCtrl', ($scope, $http) ->
+  $http.get('/mytrips.json').success((data, status, headers, config) ->
+    $scope.mytrips = data
+    return
+  ).error (data, status, headers, config) ->
+    # log error
+    return
+  return

@@ -1,0 +1,50 @@
+doctype html
+html  ng-app="EcoApp"
+  head
+    title EcoDriver
+
+  #headerwrap
+    .container
+      h1.headerwrap__main-header
+        | Become the best EcoDriver!
+
+
+  .container
+    br
+    br
+    table.table.table-hover
+      thead
+        tr
+          th Lp
+          th Dystans
+          th Średnie spalanie
+          th Średnia prędkość
+          th Średnie obroty
+          th Data
+      tbody
+        tr ng-repeat=("t in mytrips") 
+          td ng-bind="$index+1"
+          td ng-bind="t.distance"
+          td ng-bind="t.avg_fuel"
+          td ng-bind="t.avg_speed"
+          td ng-bind="t.avg_rpm"
+          td ng-bind="t.date"
+  br/
+  br/
+  #footer
+	  .container
+	    .row
+	      .col-lg-3
+	      	| © Copyright 2015, All rights reserved.
+	      .col-lg-3
+	      .col-lg-3
+	      .col-lg-3
+	        h4 Created by
+	        p
+	          | Mikołaj Grygiel
+	          br/
+	          | Marcin Mantke
+	          br/
+	          | Dawid Sibiński
+	          br/
+	          | Bartłomiej Grzegorek
