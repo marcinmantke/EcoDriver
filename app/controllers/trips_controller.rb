@@ -59,7 +59,7 @@ class TripsController < ApplicationController
 	def getTripsByDistance
 		trips=Trip.includes(:car_type).where("distance > ?", params.permit(:lower_limit)["lower_limit"])
 			.where("distance <= ?", params.permit(:upper_limit)["upper_limit"])
-			.references(:car_types)
+			.references(:car_types).order(:avg_fuel)
 
 		trips_to_render=[]
 		trips.each do |trip|
