@@ -1,5 +1,5 @@
-angular.module('EcoApp', ['templates', 'ui.router'])
-  .config ($provide, $httpProvider, $translateProvider, Rails) ->
+angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router'])
+  .config ($provide, $httpProvider) ->
     # CSFR token
     $httpProvider.defaults.headers.common['X-CSRF-Token'] =
       angular.element(document.querySelector('meta[name=csrf-token]')).attr('content')

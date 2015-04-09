@@ -3,11 +3,28 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 angular.module('EcoApp').controller 'TripsCtrl', ($http, $scope, Trip)->
-    $scope.test = "gdfgh"
+  $scope.test = "gdfgh"
 
-    Trip.getTripsByDistance(0, 1000).success (data)->
-    	console.log(data)
-    	$scope.trips_by_distance = data
+  $scope.radioModel = '0-10'
+
+  $scope.getTripsByDistance = ()->
+    limits = $scope.radioModel.split("-")
+    console.log limits
+    Trip.getTripsByDistance(limits[0], limits[1]).success (data)->
+      $scope.trips_by_distance = data
+
+  $scope.getTripsByDistance()
+
+  $scope.radioModelDisplacement = '<1.0'
+  $scope.radioModelFuel = 'petrol'
+
+  $scope.getTripsByEngineType = ()->
+    console.log $scope.radioModelDisplacement
+    console.log $scope.radioModelFuel
+    Trip.getTripsByEngineType($scope.radioModelFuel, $scope.radioModelDisplacement).success (data)->
+      $scope.trips_by_engine_type = data
+
+  $scope.getTripsByEngineType()
 
 .controller 'MyTripsCtrl', ($scope, $http) ->
   $http.get('/mytrips.json').success((data, status, headers, config) ->
@@ -17,3 +34,4 @@ angular.module('EcoApp').controller 'TripsCtrl', ($http, $scope, Trip)->
     # log error
     return
   return
+
