@@ -63,4 +63,70 @@ div.page
                 | {{trip.avg_fuel}}
 
     tab heading=("By Engine Type")
-        | jeszcze nic tu nie ma
+      .grid
+        .grid__item.two-twelfths.grid--left
+          .sidebar__menu
+            .sidebar__menu__header
+              | Fuel type
+            div class="btn-group-vertical btn-group-lg" style="width: 100%" 
+              .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'petrol'" ng-change="getTripsByEngineType()"
+                | petrol
+              .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'diesel'" ng-change="getTripsByEngineType()"
+                | diesel
+              .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'gas'" ng-change="getTripsByEngineType()"
+                | gas
+            .sidebar__menu__header
+              | Displacment
+            div class="btn-group-vertical btn-group-lg" style="width: 100%" 
+              .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'<1.0'" ng-change="getTripsByEngineType()"
+                | <1.0l
+              .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.0-1.5'" ng-change="getTripsByEngineType()"
+                | 1.0-1.5l
+              .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.6-2.0'" ng-change="getTripsByEngineType()"
+                | 1.6-2.0l
+              .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.1-2.5'" ng-change="getTripsByEngineType()"
+                | 2.1-2.5l
+              .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.6-3.0'" ng-change="getTripsByEngineType()"
+                | 2.6-3.0l
+              .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'>3.0'" ng-change="getTripsByEngineType()"
+                | 3.0l<
+        .grid__item.nine-twelfths.grid--right
+          .ranking__table
+            div.table__header
+              .table__header__field.table__field__number
+                | #
+              .table__header__field
+                | User
+              .table__header__field
+                | Distance
+              .table__header__field
+                | Average speed
+              .table__header__field
+                | Average RPM
+              .table__header__field
+                | Date
+              .table__header__field
+                | Fuel type
+              .table__header__field
+                | Engine displacment
+              .table__header__field
+                | Average fuel consumption
+            div ng-repeat="trip in trips_by_engine_type"
+              .table__field.table__field__number
+                | {{$index+1}}
+              .table__field
+                | {{trip.user}}
+              .table__field
+                | {{trip.distance}}
+              .table__field
+                | {{trip.avg_speed}}
+              .table__field
+                | {{trip.avg_rpm}}
+              .table__field
+                | {{trip.date}}
+              .table__field
+                | {{trip.engine_type}}
+              .table__field
+                | {{trip.engine_displacement}}
+              .table__field
+                | {{trip.avg_fuel}}
