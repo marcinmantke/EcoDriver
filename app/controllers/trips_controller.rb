@@ -25,10 +25,15 @@ before_action :authenticate_user!
 	def mytrips
 		if user_signed_in?
     		@trip = Trip.where(user_id: current_user.id)
-    		render :json=>@trip
+    		response = @trip
     	else
-    		render :json=> {status: 500, info: "You have to be logged in."}
+    		response = {status: 500, info: "You have to be logged in."}
     	end
+
+    	respond_to do |format|
+			  format.html {  raise ActionController::RoutingError.new('Not Found') }
+			  format.json { render json: response }
+			 end
   	end
 
 	def getTripsByCarType
