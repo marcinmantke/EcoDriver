@@ -11,11 +11,11 @@ Rails.application.routes.draw do
 	get 'whoami' => 'trips#WhoAmI'
 	get 'logintest' => 'trips#LoginTest'
 
-	get  'trips', to: 'trips#all'
-	post 'trips', to: 'trips#create'
 	get  'trips/:id', to: 'trips#show'
 	post 'trips/by_car_type', to: 'trips#getTripsByCarType'
 	post 'trips/by_distance', to: 'trips#getTripsByDistance'
+
+  post 'save_trip', to: 'trips#create'
 
 	namespace :android do
     devise_scope :user do
