@@ -6,7 +6,7 @@ class Android::SessionsController < Devise::SessionsController
     self.resource = warden.authenticate!(auth_options)
     sign_in(resource_name, resource)
     render :status => 200,
-            :json => {  :success => true }
+            :json => {  :success => true, :car_type_id => current_user.car_type_id }
 
   end
 

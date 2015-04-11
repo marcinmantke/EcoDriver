@@ -9,7 +9,8 @@ class Android::RegistrationsController < Devise::RegistrationsController
       render :status => 200,
            :json => { :success => true,
                       :info => "Registered",
-                      :data => resource }
+                      :data => resource,
+                      :car_type_id => current_user.car_type_id }
     else
       render :status => :unprocessable_entity,
              :json => { :success => false,
