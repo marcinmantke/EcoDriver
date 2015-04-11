@@ -11,15 +11,15 @@ before_action :authenticate_user!
 	end
 
 	def create
-		if user_signed_in?
+		begin
 			@trip = Trip.new(params.permit(:distance, :avg_rpm, :avg_fuel, :avg_speed, :date))
 			@trip.car_type_id = current_user.car_type_id
 			@trip.user_id = current_user.id
 			@trip.save
 			render :json =>@trip
-		else
-			render :json=> {status: 500, info: "You have to be logged in."}
-    	end
+		rescue Exception => exc
+			render :json=> {status: 500, error: exc.message}
+    end
 	end
 
 	def mytrips
