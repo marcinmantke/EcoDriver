@@ -2,7 +2,7 @@ class Android::SessionsController < Devise::SessionsController
 
 	respond_to :json
 
-	def create
+  def create
     self.resource = warden.authenticate!(auth_options)
     sign_in(resource_name, resource)
     response = {  :success => true, :car_type_id => current_user.car_type_id }
@@ -16,10 +16,10 @@ class Android::SessionsController < Devise::SessionsController
   def destroy
     signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
     response = {  :success => true }
-  end
 
-  respond_to do |format|
-    format.html {  raise ActionController::RoutingError.new('Not Found') }
-    format.json { render json: response }
+    respond_to do |format|
+      format.html {  raise ActionController::RoutingError.new('Not Found') }
+      format.json { render json: response }
+    end
   end
 end
