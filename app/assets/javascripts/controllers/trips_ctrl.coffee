@@ -35,3 +35,10 @@ angular.module('EcoApp').controller 'TripsCtrl', ($http, $scope, Trip)->
     return
   return
 
+
+.controller 'NavbarIsActive', ($scope, $location) ->
+
+  $scope.isActive = (route) ->
+    route == $location.path()
+
+  return
