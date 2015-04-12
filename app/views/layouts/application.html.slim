@@ -8,24 +8,31 @@ html ng-app="EcoApp"
   body
 
 
-  .header
-    .header__top
-      .grid.grid--middle
-        .grid__item.one-quarter.grid--left
-          a.header__route ui-sref="mytrips"
-            | My trips
-          a.header__route ui-sref="ranking"
-            | Ranking
-        .grid__item.five-twelfths.grid--center
-          header__account
-            | Logged in as
-            span.header__account--lighter
-              |  #{current_user.username}
-        .grid__item.one-quarter.grid--right
-          header__account
-            = link_to destroy_user_session_path, method: :delete, :class => 'header__account--link', :title => 'logout'
-              span>
-                | logout
+.navbar.navbar-default
+  .navbar-header
+    button.navbar-toggle data-target=".navbar-responsive-collapse" data-toggle="collapse" type="button" 
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a.navbar-brand href="/#/mytrips"  EcoDriver
+  .navbar-collapse.collapse.navbar-responsive-collapse ng-controller="NavbarIsActive" 
+    ul.nav.navbar-nav
+      li ng-class="{active:isActive('/mytrips')}"
+        a href="/#/mytrips"  Dashboard
+      li ng-class="{active:isActive('/ranking')}"
+        a href="/#/ranking"  Ranking
 
-  = yield
+    ul.nav.navbar-nav.navbar-right
+      li.dropdown
+        a.dropdown-toggle data-toggle="dropdown" href="" 
+          | #{current_user.username}
+          b.caret
+        ul.dropdown-menu
+          li
+            a href="/#/"  Edit profile
+          li.divider
+          li
+            a href="/logout"  Logout
+
+= yield
 
