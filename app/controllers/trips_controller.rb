@@ -33,7 +33,7 @@ before_action :authenticate_user!
     	respond_to do |format|
 			  format.html {  raise ActionController::RoutingError.new('Not Found') }
 			  format.json { render json: response }
-			 end
+			end
   	end
 
 	def getTripsByCarType
@@ -82,9 +82,14 @@ before_action :authenticate_user!
 
 	def WhoAmI
 		if user_signed_in?
-			render :json => current_user.username #User.find(current_user)
+			response = current_user.username #User.find(current_user)
 		else
-			{status: 500, info: "You have to be logged in."}
+			response = {status: 500, info: "You have to be logged in."}
+		end
+
+		respond_to do |format|
+		  format.html {  raise ActionController::RoutingError.new('Not Found') }
+		  format.json { render json: response }
 		end
 	end
 

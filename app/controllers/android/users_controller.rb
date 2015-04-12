@@ -6,9 +6,14 @@ before_action :authenticate_user!
 	def updateCarType
 		if user_signed_in?
 			current_user.update(params.permit(:car_type_id))
-			render :json => {success: true}
+			response = {success: true}
 		else
-			render :json => {success: false}
+			response = {success: false}
 		end
+
+    respond_to do |format|
+      format.html {  raise ActionController::RoutingError.new('Not Found') }
+      format.json { render json: response }
+    end
 	end
 end
