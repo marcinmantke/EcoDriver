@@ -48,7 +48,7 @@ before_action :authenticate_user!
 				avg_rpm: trip.avg_rpm ,
 				avg_fuel: trip.avg_fuel ,
 				avg_speed: trip.avg_speed ,
-				date: trip.date ,
+				date: trip.date.strftime("%F") ,
 				user: trip.user.username ,
 				engine_displacement: trip.car_type.engine_displacement ,
 				engine_type: trip.car_type.engine_type
@@ -70,7 +70,7 @@ before_action :authenticate_user!
 				avg_rpm: trip.avg_rpm ,
 				avg_fuel: trip.avg_fuel ,
 				avg_speed: trip.avg_speed ,
-				date: trip.date ,
+				date: trip.date.strftime("%F") ,
 				user: trip.user.username ,
 				engine_displacement: trip.car_type.engine_displacement ,
 				engine_type: trip.car_type.engine_type

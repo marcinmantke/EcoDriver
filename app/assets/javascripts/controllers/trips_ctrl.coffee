@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-angular.module('EcoApp').controller 'TripsCtrl', ['$scope', '$http', ($http, $scope, Trip)->
+angular.module('EcoApp').controller 'TripsCtrl', ($http, $scope, Trip)->
   $scope.test = "gdfgh"
 
   $scope.radioModel = '0-10'
@@ -25,8 +25,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ['$scope', '$http', ($http, $sc
       $scope.trips_by_engine_type = data
 
   $scope.getTripsByEngineType()
-  return
-]
+
 
 .controller 'MyTripsCtrl', [ '$scope', '$http', ($scope, $http) ->
   $http.get('/mytrips.json').success((data, status, headers, config) ->
@@ -37,7 +36,6 @@ angular.module('EcoApp').controller 'TripsCtrl', ['$scope', '$http', ($http, $sc
     return
   return
 ]
-
 
 .controller 'NavbarIsActive', ['$scope', '$location', ($scope, $location) ->
 
