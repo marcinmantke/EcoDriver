@@ -4,7 +4,6 @@
 
 angular.module('EcoApp').controller 'TripsCtrl', ($http, $scope, Trip)->
   $scope.test = "gdfgh"
-  console.log $scope.test
   $scope.radioModel = '0-10'
 
   $scope.getTripsByDistance = ()->
