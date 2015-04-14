@@ -4,7 +4,7 @@
 
 angular.module('EcoApp').controller 'TripsCtrl', ($http, $scope, Trip)->
   $scope.test = "gdfgh"
-
+  console.log $scope.test
   $scope.radioModel = '0-10'
 
   $scope.getTripsByDistance = ()->
@@ -30,6 +30,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($http, $scope, Trip)->
 .controller 'MyTripsCtrl', [ '$scope', '$http', ($scope, $http) ->
   $http.get('/mytrips.json').success((data, status, headers, config) ->
     $scope.mytrips = data
+    console.log data
     return
   ).error (data, status, headers, config) ->
     # log error
