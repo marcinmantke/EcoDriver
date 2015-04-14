@@ -23,16 +23,25 @@ before_action :authenticate_user!
 	end
 
 	def mytrips
-		if user_signed_in?
-    		@trip = Trip.where(user_id: current_user.id)
-    		response = @trip
-    	else
-    		response = {status: 500, info: "You have to be logged in."}
-    	end
+		trips=Trip.where(user_id: current_user.id)
 
-    	respond_to do |format|
+		trips_to_render=[]
+		trips.each do |trip|
+			trips_to_render.push({
+				distance: trip.distance,
+				avg_rpm: trip.avg_rpm ,
+				avg_fuel: trip.avg_fuel ,
+				avg_speed: trip.avg_speed ,
+				date: trip.date.strftime("%F") ,
+				user: trip.user.username ,
+				engine_displacement: trip.car_type.engine_displacement ,
+				engine_type: trip.car_type.engine_type
+				})
+		end
+
+		respond_to do |format|
 			  format.html {  raise ActionController::RoutingError.new('Not Found') }
-			  format.json { render json: response }
+			  format.json { render json: trips_to_render }
 			end
   	end
 
