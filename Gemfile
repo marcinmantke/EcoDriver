@@ -5,35 +5,35 @@ source 'https://rails-assets.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use mysql as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-gem "slim-rails"
+gem "slim-rails", '~> 3.0.1'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 3.1.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+gem 'spring', '~> 1.3.3',        group: :development
 
 # ASSETS
-gem 'rails-assets-angular',							'< 1.3.0'
-gem 'angular-rails-templates'
-gem 'rails-assets-angular-ui-router'
-gem 'rails-assets-csswizardry-grids'
-gem 'rails-assets-normalize-scss'
+gem 'rails-assets-angular', '~> 1.2.28'
+gem 'angular-rails-templates', '~> 0.1.3'
+gem 'rails-assets-angular-ui-router', '~> 0.2.13'
+gem 'rails-assets-csswizardry-grids', '~> 2.2.0'
+gem 'rails-assets-normalize-scss', '~> 3.0.2'
 gem 'rails-assets-angular-ui-bootstrap-bower',	'~> 0.12.1'
-gem 'rails-assets-bootstrap-css'
+gem 'rails-assets-bootstrap-css', '~> 3.2.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -47,8 +47,8 @@ gem 'rails-assets-bootstrap-css'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'execjs'
+gem 'execjs', '~> 2.4.0'
 
-gem 'therubyracer'
+gem 'therubyracer', '~> 0.12.1'
 
-gem 'devise'
+gem 'devise', '~> 3.4.1'
