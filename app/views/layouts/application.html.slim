@@ -16,7 +16,7 @@ html ng-app="EcoApp"
       span.icon-bar
     a.navbar-brand href="/#/mytrips"
       = image_tag("logo1_1024.png", :alt => "", :height => "100%", :title => "title")
-  .navbar-collapse.collapse.navbar-responsive-collapse ng-controller="NavbarIsActive" 
+  .navbar-collapse.collapse.navbar-responsive-collapse ng-controller="NavbarCtrl" 
     ul.nav.navbar-nav
       li ng-class="{active:isActive('/mytrips')}"
         a href="/#/mytrips"  Dashboard
