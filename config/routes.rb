@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 	root 'trips#index'
 	get 'mytrips' => "trips#mytrips"
 	get 'whoami' => 'trips#WhoAmI'
-	get 'logintest' => 'trips#LoginTest'
 
 	get  'trips/:id', to: 'trips#show'
 	post 'trips/by_car_type', to: 'trips#getTripsByCarType'
