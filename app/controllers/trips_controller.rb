@@ -102,12 +102,5 @@ before_action :authenticate_user!
 		end
 	end
 
-	def LoginTest
-		if user_signed_in?
-			render :json => 'Tekst testowy'
-		else
-			render :json => 'Error'
-		end
-	end
 
 end
