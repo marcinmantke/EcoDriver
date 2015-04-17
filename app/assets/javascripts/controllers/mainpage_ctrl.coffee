@@ -1,26 +1,15 @@
 angular.module('EcoApp').controller 'MainPageCtrl', ($scope) ->
-  $scope.myInterval = 5000
-  slides = $scope.slides = []
 
-  $scope.addSlide = ->
-    newWidth = 600 + slides.length + 1
-    slides.push
-      image: 'http://placekitten.com/' + newWidth + '/300'
-      text: [
-        'More'
-        'Extra'
-        'Lots of'
-        'Surplus'
-      ][slides.length % 4] + ' ' + [
-        'Cats'
-        'Kittys'
-        'Felines'
-        'Cutes'
-      ][slides.length % 4]
-    return
+  $scope.myInterval = 10000
+  $scope.slides = [
+    { 
+      image: '/assets/car3.jpg';
+      caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+    }
 
-  i = 0
-  while i < 4
-    $scope.addSlide()
-    i++
+    { 
+      image: '/assets/car3.jpg';
+      caption: 'ABC';
+    }
+  ]
   return
