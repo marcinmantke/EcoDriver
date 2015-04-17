@@ -91,7 +91,7 @@ before_action :authenticate_user!
 
 	def WhoAmI
 		if user_signed_in?
-			response = current_user.username #User.find(current_user)
+			response = current_user.username
 		else
 			response = {status: 500, info: "You have to be logged in."}
 		end
