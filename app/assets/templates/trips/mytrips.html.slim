@@ -1,28 +1,20 @@
-doctype html
-html  ng-app="EcoApp"
-  head
-    title EcoDriver
-
-
-  .container
-    br
-    br
-    table.table.table-hover
-      thead
-        tr
-          th #
-          th Distance
-          th Average fuel consumption
-          th Average speed
-          th Average RPM
-          th Data
-      tbody
-        tr ng-repeat=("t in mytrips") 
-          td ng-bind="$index+1"
-          td ng-bind="t.distance"
-          td ng-bind="t.avg_fuel"
-          td ng-bind="t.avg_speed"
-          td ng-bind="t.avg_rpm"
-          td ng-bind="t.date"
-  br/
-  br/
+.container
+  br
+  br
+  table.table.table-hover
+    thead
+      tr
+        th #
+        th Distance
+        th Average fuel consumption
+        th Average speed
+        th Average RPM
+        th Data
+    tbody
+      tr ng-repeat=("t in mytrips") 
+        td ng-bind="$index+1"
+        td ng-bind="t.distance"
+        td ng-bind="t.avg_fuel"
+        td ng-bind="t.avg_speed"
+        td ng-bind="t.avg_rpm"
+        td ng-bind="t.date"

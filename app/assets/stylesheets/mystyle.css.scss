@@ -1,8 +1,9 @@
 $bgDefault      : #5cb85e;
 $bgHighlight    : #459c45;
 $colDefault     : #ffffff;
-$colHighlight   : #ffffff;
+$colHighlight   : #dddddd;
 $dropDown       : true;
+
 .navbar-default {
   background-color: $bgDefault;
   border-color: $bgHighlight;
@@ -62,6 +63,21 @@ $dropDown       : true;
         background-color: $bgHighlight; }}}
 }
 
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+}
+
+
+.navbar-nav.navbar-right:last-child {
+    margin-right: 0;
+}
+
+
 
 /* tab color */
 .nav-tabs>li>a {
@@ -72,7 +88,7 @@ $dropDown       : true;
 
 /* active tab color */
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
-  color: #fff;
+  color: #dddddd;
   background-color: #459c45;
   border: 1px solid #888888;
 }

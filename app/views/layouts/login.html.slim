@@ -1,96 +1,163 @@
 doctype html
-html  ng-app=""
+html ng-app="EcoApp"
   head
     title EcoDriver
-    = stylesheet_link_tag    "welcome_page", media: "all"
+    = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application', media: 'all'
     = csrf_meta_tags
-body.page  ng-init="isRegistrationPage= #{is_registration_errors}"
+  body style="padding-top:60px;"
+    .container-fluid
+      .navbar.navbar-default.navbar-fixed-top
+            ul.navbar-header
+              button.navbar-toggle data-target=".navbar-responsive-collapse" data-toggle="collapse" type="button" 
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a.navbar-brand href="#"
+                img alt="EcoDriver" src="/assets/logo1_1024.png" height="100%" /
+            ul.nav.navbar-nav.navbar-right
+              li
+                div ng-controller="LoginCtrl"
+                  script id="LoginModalContent.html" type="text/ng-template" 
+                    div class="modal-header"
+                     h3 class="modal-title" Login
+                    div class="modal-body"
+                      ul
+                        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+                          .form__row
+                          = f.text_field :login, autofocus: true, placeholder: 'username or email', class: 'form-group'
+                          .form__row
+                          = f.password_field :password, autocomplete: "off", placeholder: 'password', class: 'form-group'
+                          - if devise_mapping.rememberable?
+                              .form__row
+                              = f.check_box :remember_me
+                              = f.label :remember_me
+                          .form__buttons
+                            .grid
+                              .grid__item.one-half
+                                = f.submit "Sign in", class: "btn btn-success"
 
-  #headerwrap
-    .container
-      h1.headerwrap__main-header
-        | Become the best EcoDriver!
-        
-      .login-box.form ng-hide="isRegistrationPage"
-        .form__header Log in
-        #errorswrap
-          - flash.each do |name, msg|
-            = content_tag :div, msg, id: "flash_#{name}"
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          .form__row
-          = f.text_field :login, autofocus: true, placeholder: 'username or email', class: 'form__input'
-          .form__row
-          = f.password_field :password, autocomplete: "off", placeholder: 'password', class: 'form__input'
-          - if devise_mapping.rememberable?
-              .form__row
-              = f.check_box :remember_me
-              = f.label :remember_me
-          .form__buttons
-            .grid
-              .grid__item.one-half
-                = f.submit "Sign in", class: "form__button form__button--green"
-          .grid__item.one-half.grid--right
-          	button.form__button type="button" ng-click="isRegistrationPage=true"
-            	| Sign up
+                    div class="modal-footer"
+                      | Don't have an account? Register!
 
-      .login-box.form ng-show="isRegistrationPage"          
-        .form__header Create account
-        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-          #errorswrap
-            = devise_error_messages!
-          .form__row
-          = f.text_field :username, autofocus: true, placeholder: 'username', class: 'form__input'
-          .form__row
-          = f.email_field :email, placeholder: 'email', class: 'form__input'
-          .form__row
-          = f.password_field :password, autocomplete: "off", placeholder: 'password', class: 'form__input', for: ""
-          .form__row
-          = f.password_field :password_confirmation, autocomplete: "off", placeholder: 'repeat password', class: 'form__input'
-          .form__buttons
-            .grid
-              .grid__item.one-half
-                = f.submit "Sign up", class: "form__button form__button--green"
-          .grid__item.one-half.grid--right
-          	button.form__button type="button" ng-click="isRegistrationPage=false"
-              | Sign in
+                  button.btn.btn-default.navbar-btn.btn-info ng-click="open('sm')"  Login
 
-  .container
-  	br
-  	br
-    .row.mt
-      .col-lg-4.col-md-4.col-xs-12.desc
-      	.h2__images	Save money and environment
-      	.div
-          = image_tag("eco.jpg", :alt => "", :width => 350, :height => 350, :title => "title")
-          .p__images.lead Ecodriving is a combination of economical and ecological driving. Everything is based on the appropriate use of the gear lever. We will teach you it.
-      .col-lg-4.col-md-4.col-xs-12.desc
-      	.h2__images Play with other users
-      	.div
-          = image_tag("champion.jpg", :alt => "", :width => 350, :height => 350, :title => "title")
-          .p__images.lead Record your tours and compete with others for the title of The Best EcoDriver.
-      .col-lg-4.col-md-4.col-xs-12.desc
-    		.h2__images Simple start
-    		.div
-        	= image_tag("Android_logo.jpg", :alt => "", :width => 350, :height => 350, :title => "title")
-        	p__images.lead To join the fun you need OBDII device and mobile phone with Android. Download our free app now from Google Play.
+              li
+                div ng-controller="RegisterCtrl" 
+                  script id="RegisterModalContent.html" type="text/ng-template" 
+                    div class="modal-header"
+                     h4 class="modal-title" Register
+                    div class="modal-body"
+                      ul
+                        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+                          #errorswrap
+                            = devise_error_messages!
+                          .form__row
+                          = f.text_field :username, autofocus: true, placeholder: 'username', class: 'form-group'
+                          .form__row
+                          = f.email_field :email, placeholder: 'email', class: 'form-group'
+                          .form__row
+                          = f.password_field :password, autocomplete: "off", placeholder: 'password', class: 'form-group', for: ""
+                          .form__row
+                          = f.password_field :password_confirmation, autocomplete: "off", placeholder: 'repeat password', class: 'form-group'
+                          .form__buttons
+                            .grid
+                              .grid__item.one-half
+                                = f.submit "Sign up", class: "btn btn-success"
 
-  br/
-  br/
-  #footer
-	  .container
-	    .row
-	      .col-lg-3
-	      	| © Copyright 2015, All rights reserved.
-	      .col-lg-3
-	      .col-lg-3
-	      .col-lg-3
-	        h4 Created by
-	        p
-	          | Mikołaj Grygiel
-	          br/
-	          | Marcin Mantke
-	          br/
-	          | Dawid Sibiński
-	          br/
-	          | Bartłomiej Grzegorek
+                    div class="modal-footer"
+                      | Already have an account? Login!
+
+                  button.btn.btn-default.navbar-btn.btn-warning ng-click="open('sm')"  Register
+
+    /! Carousel==================================================
+    .container-fluid
+      div ng-controller="MainPageCtrl" 
+        div style=("height: 305px") 
+          carousel interval="myInterval" 
+            slide active="slide.active" ng-repeat=("slide in slides") 
+              img ng-src="{{slide.image}}" style="margin:auto;" /
+              .carousel-caption
+                h4 Slide  {{$index}} 
+                p  Tekst
+
+      /! /.carousel
+      /!
+        | Marketing messaging and featurettes
+        | \==================================================
+      /! Wrap the rest of the page in another container to center all the content.
+
+    .container.market
+      /! Three columns of text below the carousel
+      .row
+        .col-lg-4
+          img.img-circle alt=("Generic placeholder image") height="140" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="140" /
+          h2 Heading
+          p Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.
+          p
+            a.btn.btn-default href="#" role="button"  View details &raquo;
+        /! /.col-lg-4
+        .col-lg-4
+          img.img-circle alt=("Generic placeholder image") height="140" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="140" /
+          h2 Heading
+          p Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.
+          p
+            a.btn.btn-default href="#" role="button"  View details &raquo;
+        /! /.col-lg-4
+        .col-lg-4
+          img.img-circle alt=("Generic placeholder image") height="140" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="140" /
+          h2 Heading
+          p Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+          p
+            a.btn.btn-default href="#" role="button"  View details &raquo;
+        /! /.col-lg-4
+      /! /.row
+      /! START THE FEATURETTES
+      hr.featurette-divider/
+      .row.featurette
+        .col-md-7
+          h2.featurette-heading
+            | First featurette heading.
+            span.text-muted It'll blow your mind.
+          p.lead Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+        .col-md-5
+          img.featurette-image.img-responsive.center-block alt=("Generic placeholder image") data-src="holder.js/500x500/auto" /
+      hr.featurette-divider/
+      .row.featurette
+        .col-md-7.col-md-push-5
+          h2.featurette-heading
+            | Oh yeah, it's that good.
+            span.text-muted See for yourself.
+          p.lead Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+        .col-md-5.col-md-pull-7
+          img.featurette-image.img-responsive.center-block alt=("Generic placeholder image") data-src="holder.js/500x500/auto" /
+      hr.featurette-divider/
+      .row.featurette
+        .col-md-7
+          h2.featurette-heading
+            | And lastly, this one.
+            span.text-muted Checkmate.
+          p.lead Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+        .col-md-5
+          img.featurette-image.img-responsive.center-block alt=("Generic placeholder image") data-src="holder.js/500x500/auto" /
+      hr.featurette-divider/
+      /! /END THE FEATURETTES
+      /! FOOTER
+    footer
+      .container
+        .row
+          .col-lg-3
+            | © Copyright 2015, All rights reserved.
+          .col-lg-3
+          .col-lg-3
+          .col-lg-3
+            h4 Created by
+            p
+              | Mikołaj Grygiel
+              br/
+              | Marcin Mantke
+              br/
+              | Dawid Sibiński
+              br/
+              | Bartłomiej Grzegorek
+
