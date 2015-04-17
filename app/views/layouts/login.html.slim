@@ -71,15 +71,14 @@ html ng-app="EcoApp"
                   button.btn.btn-default.navbar-btn.btn-warning ng-click="open('sm')"  Register
 
     /! Carousel==================================================
-    .container-fluid
+    .container-fill
       div ng-controller="MainPageCtrl" 
-        div style=("height: 305px") 
-          carousel interval="myInterval" 
-            slide active="slide.active" ng-repeat=("slide in slides") 
-              img ng-src="{{slide.image}}" style="margin:auto;" /
-              .carousel-caption
-                h4 Slide  {{$index}} 
-                p  Tekst
+        carousel interval="myInterval" 
+          slide active="slide.active" ng-repeat=("slide in slides") 
+            img ng-src="{{slide.image}}" style="margin: auto;" /
+            .carousel-caption
+              h2 Slide  {{$index}} 
+              p ng-bind="slide.caption" 
 
       /! /.carousel
       /!
