@@ -48,7 +48,13 @@ gem 'rails-assets-bootstrap-css', '~> 3.2.0'
 # gem 'debugger', group: [:development, :test]
 
 gem 'execjs', '~> 2.4.0'
-
 gem 'therubyracer', '~> 0.12.1'
-
 gem 'devise', '~> 3.4.1'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+end
+
