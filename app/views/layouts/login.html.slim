@@ -78,7 +78,7 @@ html ng-app="EcoApp"
             img ng-src="{{slide.image}}" style="margin: auto;" /
             .carousel-caption
               h2 ng-bind="slide.title"
-              p ng-bind="slide.caption" 
+              h4 ng-bind="slide.caption" 
 
       /! /.carousel
       /!
@@ -86,29 +86,32 @@ html ng-app="EcoApp"
         | \==================================================
       /! Wrap the rest of the page in another container to center all the content.
 
-    .container.market
+    .container.market style="padding-top:60px;"
       /! Three columns of text below the carousel
       .row
         .col-lg-4
           = image_tag("eco.jpg", :alt => "", :width => 140, :height => 140, :title => "title")
-          h2 Heading
-          p Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.
+          h2 Eco drivig theory
+          p You want to start being an eco driver but don't know how? Here's our guick tutorial about becoming more eco!
           p
             a.btn.btn-default href="#" role="button"  View details &raquo;
         /! /.col-lg-4
-        .col-lg-4
-          = image_tag("champion.jpg", :alt => "", :width => 140, :height => 140, :title => "title")
-          h2 Heading
-          p Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.
-          p
-            a.btn.btn-default href="#" role="button"  View details &raquo;
-        /! /.col-lg-4
+
         .col-lg-4
           = image_tag("Android_logo.jpg", :alt => "", :width => 140, :height => 140, :title => "title")
-          h2 Heading
-          p Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+          h2 OBD2
+          p Not sure which OBD2 transmitter is the best to buy? Check out our OBD2 guide!
           p
             a.btn.btn-default href="#" role="button"  View details &raquo;
+
+        .col-lg-4
+          = image_tag("champion.jpg", :alt => "", :width => 140, :height => 140, :title => "title")
+          h2 PRO version
+          p For only 3,99$ per month you are able to create global challenges, which are visible not only for your friends, but for everyone! Additionally you have access to even more detailed statistics and graphs about your progress. Not convinced yet? First month of being PRO is for free, so feel free to try it!
+          p
+            a.btn.btn-default href="#" role="button"  Purchase PRO!
+        /! /.col-lg-4
+        
         /! /.col-lg-4
       /! /.row
       /! START THE FEATURETTES
