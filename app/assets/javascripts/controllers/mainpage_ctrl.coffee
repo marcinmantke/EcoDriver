@@ -14,4 +14,3 @@ angular.module('EcoApp').controller 'MainPageCtrl', ($scope) ->
       caption: 'Sign up!';
     }
   ]
-  return
