@@ -1,4 +1,5 @@
-angular.module('EcoApp').controller 'LoginCtrl', ($scope, $modal, $log) ->
+angular.module('EcoApp').controller 'LoginCtrl', ($rootScope, $scope, $modal, $log) ->
+  $rootScope.isRegistrationPage = false
 
   $scope.open = (size) ->
     modalInstance = $modal.open(
@@ -6,3 +7,13 @@ angular.module('EcoApp').controller 'LoginCtrl', ($scope, $modal, $log) ->
       controller: 'LoginModalInstanceCtrl'
       size: size
     )
+
+  $scope.onLoginClicked = ->
+    $rootScope.isRegistrationPage = false
+    $scope.open('sm')
+    console.log($scope.isRegistrationPage)
+
+  $scope.onRegistrationClicked = ->
+    $rootScope.isRegistrationPage = true
+    $scope.open('sm')
+    console.log($scope.isRegistrationPage)    
