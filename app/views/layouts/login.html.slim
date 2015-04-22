@@ -20,8 +20,10 @@ html ng-app="EcoApp"
                 div ng-controller="LoginCtrl"
                   script id="LoginModalContent.html" type="text/ng-template" 
                     div class="modal-header"
-                     h3 class="modal-title" Login
-                    div class="modal-body"
+                     h4 class="modal-title" ng-hide="isRegistrationPage" Log in
+                     h4 class="modal-title" ng-show="isRegistrationPage" Sign up
+
+                    div class="modal-body" ng-hide="isRegistrationPage"
                       div class="form-group"
                         ul
                           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -36,19 +38,9 @@ html ng-app="EcoApp"
                             .form__buttons
                               .grid
                                 .grid__item.one-half
-                                  = f.submit "Sign in", class: "btn btn-success"
+                                  = f.submit "Log in", class: "btn btn-success"
 
-                    div class="modal-footer"
-                      | Don't have an account? Register!
-
-                  button.btn.btn-default.navbar-btn.btn-info ng-click="open('sm')"  Login
-
-              li
-                div ng-controller="RegisterCtrl" 
-                  script id="RegisterModalContent.html" type="text/ng-template" 
-                    div class="modal-header"
-                     h4 class="modal-title" Register
-                    div class="modal-body"
+                    div class="modal-body" ng-show="isRegistrationPage"
                       ul
                         = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
                           #errorswrap
@@ -67,11 +59,15 @@ html ng-app="EcoApp"
                                 = f.submit "Sign up", class: "btn btn-success"
 
                     div class="modal-footer"
-                      div ng-controller="LoginCtrl"
+                      div ng-show="isRegistrationPage"
                         | Already have an account? 
-                        button.btn.btn-default.navbar-btn.btn-info ng-click="open('sm')"  Login
+                        button.btn.btn-default.navbar-btn.btn-info ng-click="isRegistrationPage=false" Log in
+                      div ng-hide="isRegistrationPage"
+                        | Don't have an account?
+                        button.btn.btn-default.navbar-btn.btn-warning ng-click="isRegistrationPage=true" Sign up
 
-                  button.btn.btn-default.navbar-btn.btn-warning ng-click="open('sm')"  Register
+                  button.btn.btn-default.navbar-btn.btn-info ng-click="onLoginClicked()" Log in
+                  button.btn.btn-default.navbar-btn.btn-warning ng-click="onRegistrationClicked()" Sign up
 
     /! Carousel==================================================
     .container-fill
