@@ -37,6 +37,13 @@ before_action :authenticate_user!
 
 		trips_to_render=[]
 		trips.each do |trip|
+			path = []
+			CheckPoint.where(trip: trip).each do |check_point|
+				path.push([])
+				path.last.push(check_point["latitude"])
+				path.last.push(check_point["longitude"])
+			end
+
 			trips_to_render.push({
 				distance: trip.distance,
 				avg_rpm: trip.avg_rpm ,
@@ -45,7 +52,8 @@ before_action :authenticate_user!
 				date: trip.date.strftime("%F") ,
 				user: trip.user.username ,
 				engine_displacement: trip.car_type.engine_displacement ,
-				engine_type: trip.car_type.engine_type
+				engine_type: trip.car_type.engine_type,
+				path: path
 				})
 		end
 
