@@ -34,6 +34,7 @@ gem 'rails-assets-csswizardry-grids', '~> 2.2.0'
 gem 'rails-assets-normalize-scss', '~> 3.0.2'
 gem 'rails-assets-angular-ui-bootstrap-bower',	'~> 0.12.1'
 gem 'rails-assets-bootstrap-css', '~> 3.2.0'
+gem 'rails-assets-ngmap', '~> 1.7.7'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

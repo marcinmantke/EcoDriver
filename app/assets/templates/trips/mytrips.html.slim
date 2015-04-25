@@ -1,7 +1,7 @@
 .container
   br
   br
-  table.table.table-hover
+  table.table.table-hover width="100%"
     thead
       tr
         th #
@@ -10,11 +10,23 @@
         th Average speed
         th Average RPM
         th Data
-    tbody
-      tr ng-repeat=("t in mytrips") 
-        td ng-bind="$index+1"
-        td ng-bind="t.distance"
-        td ng-bind="t.avg_fuel"
-        td ng-bind="t.avg_speed"
-        td ng-bind="t.avg_rpm"
-        td ng-bind="t.date"
+    tbody 
+        tr ng-init="showMap=false" ng-repeat-start="t in mytrips"
+          td 
+            | {{$index+1}}
+          td
+            | {{t.distance}}
+          td
+            | {{t.avg_fuel}}
+          td
+            | {{t.avg_speed}}
+          td
+            | {{t.avg_rpm}}
+          td
+            | {{t.date}}
+          td ng-click="showMap = !showMap"
+            button
+              | show map...
+        tr ng-repeat-end="" ng-if="showMap"
+          td colspan="7"
+            map center="map.center" zoom="{{map.zoom}}" width="100%" options="{{map.options}}"

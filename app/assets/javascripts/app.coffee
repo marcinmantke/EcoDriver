@@ -1,4 +1,4 @@
-angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router'])
+angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap'])
   .config ($provide, $httpProvider) ->
     # CSFR token
     $httpProvider.defaults.headers.common['X-CSRF-Token'] =
