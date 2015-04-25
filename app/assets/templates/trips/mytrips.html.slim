@@ -29,4 +29,7 @@
               | show map...
         tr ng-repeat-end="" ng-if="showMap"
           td colspan="7"
-            map center="map.center" zoom="{{map.zoom}}" width="100%" options="{{map.options}}"
+            map center="{{t.map.center}}" zoom="{{t.map.zoom}}" width="100%" options="{{map.options}}"
+              shape name="polyline" path="{{t.path}}"
+              marker position="{{t.path[0]}}" title="Start"
+              marker position="{{t.path[t.path.length-1]}}" title="Finish" label="labelka"
