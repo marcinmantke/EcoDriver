@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407075318) do
+ActiveRecord::Schema.define(version: 20150425104948) do
 
   create_table "car_types", force: true do |t|
     t.string "engine_type"
     t.string "engine_displacement"
+  end
+
+  create_table "check_points", force: true do |t|
+    t.float    "longitude",  limit: 24, null: false
+    t.float    "latitude",   limit: 24, null: false
+    t.integer  "trip_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "trips", force: true do |t|

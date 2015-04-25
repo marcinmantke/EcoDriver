@@ -12,10 +12,20 @@ before_action :authenticate_user!
 
 	def create
 		begin
-			@trip = Trip.new(params.permit(:distance, :avg_rpm, :avg_fuel, :avg_speed, :date))
+			@trip = Trip.new(params.require(:trip).permit(:distance, :avg_rpm, :avg_fuel, :avg_speed, :date))
+
+			raise ArgumentError, "car_type can't be empty" if current_user.car_type_id.nil?
+
 			@trip.car_type_id = current_user.car_type_id
 			@trip.user_id = current_user.id
+			
+
+			params[:trip][:path].each do |point|
+				CheckPoint.create(longitude: point[:longitude], latitude: point[:latitude], trip: @trip)
+			end
+
 			@trip.save
+
 			render :json =>@trip
 		rescue Exception => exc
 			render :json=> {status: 500, error: exc.message}
