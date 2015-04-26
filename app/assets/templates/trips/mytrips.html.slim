@@ -11,7 +11,7 @@
         th Average RPM
         th Data
     tbody 
-        tr ng-init="showMap=false" ng-repeat-start="t in mytrips"
+        tr ng-repeat-start="t in mytrips"
           td 
             | {{$index+1}}
           td
@@ -24,12 +24,18 @@
             | {{t.avg_rpm}}
           td
             | {{t.date}}
-          td ng-click="showMap = !showMap"
+          td ng-click="mapShow = !mapShow" scroll-on-click="" 
             button
               | show map...
-        tr ng-repeat-end="" ng-if="showMap"
+        tr ng-repeat-end="" ng-if="mapShow"
           td colspan="7"
-            map center="{{t.map.center}}" zoom="{{t.map.zoom}}" width="100%" options="{{map.options}}"
-              shape name="polyline" path="{{t.path}}"
-              marker position="{{t.path[0]}}" title="Start"
-              marker position="{{t.path[t.path.length-1]}}" title="Finish" label="labelka"
+            map center="{{t.path[0]}}" zoom="{{t.map.zoom}}"
+              shape name="polyline" path="{{t.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
+              marker id="start" position="{{t.path[0]}}" title="Start"
+              info-window visible-on-marker="start"
+                div
+                  | Start
+              marker id="finish" position="{{t.path[t.path.length-1]}}" title="Finish"
+               info-window visible-on-marker="finish"
+                div
+                  | Finish
