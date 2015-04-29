@@ -4,3 +4,6 @@ angular.module('EcoApp').factory 'Trip', ($http) ->
 
   getTripsByEngineType: (engine_type, engine_displacement) ->
     $http.post('/trips/by_car_type', {engine_type: engine_type, engine_displacement: engine_displacement})
+
+  getMyTrips: () ->
+    $http.get('/mytrips.json')
