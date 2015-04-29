@@ -16,6 +16,7 @@
 #= require angular-rails-templates
 #= require angular-ui-bootstrap-bower
 #= require bootstrap-css
+#= require lodash
 #= require ngmap
 #= require angular-ui-router
 #= require app

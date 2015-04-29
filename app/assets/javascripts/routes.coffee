@@ -1,6 +1,6 @@
 angular.module('EcoApp')
   .config ($stateProvider, $urlRouterProvider) ->
-    $urlRouterProvider.otherwise('/ranking')
+    $urlRouterProvider.otherwise('/mytrips')
 
     $stateProvider
       .state 'ranking',
@@ -11,4 +11,9 @@ angular.module('EcoApp')
       .state 'mytrips',
         url: '/mytrips',
         controller: 'TripsCtrl',
-        templateUrl: 'trips/mytrips.html'	
+        templateUrl: 'trips/mytrips.html'
+
+      .state 'challenges',
+        url: '/challenges',
+        controller: 'ChallengesCtrl',
+        templateUrl: 'challenges.html'

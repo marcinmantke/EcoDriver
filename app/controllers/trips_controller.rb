@@ -18,7 +18,12 @@ before_action :authenticate_user!
 
 			@trip.car_type_id = current_user.car_type_id
 			@trip.user_id = current_user.id
-			
+
+			beginning = params[:trip][:path].first[:latitude].to_s + ',' + params[:trip][:path].first[:longitude].to_s
+			finish = params[:trip][:path].last[:latitude].to_s + ',' + params[:trip][:path].last[:longitude].to_s
+
+			@trip.beginning = Geocoder.search(beginning).first.name
+			@trip.finish = Geocoder.search(finish).first.name		
 
 			params[:trip][:path].each do |point|
 				CheckPoint.create(longitude: point[:longitude], latitude: point[:latitude], trip: @trip)
@@ -50,6 +55,8 @@ before_action :authenticate_user!
 				avg_fuel: trip.avg_fuel ,
 				avg_speed: trip.avg_speed ,
 				date: trip.date.strftime("%F") ,
+				beginning: trip.beginning,
+				finish: trip.finish,
 				user: trip.user.username ,
 				engine_displacement: trip.car_type.engine_displacement ,
 				engine_type: trip.car_type.engine_type,

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425104948) do
+ActiveRecord::Schema.define(version: 20150427171216) do
 
   create_table "car_types", force: true do |t|
     t.string "engine_type"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20150425104948) do
     t.integer  "user_id"
     t.integer  "avg_speed",              null: false
     t.integer  "car_type_id"
+    t.string   "beginning",              null: false
+    t.string   "finish",                 null: false
   end
 
   add_index "trips", ["car_type_id"], name: "index_trips_on_car_type_id", using: :btree

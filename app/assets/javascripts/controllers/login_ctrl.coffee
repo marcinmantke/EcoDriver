@@ -5,7 +5,7 @@ angular.module('EcoApp').controller 'LoginCtrl', ($rootScope, $scope, $modal, $l
   $scope.open = (size) ->
     modalInstance = $modal.open(
       templateUrl: 'LoginModalContent.html'
-      controller: 'LoginModalInstanceCtrl'
+      controller: 'ModalInstanceCtrl'
       size: size
     )
 

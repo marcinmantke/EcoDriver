@@ -1,0 +1,69 @@
+div ng-init="createView=false"
+  button.btn.btn-default.navbar-btn.btn-info style="margin-left: 10px" ng-click="createView=!createView" ng-show="!createView"
+    | Create challenge
+div style="margin-left: 10%; margin-right: 10%" ng-if="createView"
+  scrollable-table watch="trips"
+    table.table.table-hover 
+      thead
+        tr
+          th style="text-align: center" Date
+          th style="text-align: center" Start
+          th style="text-align: center" Finish
+          th style="text-align: center" Average fuel consumption
+      tbody
+          tr ng-click="changeChoice($index)" ng-repeat="trip in trips track by $index"  ng-class="{'selected': choosenTrip == trip}"
+            td 
+              | {{trip.date}} 
+            td
+              | {{trip.beginning}}
+            td
+              | {{trip.finish}}
+            td
+              | {{trip.avg_fuel}}    
+
+  map center="{{choosenTrip.path[0]}}" zoom="16" style="height: 200px; margin-top: 20px"
+    shape name="polyline" path="{{choosenTrip.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
+    marker id="start" position="{{choosenTrip.path[0]}}" title="Start"
+    info-window visible-on-marker="start"
+      div
+        | Start
+    marker id="finish" position="{{choosenTrip.path[choosenTrip.path.length-1]}}" title="Finish"
+     info-window visible-on-marker="finish"
+      div
+        | Finish
+  div
+    .grid.grid--right
+      .grid__item.one-eighth style="margin-top: 10px"
+        p class="input-group" style="min-width: 70px"
+          input class="form-control" datepicker-options="calendar.dateOptions" datepicker-popup="{{calendar.format}}" is-open="calendar.opened" min-date="calendar.minDate" ng-required="true" ng-model="calendar.date" type="text" readonly="" show-button-bar="false"
+          span class="input-group-btn"
+            button.btn.btn-default ng-click="calendar.open($event)"
+              i class="glyphicon glyphicon-calendar"
+      button.btn.btn-lg.btn-default.navbar-btn.btn-success style="margin-right: 15px; margin-left: 15px" ng-click="saveChallenge()"
+        | Save
+      button.btn.btn-lg.btn-default.navbar-btn.btn-danger ng-click="$parent.createView=false"
+        | Cancel
+div style="margin-left: 5%; margin-right: 5%"
+  table.table.table-hover 
+    thead
+      tr
+        th Start
+        th Finish
+        th Distance
+        th Created by
+        th Finish date
+        th Best user
+    tbody
+        tr ng-repeat="challenge in challenges track by $index"
+          td
+            | {{challenge.beginning}}
+          td
+            | {{challenge.finish}}
+          td
+            | {{challenge.distance}}
+          td 
+            | {{challenge.user}}
+          td 
+            | {{challenge.date}}
+          td 
+            | {{challenge.user}} 

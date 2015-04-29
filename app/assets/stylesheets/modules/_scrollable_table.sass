@@ -1,0 +1,72 @@
+.scrollableContainer
+  height: 200px
+  position: relative
+  padding-top: 35px
+  overflow: hidden
+  text-align: center
+  .headerSpacer
+    position: absolute
+    height: 36px
+    top: 0
+    right: 0
+    left: 0
+  th .orderWrapper
+    position: absolute
+    top: 0
+    right: 2px
+    cursor: pointer
+    .order
+      font-size: 8pt
+      color: #BDBDBD
+    .active
+      color: #464646
+
+.scrollArea
+  height: 100%
+  overflow-x: auto
+  overflow-y: auto
+  /*  the implementation of this is still quite buggy; specifically, it doesn't like the 
+   *    absolutely positioned headers within 
+   *-webkit-overflow-scrolling: touch;
+  table
+    overflow-x: hidden
+    overflow-y: auto
+    margin-bottom: 0
+    width: 100%
+    border: none
+    /*border-collapse: separate;
+    .th
+      padding: 0 !important
+      border: none !important
+      min-width: 40px
+      border-bottom: 2px solid #ddd
+.selected
+  background-color: #f5f5f5
+
+/*  to hack fix firefox border issue
+@-moz-document url-prefix()
+  .scrollArea table th .box
+    border-right: 1px solid #ddd
+    border-left: none
+
+
+.scrollableContainer
+  .scaler
+    position: absolute
+    top: 0px
+    width: 2px
+    height: 80%
+    background-color: #CFCFCF
+  th .resize-rod
+    position: absolute
+    top: 0
+    right: 0
+    cursor: col-resize
+    width: 4px
+    height: 100%
+
+.scrollable-resizing .scrollableContainer
+  cursor: col-resize
+  -moz-user-select: none
+  -webkit-user-select: none
+  -ms-user-select: none
