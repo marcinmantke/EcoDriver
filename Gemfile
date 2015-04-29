@@ -36,7 +36,6 @@ gem 'rails-assets-angular-ui-bootstrap-bower',	'~> 0.12.1'
 gem 'rails-assets-bootstrap-css', '~> 3.2.0'
 gem 'rails-assets-ngmap', '~> 1.7.7'
 gem 'rails-assets-lodash'
-gem 'rails-assets-ng-grid'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
