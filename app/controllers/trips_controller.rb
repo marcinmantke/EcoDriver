@@ -22,8 +22,8 @@ before_action :authenticate_user!
 			beginning = params[:trip][:path].first[:latitude].to_s + ',' + params[:trip][:path].first[:longitude].to_s
 			finish = params[:trip][:path].last[:latitude].to_s + ',' + params[:trip][:path].last[:longitude].to_s
 
-			@trip.beginning = bingWraper(beginning)
-			@trip.finish = bingWraper(finish)	
+			@trip.beginning = geocoderWraper(beginning)
+			@trip.finish = geocoderWraper(finish)	
 
 			params[:trip][:path].each do |point|
 				CheckPoint.create(longitude: point[:longitude], latitude: point[:latitude], trip: @trip)
@@ -37,13 +37,13 @@ before_action :authenticate_user!
     end
 	end
 
-	def bingWraper(latlng)
+	def geocoderWraper(latlng)
 		begin
 			return Geocoder.search(latlng).first.name
 		rescue Exception => exc
 			puts exc
 			sleep 1
-			bingWraper(latlng)
+			geocoderWraper(latlng)
 		end
 	end
 
