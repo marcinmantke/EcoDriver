@@ -1,8 +1,8 @@
 div ng-init="createView=false"
   button.btn.btn-default.navbar-btn.btn-info style="margin-left: 10px" ng-click="createView=!createView" ng-show="!createView"
     | Create challenge
-div style="margin-left: 10%; margin-right: 10%" ng-if="createView"
-  scrollable-table watch="trips"
+div.grid.grid--center ng-if="createView"
+  scrollable-table.grid__item.five-twelfths watch="trips" ng-style="style(0.5, 0.9)" resize=""
     table.table.table-hover 
       thead
         tr
@@ -20,19 +20,19 @@ div style="margin-left: 10%; margin-right: 10%" ng-if="createView"
               | {{trip.finish}}
             td
               | {{trip.avg_fuel}}    
-
-  map center="{{choosenTrip.path[0]}}" zoom="16" style="height: 200px; margin-top: 20px"
-    shape name="polyline" path="{{choosenTrip.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
-    marker id="start" position="{{choosenTrip.path[0]}}" title="Start"
-    info-window visible-on-marker="start"
-      div
-        | Start
-    marker id="finish" position="{{choosenTrip.path[choosenTrip.path.length-1]}}" title="Finish"
-     info-window visible-on-marker="finish"
-      div
-        | Finish
+  .grid__item.six-twelfths
+    map center="{{choosenTrip.path[0]}}" zoom="16" ng-style="style(0.5, 0.9)" resize=""
+      shape name="polyline" path="{{choosenTrip.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
+      marker id="start" position="{{choosenTrip.path[0]}}" title="Start"
+      info-window visible-on-marker="start"
+        div
+          | Start
+      marker id="finish" position="{{choosenTrip.path[choosenTrip.path.length-1]}}" title="Finish"
+       info-window visible-on-marker="finish"
+        div
+          | Finish
   div
-    .grid.grid--right
+    .grid
       .grid__item.one-eighth style="margin-top: 10px"
         p class="input-group" style="min-width: 70px"
           input class="form-control" datepicker-options="calendar.dateOptions" datepicker-popup="{{calendar.format}}" is-open="calendar.opened" min-date="calendar.minDate" ng-required="true" ng-model="calendar.date" type="text" readonly="" show-button-bar="false"
@@ -41,9 +41,9 @@ div style="margin-left: 10%; margin-right: 10%" ng-if="createView"
               i class="glyphicon glyphicon-calendar"
       button.btn.btn-lg.btn-default.navbar-btn.btn-success style="margin-right: 15px; margin-left: 15px" ng-click="saveChallenge()"
         | Save
-      button.btn.btn-lg.btn-default.navbar-btn.btn-danger ng-click="$parent.createView=false"
+      button.btn.btn-lg.btn-default.navbar-btn.btn-danger style="margin-right: 25px" ng-click="$parent.createView=false"
         | Cancel
-div style="margin-left: 5%; margin-right: 5%"
+div style="margin-left: 5%; margin-right: 5%" ng-hide="createView"
   table.table.table-hover 
     thead
       tr
