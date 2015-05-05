@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427171216) do
+ActiveRecord::Schema.define(version: 20150505190420) do
 
   create_table "car_types", force: true do |t|
     t.string "engine_type"
     t.string "engine_displacement"
+  end
+
+  create_table "challenges", force: true do |t|
+    t.integer  "route_id",    null: false
+    t.date     "finish_date", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "check_points", force: true do |t|
@@ -27,18 +34,20 @@ ActiveRecord::Schema.define(version: 20150427171216) do
   end
 
   create_table "trips", force: true do |t|
-    t.float    "distance",    limit: 24, null: false
-    t.float    "avg_rpm",     limit: 24, null: false
-    t.float    "avg_fuel",    limit: 24, null: false
-    t.datetime "date",                   null: false
+    t.float    "distance",     limit: 24, null: false
+    t.float    "avg_rpm",      limit: 24, null: false
+    t.float    "avg_fuel",     limit: 24, null: false
+    t.datetime "date",                    null: false
     t.integer  "user_id"
-    t.integer  "avg_speed",              null: false
+    t.integer  "avg_speed",               null: false
     t.integer  "car_type_id"
-    t.string   "beginning",              null: false
-    t.string   "finish",                 null: false
+    t.string   "beginning",               null: false
+    t.string   "finish",                  null: false
+    t.integer  "challenge_id"
   end
 
   add_index "trips", ["car_type_id"], name: "index_trips_on_car_type_id", using: :btree
+  add_index "trips", ["challenge_id"], name: "index_trips_on_challenge_id", using: :btree
   add_index "trips", ["user_id"], name: "index_trips_on_user_id", using: :btree
 
   create_table "users", force: true do |t|

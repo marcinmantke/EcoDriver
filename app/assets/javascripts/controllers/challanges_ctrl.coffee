@@ -1,10 +1,11 @@
-angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $interval, $timeout, Trip) ->
+angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $interval, $timeout, Trip, Challenge) ->
   Trip.getMyTrips().success (data)->
     $scope.trips = data
-    $scope.challenges = data
-    console.log data
     $scope.choosenTrip = $scope.trips[0]
-    $scope.trips[1].path[0]= [51.11183649, 17.05963249]
+
+  Challenge.getChallenges().success (data) ->
+    $scope.challenges = data
+
 
   $scope.changeChoice = (index) ->
     $scope.choosenTrip = $scope.trips[index]
@@ -19,6 +20,7 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
 
     toggleMin: ->
       $scope.calendar.minDate = new Date()
+      $scope.calendar.minDate.setDate($scope.calendar.minDate.getDate()+7)
       @date = $scope.calendar.minDate
 
     open: (e) ->
@@ -29,6 +31,7 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   $scope.calendar.toggleMin()
 
   $scope.saveChallenge = () ->
-    $scope.challenges.unshift($scope.choosenTrip)
-    console.log $scope.challenges
-    $scope.createView = false
+    Challenge.createChallenge($scope.choosenTrip.id, $scope.calendar.date).success (data) ->
+      if data.success
+        $scope.challenges.unshift(data.challenge)
+      $scope.createView = false
