@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class TripsController < ApplicationController
 
 before_action :authenticate_user!
@@ -60,6 +61,7 @@ before_action :authenticate_user!
 			end
 
 			trips_to_render.push({
+				id: trip.id,
 				distance: trip.distance,
 				avg_rpm: trip.avg_rpm ,
 				avg_fuel: trip.avg_fuel ,

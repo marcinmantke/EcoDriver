@@ -14,7 +14,10 @@ Rails.application.routes.draw do
 	post 'trips/by_car_type', to: 'trips#getTripsByCarType'
 	post 'trips/by_distance', to: 'trips#getTripsByDistance'
 
-    post 'save_trip', to: 'trips#create'
+  post 'save_trip', to: 'trips#create'
+
+  post 'challenge/create', to: 'challenges#create'
+  get 'challenge/all', to: 'challenges#all'
 
 	namespace :android do
     devise_scope :user do

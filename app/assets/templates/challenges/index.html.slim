@@ -56,14 +56,14 @@ div style="margin-left: 5%; margin-right: 5%" ng-hide="createView"
     tbody
         tr ng-repeat="challenge in challenges track by $index"
           td
-            | {{challenge.beginning}}
+            | {{challenge.route.beginning}}
           td
-            | {{challenge.finish}}
+            | {{challenge.route.finish}}
           td
-            | {{challenge.distance}}
+            | {{challenge.route.distance}}
           td 
-            | {{challenge.user}}
+            | {{challenge.created_by}}
           td 
-            | {{challenge.date}}
+            | {{challenge.finish_date}}
           td 
-            | {{challenge.user}} 
+            | JA

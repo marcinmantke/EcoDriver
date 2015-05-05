@@ -16,4 +16,4 @@ angular.module('EcoApp')
       .state 'challenges',
         url: '/challenges',
         controller: 'ChallengesCtrl',
-        templateUrl: 'challenges.html'
+        templateUrl: 'challenges/index.html'

@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module EcoDriver
   class Application < Rails::Application
     Rails.application.config.assets.precompile += %w( welcome_page.css )
+    Rails.application.config.encoding = "utf-8"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
