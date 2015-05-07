@@ -39,9 +39,70 @@
       div.dashboard
         div.trips
           h1 Recent trips
+          table.table.table-hover width="100%"
+            thead
+              tr
+                th #
+                th Distance
+                th Average fuel consumption
+                th Average speed
+                th Average RPM
+                th Data
+            tbody 
+                tr ng-repeat-start="t in mytrips | limitTo: 5"
+                  td 
+                    | {{$index+1}}
+                  td
+                    | {{t.distance}}
+                  td
+                    | {{t.avg_fuel}}
+                  td
+                    | {{t.avg_speed}}
+                  td
+                    | {{t.avg_rpm}}
+                  td
+                    | {{t.date}}
+                  td ng-click="mapShow = !mapShow" scroll-on-click="" 
+                    button.btn.btn-default.navbar-btn.btn-success
+                      | show map...
+                tr ng-repeat-end="" ng-if="mapShow"
+                  td colspan="7"
+                    map center="{{t.path[0]}}" zoom="{{t.map.zoom}}"
+                      shape name="polyline" path="{{t.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
+                      marker id="start" position="{{t.path[0]}}" title="Start"
+                      info-window visible-on-marker="start"
+                        div
+                          | Start
+                      marker id="finish" position="{{t.path[t.path.length-1]}}" title="Finish"
+                       info-window visible-on-marker="finish"
+                        div
+                          | Finish
 
         div.challenges
           h1 Recent challenges
+          table.table.table-hover 
+            thead
+              tr
+                th Start
+                th Finish
+                th Distance
+                th Created by
+                th Finish date
+                th Best user
+            tbody
+                tr ng-repeat="challenge in challenges track by $index | limitTo: 5"
+                  td
+                    | {{challenge.route.beginning}}
+                  td
+                    | {{challenge.route.finish}}
+                  td
+                    | {{challenge.route.distance}}
+                  td 
+                    | {{challenge.created_by}}
+                  td 
+                    | {{challenge.finish_date}}
+                  td 
+                    | JA
 
         div.activities
           h1 Friend's activities
