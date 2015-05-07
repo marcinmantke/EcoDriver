@@ -17,10 +17,12 @@ html ng-app="EcoApp"
           img alt="EcoDriver" src="/assets/logo1_1024.png" height="100%" /
       .navbar-collapse.collapse.navbar-responsive-collapse ng-controller="NavbarCtrl" 
         ul.nav.navbar-nav
+          li ng-class="{active:isActive('/dashboard')}"
+            a href="/#/dashboard"  Dashboard
           li ng-class="{active:isActive('/mytrips')}"
-            a href="/#/mytrips"  Dashboard
+            a href="/#/mytrips"  My trips
           li ng-class="{active:isActive('/ranking')}"
-            a href="/#/ranking"  Ranking
+            a href="/#/ranking"  Rankings
           li ng-class="{active:isActive('/challenges')}"
             a href="/#/challenges"  Challenges
 

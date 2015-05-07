@@ -7,3 +7,6 @@ angular.module('EcoApp').factory 'Trip', ($http) ->
 
   getMyTrips: () ->
     $http.get('/mytrips.json')
+
+  getDashboard: () ->
+    $http.get('/dashboard.json')
