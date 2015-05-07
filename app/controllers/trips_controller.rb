@@ -72,7 +72,7 @@ before_action :authenticate_user!
 	end
 
 	def mytrips
-		trips=Trip.where(user_id: current_user.id)
+		trips=Trip.where(user_id: current_user.id).order(date: :desc)
 
 		trips_to_render=[]
 		trips.each do |trip|
