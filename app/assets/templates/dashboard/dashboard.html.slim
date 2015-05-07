@@ -1,0 +1,47 @@
+.container-fluid
+  .row-fluid
+    .col-md-2
+      div.sidebar
+        li
+          h3 My current car:
+          p
+            b Engine displacement:
+            br/
+            | {{ dashboard[0].disp }}
+          p 
+            b Fuel type:
+            br /
+            | {{ dashboard[0].engine }}
+
+        li
+          h3 My stats:
+          p 
+            b Overall mileage:
+            br/
+            | {{ dashboard[0].mileage }} km
+
+          p
+            b Number of trips:
+            br/
+            | {{ dashboard[0].trips_number }}
+
+          p
+            b Average fuel consumption:
+            br/
+            | {{ dashboard[0].avg_fuel }} L/100km
+
+          p
+            b Average speed:
+            br/
+            | {{ dashboard[0].avg_speed }} km/h
+
+    .col-md-10
+      div.dashboard
+        div.trips
+          h1 Recent trips
+
+        div.challenges
+          h1 Recent challenges
+
+        div.activities
+          h1 Friend's activities

@@ -48,6 +48,29 @@ before_action :authenticate_user!
 		end
 	end
 
+	def dashboard
+		car_type = CarType.find(current_user.car_type_id)
+		trips_number = Trip.where(user_id: current_user.id).count
+		mileage = Trip.where(user_id: current_user.id).sum(:distance)
+		avg_fuel = Trip.where(user_id: current_user.id).average(:avg_fuel)
+		avg_speed = Trip.where(user_id: current_user.id).average(:avg_speed)
+
+		results=[]
+		results.push({
+			engine: car_type.engine_type,
+			disp: car_type.engine_displacement,
+			trips_number: trips_number,
+			mileage: mileage.round(2),
+			avg_fuel: avg_fuel.round(2),
+			avg_speed: avg_speed.round(2)
+		})
+
+		respond_to do |format|
+			  format.html {  raise ActionController::RoutingError.new('Not Found') }
+			  format.json { render json: results }
+  	end
+	end
+
 	def mytrips
 		trips=Trip.where(user_id: current_user.id)
 

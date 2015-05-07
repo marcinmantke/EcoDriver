@@ -3,6 +3,11 @@ angular.module('EcoApp')
     $urlRouterProvider.otherwise('/mytrips')
 
     $stateProvider
+      .state 'dashboard',
+        url: '/dashboard',
+        controller: 'DashboardCtrl',
+        templateUrl: 'dashboard/dashboard.html'
+
       .state 'ranking',
         url: '/ranking',
         controller: 'RankingCtrl',

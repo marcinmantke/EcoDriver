@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
 	# You can have the root of your site routed with "root"
 	root 'trips#index'
-	get 'mytrips' => "trips#mytrips"
+
+  get 'dashboard' => 'trips#dashboard'
+
+	get 'mytrips' => 'trips#mytrips'
 	get 'whoami' => 'trips#WhoAmI'
 
 	get  'trips/:id', to: 'trips#show'
