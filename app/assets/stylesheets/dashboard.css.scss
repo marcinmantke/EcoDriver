@@ -1,6 +1,16 @@
-div.sidebar{
+.sidebar{
     border-right-style: solid;
     border-width: 1px;
 
-    background-color: #DDDDDD;
+    background-color: lighten(#000, 93.5%);
+    border-radius: 10px;
+
+
+}
+
+.sidebar>li{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px; 
 }
