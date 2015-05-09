@@ -11,7 +11,7 @@ RSpec.describe TripsController, :type => :controller do
       it 'renders cretead trip as json' do
         login_user
         post :create, trip: attributes_for(:trip_with_path), format: :json
-        expect(response.body).to eq(build(:trip, id: 2, user_id: 2, car_type_id: 1, finish: "Atlantic Ocean", beginning: "Atlantic Ocean").to_json)
+        expect(response.body).to eq(({data: build(:trip, id: 2, user_id: 2, car_type_id: 1, finish: "Atlantic Ocean", beginning: "Atlantic Ocean"), success: true}).to_json)
       end
     end
     context 'with nil avg_speed' do
@@ -20,10 +20,10 @@ RSpec.describe TripsController, :type => :controller do
         post :create, trip: attributes_for(:trip_with_path, avg_speed: nil), format: :json
         expect(Trip.count).to eq(0)
       end
-      it 'render json with \"status: 500\"' do
+      it 'render json with \"success: false\"' do
         login_user
         post :create, trip: attributes_for(:trip_with_path, avg_speed: nil), format: :json
-        expect(JSON.parse(response.body)["status"]).to eq(500)
+        expect(JSON.parse(response.body)["success"]).to eq(false)
       end
     end
     context 'with nil avg_rpm' do
@@ -32,10 +32,10 @@ RSpec.describe TripsController, :type => :controller do
         post :create, trip: attributes_for(:trip_with_path, avg_rpm: nil), format: :json
         expect(Trip.count).to eq(0)
       end
-      it 'render json with \"status: 500\"' do
+      it 'render json with \"success: false\"' do
         login_user
         post :create, trip: attributes_for(:trip_with_path, avg_rpm: nil), format: :json
-        expect(JSON.parse(response.body)["status"]).to eq(500)
+        expect(JSON.parse(response.body)["success"]).to eq(false)
       end
     end
     context 'with nil avg_fuel' do
@@ -44,10 +44,10 @@ RSpec.describe TripsController, :type => :controller do
         post :create, trip: attributes_for(:trip_with_path, avg_fuel: nil), format: :json
         expect(Trip.count).to eq(0)
       end
-      it 'render json with \"status: 500\"' do
+      it 'render json with \"success: false\"' do
         login_user
         post :create, trip: attributes_for(:trip_with_path, avg_fuel: nil), format: :json
-        expect(JSON.parse(response.body)["status"]).to eq(500)
+        expect(JSON.parse(response.body)["success"]).to eq(false)
       end
     end
     context 'with nil distance' do
@@ -56,10 +56,10 @@ RSpec.describe TripsController, :type => :controller do
         post :create, trip: attributes_for(:trip_with_path, distance: nil), format: :json
         expect(Trip.count).to eq(0)
       end
-      it 'render json with \"status: 500\"' do
+      it 'render json with \"success: false\"' do
         login_user
         post :create, trip: attributes_for(:trip_with_path, distance: nil), format: :json
-        expect(JSON.parse(response.body)["status"]).to eq(500)
+        expect(JSON.parse(response.body)["success"]).to eq(false)
       end
     end
   end
