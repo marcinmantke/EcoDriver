@@ -33,6 +33,8 @@ div.grid.grid--center ng-if="createView"
           | Finish
   div
     .grid
+      .grid__item.one-twelfth style="margin-top: 10px; text-align: right"
+        h4.b Finish date:
       .grid__item.one-eighth style="margin-top: 10px"
         p class="input-group" style="min-width: 70px"
           input class="form-control" datepicker-options="calendar.dateOptions" datepicker-popup="{{calendar.format}}" is-open="calendar.opened" min-date="calendar.minDate" ng-required="true" ng-model="calendar.date" type="text" readonly="" show-button-bar="false"
