@@ -6,13 +6,13 @@ class ChallengesController < ApplicationController
       challenge = Challenge.create(route: route, finish_date: finish_date)
       route.update(challenge: challenge)
       response = {  :success => true,
-        :challenge => {
+        :data => {
           route: challenge.route,
           finish_date: challenge.finish_date,
           created_by: challenge.route.user.username
         }}
     else
-      response = {  :success => false }
+      response = {  :success => false, :data => {} }
     end
 
     respond_to do |format|

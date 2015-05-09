@@ -5,7 +5,7 @@ class Android::SessionsController < Devise::SessionsController
   def create
     self.resource = warden.authenticate!(auth_options)
     sign_in(resource_name, resource)
-    response = {  :success => true, :car_type_id => current_user.car_type_id }
+    response = {  :success => true, :data => {:car_type_id => current_user.car_type_id} }
 
     respond_to do |format|
       format.html {  raise ActionController::RoutingError.new('Not Found') }
@@ -15,7 +15,7 @@ class Android::SessionsController < Devise::SessionsController
 
   def destroy
     signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
-    response = {  :success => true }
+    response = {  :success => true, :data => false }
 
     respond_to do |format|
       format.html {  raise ActionController::RoutingError.new('Not Found') }

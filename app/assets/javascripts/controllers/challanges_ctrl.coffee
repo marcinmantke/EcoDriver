@@ -33,5 +33,5 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   $scope.saveChallenge = () ->
     Challenge.createChallenge($scope.choosenTrip.id, $scope.calendar.date).success (data) ->
       if data.success
-        $scope.challenges.unshift(data.challenge)
+        $scope.challenges.unshift(data.data)
       $scope.createView = false

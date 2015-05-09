@@ -32,9 +32,16 @@ before_action :authenticate_user!
 
 			@trip.save
 
-			render :json =>@trip
+			response = { :data =>@trip,
+										:success => true }
 		rescue Exception => exc
-			render :json=> {status: 500, error: exc.message}
+			response = {:data => exc.message,
+										:success => false }
+    end
+
+    respond_to do |format|
+      format.html {  raise ActionController::RoutingError.new('Not Found') }
+      format.json { render json: response }
     end
 	end
 
@@ -151,9 +158,9 @@ before_action :authenticate_user!
 
 	def WhoAmI
 		if user_signed_in?
-			response = current_user.username
+			response = { :success => true, data: current_user.username }
 		else
-			response = {status: 500, info: "You have to be logged in."}
+			response = {:succsess => false, data: "You have to be logged in."}
 		end
 
 		respond_to do |format|

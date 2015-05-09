@@ -6,13 +6,11 @@ class Android::RegistrationsController < Devise::RegistrationsController
     if resource.save
       sign_in resource
       response = { :success => true,
-                      :info => "Registered",
                       :data => resource,
                       :car_type_id => current_user.car_type_id }
     else
       response = { :success => false,
-                        :info => resource.errors,
-                        :data => {} }
+                    :data => resource.errors }
     end
 
     respond_to do |format|
