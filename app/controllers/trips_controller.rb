@@ -13,7 +13,7 @@ before_action :authenticate_user!
 
 	def create
 		begin
-			@trip = Trip.new(params.require(:trip).permit(:distance, :avg_rpm, :avg_fuel, :avg_speed, :date))
+			@trip = Trip.new(params.require(:trip).permit(:distance, :avg_rpm, :avg_fuel, :avg_speed, :date, :mark))
 
 			raise ArgumentError, "engine_types can't be empty" if current_user.engine_type_id.nil?
 			raise ArgumentError, "engine_displacements can't be empty" if current_user.engine_displacement_id.nil?
@@ -106,7 +106,8 @@ before_action :authenticate_user!
 				user: trip.user.username,
 				engine_type: trip.engine_type.eng_type,
 				engine_displacement: trip.engine_displacement.disp ,
-				path: path
+				path: path,
+				mark: trip.mark
 				})
 		end
 
@@ -131,7 +132,8 @@ before_action :authenticate_user!
 				date: trip.date.strftime("%F") ,
 				user: trip.user.username ,
 				engine_displacement: trip.engine_displacement.disp,
-				engine_type: trip.engine_type.eng_type
+				engine_type: trip.engine_type.eng_type,
+				mark: trip.mark
 				})
 		end
 
@@ -154,6 +156,7 @@ before_action :authenticate_user!
 				user: trip.user.username ,
 				engine_displacement: trip.engine_displacement.disp ,
 				engine_type: trip.engine_type.eng_type,
+				mark: trip.mark
 				})
 		end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150510075003) do
+ActiveRecord::Schema.define(version: 20150510151830) do
 
   create_table "challenges", force: true do |t|
     t.integer  "route_id",    null: false
@@ -40,17 +40,18 @@ ActiveRecord::Schema.define(version: 20150510075003) do
   end
 
   create_table "trips", force: true do |t|
-    t.float    "distance",               limit: 24, null: false
-    t.float    "avg_rpm",                limit: 24, null: false
-    t.float    "avg_fuel",               limit: 24, null: false
-    t.datetime "date",                              null: false
+    t.float    "distance",               limit: 24,                         null: false
+    t.float    "avg_rpm",                limit: 24,                         null: false
+    t.float    "avg_fuel",               limit: 24,                         null: false
+    t.datetime "date",                                                      null: false
     t.integer  "user_id"
-    t.integer  "avg_speed",                         null: false
-    t.string   "beginning",                         null: false
-    t.string   "finish",                            null: false
+    t.integer  "avg_speed",                                                 null: false
+    t.string   "beginning",                                                 null: false
+    t.string   "finish",                                                    null: false
     t.integer  "challenge_id"
     t.integer  "engine_type_id"
     t.integer  "engine_displacement_id"
+    t.decimal  "mark",                              precision: 4, scale: 2
   end
 
   add_index "trips", ["challenge_id"], name: "index_trips_on_challenge_id", using: :btree
