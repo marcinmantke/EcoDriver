@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   }
 
   has_many :trips, dependent: :destroy
-  belongs_to :car_type
+  belongs_to :engine_type
+  belongs_to :engine_displacement
 
   
 attr_accessor :login

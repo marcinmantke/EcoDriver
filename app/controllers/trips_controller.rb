@@ -15,9 +15,11 @@ before_action :authenticate_user!
 		begin
 			@trip = Trip.new(params.require(:trip).permit(:distance, :avg_rpm, :avg_fuel, :avg_speed, :date))
 
-			raise ArgumentError, "car_type can't be empty" if current_user.car_type_id.nil?
+			raise ArgumentError, "engine_types can't be empty" if current_user.engine_type_id.nil?
+			raise ArgumentError, "engine_displacements can't be empty" if current_user.engine_displacement_id.nil?
 
-			@trip.car_type_id = current_user.car_type_id
+			@trip.engine_type_id = current_user.engine_type_id
+			@trip.engine_displacement_id = current_user.engine_displacement_id
 			@trip.user_id = current_user.id
 
 			beginning = params[:trip][:path].first[:latitude].to_s + ',' + params[:trip][:path].first[:longitude].to_s
@@ -56,7 +58,8 @@ before_action :authenticate_user!
 	end
 
 	def dashboard
-		car_type = CarType.find(current_user.car_type_id)
+		engine_type = EngineType.find(current_user.engine_type_id)
+		engine_disp = EngineDisplacement.find(current_user.engine_displacement_id)
 		trips_number = Trip.where(user_id: current_user.id).count
 		mileage = Trip.where(user_id: current_user.id).sum(:distance)
 		avg_fuel = Trip.where(user_id: current_user.id).average(:avg_fuel)
@@ -64,8 +67,8 @@ before_action :authenticate_user!
 
 		results=[]
 		results.push({
-			engine: car_type.engine_type,
-			disp: car_type.engine_displacement,
+			engine: engine_type.eng_type,
+			disp: engine_disp.disp,
 			trips_number: trips_number,
 			mileage: mileage.round(2),
 			avg_fuel: avg_fuel.round(2),
@@ -99,9 +102,9 @@ before_action :authenticate_user!
 				date: trip.date.strftime("%F") ,
 				beginning: trip.beginning,
 				finish: trip.finish,
-				user: trip.user.username ,
-				engine_displacement: trip.car_type.engine_displacement ,
-				engine_type: trip.car_type.engine_type,
+				user: trip.user.username,
+				engine_type: trip.engine_type.eng_type,
+				engine_displacement: trip.engine_displacement.disp ,
 				path: path
 				})
 		end
@@ -113,9 +116,9 @@ before_action :authenticate_user!
   	end
 
 	def getTripsByCarType
-		trips=Trip.includes(:car_type).where("car_types.engine_type = ?", params.permit(:engine_type)["engine_type"])
-			.where("car_types.engine_displacement = ?", params.permit(:engine_displacement)["engine_displacement"])
-			.references(:car_types)
+		trips=Trip.includes(:engine_type, :engine_displacement).where("engine_types.eng_type = ?", params.permit(:engine_type)["engine_type"])
+			.where("engine_displacements.disp = ?", params.permit(:engine_displacement)["engine_displacement"])
+			.references(:engine_types, :engine_displacements)
 
 		trips_to_render=[]
 		trips.each do |trip|
@@ -126,8 +129,8 @@ before_action :authenticate_user!
 				avg_speed: trip.avg_speed ,
 				date: trip.date.strftime("%F") ,
 				user: trip.user.username ,
-				engine_displacement: trip.car_type.engine_displacement ,
-				engine_type: trip.car_type.engine_type
+				engine_displacement: trip.engine_displacement.disp,
+				engine_type: trip.engine_type.eng_type
 				})
 		end
 
@@ -135,9 +138,9 @@ before_action :authenticate_user!
 	end
 
 	def getTripsByDistance
-		trips=Trip.includes(:car_type).where("distance > ?", params.permit(:lower_limit)["lower_limit"])
+		trips=Trip.includes(:engine_type, :engine_displacement).where("distance > ?", params.permit(:lower_limit)["lower_limit"])
 			.where("distance <= ?", params.permit(:upper_limit)["upper_limit"])
-			.references(:car_types).order(:avg_fuel)
+			.references(:engine_types, :engine_displacements).order(:avg_fuel)
 
 		trips_to_render=[]
 		trips.each do |trip|
@@ -148,8 +151,8 @@ before_action :authenticate_user!
 				avg_speed: trip.avg_speed ,
 				date: trip.date.strftime("%F") ,
 				user: trip.user.username ,
-				engine_displacement: trip.car_type.engine_displacement ,
-				engine_type: trip.car_type.engine_type
+				engine_displacement: trip.engine_displacement.disp ,
+				engine_type: trip.engine_type.eng_type,
 				})
 		end
 
@@ -168,6 +171,5 @@ before_action :authenticate_user!
 		  format.json { render json: response }
 		end
 	end
-
 
 end
