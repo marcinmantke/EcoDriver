@@ -5,10 +5,14 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
 
   Challenge.getChallenges().success (data) ->
     $scope.challenges = data
+    $scope.choosenChallenge = $scope.challenges[0]
 
 
   $scope.changeChoice = (index) ->
     $scope.choosenTrip = $scope.trips[index]
+
+  $scope.changeChoiceChallenge = (index) ->
+    $scope.choosenChallenge = $scope.challenges[index]
 
    $scope.calendar =
     opened: false
@@ -35,3 +39,10 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
       if data.success
         $scope.challenges.unshift(data.data)
       $scope.createView = false
+
+  $scope.joinChallenge = () ->
+    Challenge.joinChallenge($scope.choosenChallenge.id).success (data) ->
+      console.log("Success")
+    .error (data) ->
+      console.log(data)
+

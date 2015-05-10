@@ -46,7 +46,7 @@ div.grid.grid--center ng-if="createView"
       button.btn.btn-lg.btn-default.navbar-btn.btn-danger style="margin-right: 25px" ng-click="$parent.createView=false"
         | Cancel
 div style="margin-left: 5%; margin-right: 5%" ng-hide="createView"
-  table.table.table-hover 
+  table.table.table-hover watch="trips"
     thead
       tr
         th Start
@@ -56,7 +56,7 @@ div style="margin-left: 5%; margin-right: 5%" ng-hide="createView"
         th Finish date
         th Best user
     tbody
-        tr ng-repeat="challenge in challenges track by $index"
+        tr ng-click="changeChoiceChallenge($index)" ng-repeat="challenge in challenges track by $index" ng-class="{'selected': choosenChallenge == challenge}"
           td
             | {{challenge.route.beginning}}
           td
@@ -69,3 +69,5 @@ div style="margin-left: 5%; margin-right: 5%" ng-hide="createView"
             | {{challenge.finish_date}}
           td 
             | JA
+          td
+            button.btn.btn-success ng-click="joinChallenge()" Join!

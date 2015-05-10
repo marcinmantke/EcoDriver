@@ -27,6 +27,7 @@ class ChallengesController < ApplicationController
     challenges.each do |challenge|
       challenges_to_show.push(
       {
+        id: challenge.id,
         route: challenge.route,
         finish_date: challenge.finish_date,
         created_by: challenge.route.user.username
@@ -36,5 +37,21 @@ class ChallengesController < ApplicationController
       format.html {  raise ActionController::RoutingError.new('Not Found') }
       format.json { render json: challenges_to_show }
     end
+  end
+
+  def join
+    challenge = Challenge.find(params[:challenge_id])
+    if challenge != nil
+      relation = ChallengesUser.create(user_id: current_user.id, challenge_id: challenge.id)
+      response = { :success => true }
+    else
+      response = { :success => false }
+    end
+
+    respond_to do |format|
+      format.html { raise ActionController::RoutingError.new('Not Found') }
+      format.json { render json: response }
+    end
+
   end
 end
