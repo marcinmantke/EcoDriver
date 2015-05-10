@@ -34,15 +34,20 @@ container-fluid
             br /
             | {{ choosenTrip.avg_fuel }} L/100km
 
-          .col-md-3
+          .col-md-2
             b Average RPM: 
             br /
             | {{ choosenTrip.avg_rpm }} RPM
 
-          .col-md-3
+          .col-md-2
             b Average speed: 
             br /
             | {{ choosenTrip.avg_speed }} km/h
+
+          .col-md-2
+            b Eco mark: 
+            br /
+            | {{ choosenTrip.mark }} pts
 
         .row.col-md-8         
             map center="{{choosenTrip.path[0]}}" zoom="{{choosenTrip.map.zoom}}"
