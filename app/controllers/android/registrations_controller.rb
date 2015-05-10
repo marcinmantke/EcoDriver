@@ -7,7 +7,8 @@ class Android::RegistrationsController < Devise::RegistrationsController
       sign_in resource
       response = { :success => true,
                       :data => resource,
-                      :car_type_id => current_user.car_type_id }
+                      :engine_type_id => current_user.engine_type_id,
+                      :engine_displacement_id => current_user.engine_displacement_id }
     else
       response = { :success => false,
                     :data => resource.errors }

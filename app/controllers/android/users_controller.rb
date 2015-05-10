@@ -5,7 +5,7 @@ before_action :authenticate_user!
 
 	def updateCarType
 		if user_signed_in?
-			current_user.update(params.permit(:car_type_id))
+			current_user.update(params.permit(:engine_type_id, :engine_displacement_id))
 			response = {success: true}
 		else
 			response = {success: false}
