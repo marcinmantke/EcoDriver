@@ -1,41 +1,60 @@
-.container
-  br
-  br
-  table.table.table-hover width="100%"
-    thead
-      tr
-        th #
-        th Distance
-        th Average fuel consumption
-        th Average speed
-        th Average RPM
-        th Data
-    tbody 
-        tr ng-repeat-start="t in mytrips"
-          td 
-            | {{$index+1}}
-          td
-            | {{t.distance}}
-          td
-            | {{t.avg_fuel}}
-          td
-            | {{t.avg_speed}}
-          td
-            | {{t.avg_rpm}}
-          td
-            | {{t.date}}
-          td ng-click="mapShow = !mapShow" scroll-on-click="" 
-            button.btn.btn-default.navbar-btn.btn-success
-              | show map...
-        tr ng-repeat-end="" ng-if="mapShow"
-          td colspan="7"
-            map center="{{t.path[0]}}" zoom="{{t.map.zoom}}"
-              shape name="polyline" path="{{t.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
-              marker id="start" position="{{t.path[0]}}" title="Start"
+container-fluid
+  .row-fluid
+    .col-md-4
+      div.trips_list
+        table.table.table-hover watch="trips"
+          thead
+            tr
+              th style="text-align: center" Date
+              th style="text-align: center" Time
+              th style="text-align: center" Start
+              th style="text-align: center" Finish
+          tbody 
+              tr ng-click="changeChoice($index)" ng-repeat="t in mytrips track by $index"  ng-class="{'selected': choosenTrip == t}"
+                td style="text-align: center"
+                  | {{t.date}}
+                td style="text-align: center"
+                  | {{t.time}}
+                td style="text-align: center"
+                  | {{t.beginning}}
+                td style="text-align: center"
+                  | {{t.finish}}              
+        
+
+    .col-md-8
+      div.details
+        .row
+          .col-md-2
+            b Distance: 
+            br /
+            | {{ choosenTrip.distance }} km
+
+          .col-md-3
+            b Average fuel consumption: 
+            br /
+            | {{ choosenTrip.avg_fuel }} L/100km
+
+          .col-md-3
+            b Average RPM: 
+            br /
+            | {{ choosenTrip.avg_rpm }} RPM
+
+          .col-md-3
+            b Average speed: 
+            br /
+            | {{ choosenTrip.avg_speed }} km/h
+
+        .row.col-md-8         
+            map center="{{choosenTrip.path[0]}}" zoom="{{choosenTrip.map.zoom}}"
+              shape name="polyline" path="{{choosenTrip.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
+              marker id="start" position="{{choosenTrip.path[0]}}" title="Start"
               info-window visible-on-marker="start"
                 div
                   | Start
-              marker id="finish" position="{{t.path[t.path.length-1]}}" title="Finish"
+              marker id="finish" position="{{choosenTrip.path[choosenTrip.path.length-1]}}" title="Finish"
                info-window visible-on-marker="finish"
                 div
                   | Finish
+
+
+  

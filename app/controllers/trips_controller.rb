@@ -95,11 +95,12 @@ before_action :authenticate_user!
 
 			trips_to_render.push({
 				id: trip.id,
-				distance: trip.distance,
-				avg_rpm: trip.avg_rpm ,
-				avg_fuel: trip.avg_fuel ,
-				avg_speed: trip.avg_speed ,
-				date: trip.date.strftime("%F") ,
+				distance: trip.distance.round(2),
+				avg_rpm: trip.avg_rpm.round(2) ,
+				avg_fuel: trip.avg_fuel.round(2) ,
+				avg_speed: trip.avg_speed.round(2) ,
+				date: trip.date.strftime("%F"),
+				time: trip.date.strftime("%R"),
 				beginning: trip.beginning,
 				finish: trip.finish,
 				user: trip.user.username,

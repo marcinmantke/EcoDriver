@@ -1,5 +1,4 @@
 angular.module('EcoApp').controller 'DashboardCtrl', ($rootScope, $scope, Trip, Challenge) ->
-  $scope.test = false
   Trip.getDashboard().success (data) ->
     $scope.dashboard = data
 
