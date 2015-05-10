@@ -4,3 +4,6 @@ angular.module('EcoApp').factory 'Challenge', ($http) ->
 
   getChallenges: () ->
     $http.get('/challenge/all.json')
+
+  joinChallenge: (challenge_id) ->
+    $http.post('/challenge/join.json', {challenge_id: challenge_id})
