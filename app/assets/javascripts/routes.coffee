@@ -1,6 +1,6 @@
 angular.module('EcoApp')
   .config ($stateProvider, $urlRouterProvider) ->
-    $urlRouterProvider.otherwise('/mytrips')
+    $urlRouterProvider.otherwise('/dashboard')
 
     $stateProvider
       .state 'dashboard',
