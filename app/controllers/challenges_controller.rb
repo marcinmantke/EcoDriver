@@ -71,4 +71,39 @@ class ChallengesController < ApplicationController
       format.json { render json: path }
     end
   end
+
+  def getChallengeTrips
+    challenge = Challenge.find(params.permit(:id)["id"])
+    trips = challenge.trips.order(avg_fuel: :asc)
+    path = []
+    CheckPoint.where(trip: challenge.route).each do |check_point|
+      path.push([])
+      path.last.push(check_point["latitude"])
+      path.last.push(check_point["longitude"])
+    end
+
+    response = {}
+    trips_to_render=[]
+    trips.each do |trip|
+      trips_to_render.push({
+        distance: trip.distance,
+        avg_rpm: trip.avg_rpm ,
+        avg_fuel: trip.avg_fuel ,
+        avg_speed: trip.avg_speed ,
+        date: trip.date.strftime("%F") ,
+        user: trip.user.username ,
+        engine_displacement: trip.engine_displacement.disp,
+        engine_type: trip.engine_type.eng_type,
+        mark: trip.mark
+        })
+    end
+
+    response = {
+      trips: trips_to_render,
+      path: path
+    }
+
+    render :json => response
+  end
+
 end

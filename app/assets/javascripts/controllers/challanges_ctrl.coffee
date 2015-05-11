@@ -15,8 +15,13 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
 
   $scope.changeChoiceChallenge = (index) ->
     $scope.choosenChallenge = $scope.challenges[index]
+    $scope.challengeList = !$scope.challengeList
+    console.log $scope.choosenChallenge.id
+    Challenge.getChallengeTrips($scope.choosenChallenge.id).success (data) ->
+      $scope.challengeTrips = data.trips
+      $scope.challengePath = data.path
 
-   $scope.calendar =
+  $scope.calendar =
     opened: false
     date: null
     dateOptions:
@@ -48,3 +53,4 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
     .error (data) ->
       console.log(data)
 
+  $scope.challengeList = true
