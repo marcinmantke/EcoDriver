@@ -23,14 +23,22 @@ class ChallengesController < ApplicationController
 
   def all
     challenges = Challenge.all.order(created_at: :desc)
+    user_challenges = ChallengesUser.where(user_id: current_user.id)
     challenges_to_show = []
     challenges.each do |challenge|
+      is_joined = 0
+      user_challenges.each do |user_challenge|
+        if challenge.id == user_challenge.id
+          is_joined = 1
+        end
+      end
       challenges_to_show.push(
       {
         id: challenge.id,
         route: challenge.route,
         finish_date: challenge.finish_date,
-        created_by: challenge.route.user.username
+        created_by: challenge.route.user.username,
+        is_joined: is_joined
       })
     end
     respond_to do |format|
@@ -42,9 +50,8 @@ class ChallengesController < ApplicationController
   def join
     challenge = Challenge.find(params[:challenge_id])
     if challenge != nil
-      status = ChallengesUser.find(user_id: current_user.id, challenge_id: challenge.id)
-      relation = ChallengesUser.create(user_id: current_user.id, challenge_id: challenge.id)
-      response = { :success => true }
+        relation = ChallengesUser.create(user_id: current_user.id, challenge_id: challenge.id)
+        response = { :success => true }
     else
       response = { :success => false }
     end

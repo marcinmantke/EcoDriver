@@ -6,6 +6,8 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   Challenge.getChallenges().success (data) ->
     $scope.challenges = data
     $scope.choosenChallenge = $scope.challenges[0]
+  .error (data) ->
+      console.log(data)
 
 
   $scope.changeChoice = (index) ->
