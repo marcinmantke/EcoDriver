@@ -62,4 +62,13 @@ class ChallengesController < ApplicationController
     end
 
   end
+
+  def showPath
+    challenge=Challenge.find(params.permit(:id)["id"])
+    path = challenge.route.check_points
+    respond_to do |format|
+      format.html { raise ActionController::RoutingError.new('Not Found') }
+      format.json { render json: path }
+    end
+  end
 end
