@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   belongs_to :engine_type
   belongs_to :engine_displacement
 
+  has_many :challenges, :through => :challengesuser
+
   
 attr_accessor :login
 
