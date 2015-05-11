@@ -5,7 +5,7 @@ class Android::SessionsController < Devise::SessionsController
   def create
     self.resource = warden.authenticate!(auth_options)
     sign_in(resource_name, resource)
-    response = {  :success => true, :data => {:engine_type_id => current_user.engine_type_id}, :engine_displacement_id => current_user.engine_displacement_id }
+    response = {  :success => true, :data => {:engine_type_id => current_user.engine_type_id, :engine_displacement_id => current_user.engine_displacement_id }}
 
     respond_to do |format|
       format.html {  raise ActionController::RoutingError.new('Not Found') }
