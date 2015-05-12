@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     	post 'login' => 'sessions#create', :as => 'login'
     	delete 'logout' => 'sessions#destroy', :as => 'logout'
     	post 'update_car_type' => 'users#updateCarType'
+      post 'get_gear_params' => 'users#getGearParams'
   	end
 	end
 
