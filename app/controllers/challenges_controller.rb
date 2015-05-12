@@ -74,7 +74,11 @@ class ChallengesController < ApplicationController
 
   def getChallengeTrips
     challenge = Challenge.find(params.permit(:id)["id"])
-    trips = challenge.trips.order(avg_fuel: :asc)
+    trips = challenge.trips.includes(:engine_type, :engine_displacement).where("engine_types.eng_type = ?", params.permit(:engine_type)["engine_type"])
+      .where("engine_displacements.disp = ?", params.permit(:engine_displacement)["engine_displacement"])
+      .references(:engine_types, :engine_displacements)
+      .order(avg_fuel: :asc)
+      .group(:user_id)
     path = []
     CheckPoint.where(trip: challenge.route).each do |check_point|
       path.push([])

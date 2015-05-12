@@ -9,6 +9,14 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   .error (data) ->
       console.log(data)
 
+  $scope.radioModelDisplacement = '<1.0'
+  $scope.radioModelFuel = 'petrol'
+
+  $scope.getTripsByEngineType = ()->
+    Challenge.getChallengeTrips($scope.choosenChallenge.id, $scope.radioModelFuel, $scope.radioModelDisplacement).success (data) ->
+        $scope.challengeTrips = data.trips
+        $scope.challengePath = data.path
+
 
   $scope.changeChoice = (index) ->
     $scope.choosenTrip = $scope.trips[index]
@@ -16,10 +24,8 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   $scope.changeChoiceChallenge = (index) ->
     $scope.choosenChallenge = $scope.challenges[index]
     $scope.challengeList = !$scope.challengeList
-    console.log $scope.choosenChallenge.id
-    Challenge.getChallengeTrips($scope.choosenChallenge.id).success (data) ->
-      $scope.challengeTrips = data.trips
-      $scope.challengePath = data.path
+    $scope.getTripsByEngineType()
+    
 
   $scope.calendar =
     opened: false

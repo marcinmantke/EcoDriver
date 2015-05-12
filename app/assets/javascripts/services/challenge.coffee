@@ -8,5 +8,5 @@ angular.module('EcoApp').factory 'Challenge', ($http) ->
   joinChallenge: (challenge_id) ->
     $http.post('/challenge/join.json', {challenge_id: challenge_id})
 
-  getChallengeTrips: (challenge_id) ->
-    $http.post('challenge/trips.json', {id: challenge_id})
+  getChallengeTrips: (challenge_id, engine_type, engine_displacement) ->
+    $http.post('challenge/trips.json', {id: challenge_id, engine_type: engine_type, engine_displacement: engine_displacement})
