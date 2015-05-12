@@ -70,13 +70,11 @@ div ng-if="challengeList"
               | {{challenge.finish_date}}
             td 
               | JA
-            td
-              button.btn.btn-success ng-click="joinChallenge()" Join!
 
 div ng-if="!challengeList"
   button.btn.btn-default.navbar-btn.btn-info style="margin-left: 10px" ng-click="$parent.challengeList=!$parent.challengeList"
     | Back
-  button.btn.btn-success ng-click="" style="margin-left: 2px"
+  button.btn.btn-success ng-click="joinChallenge()" style="margin-left: 2px"
     | Join!
   map center="{{challengePath[0]}}" zoom="14" ng-style="style(0.4, 0.4)" resize="" style="margin-left: auto; margin-right: auto"
     shape name="polyline" path="{{challengePath}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
