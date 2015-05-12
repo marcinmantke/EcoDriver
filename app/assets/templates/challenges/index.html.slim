@@ -88,36 +88,73 @@ div ng-if="!challengeList"
       info-window visible-on-marker="start"
         div
           | Start
-  table.table.table-hover style="width: 92%; margin-left: 4%"
-    thead
-      tr
-        th #
-        th User
-        th Average fuel consumption
-        th Average speed
-        th Average RPM
-        th Engine Type
-        th Engine Displacement
-        th Gears change rating
-        th Data
-    tbody 
-      tr ng-repeat="t in challengeTrips"
-        td 
-          | {{$index+1}}
-        td
-          | {{t.user}}
-        td
-          | {{t.avg_fuel}}
-        td
-          | {{t.avg_speed}}
-        td
-          | {{t.avg_rpm}}
-        td
-          | {{t.engine_type}}
-        td
-          | {{t.engine_displacement}}
-        td
-          | {{t.mark}}
-        td
-          | {{t.date}}
+  .grid
+    .grid__item.two-twelfths.grid--left
+      .sidebar__menu
+        .sidebar__menu__header
+          | Fuel type
+        div class="btn-group-vertical btn-group-lg" style="width: 100%" 
+          .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'petrol'" ng-change="getTripsByEngineType()"
+            | petrol
+          .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'diesel'" ng-change="getTripsByEngineType()"
+            | diesel
+          .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'gas'" ng-change="getTripsByEngineType()"
+            | gas
+        .sidebar__menu__header
+          | Displacment
+        div class="btn-group-vertical btn-group-lg" style="width: 100%" 
+          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'<1.0'" ng-change="getTripsByEngineType()"
+            | '<'1.0l
+          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.0-1.5'" ng-change="getTripsByEngineType()"
+            | 1.0-1.5l
+          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.6-2.0'" ng-change="getTripsByEngineType()"
+            | 1.6-2.0l
+          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.1-2.5'" ng-change="getTripsByEngineType()"
+            | 2.1-2.5l
+          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.6-3.0'" ng-change="getTripsByEngineType()"
+            | 2.6-3.0l
+          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'>3.0'" ng-change="getTripsByEngineType()"
+            | 3.0l<
+    .grid__item.nine-twelfths.grid--right
+      table.table.table-hover style="width: 92%; margin-left: 4%"
+        thead
+          tr
+            th style="text-align: center"
+              | #
+            th style="text-align: center"
+              | User
+            th style="text-align: center"
+              | Average fuel consumption
+            th style="text-align: center"
+              | Average speed
+            th style="text-align: center"
+              | Average RPM
+            th style="text-align: center"
+              | Engine Type
+            th style="text-align: center"
+              | Engine Displacement
+            th style="text-align: center"
+              | Gears change rating
+            th style="text-align: center"
+              | Data
+        tbody 
+          tr ng-repeat="t in challengeTrips"
+            td  style="text-align: center"
+              | {{$index+1}}
+            td style="text-align: center"
+              | {{t.user}}
+            td style="text-align: center"
+              | {{t.avg_fuel}}
+            td style="text-align: center"
+              | {{t.avg_speed}}
+            td style="text-align: center"
+              | {{t.avg_rpm}}
+            td style="text-align: center"
+              | {{t.engine_type}}
+            td style="text-align: center"
+              | {{t.engine_displacement}}
+            td style="text-align: center"
+              | {{t.mark}}
+            td style="text-align: center"
+              | {{t.date}}
     

@@ -8,7 +8,7 @@ div.page
               | Distance range
             div class="btn-group-vertical btn-group-lg" style="width: 100%" 
               .label class="btn btn-success" ng-model="$parent.radioModel" btn-radio="'0-10'" ng-change="getTripsByDistance()"
-                | <10km
+                | '<'10km
               .label class="btn btn-success" ng-model="$parent.radioModel" btn-radio="'10-30'" ng-change="getTripsByDistance()"
                 | 10-30km
               .label class="btn btn-success" ng-model="$parent.radioModel" btn-radio="'30-60'" ng-change="getTripsByDistance()"
@@ -79,7 +79,7 @@ div.page
               | Displacment
             div class="btn-group-vertical btn-group-lg" style="width: 100%" 
               .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'<1.0'" ng-change="getTripsByEngineType()"
-                | <1.0l
+                | '<'1.0l
               .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.0-1.5'" ng-change="getTripsByEngineType()"
                 | 1.0-1.5l
               .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.6-2.0'" ng-change="getTripsByEngineType()"
