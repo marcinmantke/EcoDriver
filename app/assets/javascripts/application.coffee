@@ -15,7 +15,11 @@
 #= require angular
 #= require angular-rails-templates
 #= require angular-ui-bootstrap-bower
+#= require jquery-ui
+#= require ui-autocomplete
 #= require bootstrap-css
+#= require angular-animate
+#= require angular-toastr
 #= require lodash
 #= require ngmap
 #= require angular-ui-router

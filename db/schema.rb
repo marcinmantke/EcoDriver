@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150510215708) do
+ActiveRecord::Schema.define(version: 20150512171934) do
 
   create_table "challenges", force: true do |t|
     t.integer  "route_id",    null: false
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 20150510215708) do
     t.integer "gear_up_min"
     t.integer "gear_up_max"
     t.integer "gear_down"
+  end
+
+  create_table "invitations", force: true do |t|
+    t.integer  "invited_by_id", null: false
+    t.integer  "user_id",       null: false
+    t.integer  "challenge_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "trips", force: true do |t|

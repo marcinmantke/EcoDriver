@@ -10,3 +10,9 @@ angular.module('EcoApp').factory 'Challenge', ($http) ->
 
   getChallengeTrips: (challenge_id, engine_type, engine_displacement) ->
     $http.post('challenge/trips.json', {id: challenge_id, engine_type: engine_type, engine_displacement: engine_displacement})
+
+  getAllUsers: () ->
+    $http.post('challenge/users.json')
+
+  inviteUser: (user, challenge_id) ->
+    $http.post('/challenge/invite.json', {user: user, challenge: challenge_id})

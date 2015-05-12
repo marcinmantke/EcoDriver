@@ -72,10 +72,14 @@ div ng-if="challengeList"
               | JA
 
 div ng-if="!challengeList"
-  button.btn.btn-default.navbar-btn.btn-info style="margin-left: 10px" ng-click="$parent.challengeList=!$parent.challengeList"
+  button.btn.btn-default.navbar-btn.btn-danger style="margin-left: 10px" ng-click="$parent.challengeList=!$parent.challengeList"
     | Back
   button.btn.btn-success ng-click="joinChallenge()" style="margin-left: 2px"
-    | Join!
+    | Join
+  input type="text" ng-model="$parent.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="Invite your friends!"
+  button.btn.btn-default.navbar-btn.btn-info ng-click="inviteUser()"
+    | Invite
+
   map center="{{challengePath[0]}}" zoom="14" ng-style="style(0.4, 0.4)" resize="" style="margin-left: auto; margin-right: auto"
     shape name="polyline" path="{{challengePath}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
     marker id="finish" position="{{challengePath[challengePath.length-1]}}" title="Finish"
@@ -100,7 +104,7 @@ div ng-if="!challengeList"
             | gas
         .sidebar__menu__header
           | Displacment
-        div class="btn-group-vertical btn-group-lg" style="width: 100%" 
+        div class="btn-group-vertical btn-group-lg" style="width: 100% ; margin-bottom: 10px" 
           .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'<1.0'" ng-change="getTripsByEngineType()"
             | '<'1.0l
           .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.0-1.5'" ng-change="getTripsByEngineType()"
