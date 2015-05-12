@@ -10,7 +10,7 @@ container-fluid
               th style="text-align: center" Start
               th style="text-align: center" Finish
           tbody 
-              tr ng-click="changeChoice($index)" ng-repeat="t in mytrips track by $index"  ng-class="{'selected': choosenTrip == t}"
+              tr ng-click="changeChoice($index)" ng-repeat="t in mytrips track by $index"  ng-class="{'selected': choosenTrip == t}" style="cursor: pointer"
                 td style="text-align: center"
                   | {{t.date}}
                 td style="text-align: center"
