@@ -1,4 +1,4 @@
-angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $interval, $timeout, Trip, Challenge) ->
+angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $interval, $timeout, $compile, toastr, Trip, Challenge) ->
   Trip.getMyTrips().success (data)->
     $scope.trips = data
     $scope.choosenTrip = $scope.trips[0]
@@ -55,8 +55,34 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
 
   $scope.joinChallenge = () ->
     Challenge.joinChallenge($scope.choosenChallenge.id).success (data) ->
-      console.log("Success")
+      toastr.success('You joined to challenge', 'Success')
     .error (data) ->
-      console.log(data)
+      toastr.error('Please reload page and try again', 'Error')
 
   $scope.challengeList = true
+
+  $scope.autocompleteOption =
+    options:
+      html: true
+      focusOpen: false
+      onlySelectValid: true
+      source: (request, response) ->
+        Challenge.getAllUsers().success (users) ->
+          data = []
+          for user in users
+            data.push user.username
+          data = $scope.autocompleteOption.methods.filter(data, request.term)
+          if !data.length
+            data.push
+              label: 'not found'
+              value: ''
+          response data
+    methods: {}
+
+  $scope.inviteUser = () ->
+    Challenge.inviteUser($scope.user, $scope.choosenChallenge.id).success (data) ->
+      console.log data
+      if data.success
+        toastr.success(data.msg, 'Success')
+      else
+        toastr.error(data.msg, 'Error')

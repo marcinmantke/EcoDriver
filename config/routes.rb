@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   post 'challenge/join', to: 'challenges#join'
   get  'challenge/path/:id', to: 'challenges#showPath'
   post  'challenge/trips', to: 'challenges#getChallengeTrips'
+  post 'challenge/users', to: 'challenges#getAllUsers'
+  post 'challenge/invite', to: 'challenges#inviteUser'
 
 	namespace :android do
     devise_scope :user do

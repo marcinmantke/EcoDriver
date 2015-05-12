@@ -110,4 +110,42 @@ class ChallengesController < ApplicationController
     render :json => response
   end
 
+  def getAllUsers
+    response = User.select(:username)
+    respond_to do |format|
+      format.html { raise ActionController::RoutingError.new('Not Found') }
+      format.json { render json: response }
+    end
+  end
+
+  def inviteUser
+    user = User.where(username: params.permit(:user)["user"]).first
+    if not user.blank?
+      user_invitation = Invitation.where(invited_by: current_user, user: user, challenge_id: params.permit(:challenge)["challenge"])
+
+      if user_invitation.blank?
+        Invitation.create(invited_by: current_user, user: user, challenge_id: params.permit(:challenge)["challenge"])
+        response = {
+          success: true,
+          msg: "Invitation has been sent"
+        }
+      else
+        response = {
+          success: false,
+          msg: "You already have invited this user."
+        }
+      end
+    else
+      response = {
+        success: false,
+        msg: "Wrong username"
+      }
+    end
+
+    respond_to do |format|
+      format.html { raise ActionController::RoutingError.new('Not Found') }
+      format.json { render json: response }
+    end
+  end
+
 end
