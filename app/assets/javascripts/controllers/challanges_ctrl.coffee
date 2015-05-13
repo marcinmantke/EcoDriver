@@ -1,6 +1,9 @@
 angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $interval, $timeout, $compile, toastr, Trip, Challenge) ->
   Trip.getMyTrips().success (data)->
-    $scope.trips = data
+    $scope.trips = []
+    for trip in data
+      if trip.challenge == null
+        $scope.trips.push trip
     $scope.choosenTrip = $scope.trips[0]
 
   Challenge.getChallenges().success (data) ->
@@ -49,7 +52,9 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
     Challenge.createChallenge($scope.choosenTrip.id, $scope.calendar.date).success (data) ->
       if data.success
         $scope.challenges.unshift(data.data)
-      $scope.createView = false
+        toastr.success('Challenge created', 'Success')
+      else
+        toastr.error('Please reload page and try again', 'Error')
 
   $scope.joinChallenge = () ->
     Challenge.joinChallenge($scope.choosenChallenge.id).success (data) ->
