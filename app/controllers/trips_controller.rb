@@ -107,7 +107,8 @@ before_action :authenticate_user!
 				engine_type: trip.engine_type.eng_type,
 				engine_displacement: trip.engine_displacement.disp ,
 				path: path,
-				mark: trip.mark
+				mark: trip.mark,
+				challenge: trip.challenge
 				})
 		end
 
