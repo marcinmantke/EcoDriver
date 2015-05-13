@@ -55,7 +55,6 @@ div ng-if="challengeList"
           th Distance
           th Created by
           th Finish date
-          th Best user
       tbody
           tr ng-click="changeChoiceChallenge($index)" ng-repeat="challenge in challenges track by $index" ng-class="{'selected': choosenChallenge == challenge}" style="cursor: pointer"
             td
@@ -68,8 +67,6 @@ div ng-if="challengeList"
               | {{challenge.created_by}}
             td 
               | {{challenge.finish_date}}
-            td 
-              | JA
 
 div ng-if="!challengeList"
   button.btn.btn-default.navbar-btn.btn-danger style="margin-left: 10px" ng-click="$parent.challengeList=!$parent.challengeList"

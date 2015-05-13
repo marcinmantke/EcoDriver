@@ -88,9 +88,8 @@
                 th Distance
                 th Created by
                 th Finish date
-                th Best user
             tbody
-                tr ng-repeat="challenge in challenges track by $index | limitTo: 5"
+                tr ng-repeat="challenge in challenges | limitTo: 5"
                   td
                     | {{challenge.route.beginning}}
                   td
@@ -101,8 +100,6 @@
                     | {{challenge.created_by}}
                   td 
                     | {{challenge.finish_date}}
-                  td 
-                    | JA
 
         div.activities
           h1 Friend's activities
