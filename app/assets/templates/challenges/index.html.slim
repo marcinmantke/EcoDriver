@@ -96,26 +96,26 @@ div ng-if="!challengeList"
         .sidebar__menu__header
           | Fuel type
         div class="btn-group-vertical btn-group-lg" style="width: 100%" 
-          .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'petrol'" ng-change="getTripsByEngineType()"
+          .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'petrol'" uncheckable="" ng-change="getTripsByEngineType()"
             | petrol
-          .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'diesel'" ng-change="getTripsByEngineType()"
+          .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'diesel'" uncheckable="" ng-change="getTripsByEngineType()"
             | diesel
-          .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'gas'" ng-change="getTripsByEngineType()"
+          .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'gas'" uncheckable="" ng-change="getTripsByEngineType()"
             | gas
         .sidebar__menu__header
           | Displacment
         div class="btn-group-vertical btn-group-lg" style="width: 100% ; margin-bottom: 10px" 
-          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'<1.0'" ng-change="getTripsByEngineType()"
-            | '<'1.0l
-          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.0-1.5'" ng-change="getTripsByEngineType()"
+          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'<1.0'" uncheckable="" ng-change="getTripsByEngineType()"
+            | <1.0l
+          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.0-1.5'" uncheckable="" ng-change="getTripsByEngineType()"
             | 1.0-1.5l
-          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.6-2.0'" ng-change="getTripsByEngineType()"
+          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.6-2.0'" uncheckable="" ng-change="getTripsByEngineType()"
             | 1.6-2.0l
-          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.1-2.5'" ng-change="getTripsByEngineType()"
+          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.1-2.5'" uncheckable="" ng-change="getTripsByEngineType()"
             | 2.1-2.5l
-          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.6-3.0'" ng-change="getTripsByEngineType()"
+          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.6-3.0'" uncheckable="" ng-change="getTripsByEngineType()"
             | 2.6-3.0l
-          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'>3.0'" ng-change="getTripsByEngineType()"
+          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'>3.0'" uncheckable="" ng-change="getTripsByEngineType()"
             | 3.0l<
     .grid__item.nine-twelfths.grid--right
       table.table.table-hover style="width: 92%; margin-left: 4%"
