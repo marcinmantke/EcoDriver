@@ -9,8 +9,6 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   .error (data) ->
       console.log(data)
 
-  $scope.radioModelDisplacement = '<1.0'
-  $scope.radioModelFuel = 'petrol'
 
   $scope.getTripsByEngineType = ()->
     Challenge.getChallengeTrips($scope.choosenChallenge.id, $scope.radioModelFuel, $scope.radioModelDisplacement).success (data) ->

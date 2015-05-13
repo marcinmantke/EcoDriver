@@ -74,8 +74,13 @@ class ChallengesController < ApplicationController
 
   def getChallengeTrips
     challenge = Challenge.find(params.permit(:id)["id"])
-    trips = challenge.trips.includes(:engine_type, :engine_displacement).where("engine_types.eng_type = ?", params.permit(:engine_type)["engine_type"])
-      .where("engine_displacements.disp = ?", params.permit(:engine_displacement)["engine_displacement"])
+
+    conditions = {"engine_types.eng_type" => params.permit(:engine_type)["engine_type"],
+      "engine_displacements.disp" => params.permit(:engine_displacement)["engine_displacement"]}
+    conditions.delete_if {|key,val| val.blank? }
+
+    trips = challenge.trips.includes(:engine_type, :engine_displacement)
+      .where(conditions)
       .references(:engine_types, :engine_displacements)
       .order(avg_fuel: :asc)
       .group(:user_id)
