@@ -20,8 +20,8 @@ class Android::UsersController < ApplicationController
       results = []
       results.push({
                      gear_up_min: current_user.engine_type.gear_up_min,
-        gear_up_max: current_user.engine_type.gear_up_max,
-        gear_down: current_user.engine_type.gear_down
+                     gear_up_max: current_user.engine_type.gear_up_max,
+                     gear_down: current_user.engine_type.gear_down
                    })
 
       respond_to do |format|

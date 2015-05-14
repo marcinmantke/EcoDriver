@@ -34,10 +34,10 @@ class TripsController < ApplicationController
       @trip.save
 
       response = { data: @trip,
-                    success: true }
+                   success: true }
     rescue Exception => exc
       response = { data: exc.message,
-                    success: false }
+                   success: false }
     end
 
     respond_to do |format|
@@ -67,11 +67,11 @@ class TripsController < ApplicationController
     results = []
     results.push({
                    engine: engine_type.eng_type,
-      disp: engine_disp.disp,
-      trips_number: trips_number,
-      mileage: mileage.round(2),
-      avg_fuel: avg_fuel.round(2),
-      avg_speed: avg_speed.round(2)
+                   disp: engine_disp.disp,
+                   trips_number: trips_number,
+                   mileage: mileage.round(2),
+                   avg_fuel: avg_fuel.round(2),
+                   avg_speed: avg_speed.round(2)
                  })
 
     respond_to do |format|
@@ -94,20 +94,20 @@ class TripsController < ApplicationController
 
       trips_to_render.push({
                              id: trip.id,
-        distance: trip.distance.round(2),
-        avg_rpm: trip.avg_rpm.round(2),
-        avg_fuel: trip.avg_fuel.round(2),
-        avg_speed: trip.avg_speed.round(2),
-        date: trip.date.strftime('%F'),
-        time: trip.date.strftime('%R'),
-        beginning: trip.beginning,
-        finish: trip.finish,
-        user: trip.user.username,
-        engine_type: trip.engine_type.eng_type,
-        engine_displacement: trip.engine_displacement.disp,
-        path: path,
-        mark: trip.mark,
-        challenge: trip.challenge
+                             distance: trip.distance.round(2),
+                             avg_rpm: trip.avg_rpm.round(2),
+                             avg_fuel: trip.avg_fuel.round(2),
+                             avg_speed: trip.avg_speed.round(2),
+                             date: trip.date.strftime('%F'),
+                             time: trip.date.strftime('%R'),
+                             beginning: trip.beginning,
+                             finish: trip.finish,
+                             user: trip.user.username,
+                             engine_type: trip.engine_type.eng_type,
+                             engine_displacement: trip.engine_displacement.disp,
+                             path: path,
+                             mark: trip.mark,
+                             challenge: trip.challenge
                            })
     end
 
@@ -126,14 +126,14 @@ class TripsController < ApplicationController
     trips.each do |trip|
       trips_to_render.push({
                              distance: trip.distance,
-        avg_rpm: trip.avg_rpm,
-        avg_fuel: trip.avg_fuel,
-        avg_speed: trip.avg_speed,
-        date: trip.date.strftime('%F'),
-        user: trip.user.username,
-        engine_displacement: trip.engine_displacement.disp,
-        engine_type: trip.engine_type.eng_type,
-        mark: trip.mark
+                             avg_rpm: trip.avg_rpm,
+                             avg_fuel: trip.avg_fuel,
+                             avg_speed: trip.avg_speed,
+                             date: trip.date.strftime('%F'),
+                             user: trip.user.username,
+                             engine_displacement: trip.engine_displacement.disp,
+                             engine_type: trip.engine_type.eng_type,
+                             mark: trip.mark
                            })
     end
 
@@ -149,14 +149,14 @@ class TripsController < ApplicationController
     trips.each do |trip|
       trips_to_render.push({
                              distance: trip.distance,
-        avg_rpm: trip.avg_rpm,
-        avg_fuel: trip.avg_fuel,
-        avg_speed: trip.avg_speed,
-        date: trip.date.strftime('%F'),
-        user: trip.user.username,
-        engine_displacement: trip.engine_displacement.disp,
-        engine_type: trip.engine_type.eng_type,
-        mark: trip.mark
+                             avg_rpm: trip.avg_rpm,
+                             avg_fuel: trip.avg_fuel,
+                             avg_speed: trip.avg_speed,
+                             date: trip.date.strftime('%F'),
+                             user: trip.user.username,
+                             engine_displacement: trip.engine_displacement.disp,
+                             engine_type: trip.engine_type.eng_type,
+                             mark: trip.mark
                            })
     end
 
