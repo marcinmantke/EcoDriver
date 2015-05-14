@@ -41,12 +41,12 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [ :email ]
+  config.case_insensitive_keys = [:email]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
-  config.strip_whitespace_keys = [ :email ]
+  config.strip_whitespace_keys = [:email]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -258,10 +258,10 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   # Defines name of the authentication token params key
-  config.authentication_keys = [ :login ]
+  config.authentication_keys = [:login]
 
   config.scoped_views = true
-  config.reset_password_keys = [ :username ]
-  config.confirmation_keys = [ :username ]
+  config.reset_password_keys = [:username]
+  config.confirmation_keys = [:username]
   config.secret_key = '6c4a47ccd2e3ba7758ac7b76b03ad6839ff490afb88637f6bb5be62ac3fba8ccb5f40e145a67c2ab76822eaf48a73170afc62f29e2e7537e6101214ec364fa9c'
 end
