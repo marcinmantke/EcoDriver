@@ -65,7 +65,7 @@ class TripsController < ApplicationController
     avg_speed = Trip.where(user_id: current_user.id).average(:avg_speed)
 
     results = []
-    results.push(                   engine: engine_type.eng_type,
+    results.push(engine: engine_type.eng_type,
                                     disp: engine_disp.disp,
                                     trips_number: trips_number,
                                     mileage: mileage.round(2),
@@ -90,7 +90,7 @@ class TripsController < ApplicationController
         path.last.push(check_point['longitude'])
       end
 
-      trips_to_render.push(                             id: trip.id,
+      trips_to_render.push(id: trip.id,
                                                         distance: trip.distance.round(2),
                                                         avg_rpm: trip.avg_rpm.round(2),
                                                         avg_fuel: trip.avg_fuel.round(2),
@@ -120,7 +120,7 @@ class TripsController < ApplicationController
 
     trips_to_render = []
     trips.each do |trip|
-      trips_to_render.push(                             distance: trip.distance,
+      trips_to_render.push(distance: trip.distance,
                                                         avg_rpm: trip.avg_rpm,
                                                         avg_fuel: trip.avg_fuel,
                                                         avg_speed: trip.avg_speed,
@@ -141,7 +141,7 @@ class TripsController < ApplicationController
 
     trips_to_render = []
     trips.each do |trip|
-      trips_to_render.push(                             distance: trip.distance,
+      trips_to_render.push(distance: trip.distance,
                                                         avg_rpm: trip.avg_rpm,
                                                         avg_fuel: trip.avg_fuel,
                                                         avg_speed: trip.avg_speed,
