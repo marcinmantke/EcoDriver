@@ -21,9 +21,9 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     if user_signed_in?
-      "application"
+      'application'
     else
-      "login"
+      'login'
     end
   end
 end

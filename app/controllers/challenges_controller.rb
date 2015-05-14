@@ -64,7 +64,7 @@ class ChallengesController < ApplicationController
   end
 
   def showPath
-    challenge=Challenge.find(params.permit(:id)["id"])
+    challenge=Challenge.find(params.permit(:id)['id'])
     path = challenge.route.check_points
     respond_to do |format|
       format.html { raise ActionController::RoutingError.new('Not Found') }
@@ -73,10 +73,10 @@ class ChallengesController < ApplicationController
   end
 
   def getChallengeTrips
-    challenge = Challenge.find(params.permit(:id)["id"])
+    challenge = Challenge.find(params.permit(:id)['id'])
 
-    conditions = { "engine_types.eng_type" => params.permit(:engine_type)["engine_type"],
-      "engine_displacements.disp" => params.permit(:engine_displacement)["engine_displacement"] }
+    conditions = { 'engine_types.eng_type' => params.permit(:engine_type)['engine_type'],
+      'engine_displacements.disp' => params.permit(:engine_displacement)['engine_displacement'] }
     conditions.delete_if {|key,val| val.blank? }
 
     trips = challenge.trips.includes(:engine_type, :engine_displacement)
@@ -87,8 +87,8 @@ class ChallengesController < ApplicationController
     path = []
     CheckPoint.where(trip: challenge.route).each do |check_point|
       path.push([])
-      path.last.push(check_point["latitude"])
-      path.last.push(check_point["longitude"])
+      path.last.push(check_point['latitude'])
+      path.last.push(check_point['longitude'])
     end
 
     response = {}
@@ -99,7 +99,7 @@ class ChallengesController < ApplicationController
         avg_rpm: trip.avg_rpm ,
         avg_fuel: trip.avg_fuel ,
         avg_speed: trip.avg_speed ,
-        date: trip.date.strftime("%F") ,
+        date: trip.date.strftime('%F') ,
         user: trip.user.username ,
         engine_displacement: trip.engine_displacement.disp,
         engine_type: trip.engine_type.eng_type,
@@ -124,26 +124,26 @@ class ChallengesController < ApplicationController
   end
 
   def inviteUser
-    user = User.where(username: params.permit(:user)["user"]).first
+    user = User.where(username: params.permit(:user)['user']).first
     if not user.blank?
-      user_invitation = Invitation.where(invited_by: current_user, user: user, challenge_id: params.permit(:challenge)["challenge"])
+      user_invitation = Invitation.where(invited_by: current_user, user: user, challenge_id: params.permit(:challenge)['challenge'])
 
       if user_invitation.blank?
-        Invitation.create(invited_by: current_user, user: user, challenge_id: params.permit(:challenge)["challenge"])
+        Invitation.create(invited_by: current_user, user: user, challenge_id: params.permit(:challenge)['challenge'])
         response = {
           success: true,
-          msg: "Invitation has been sent"
+          msg: 'Invitation has been sent'
         }
       else
         response = {
           success: false,
-          msg: "You already have invited this user."
+          msg: 'You already have invited this user.'
         }
       end
     else
       response = {
         success: false,
-        msg: "Wrong username"
+        msg: 'Wrong username'
       }
     end
 
