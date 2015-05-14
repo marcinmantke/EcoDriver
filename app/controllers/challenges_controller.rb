@@ -95,7 +95,7 @@ class ChallengesController < ApplicationController
     trips_to_render = []
     trips.each do |trip|
       trips_to_render.push({
-        distance: trip.distance,
+                             distance: trip.distance,
         avg_rpm: trip.avg_rpm,
         avg_fuel: trip.avg_fuel,
         avg_speed: trip.avg_speed,
@@ -104,7 +104,7 @@ class ChallengesController < ApplicationController
         engine_displacement: trip.engine_displacement.disp,
         engine_type: trip.engine_type.eng_type,
         mark: trip.mark
-        })
+                           })
     end
 
     response = {
