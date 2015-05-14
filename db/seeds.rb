@@ -21,4 +21,4 @@ EngineDisplacement.create(disp: '>3.0')
 
 #Trip.update_all(:engine_type_id => rand(1..3),:engine_displacement_id => rand(1..6))
 
-Trip.update_all(:mark => 5.00)
+Trip.update_all(mark: 5.00)

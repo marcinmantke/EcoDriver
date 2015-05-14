@@ -1,8 +1,8 @@
 Geocoder.configure(
   # geocoding options
-  :timeout      => 5,           # geocoding service timeout (secs)
-  :lookup       => :yandex,     # name of geocoding service (symbol)
-  :language     => :pl,         # ISO-639 language code
+  timeout: 5,           # geocoding service timeout (secs)
+  lookup: :yandex,     # name of geocoding service (symbol)
+  language: :pl,         # ISO-639 language code
   # :use_https    => false,       # use HTTPS for lookup requests? (if supported)
   # :http_proxy   => nil,         # HTTP proxy server (user:pass@host:port)
   # :https_proxy  => nil,         # HTTPS proxy server (user:pass@host:port)
@@ -15,6 +15,6 @@ Geocoder.configure(
   # :always_raise => [],
 
   # calculation options
-  :units     => :km,       # :km for kilometers or :mi for miles
+  units: :km,       # :km for kilometers or :mi for miles
   # :distances => :linear    # :spherical or :linear
 )

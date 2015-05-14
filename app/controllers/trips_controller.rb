@@ -8,7 +8,7 @@ before_action :authenticate_user!
 
   def show
     @trip=Trip.find(params.permit(:id)["id"])
-    render :json=>@trip
+    render json: @trip
   end
 
   def create
@@ -34,11 +34,11 @@ before_action :authenticate_user!
 
       @trip.save
 
-      response = { :data =>@trip,
-                    :success => true }
+      response = { data: @trip,
+                    success: true }
     rescue Exception => exc
-      response = { :data => exc.message,
-                    :success => false }
+      response = { data: exc.message,
+                    success: false }
     end
 
     respond_to do |format|
@@ -138,7 +138,7 @@ before_action :authenticate_user!
         })
     end
 
-    render :json => trips_to_render
+    render json: trips_to_render
   end
 
   def getTripsByDistance
@@ -161,14 +161,14 @@ before_action :authenticate_user!
         })
     end
 
-    render :json => trips_to_render
+    render json: trips_to_render
   end
 
   def WhoAmI
     if user_signed_in?
-      response = { :success => true, data: current_user.username }
+      response = { success: true, data: current_user.username }
     else
-      response = { :succsess => false, data: "You have to be logged in." }
+      response = { succsess: false, data: "You have to be logged in." }
     end
 
     respond_to do |format|
