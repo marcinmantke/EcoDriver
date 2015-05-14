@@ -115,8 +115,8 @@ class TripsController < ApplicationController
 
   def get_trips_by_car_type
     trips = Trip.includes(:engine_type, :engine_displacement).where('engine_types.eng_type = ?', params.permit(:engine_type)['engine_type'])
-      .where('engine_displacements.disp = ?', params.permit(:engine_displacement)['engine_displacement'])
-      .references(:engine_types, :engine_displacements)
+            .where('engine_displacements.disp = ?', params.permit(:engine_displacement)['engine_displacement'])
+            .references(:engine_types, :engine_displacements)
 
     trips_to_render = []
     trips.each do |trip|
@@ -136,8 +136,8 @@ class TripsController < ApplicationController
 
   def get_trips_by_distance
     trips = Trip.includes(:engine_type, :engine_displacement).where('distance > ?', params.permit(:lower_limit)['lower_limit'])
-      .where('distance <= ?', params.permit(:upper_limit)['upper_limit'])
-      .references(:engine_types, :engine_displacements).order(:avg_fuel)
+            .where('distance <= ?', params.permit(:upper_limit)['upper_limit'])
+            .references(:engine_types, :engine_displacements).order(:avg_fuel)
 
     trips_to_render = []
     trips.each do |trip|
