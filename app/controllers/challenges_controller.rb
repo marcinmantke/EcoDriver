@@ -33,13 +33,11 @@ class ChallengesController < ApplicationController
         end
       end
       challenges_to_show.push(
-      {
-        id: challenge.id,
-        route: challenge.route,
-        finish_date: challenge.finish_date,
-        created_by: challenge.route.user.username,
-        is_joined: is_joined
-      })
+              id: challenge.id,
+              route: challenge.route,
+              finish_date: challenge.finish_date,
+              created_by: challenge.route.user.username,
+              is_joined: is_joined)
     end
     respond_to do |format|
       format.html {  fail ActionController::RoutingError.new('Not Found') }
@@ -98,17 +96,15 @@ class ChallengesController < ApplicationController
     response = {}
     trips_to_render = []
     trips.each do |trip|
-      trips_to_render.push({
-                             distance: trip.distance,
-                             avg_rpm: trip.avg_rpm,
-                             avg_fuel: trip.avg_fuel,
-                             avg_speed: trip.avg_speed,
-                             date: trip.date.strftime('%F'),
-                             user: trip.user.username,
-                             engine_displacement: trip.engine_displacement.disp,
-                             engine_type: trip.engine_type.eng_type,
-                             mark: trip.mark
-                           })
+      trips_to_render.push(                             distance: trip.distance,
+                                                        avg_rpm: trip.avg_rpm,
+                                                        avg_fuel: trip.avg_fuel,
+                                                        avg_speed: trip.avg_speed,
+                                                        date: trip.date.strftime('%F'),
+                                                        user: trip.user.username,
+                                                        engine_displacement: trip.engine_displacement.disp,
+                                                        engine_type: trip.engine_type.eng_type,
+                                                        mark: trip.mark)
     end
 
     response = {
