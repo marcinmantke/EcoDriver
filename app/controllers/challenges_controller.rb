@@ -49,13 +49,13 @@ class ChallengesController < ApplicationController
 
   def join
     challenge = Challenge.find(params[:challenge_id])
-    if challenge != nil
+    if !challenge.blank?
       joined = ChallengesUser.where(user_id: current_user.id, challenge_id: challenge.id).take
-      if joined == nil
-        relation = ChallengesUser.create(user_id: current_user.id, challenge_id: challenge.id)
+      if joined.blank?
+        ChallengesUser.create(user_id: current_user.id, challenge_id: challenge.id)
         response = { success: true }
       else
-        response = { success: false, status: 1} # user already joined to challenge
+        response = { success: false, status: 1 } # user already joined to challenge
       end
     else
       response = { success: false }
@@ -65,7 +65,6 @@ class ChallengesController < ApplicationController
       format.html { fail ActionController::RoutingError.new('Not Found') }
       format.json { render json: response }
     end
-
   end
 
   def show_path
