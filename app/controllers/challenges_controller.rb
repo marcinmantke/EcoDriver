@@ -125,7 +125,7 @@ class ChallengesController < ApplicationController
 
   def inviteUser
     user = User.where(username: params.permit(:user)['user']).first
-    if not user.blank?
+    if !user.blank?
       user_invitation = Invitation.where(invited_by: current_user, user: user, challenge_id: params.permit(:challenge)['challenge'])
 
       if user_invitation.blank?
