@@ -18,7 +18,7 @@ class Android::UsersController < ApplicationController
   def get_gear_params
     if user_signed_in?
       results = []
-      results.push(                     gear_up_min: current_user.engine_type.gear_up_min,
+      results.push(gear_up_min: current_user.engine_type.gear_up_min,
                                         gear_up_max: current_user.engine_type.gear_up_max,
                                         gear_down: current_user.engine_type.gear_down)
 
