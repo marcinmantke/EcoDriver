@@ -2,7 +2,7 @@ class ChallengesController < ApplicationController
   def create
     route = Trip.find(params[:trip_id])
     finish_date = params[:finish_date].to_date
-    if route.user.id == current_user.id && finish_date > Date.today && route.challenge.nil?
+    if route.user.id == current_user.id && finish_date > Time.zone.today && route.challenge.nil?
       challenge = Challenge.create(route: route, finish_date: finish_date)
       route.update(challenge: challenge)
       response = {  success: true,
@@ -77,7 +77,7 @@ class ChallengesController < ApplicationController
 
     conditions = { 'engine_types.eng_type' => params.permit(:engine_type)['engine_type'],
                    'engine_displacements.disp' => params.permit(:engine_displacement)['engine_displacement'] }
-    conditions.delete_if { |key, val| val.blank? }
+    conditions.delete_if { |_key, val| val.blank? }
 
     trips = challenge.trips.includes(:engine_type, :engine_displacement)
             .where(conditions)
@@ -91,7 +91,6 @@ class ChallengesController < ApplicationController
       path.last.push(check_point['longitude'])
     end
 
-    response = {}
     trips_to_render = []
     trips.each do |trip|
       trips_to_render.push(distance: trip.distance,
