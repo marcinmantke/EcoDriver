@@ -11,7 +11,7 @@ RSpec.describe TripsController, :type => :controller do
       it 'renders cretead trip as json' do
         login_user
         post :create, trip: attributes_for(:trip_with_path), format: :json
-        expect(response.body).to eq(({data: build(:trip, id: 2, user_id: 2, engine_type_id: 1, engine_displacement_id: 1, finish: "Atlantic Ocean", beginning: "Atlantic Ocean"), success: true}).to_json)
+        expect(response.body).to eq(({ data: build(:trip, id: 2, user_id: 2, engine_type_id: 1, engine_displacement_id: 1, finish: "Atlantic Ocean", beginning: "Atlantic Ocean"), success: true }).to_json)
       end
     end
     context 'with nil avg_speed' do
