@@ -16,11 +16,4 @@ module DeviseHelper
 
     html.html_safe
   end
-  def is_registration_errors
-    if resource.errors.empty?
-      return false
-    else
-      return true
-    end
-  end
 end

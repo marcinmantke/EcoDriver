@@ -1,1 +1,6 @@
 require: rubocop-rspec
+
+Style/Documentation:
+  Enabled: false
+Style/RaiseArgs:
+  Enabled: false
