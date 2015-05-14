@@ -15,6 +15,6 @@ FactoryGirl.define do
     date       "12.12.2012"
     path       [ {"longitude"=>"12.0", "latitude"=>"-48.00312"}, {"longitude"=>"11.0", "latitude"=>"-47.00312"} ]
 
-    initialize_with { attributes } 
+    initialize_with { attributes }
   end
 end
