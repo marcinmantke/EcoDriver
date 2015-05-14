@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class TripsController < ApplicationController
 
-before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
   end
@@ -76,7 +76,7 @@ before_action :authenticate_user!
     })
 
     respond_to do |format|
-        format.html {  raise ActionController::RoutingError.new('Not Found') }
+      format.html {  raise ActionController::RoutingError.new('Not Found') }
         format.json { render json: results }
     end
   end
