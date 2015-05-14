@@ -1,7 +1,7 @@
 class Android::UsersController < ApplicationController
   before_action :authenticate_user!
 
-  def updateCarType
+  def update_car_type
     if user_signed_in?
       current_user.update(params.permit(:engine_type_id, :engine_displacement_id))
       response = { success: true }
@@ -15,7 +15,7 @@ class Android::UsersController < ApplicationController
     end
   end
 
-  def getGearParams
+  def get_gear_params
     if user_signed_in?
       results = []
       results.push({

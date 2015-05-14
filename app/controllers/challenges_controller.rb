@@ -63,7 +63,7 @@ class ChallengesController < ApplicationController
 
   end
 
-  def showPath
+  def show_path
     challenge = Challenge.find(params.permit(:id)['id'])
     path = challenge.route.check_points
     respond_to do |format|
@@ -72,7 +72,7 @@ class ChallengesController < ApplicationController
     end
   end
 
-  def getChallengeTrips
+  def get_challenge_trips
     challenge = Challenge.find(params.permit(:id)['id'])
 
     conditions = { 'engine_types.eng_type' => params.permit(:engine_type)['engine_type'],
@@ -115,7 +115,7 @@ class ChallengesController < ApplicationController
     render json: response
   end
 
-  def getAllUsers
+  def get_all_users
     response = User.select(:username)
     respond_to do |format|
       format.html { fail ActionController::RoutingError.new('Not Found') }
@@ -123,7 +123,7 @@ class ChallengesController < ApplicationController
     end
   end
 
-  def inviteUser
+  def invite_user
     user = User.where(username: params.permit(:user)['user']).first
     if !user.blank?
       user_invitation = Invitation.where(invited_by: current_user, user: user, challenge_id: params.permit(:challenge)['challenge'])
