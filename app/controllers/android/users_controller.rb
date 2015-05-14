@@ -27,7 +27,7 @@ class Android::UsersController < ApplicationController
 
       respond_to do |format|
         format.html {  raise ActionController::RoutingError.new('Not Found') }
-          format.json { render json: results }
+        format.json { render json: results }
       end
     end
   end

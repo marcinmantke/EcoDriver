@@ -51,7 +51,7 @@ class ChallengesController < ApplicationController
     challenge = Challenge.find(params[:challenge_id])
     if challenge != nil
       relation = ChallengesUser.create(user_id: current_user.id, challenge_id: challenge.id)
-        response = { success: true }
+      response = { success: true }
     else
       response = { success: false }
     end
