@@ -24,8 +24,8 @@ class TripsController < ApplicationController
       beginning = params[:trip][:path].first[:latitude].to_s + ',' + params[:trip][:path].first[:longitude].to_s
       finish = params[:trip][:path].last[:latitude].to_s + ',' + params[:trip][:path].last[:longitude].to_s
 
-      @trip.beginning = geocoderWrapper(beginning).address
-      @trip.finish = geocoderWrapper(finish).address
+      @trip.beginning = geocoder_wrapper(beginning).address
+      @trip.finish = geocoder_wrapper(finish).address
 
       params[:trip][:path].each do |point|
         CheckPoint.create(longitude: point[:longitude], latitude: point[:latitude], trip: @trip)
@@ -46,13 +46,13 @@ class TripsController < ApplicationController
     end
   end
 
-  def geocoderWrapper(latlng)
+  def geocoder_wrapper(latlng)
     begin
       return Geocoder.search(latlng).first
     rescue Exception => exc
       puts exc
       sleep 1
-      geocoderWrapper(latlng)
+      geocoder_wrapper(latlng)
     end
   end
 
@@ -117,7 +117,7 @@ class TripsController < ApplicationController
       end
     end
 
-  def getTripsByCarType
+  def get_trips_by_car_type
     trips = Trip.includes(:engine_type, :engine_displacement).where('engine_types.eng_type = ?', params.permit(:engine_type)['engine_type'])
       .where('engine_displacements.disp = ?', params.permit(:engine_displacement)['engine_displacement'])
       .references(:engine_types, :engine_displacements)
@@ -140,7 +140,7 @@ class TripsController < ApplicationController
     render json: trips_to_render
   end
 
-  def getTripsByDistance
+  def get_trips_by_distance
     trips = Trip.includes(:engine_type, :engine_displacement).where('distance > ?', params.permit(:lower_limit)['lower_limit'])
       .where('distance <= ?', params.permit(:upper_limit)['upper_limit'])
       .references(:engine_types, :engine_displacements).order(:avg_fuel)
@@ -163,7 +163,7 @@ class TripsController < ApplicationController
     render json: trips_to_render
   end
 
-  def WhoAmI
+  def who_am_i
     if user_signed_in?
       response = { success: true, data: current_user.username }
     else
