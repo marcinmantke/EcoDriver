@@ -105,7 +105,6 @@ class ChallengesController < ApplicationController
                             engine_displacement: trip.engine_displacement.disp,
                             engine_type: trip.engine_type.eng_type,
                             mark: trip.mark)
-      trips_to_render.push(distance: trip.distance,
     response = {
       trips: trips_to_render,
       path: path
