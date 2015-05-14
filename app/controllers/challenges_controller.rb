@@ -64,7 +64,7 @@ class ChallengesController < ApplicationController
   end
 
   def showPath
-    challenge=Challenge.find(params.permit(:id)['id'])
+    challenge = Challenge.find(params.permit(:id)['id'])
     path = challenge.route.check_points
     respond_to do |format|
       format.html { raise ActionController::RoutingError.new('Not Found') }
@@ -92,7 +92,7 @@ class ChallengesController < ApplicationController
     end
 
     response = {}
-    trips_to_render=[]
+    trips_to_render = []
     trips.each do |trip|
       trips_to_render.push({
         distance: trip.distance,

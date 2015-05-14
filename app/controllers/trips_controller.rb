@@ -7,7 +7,7 @@ before_action :authenticate_user!
   end
 
   def show
-    @trip=Trip.find(params.permit(:id)['id'])
+    @trip = Trip.find(params.permit(:id)['id'])
     render json: @trip
   end
 
@@ -65,7 +65,7 @@ before_action :authenticate_user!
     avg_fuel = Trip.where(user_id: current_user.id).average(:avg_fuel)
     avg_speed = Trip.where(user_id: current_user.id).average(:avg_speed)
 
-    results=[]
+    results = []
     results.push({
       engine: engine_type.eng_type,
       disp: engine_disp.disp,
@@ -82,9 +82,9 @@ before_action :authenticate_user!
   end
 
   def mytrips
-    trips=Trip.where(user_id: current_user.id).order(date: :desc)
+    trips = Trip.where(user_id: current_user.id).order(date: :desc)
 
-    trips_to_render=[]
+    trips_to_render = []
     trips.each do |trip|
       path = []
       CheckPoint.where(trip: trip).each do |check_point|
@@ -119,11 +119,11 @@ before_action :authenticate_user!
     end
 
   def getTripsByCarType
-    trips=Trip.includes(:engine_type, :engine_displacement).where('engine_types.eng_type = ?', params.permit(:engine_type)['engine_type'])
+    trips = Trip.includes(:engine_type, :engine_displacement).where('engine_types.eng_type = ?', params.permit(:engine_type)['engine_type'])
       .where('engine_displacements.disp = ?', params.permit(:engine_displacement)['engine_displacement'])
       .references(:engine_types, :engine_displacements)
 
-    trips_to_render=[]
+    trips_to_render = []
     trips.each do |trip|
       trips_to_render.push({
         distance: trip.distance,
@@ -142,11 +142,11 @@ before_action :authenticate_user!
   end
 
   def getTripsByDistance
-    trips=Trip.includes(:engine_type, :engine_displacement).where('distance > ?', params.permit(:lower_limit)['lower_limit'])
+    trips = Trip.includes(:engine_type, :engine_displacement).where('distance > ?', params.permit(:lower_limit)['lower_limit'])
       .where('distance <= ?', params.permit(:upper_limit)['upper_limit'])
       .references(:engine_types, :engine_displacements).order(:avg_fuel)
 
-    trips_to_render=[]
+    trips_to_render = []
     trips.each do |trip|
       trips_to_render.push({
         distance: trip.distance,
