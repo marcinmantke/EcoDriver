@@ -1,6 +1,6 @@
 class Android::SessionsController < Devise::SessionsController
 
-	respond_to :json
+  respond_to :json
 
   def create
     self.resource = warden.authenticate!(auth_options)

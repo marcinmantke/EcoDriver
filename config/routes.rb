@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
     # Przekierowanie devise na domain/login itp -> usunięcie /users/ z linku
-	devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
+  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
 
 
-	# You can have the root of your site routed with "root"
-	root 'trips#index'
+  # You can have the root of your site routed with "root"
+  root 'trips#index'
 
   get 'dashboard' => 'trips#dashboard'
 
-	get 'mytrips' => 'trips#mytrips'
-	get 'whoami' => 'trips#WhoAmI'
+  get 'mytrips' => 'trips#mytrips'
+  get 'whoami' => 'trips#WhoAmI'
 
-	get  'trips/:id', to: 'trips#show'
-	post 'trips/by_car_type', to: 'trips#getTripsByCarType'
-	post 'trips/by_distance', to: 'trips#getTripsByDistance'
+  get  'trips/:id', to: 'trips#show'
+  post 'trips/by_car_type', to: 'trips#getTripsByCarType'
+  post 'trips/by_distance', to: 'trips#getTripsByDistance'
 
   post 'save_trip', to: 'trips#create'
 
@@ -25,13 +25,13 @@ Rails.application.routes.draw do
   post 'challenge/users', to: 'challenges#getAllUsers'
   post 'challenge/invite', to: 'challenges#inviteUser'
 
-	namespace :android do
+  namespace :android do
     devise_scope :user do
-    	post 'registration' => 'registrations#create', :as => 'register'
-    	post 'login' => 'sessions#create', :as => 'login'
-    	delete 'logout' => 'sessions#destroy', :as => 'logout'
-    	post 'update_car_type' => 'users#updateCarType'
+      post 'registration' => 'registrations#create', :as => 'register'
+      post 'login' => 'sessions#create', :as => 'login'
+      delete 'logout' => 'sessions#destroy', :as => 'logout'
+      post 'update_car_type' => 'users#updateCarType'
       post 'get_gear_params' => 'users#getGearParams'
-  	end
-	end
+    end
+  end
 end
