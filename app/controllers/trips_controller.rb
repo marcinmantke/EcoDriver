@@ -95,16 +95,16 @@ class TripsController < ApplicationController
       trips_to_render.push({
         id: trip.id,
         distance: trip.distance.round(2),
-        avg_rpm: trip.avg_rpm.round(2) ,
-        avg_fuel: trip.avg_fuel.round(2) ,
-        avg_speed: trip.avg_speed.round(2) ,
+        avg_rpm: trip.avg_rpm.round(2),
+        avg_fuel: trip.avg_fuel.round(2),
+        avg_speed: trip.avg_speed.round(2),
         date: trip.date.strftime('%F'),
         time: trip.date.strftime('%R'),
         beginning: trip.beginning,
         finish: trip.finish,
         user: trip.user.username,
         engine_type: trip.engine_type.eng_type,
-        engine_displacement: trip.engine_displacement.disp ,
+        engine_displacement: trip.engine_displacement.disp,
         path: path,
         mark: trip.mark,
         challenge: trip.challenge
@@ -126,11 +126,11 @@ class TripsController < ApplicationController
     trips.each do |trip|
       trips_to_render.push({
         distance: trip.distance,
-        avg_rpm: trip.avg_rpm ,
-        avg_fuel: trip.avg_fuel ,
-        avg_speed: trip.avg_speed ,
-        date: trip.date.strftime('%F') ,
-        user: trip.user.username ,
+        avg_rpm: trip.avg_rpm,
+        avg_fuel: trip.avg_fuel,
+        avg_speed: trip.avg_speed,
+        date: trip.date.strftime('%F'),
+        user: trip.user.username,
         engine_displacement: trip.engine_displacement.disp,
         engine_type: trip.engine_type.eng_type,
         mark: trip.mark
@@ -149,12 +149,12 @@ class TripsController < ApplicationController
     trips.each do |trip|
       trips_to_render.push({
         distance: trip.distance,
-        avg_rpm: trip.avg_rpm ,
-        avg_fuel: trip.avg_fuel ,
-        avg_speed: trip.avg_speed ,
-        date: trip.date.strftime('%F') ,
-        user: trip.user.username ,
-        engine_displacement: trip.engine_displacement.disp ,
+        avg_rpm: trip.avg_rpm,
+        avg_fuel: trip.avg_fuel,
+        avg_speed: trip.avg_speed,
+        date: trip.date.strftime('%F'),
+        user: trip.user.username,
+        engine_displacement: trip.engine_displacement.disp,
         engine_type: trip.engine_type.eng_type,
         mark: trip.mark
         })

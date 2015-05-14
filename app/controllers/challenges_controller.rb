@@ -96,11 +96,11 @@ class ChallengesController < ApplicationController
     trips.each do |trip|
       trips_to_render.push({
         distance: trip.distance,
-        avg_rpm: trip.avg_rpm ,
-        avg_fuel: trip.avg_fuel ,
-        avg_speed: trip.avg_speed ,
-        date: trip.date.strftime('%F') ,
-        user: trip.user.username ,
+        avg_rpm: trip.avg_rpm,
+        avg_fuel: trip.avg_fuel,
+        avg_speed: trip.avg_speed,
+        date: trip.date.strftime('%F'),
+        user: trip.user.username,
         engine_displacement: trip.engine_displacement.disp,
         engine_type: trip.engine_type.eng_type,
         mark: trip.mark
