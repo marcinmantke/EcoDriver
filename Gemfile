@@ -69,4 +69,3 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-rspec'
 end
-
