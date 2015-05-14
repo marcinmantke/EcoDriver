@@ -66,13 +66,13 @@ class TripsController < ApplicationController
 
     results = []
     results.push({
-      engine: engine_type.eng_type,
+                   engine: engine_type.eng_type,
       disp: engine_disp.disp,
       trips_number: trips_number,
       mileage: mileage.round(2),
       avg_fuel: avg_fuel.round(2),
       avg_speed: avg_speed.round(2)
-    })
+                 })
 
     respond_to do |format|
       format.html {  fail ActionController::RoutingError.new('Not Found') }
@@ -93,7 +93,7 @@ class TripsController < ApplicationController
       end
 
       trips_to_render.push({
-        id: trip.id,
+                             id: trip.id,
         distance: trip.distance.round(2),
         avg_rpm: trip.avg_rpm.round(2),
         avg_fuel: trip.avg_fuel.round(2),
@@ -108,7 +108,7 @@ class TripsController < ApplicationController
         path: path,
         mark: trip.mark,
         challenge: trip.challenge
-        })
+                           })
     end
 
     respond_to do |format|
@@ -125,7 +125,7 @@ class TripsController < ApplicationController
     trips_to_render = []
     trips.each do |trip|
       trips_to_render.push({
-        distance: trip.distance,
+                             distance: trip.distance,
         avg_rpm: trip.avg_rpm,
         avg_fuel: trip.avg_fuel,
         avg_speed: trip.avg_speed,
@@ -134,7 +134,7 @@ class TripsController < ApplicationController
         engine_displacement: trip.engine_displacement.disp,
         engine_type: trip.engine_type.eng_type,
         mark: trip.mark
-        })
+                           })
     end
 
     render json: trips_to_render
@@ -148,7 +148,7 @@ class TripsController < ApplicationController
     trips_to_render = []
     trips.each do |trip|
       trips_to_render.push({
-        distance: trip.distance,
+                             distance: trip.distance,
         avg_rpm: trip.avg_rpm,
         avg_fuel: trip.avg_fuel,
         avg_speed: trip.avg_speed,
@@ -157,7 +157,7 @@ class TripsController < ApplicationController
         engine_displacement: trip.engine_displacement.disp,
         engine_type: trip.engine_type.eng_type,
         mark: trip.mark
-        })
+                           })
     end
 
     render json: trips_to_render
