@@ -1,5 +1,4 @@
 class Android::RegistrationsController < Devise::RegistrationsController
-
   def create
     build_resource(sign_up_params)
 
@@ -19,5 +18,4 @@ class Android::RegistrationsController < Devise::RegistrationsController
       format.json { render json: response }
     end
   end
-
 end

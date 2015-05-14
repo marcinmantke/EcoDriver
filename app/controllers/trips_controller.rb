@@ -1,6 +1,5 @@
 # encoding: UTF-8
 class TripsController < ApplicationController
-
   before_action :authenticate_user!
 
   def index
@@ -176,5 +175,4 @@ class TripsController < ApplicationController
       format.json { render json: response }
     end
   end
-
 end

@@ -1,5 +1,4 @@
 class Android::SessionsController < Devise::SessionsController
-
   respond_to :json
 
   def create
