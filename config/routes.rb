@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'mytrips' => 'trips#mytrips'
   get 'whoami' => 'trips#WhoAmI'
 
-  get  'trips/:id', to: 'trips#show'
+  get 'trips/:id', to: 'trips#show'
   post 'trips/by_car_type', to: 'trips#getTripsByCarType'
   post 'trips/by_distance', to: 'trips#getTripsByDistance'
 
@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   post 'challenge/create', to: 'challenges#create'
   get 'challenge/all', to: 'challenges#all'
   post 'challenge/join', to: 'challenges#join'
-  get  'challenge/path/:id', to: 'challenges#showPath'
-  post  'challenge/trips', to: 'challenges#getChallengeTrips'
+  get 'challenge/path/:id', to: 'challenges#showPath'
+  post 'challenge/trips', to: 'challenges#getChallengeTrips'
   post 'challenge/users', to: 'challenges#getAllUsers'
   post 'challenge/invite', to: 'challenges#inviteUser'
 

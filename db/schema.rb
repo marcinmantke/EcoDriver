@@ -13,8 +13,8 @@
 
 ActiveRecord::Schema.define(version: 20150512171934) do
   create_table "challenges", force: true do |t|
-    t.integer  "route_id",    null: false
-    t.date     "finish_date", null: false
+    t.integer "route_id",    null: false
+    t.date "finish_date", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20150512171934) do
   add_index "challenges_users", ["user_id"], name: "index_challenges_users_on_user_id", using: :btree
 
   create_table "check_points", force: true do |t|
-    t.float    "longitude",  limit: 24, null: false
-    t.float    "latitude",   limit: 24, null: false
-    t.integer  "trip_id"
+    t.float "longitude",  limit: 24, null: false
+    t.float "latitude",   limit: 24, null: false
+    t.integer "trip_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,33 +40,33 @@ ActiveRecord::Schema.define(version: 20150512171934) do
   end
 
   create_table "engine_types", force: true do |t|
-    t.string  "eng_type"
+    t.string "eng_type"
     t.integer "gear_up_min"
     t.integer "gear_up_max"
     t.integer "gear_down"
   end
 
   create_table "invitations", force: true do |t|
-    t.integer  "invited_by_id", null: false
-    t.integer  "user_id",       null: false
-    t.integer  "challenge_id",  null: false
+    t.integer "invited_by_id", null: false
+    t.integer "user_id",       null: false
+    t.integer "challenge_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "trips", force: true do |t|
-    t.float    "distance",               limit: 24,                         null: false
-    t.float    "avg_rpm",                limit: 24,                         null: false
-    t.float    "avg_fuel",               limit: 24,                         null: false
+    t.float "distance",               limit: 24,                         null: false
+    t.float "avg_rpm",                limit: 24,                         null: false
+    t.float "avg_fuel",               limit: 24,                         null: false
     t.datetime "date",                                                      null: false
-    t.integer  "user_id"
-    t.integer  "avg_speed",                                                 null: false
-    t.string   "beginning",                                                 null: false
-    t.string   "finish",                                                    null: false
-    t.integer  "challenge_id"
-    t.integer  "engine_type_id"
-    t.integer  "engine_displacement_id"
-    t.decimal  "mark",                              precision: 4, scale: 2
+    t.integer "user_id"
+    t.integer "avg_speed",                                                 null: false
+    t.string "beginning",                                                 null: false
+    t.string "finish",                                                    null: false
+    t.integer "challenge_id"
+    t.integer "engine_type_id"
+    t.integer "engine_displacement_id"
+    t.decimal "mark",                              precision: 4, scale: 2
   end
 
   add_index "trips", ["challenge_id"], name: "index_trips_on_challenge_id", using: :btree
@@ -75,21 +75,21 @@ ActiveRecord::Schema.define(version: 20150512171934) do
   add_index "trips", ["user_id"], name: "index_trips_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string "email",                  default: "", null: false
+    t.string "encrypted_password",     default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username"
-    t.integer  "engine_type_id"
-    t.integer  "engine_displacement_id"
+    t.string "username"
+    t.integer "engine_type_id"
+    t.integer "engine_displacement_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
