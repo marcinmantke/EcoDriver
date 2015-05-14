@@ -58,7 +58,11 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
 
   $scope.joinChallenge = () ->
     Challenge.joinChallenge($scope.choosenChallenge.id).success (data) ->
-      toastr.success('You joined to challenge', 'Success')
+      if(data.status == 1)
+        toastr.error('You already joined this challenge', 'Error')
+      else
+        toastr.success('You joined to challenge', 'Success')
+      console.log(data)
     .error (data) ->
       toastr.error('Please reload page and try again', 'Error')
 

@@ -71,7 +71,7 @@ div ng-if="challengeList"
 div ng-if="!challengeList"
   button.btn.btn-default.navbar-btn.btn-danger style="margin-left: 10px" ng-click="$parent.challengeList=!$parent.challengeList"
     | Back
-  button.btn.btn-success ng-click="joinChallenge()" style="margin-left: 2px"
+  button.btn.btn-success ng-click="joinChallenge()" style="margin-left: 2px" ng-hide="choosenChallenge.is_joined == 1"
     | Join
   input type="text" ng-model="$parent.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="Invite your friends!"
   button.btn.btn-default.navbar-btn.btn-info ng-click="inviteUser()"
