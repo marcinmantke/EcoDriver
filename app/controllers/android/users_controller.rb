@@ -1,6 +1,6 @@
 class Android::UsersController < ApplicationController
 
-before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def updateCarType
     if user_signed_in?
@@ -26,7 +26,7 @@ before_action :authenticate_user!
       })
 
       respond_to do |format|
-          format.html {  raise ActionController::RoutingError.new('Not Found') }
+        format.html {  raise ActionController::RoutingError.new('Not Found') }
           format.json { render json: results }
       end
     end
