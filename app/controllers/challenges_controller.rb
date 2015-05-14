@@ -28,7 +28,7 @@ class ChallengesController < ApplicationController
     challenges.each do |challenge|
       is_joined = 0
       user_challenges.each do |user_challenge|
-        if challenge.id == user_challenge.id
+        if challenge.id == user_challenge.challenge_id
           is_joined = 1
         end
       end
@@ -50,8 +50,13 @@ class ChallengesController < ApplicationController
   def join
     challenge = Challenge.find(params[:challenge_id])
     if challenge != nil
-      relation = ChallengesUser.create(user_id: current_user.id, challenge_id: challenge.id)
-      response = { success: true }
+      joined = ChallengesUser.where(user_id: current_user.id, challenge_id: challenge.id).take
+      if joined == nil
+        relation = ChallengesUser.create(user_id: current_user.id, challenge_id: challenge.id)
+        response = { success: true }
+      else
+        response = { success: false, status: 1} # user already joined to challenge
+      end
     else
       response = { success: false }
     end
