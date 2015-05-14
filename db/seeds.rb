@@ -8,7 +8,7 @@
 
 
 =begin
-EngineType.create(eng_type: 'diesel', gear_up_min: 2000, gear_up_max: 2200, gear_down: 1700) 
+EngineType.create(eng_type: 'diesel', gear_up_min: 2000, gear_up_max: 2200, gear_down: 1700)
 EngineType.create(eng_type: 'gas', gear_up_min: 2300, gear_up_max: 2500, gear_down: 1800)
 EngineType.create(eng_type: 'petrol', gear_up_min: 2300, gear_up_max: 2500, gear_down: 1800)
 

@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :challenges, :through => :challengesuser
   has_many :invitations
 
-  
+
 attr_accessor :login
 
   def self.find_first_by_auth_conditions(warden_conditions)
