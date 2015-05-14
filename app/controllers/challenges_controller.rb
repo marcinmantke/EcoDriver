@@ -82,10 +82,10 @@ class ChallengesController < ApplicationController
     conditions.delete_if {|key,val| val.blank? }
 
     trips = challenge.trips.includes(:engine_type, :engine_displacement)
-      .where(conditions)
-      .references(:engine_types, :engine_displacements)
-      .order(avg_fuel: :asc)
-      .group(:user_id)
+            .where(conditions)
+            .references(:engine_types, :engine_displacements)
+            .order(avg_fuel: :asc)
+            .group(:user_id)
     path = []
     CheckPoint.where(trip: challenge.route).each do |check_point|
       path.push([])
