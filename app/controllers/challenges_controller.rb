@@ -152,5 +152,4 @@ class ChallengesController < ApplicationController
       format.json { render json: response }
     end
   end
-
 end
