@@ -10,7 +10,7 @@ class ChallengesController < ApplicationController
           route: challenge.route,
           finish_date: challenge.finish_date,
           created_by: challenge.route.user.username
-        }}
+        } }
     else
       response = {  :success => false, :data => {} }
     end
@@ -75,8 +75,8 @@ class ChallengesController < ApplicationController
   def getChallengeTrips
     challenge = Challenge.find(params.permit(:id)["id"])
 
-    conditions = {"engine_types.eng_type" => params.permit(:engine_type)["engine_type"],
-      "engine_displacements.disp" => params.permit(:engine_displacement)["engine_displacement"]}
+    conditions = { "engine_types.eng_type" => params.permit(:engine_type)["engine_type"],
+      "engine_displacements.disp" => params.permit(:engine_displacement)["engine_displacement"] }
     conditions.delete_if {|key,val| val.blank? }
 
     trips = challenge.trips.includes(:engine_type, :engine_displacement)

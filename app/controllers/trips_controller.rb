@@ -37,7 +37,7 @@ before_action :authenticate_user!
       response = { :data =>@trip,
                     :success => true }
     rescue Exception => exc
-      response = {:data => exc.message,
+      response = { :data => exc.message,
                     :success => false }
     end
 
@@ -168,7 +168,7 @@ before_action :authenticate_user!
     if user_signed_in?
       response = { :success => true, data: current_user.username }
     else
-      response = {:succsess => false, data: "You have to be logged in."}
+      response = { :succsess => false, data: "You have to be logged in." }
     end
 
     respond_to do |format|
