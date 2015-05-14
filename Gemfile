@@ -66,5 +66,7 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.4.1'
   gem 'simplecov'
   gem 'simplecov-rcov'
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec'
 end
 
