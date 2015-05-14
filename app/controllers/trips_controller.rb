@@ -47,13 +47,11 @@ class TripsController < ApplicationController
   end
 
   def geocoder_wrapper(latlng)
-    begin
-      return Geocoder.search(latlng).first
-    rescue Exception => exc
-      puts exc
-      sleep 1
-      geocoder_wrapper(latlng)
-    end
+    return Geocoder.search(latlng).first
+  rescue Exception => exc
+    puts exc
+    sleep 1
+    geocoder_wrapper(latlng)
   end
 
   def dashboard
@@ -113,7 +111,7 @@ class TripsController < ApplicationController
       end
     end
 
-  def get_trips_by_car_type
+  def all_trips_by_car_type
     trips = Trip.includes(:engine_type, :engine_displacement).where('engine_types.eng_type = ?', params.permit(:engine_type)['engine_type'])
             .where('engine_displacements.disp = ?', params.permit(:engine_displacement)['engine_displacement'])
             .references(:engine_types, :engine_displacements)
@@ -134,7 +132,7 @@ class TripsController < ApplicationController
     render json: trips_to_render
   end
 
-  def get_trips_by_distance
+  def all_trips_by_distance
     trips = Trip.includes(:engine_type, :engine_displacement).where('distance > ?', params.permit(:lower_limit)['lower_limit'])
             .where('distance <= ?', params.permit(:upper_limit)['upper_limit'])
             .references(:engine_types, :engine_displacements).order(:avg_fuel)

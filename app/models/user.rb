@@ -5,10 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :username,
-  presence: true,
-  uniqueness: {
-    case_sensitive: false
-  }
+            presence: true,
+            uniqueness: {
+              case_sensitive: false
+            }
 
   has_many :trips, dependent: :destroy
   belongs_to :engine_type

@@ -2,15 +2,15 @@ class ChallengesController < ApplicationController
   def create
     route = Trip.find(params[:trip_id])
     finish_date = params[:finish_date].to_date
-    if (route.user.id == current_user.id and finish_date > Date.today() and route.challenge == nil)
+    if route.user.id == current_user.id && finish_date > Date.today && route.challenge.nil?
       challenge = Challenge.create(route: route, finish_date: finish_date)
       route.update(challenge: challenge)
       response = {  success: true,
                     data: {
-          route: challenge.route,
-          finish_date: challenge.finish_date,
-          created_by: challenge.route.user.username
-        } }
+                      route: challenge.route,
+                      finish_date: challenge.finish_date,
+                      created_by: challenge.route.user.username
+                    } }
     else
       response = {  success: false, data: {} }
     end
@@ -28,16 +28,14 @@ class ChallengesController < ApplicationController
     challenges.each do |challenge|
       is_joined = 0
       user_challenges.each do |user_challenge|
-        if challenge.id == user_challenge.challenge_id
-          is_joined = 1
-        end
+        is_joined = 1 if challenge.id == user_challenge.id
       end
       challenges_to_show.push(
-              id: challenge.id,
-              route: challenge.route,
-              finish_date: challenge.finish_date,
-              created_by: challenge.route.user.username,
-              is_joined: is_joined)
+        id: challenge.id,
+        route: challenge.route,
+        finish_date: challenge.finish_date,
+        created_by: challenge.route.user.username,
+        is_joined: is_joined)
     end
     respond_to do |format|
       format.html {  fail ActionController::RoutingError.new('Not Found') }
@@ -74,12 +72,12 @@ class ChallengesController < ApplicationController
     end
   end
 
-  def get_challenge_trips
+  def all_challenge_trips
     challenge = Challenge.find(params.permit(:id)['id'])
 
     conditions = { 'engine_types.eng_type' => params.permit(:engine_type)['engine_type'],
                    'engine_displacements.disp' => params.permit(:engine_displacement)['engine_displacement'] }
-    conditions.delete_if {|key,val| val.blank? }
+    conditions.delete_if { |key, val| val.blank? }
 
     trips = challenge.trips.includes(:engine_type, :engine_displacement)
             .where(conditions)
@@ -96,15 +94,16 @@ class ChallengesController < ApplicationController
     response = {}
     trips_to_render = []
     trips.each do |trip|
-      trips_to_render.push( distance: trip.distance,
-                            avg_rpm: trip.avg_rpm,
-                            avg_fuel: trip.avg_fuel,
-                            avg_speed: trip.avg_speed,
-                            date: trip.date.strftime('%F'),
-                            user: trip.user.username,
-                            engine_displacement: trip.engine_displacement.disp,
-                            engine_type: trip.engine_type.eng_type,
-                            mark: trip.mark)
+      trips_to_render.push(distance: trip.distance,
+                           avg_rpm: trip.avg_rpm,
+                           avg_fuel: trip.avg_fuel,
+                           avg_speed: trip.avg_speed,
+                           date: trip.date.strftime('%F'),
+                           user: trip.user.username,
+                           engine_displacement: trip.engine_displacement.disp,
+                           engine_type: trip.engine_type.eng_type,
+                           mark: trip.mark)
+    end
     response = {
       trips: trips_to_render,
       path: path
@@ -113,7 +112,7 @@ class ChallengesController < ApplicationController
     render json: response
   end
 
-  def get_all_users
+  def all_users
     response = User.select(:username)
     respond_to do |format|
       format.html { fail ActionController::RoutingError.new('Not Found') }

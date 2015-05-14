@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get 'whoami' => 'trips#who_am_i'
 
   get 'trips/:id', to: 'trips#show'
-  post 'trips/by_car_type', to: 'trips#get_trips_by_car_type'
-  post 'trips/by_distance', to: 'trips#get_trips_by_distance'
+  post 'trips/by_car_type', to: 'trips#all_trips_by_car_type'
+  post 'trips/by_distance', to: 'trips#all_trips_by_distance'
 
   post 'save_trip', to: 'trips#create'
 
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'challenge/all', to: 'challenges#all'
   post 'challenge/join', to: 'challenges#join'
   get 'challenge/path/:id', to: 'challenges#show_path'
-  post 'challenge/trips', to: 'challenges#get_challenge_trips'
+  post 'challenge/trips', to: 'challenges#all_challenge_trips'
   post 'challenge/users', to: 'challenges#get_all_users'
   post 'challenge/invite', to: 'challenges#invite_user'
 
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       post 'login' => 'sessions#create', :as => 'login'
       delete 'logout' => 'sessions#destroy', :as => 'logout'
       post 'update_car_type' => 'users#update_car_type'
-      post 'get_gear_params' => 'users#get_gear_params'
+      post 'get_gear_params' => 'users#gear_params'
     end
   end
 end
