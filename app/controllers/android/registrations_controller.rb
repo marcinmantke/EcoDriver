@@ -5,12 +5,12 @@ class Android::RegistrationsController < Devise::RegistrationsController
     if resource.save
       sign_in resource
       response = { success: true,
-                      data: resource,
-                      engine_type_id: current_user.engine_type_id,
-                      engine_displacement_id: current_user.engine_displacement_id }
+                   data: resource,
+                   engine_type_id: current_user.engine_type_id,
+                   engine_displacement_id: current_user.engine_displacement_id }
     else
       response = { success: false,
-                    data: resource.errors }
+                   data: resource.errors }
     end
 
     respond_to do |format|

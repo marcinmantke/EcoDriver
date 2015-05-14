@@ -6,7 +6,7 @@ class ChallengesController < ApplicationController
       challenge = Challenge.create(route: route, finish_date: finish_date)
       route.update(challenge: challenge)
       response = {  success: true,
-        data: {
+                    data: {
           route: challenge.route,
           finish_date: challenge.finish_date,
           created_by: challenge.route.user.username
@@ -76,7 +76,7 @@ class ChallengesController < ApplicationController
     challenge = Challenge.find(params.permit(:id)['id'])
 
     conditions = { 'engine_types.eng_type' => params.permit(:engine_type)['engine_type'],
-      'engine_displacements.disp' => params.permit(:engine_displacement)['engine_displacement'] }
+                   'engine_displacements.disp' => params.permit(:engine_displacement)['engine_displacement'] }
     conditions.delete_if {|key,val| val.blank? }
 
     trips = challenge.trips.includes(:engine_type, :engine_displacement)
@@ -96,14 +96,14 @@ class ChallengesController < ApplicationController
     trips.each do |trip|
       trips_to_render.push({
                              distance: trip.distance,
-        avg_rpm: trip.avg_rpm,
-        avg_fuel: trip.avg_fuel,
-        avg_speed: trip.avg_speed,
-        date: trip.date.strftime('%F'),
-        user: trip.user.username,
-        engine_displacement: trip.engine_displacement.disp,
-        engine_type: trip.engine_type.eng_type,
-        mark: trip.mark
+                             avg_rpm: trip.avg_rpm,
+                             avg_fuel: trip.avg_fuel,
+                             avg_speed: trip.avg_speed,
+                             date: trip.date.strftime('%F'),
+                             user: trip.user.username,
+                             engine_displacement: trip.engine_displacement.disp,
+                             engine_type: trip.engine_type.eng_type,
+                             mark: trip.mark
                            })
     end
 
