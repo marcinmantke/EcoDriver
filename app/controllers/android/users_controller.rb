@@ -18,7 +18,7 @@ before_action :authenticate_user!
 
   def getGearParams
     if user_signed_in?
-      results=[]
+      results = []
       results.push({
         gear_up_min: current_user.engine_type.gear_up_min,
         gear_up_max: current_user.engine_type.gear_up_max,
