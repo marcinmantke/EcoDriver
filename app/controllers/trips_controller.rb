@@ -14,8 +14,8 @@ class TripsController < ApplicationController
     begin
       @trip = Trip.new(params.require(:trip).permit(:distance, :avg_rpm, :avg_fuel, :avg_speed, :date, :mark))
 
-      raise ArgumentError, "engine_types can't be empty" if current_user.engine_type_id.nil?
-      raise ArgumentError, "engine_displacements can't be empty" if current_user.engine_displacement_id.nil?
+      fail ArgumentError, "engine_types can't be empty" if current_user.engine_type_id.nil?
+      fail ArgumentError, "engine_displacements can't be empty" if current_user.engine_displacement_id.nil?
 
       @trip.engine_type_id = current_user.engine_type_id
       @trip.engine_displacement_id = current_user.engine_displacement_id
@@ -41,7 +41,7 @@ class TripsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html {  raise ActionController::RoutingError.new('Not Found') }
+      format.html {  fail ActionController::RoutingError.new('Not Found') }
       format.json { render json: response }
     end
   end
@@ -75,7 +75,7 @@ class TripsController < ApplicationController
     })
 
     respond_to do |format|
-      format.html {  raise ActionController::RoutingError.new('Not Found') }
+      format.html {  fail ActionController::RoutingError.new('Not Found') }
       format.json { render json: results }
     end
   end
@@ -112,7 +112,7 @@ class TripsController < ApplicationController
     end
 
     respond_to do |format|
-        format.html {  raise ActionController::RoutingError.new('Not Found') }
+        format.html {  fail ActionController::RoutingError.new('Not Found') }
         format.json { render json: trips_to_render }
       end
     end
@@ -171,7 +171,7 @@ class TripsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html {  raise ActionController::RoutingError.new('Not Found') }
+      format.html {  fail ActionController::RoutingError.new('Not Found') }
       format.json { render json: response }
     end
   end

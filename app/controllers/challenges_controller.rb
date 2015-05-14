@@ -16,7 +16,7 @@ class ChallengesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html {  raise ActionController::RoutingError.new('Not Found') }
+      format.html {  fail ActionController::RoutingError.new('Not Found') }
       format.json { render json: response }
     end
   end
@@ -42,7 +42,7 @@ class ChallengesController < ApplicationController
       })
     end
     respond_to do |format|
-      format.html {  raise ActionController::RoutingError.new('Not Found') }
+      format.html {  fail ActionController::RoutingError.new('Not Found') }
       format.json { render json: challenges_to_show }
     end
   end
@@ -57,7 +57,7 @@ class ChallengesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { raise ActionController::RoutingError.new('Not Found') }
+      format.html { fail ActionController::RoutingError.new('Not Found') }
       format.json { render json: response }
     end
 
@@ -67,7 +67,7 @@ class ChallengesController < ApplicationController
     challenge = Challenge.find(params.permit(:id)['id'])
     path = challenge.route.check_points
     respond_to do |format|
-      format.html { raise ActionController::RoutingError.new('Not Found') }
+      format.html { fail ActionController::RoutingError.new('Not Found') }
       format.json { render json: path }
     end
   end
@@ -118,7 +118,7 @@ class ChallengesController < ApplicationController
   def getAllUsers
     response = User.select(:username)
     respond_to do |format|
-      format.html { raise ActionController::RoutingError.new('Not Found') }
+      format.html { fail ActionController::RoutingError.new('Not Found') }
       format.json { render json: response }
     end
   end
@@ -148,7 +148,7 @@ class ChallengesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { raise ActionController::RoutingError.new('Not Found') }
+      format.html { fail ActionController::RoutingError.new('Not Found') }
       format.json { render json: response }
     end
   end
