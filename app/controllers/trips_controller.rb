@@ -35,7 +35,7 @@ class TripsController < ApplicationController
 
       response = { data: @trip,
                    success: true }
-    rescue Exception => exc
+    rescue StandardError?
       response = { data: exc.message,
                    success: false }
     end
@@ -48,10 +48,9 @@ class TripsController < ApplicationController
 
   def geocoder_wrapper(latlng)
     return Geocoder.search(latlng).first
-  rescue Exception => exc
-    puts exc
+  rescue StandardError
     sleep 1
-    geocoder_wrapper(latlng)
+    return geocoder_wrapper(latlng)
   end
 
   def dashboard
@@ -106,10 +105,10 @@ class TripsController < ApplicationController
     end
 
     respond_to do |format|
-        format.html {  fail ActionController::RoutingError.new('Not Found') }
-        format.json { render json: trips_to_render }
-      end
+      format.html {  fail ActionController::RoutingError.new('Not Found') }
+      format.json { render json: trips_to_render }
     end
+  end
 
   def all_trips_by_car_type
     trips = Trip.includes(:engine_type, :engine_displacement).where('engine_types.eng_type = ?', params.permit(:engine_type)['engine_type'])
