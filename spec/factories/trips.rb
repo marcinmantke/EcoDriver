@@ -7,7 +7,7 @@ FactoryGirl.define do
     date '12.12.2012'
   end
 
-  factory :trip_with_path, class:Hash do
+  factory :trip_with_path, class: Hash do
     distance 100
     avg_rpm 2500
     avg_speed 94
