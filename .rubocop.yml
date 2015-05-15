@@ -1,6 +1,12 @@
 require: rubocop-rspec
 
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+
 Style/Documentation:
   Enabled: false
 Style/RaiseArgs:
+  Enabled: false
+Metrics/MethodLength:
   Enabled: false

@@ -1,4 +1,4 @@
-angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $interval, $timeout, $compile, toastr, Trip, Challenge) ->
+angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $scope, $http, $modal, $interval, $timeout, $compile, toastr, Trip, Challenge) ->
   Trip.getMyTrips().success (data)->
     $scope.trips = []
     for trip in data
@@ -9,8 +9,11 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   Challenge.getChallenges().success (data) ->
     $scope.challenges = data
     $scope.choosenChallenge = $scope.challenges[0]
-  .error (data) ->
-      console.log(data)
+
+  $scope.users = []
+  Challenge.getAllUsers().success (data) ->
+    for user in data
+      $scope.users.push data.username
 
 
   $scope.getTripsByEngineType = ()->
@@ -62,7 +65,6 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
         toastr.error('You already joined this challenge', 'Error')
       else
         toastr.success('You joined to challenge', 'Success')
-      console.log(data)
     .error (data) ->
       toastr.error('Please reload page and try again', 'Error')
 
@@ -74,22 +76,19 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
       focusOpen: false
       onlySelectValid: true
       source: (request, response) ->
-        Challenge.getAllUsers().success (users) ->
-          data = []
-          for user in users
-            data.push user.username
-          data = $scope.autocompleteOption.methods.filter(data, request.term)
-          if !data.length
-            data.push
-              label: 'not found'
-              value: ''
-          response data
+        data = $scope.$parent.users
+        console.log data
+        data = $scope.autocompleteOption.methods.filter(data, request.term)
+        if !data.length
+          data.push
+            label: 'not found'
+            value: ''
+        response data
     methods: {}
 
   $scope.inviteUser = () ->
     Challenge.inviteUser($scope.user, $scope.choosenChallenge.id).success (data) ->
-      console.log data
       if data.success
-        toastr.success(data.msg, 'Success')
+        toastr.success("Invitation has been sent", 'Success')
       else
-        toastr.error(data.msg, 'Error')
+        toastr.error("You have already invited " + $scope.user, 'Error')
