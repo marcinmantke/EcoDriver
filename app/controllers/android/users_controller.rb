@@ -1,19 +1,18 @@
 class Android
   class UsersController < ApplicationController
+    include ControllerUtil
     before_action :authenticate_user!
 
     def update_car_type
       if user_signed_in?
-        current_user.update(params.permit(:engine_type_id, :engine_displacement_id))
+        current_user
+          .update(params.permit(:engine_type_id, :engine_displacement_id))
         response = { success: true }
       else
         response = { success: false }
       end
 
-      respond_to do |format|
-        format.html {  fail ActionController::RoutingError.new('Not Found') }
-        format.json { render json: response }
-      end
+      json_respond_formatter(response)
     end
 
     def gear_params
@@ -23,10 +22,7 @@ class Android
                    gear_up_max: current_user.engine_type.gear_up_max,
                    gear_down: current_user.engine_type.gear_down)
 
-      respond_to do |format|
-        format.html {  fail ActionController::RoutingError.new('Not Found') }
-        format.json { render json: results }
-      end
+      json_respond_formatter(response)
     end
   end
 end

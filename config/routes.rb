@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # Przekierowanie devise na domain/login itp -> usuniecie /users/ z linku
-  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout' }
+  devise_for :users, path: '',
+                     path_names: { sign_in: 'login', sign_out: 'logout' }
 
   # You can have the root of your site routed with "root"
   root 'trips#index'
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
   post 'challenge/join', to: 'challenges#join'
   get 'challenge/path/:id', to: 'challenges#show_path'
   post 'challenge/trips', to: 'challenges#all_challenge_trips'
-  post 'challenge/users', to: 'challenges#get_all_users'
+  post 'challenge/users', to: 'challenges#all_users'
   post 'challenge/invite', to: 'challenges#invite_user'
 
   namespace :android do

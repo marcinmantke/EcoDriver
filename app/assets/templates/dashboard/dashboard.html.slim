@@ -7,33 +7,33 @@
           p
             b Engine displacement:
             br/
-            | {{ dashboard[0].disp }}
+            | {{ dashboard.disp }}
           p 
             b Fuel type:
             br /
-            | {{ dashboard[0].engine }}
+            | {{ dashboard.engine }}
 
         li
           h3 My stats:
           p 
             b Overall mileage:
             br/
-            | {{ dashboard[0].mileage }} km
+            | {{ dashboard.mileage }} km
 
           p
             b Number of trips:
             br/
-            | {{ dashboard[0].trips_number }}
+            | {{ dashboard.trips_number }}
 
           p
             b Average fuel consumption:
             br/
-            | {{ dashboard[0].avg_fuel }} L/100km
+            | {{ dashboard.avg_fuel }} L/100km
 
           p
             b Average speed:
             br/
-            | {{ dashboard[0].avg_speed }} km/h
+            | {{ dashboard.avg_speed }} km/h
 
     .col-md-10
       div.dashboard
