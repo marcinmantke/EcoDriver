@@ -85,7 +85,8 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
 
   $scope.inviteUser = () ->
     Challenge.inviteUser($scope.user, $scope.choosenChallenge.id).success (data) ->
-      if data.success
+      console.log data
+      if data == "true"
         toastr.success("Invitation has been sent", 'Success')
       else
         toastr.error("You have already invited " + $scope.user, 'Error')

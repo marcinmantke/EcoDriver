@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   belongs_to :engine_type
   belongs_to :engine_displacement
 
-  has_many :challenges, through: :challengesuser
+  has_many :challenges_user
+  has_many :challenges, through: :challenges_user
   has_many :invitations
 
   attr_accessor :login
@@ -54,5 +55,14 @@ class User < ActiveRecord::Base
       avg_fuel: trips.average(:avg_fuel).round(2),
       avg_speed: trips.average(:avg_speed).round(2)
     }
+  end
+
+  def invitations_challenges
+    challenges = []
+    invitations.each do |invitation|
+      challenges.push invitation.challenge.to_hash id
+      challenges.last[:invitation_id] = invitation.id
+    end
+    challenges
   end
 end

@@ -79,7 +79,7 @@
                           | Finish
 
         div.challenges
-          h1 Recent challenges
+          h1 Invitations to challenges
           table.table.table-hover 
             thead
               tr
@@ -88,6 +88,8 @@
                 th Distance
                 th Created by
                 th Finish date
+                th
+                th
             tbody
                 tr ng-repeat="challenge in challenges | limitTo: 5"
                   td
@@ -100,6 +102,9 @@
                     | {{challenge.created_by}}
                   td 
                     | {{challenge.finish_date}}
-
-        div.activities
-          h1 Friend's activities
+                  td
+                    button.btn.btn-success ng-click="acceptInvitation(challenge)"
+                      | Accept
+                  td
+                    button.btn.btn-danger ng-click="rejectInvitation(challenge)"
+                      | Reject

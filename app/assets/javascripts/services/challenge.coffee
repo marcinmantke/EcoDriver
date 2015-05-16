@@ -16,3 +16,12 @@ angular.module('EcoApp').factory 'Challenge', ($http) ->
 
   inviteUser: (user, challenge_id) ->
     $http.post('/challenge/invite.json', {user: user, challenge: challenge_id})
+
+  invitations: () ->
+    $http.get('/challenge/invitations.json')
+
+  acceptInvitation: (invitation_id) ->
+    $http.post('/challenge/accept_invitation.json', {invitation_id: invitation_id})
+
+  rejectInvitation: (invitation_id) ->
+    $http.post('/challenge/reject_invitation.json', {invitation_id: invitation_id})

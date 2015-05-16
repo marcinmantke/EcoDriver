@@ -9,7 +9,9 @@ class Invitation < ActiveRecord::Base
       user_id: user_id,
       challenge_id: challenge_id
     )
-    return false unless invitation.nil?
+    return false unless invitation.blank? &&
+                        !User.find(user_id).challenges
+                         .include?(Challenge.find challenge_id)
 
     create(
       invited_by_id: invited_by_id,
