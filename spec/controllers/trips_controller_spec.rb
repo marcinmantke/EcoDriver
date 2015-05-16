@@ -90,13 +90,17 @@ RSpec.describe TripsController, type: :controller do
 
   describe 'GET #mytrips' do
     context 'with valid attributes' do
+      let(:login) { login_user }
+      let(:current_user_id) { login.id }
       it 'renders all user\'s trips as json' do
-        login_user
-        # FactoryGirl.create(:full_trip)
+        FactoryGirl.create(:engine_displacement)
+        FactoryGirl.create(:engine_type)
+        FactoryGirl.create(:full_trip, user_id: current_user_id)
         get :mytrips, format: :json
         expect(response).to be_success
-        # json = JSON.parse(response.body)
-        # expect(json.length).to eq(15)
+        json = JSON.parse(response.body)
+        expect(json).not_to be_empty
+        expect(json[0].length).to eq(18)
       end
     end
   end
