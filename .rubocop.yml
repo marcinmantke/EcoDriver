@@ -3,10 +3,13 @@ require: rubocop-rspec
 AllCops:
   Exclude:
     - 'db/schema.rb'
+    - 'app/controllers/application_controller.rb'
 
 Style/Documentation:
   Enabled: false
 Style/RaiseArgs:
   Enabled: false
-Metrics/MethodLength:
+Style/ClassAndModuleChildren:
   Enabled: false
+Metrics/MethodLength:
+  Max: 15
