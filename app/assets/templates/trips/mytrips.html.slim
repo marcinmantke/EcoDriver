@@ -1,62 +1,48 @@
-container-fluid
-  .row-fluid
-    .col-md-4
-      div.trips_list
-        table.table.table-hover watch="trips"
-          thead
-            tr
-              th style="text-align: center" Date
-              th style="text-align: center" Time
-              th style="text-align: center" Start
-              th style="text-align: center" Finish
-          tbody 
-              tr ng-click="changeChoice($index)" ng-repeat="t in mytrips track by $index"  ng-class="{'selected': choosenTrip == t}" style="cursor: pointer"
-                td style="text-align: center"
-                  | {{t.date}}
-                td style="text-align: center"
-                  | {{t.time}}
-                td style="text-align: center"
-                  | {{t.beginning}}
-                td style="text-align: center"
-                  | {{t.finish}}              
-        
-
-    .col-md-8
-      div.details
-        .row
-          .col-md-2
-            b Distance: 
-            br /
-            | {{ choosenTrip.distance }} km
-
-          .col-md-3
-            b Average fuel consumption: 
-            br /
-            | {{ choosenTrip.avg_fuel }} L/100km
-
-          .col-md-2
-            b Average RPM: 
-            br /
-            | {{ choosenTrip.avg_rpm }} RPM
-
-          .col-md-2
-            b Average speed: 
-            br /
-            | {{ choosenTrip.avg_speed }} km/h
-
-          .col-md-2
-            b Eco mark: 
-            br /
-            | {{ choosenTrip.mark }} pts
-
-        .row.col-md-8         
-            map center="{{choosenTrip.path[0]}}" zoom="{{choosenTrip.map.zoom}}"
-              shape name="polyline" path="{{choosenTrip.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
-              marker id="start" position="{{choosenTrip.path[0]}}" title="Start"
-              info-window visible-on-marker="start"
-                div
-                  | Start
-              marker id="finish" position="{{choosenTrip.path[choosenTrip.path.length-1]}}" title="Finish"
-               info-window visible-on-marker="finish"
-                div
-                  | Finish
+div
+  grid.grid--center
+    scrollable-table.grid__item.six-twelfths watch="trips" ng-style="style(0.6, 0.9)" resize=""
+      table.table.table-hover
+        thead
+          tr
+            th style="text-align: center" Date
+            th style="text-align: center" Time
+            th style="text-align: center" Start
+            th style="text-align: center" Finish
+        tbody 
+            tr ng-click="changeChoice($index)" ng-repeat="t in mytrips track by $index"  ng-class="{'selected': choosenTrip == t}" style="cursor: pointer"
+              td style="text-align: center"
+                | {{t.date}}
+              td style="text-align: center"
+                | {{t.time}}
+              td style="text-align: center"
+                | {{t.beginning}}
+              td style="text-align: center"
+                | {{t.finish}}              
+    .grid__item.five-twelfths      
+      div       
+        map center="{{choosenTrip.path[0]}}" zoom="{{choosenTrip.map.zoom}}" ng-style="style(0.4, 0.5)" resize=""  
+          shape name="polyline" path="{{choosenTrip.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
+          marker id="start" position="{{choosenTrip.path[0]}}" title="Start"
+          info-window visible-on-marker="start"
+            div
+              | Start
+          marker id="finish" position="{{choosenTrip.path[choosenTrip.path.length-1]}}" title="Finish"
+           info-window visible-on-marker="finish"
+            div
+              | Finish
+      .grid__item style="margin-top: 10px; margin-left: 5%; font-size: 18px"
+        div.details ng-style="style(0.5, 0.5)" resize=""
+              b Distance: 
+              | {{ choosenTrip.distance }} km
+              br /
+              b Average fuel consumption: 
+              | {{ choosenTrip.avg_fuel }} L/100km
+              br /
+              b Average RPM: 
+              | {{ choosenTrip.avg_rpm }} RPM
+              br /
+              b Average speed: 
+              | {{ choosenTrip.avg_speed }} km/h
+              br /
+              b Eco mark: 
+              | {{ choosenTrip.mark }} pts
