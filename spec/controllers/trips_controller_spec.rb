@@ -87,4 +87,19 @@ RSpec.describe TripsController, type: :controller do
       end
     end
   end
+
+  describe 'GET #mytrips' do
+    context 'with valid attributes' do
+      it 'renders all user\'s trips as json' do
+        login_user
+        FactoryGirl.create(:full_trip)
+        get :mytrips, format: :json
+        expect(response).to be_success
+        json = JSON.parse(response.body)
+        expect(json.length).to eq(15)
+        #expect(response.body).to eq(({ data: build(:trip, id: 1, date: '2015-05-14', time: '21:23', 
+          #beginning: '', finish: '', user: 'Test_user', engine_type: 'diesel', engine_displacement: '<1.0', path:[], mark: '', challenge: nil), success: true }).to_json)
+      end
+    end
+  end
 end
