@@ -30,7 +30,6 @@ FactoryGirl.define do
     avg_fuel 8.9
     date '2015-05-14T21:23:11.510Z'
     mark 5.0
-    #path [{ 'longitude' => '12.0', 'latitude' => '-48.00312' }, { 'longitude' => '11.0', 'latitude' => '-47.00312' }]
     user_id 1
     beginning 'Start'
     finish 'Finish'
