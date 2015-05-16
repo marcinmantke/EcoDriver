@@ -90,7 +90,7 @@ RSpec.describe TripsController, type: :controller do
 
   describe 'GET #mytrips' do
     context 'with valid attributes' do
-      let(:login) { login_user }
+      let!(:login) { login_user }
       let(:current_user_id) { login.id }
       it 'renders all user\'s trips as json' do
         FactoryGirl.create(:engine_displacement)
@@ -101,6 +101,21 @@ RSpec.describe TripsController, type: :controller do
         json = JSON.parse(response.body)
         expect(json).not_to be_empty
         expect(json[0].length).to eq(18)
+      end
+      it 'renders empty array when user has no trips' do
+        get :mytrips, format: :json
+        expect(response).to be_success
+        json = JSON.parse(response.body)
+        expect(json).to be_empty
+      end
+    end
+    context 'with user not logged in' do
+      it 'redirects to login page' do
+        FactoryGirl.create(:engine_displacement)
+        FactoryGirl.create(:engine_type)
+        FactoryGirl.create(:full_trip)
+        get :mytrips, format: :json
+        expect(response).to have_http_status(401)
       end
     end
   end
