@@ -1,4 +1,4 @@
-angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $scope, $http, $modal, $interval, $timeout, $compile, toastr, Trip, Challenge) ->
+angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $interval, $timeout, $compile, toastr, Trip, Challenge) ->
   Trip.getMyTrips().success (data)->
     $scope.trips = []
     for trip in data
@@ -9,11 +9,6 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $scope, $http, $m
   Challenge.getChallenges().success (data) ->
     $scope.challenges = data
     $scope.choosenChallenge = $scope.challenges[0]
-
-  $scope.users = []
-  Challenge.getAllUsers().success (data) ->
-    for user in data
-      $scope.users.push data.username
 
 
   $scope.getTripsByEngineType = ()->
@@ -76,14 +71,16 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $scope, $http, $m
       focusOpen: false
       onlySelectValid: true
       source: (request, response) ->
-        data = $scope.$parent.users
-        console.log data
-        data = $scope.autocompleteOption.methods.filter(data, request.term)
-        if !data.length
-          data.push
-            label: 'not found'
-            value: ''
-        response data
+        Challenge.getAllUsers().success (users) ->
+          data = []
+          for user in users
+            data.push user.username
+          data = $scope.autocompleteOption.methods.filter(data, request.term)
+          if !data.length
+            data.push
+              label: 'not found'
+              value: ''
+          response data
     methods: {}
 
   $scope.inviteUser = () ->
