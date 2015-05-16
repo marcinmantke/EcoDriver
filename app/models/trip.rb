@@ -19,11 +19,19 @@ class Trip < ActiveRecord::Base
 
   def to_hash
     hash_trip = serializable_hash
-    hash_trip[:date] = date.strftime('%F')
+    hash_trip.merge!(datetime_formatted)
     hash_trip[:user] = user.username
     hash_trip[:engine_displacement] = engine_displacement.disp
     hash_trip[:engine_type] = engine_type.eng_type
     hash_trip
+  end
+
+  def datetime_formatted
+    hash = {
+      date: date.strftime('%F'),
+      time: date.strftime('%R')
+    }
+    hash
   end
 
   def path_formated
