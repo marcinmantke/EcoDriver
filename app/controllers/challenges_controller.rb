@@ -31,7 +31,7 @@ class ChallengesController < ApplicationController
 
   def join
     success =
-      ChallengesUser.create_unique(current_user_id, challenge_id)
+      ChallengesUser.create_unique(current_user.id, params[:challenge_id])
     json_respond_formatter(success)
   end
 
@@ -57,10 +57,10 @@ class ChallengesController < ApplicationController
   end
 
   def invite_user
-    user = User.where(username: params.permit(:user)['user']).first
+    user = User.where(username: params['user']).first
     success = Invitation.create_unique(
       current_user.id, user.id,
-      params.permit(:challenge)['challenge'])
+      params['challenge'])
     json_respond_formatter(success)
   end
 
@@ -78,5 +78,27 @@ class ChallengesController < ApplicationController
     conditions = { 'engine_types.eng_type' => engine_type,
                    'engine_displacements.disp' => engine_displacement }
     conditions.delete_if { |_key, val| val.blank? }
+  end
+
+  def all_invitations
+    json_respond_formatter current_user.invitations_challenges
+  end
+
+  def accept_invitation
+    invite = current_user.invitations.find(params[:invitation_id])
+    response = { success:
+      ChallengesUser.create_unique(current_user.id, invite.challenge_id) }
+    invite.destroy! if response[:success]
+    json_respond_formatter response
+  end
+
+  def reject_invitation
+    invite = current_user.invitations.find(params[:invitation_id])
+    invite.destroy!
+    response = { success: true }
+    json_respond_formatter response
+  rescue StandardError
+    response = { success: false }
+    json_respond_formatter response
   end
 end
