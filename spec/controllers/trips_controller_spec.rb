@@ -100,7 +100,7 @@ RSpec.describe TripsController, type: :controller do
         expect(response).to be_success
         json = JSON.parse(response.body)
         expect(json).not_to be_empty
-        expect(json[0].length).to eq(18)
+        expect(json[0].length).to eq(19)
       end
     end
   end
