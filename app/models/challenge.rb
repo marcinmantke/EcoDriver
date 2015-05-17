@@ -34,5 +34,6 @@ class Challenge < ActiveRecord::Base
 
   def update_route
     route.update(challenge_id: id)
+    ChallengesUser.create_unique(route.user.id, id)
   end
 end
