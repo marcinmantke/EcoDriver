@@ -4,15 +4,15 @@ div
       table.table.table-hover
         thead
           tr
-            th style="text-align: center" Date
-            th style="text-align: center" Time
+            th style="text-align: center; width: 10%" Date
+            th style="text-align: center; width: 10%" Time
             th style="text-align: center" Start
             th style="text-align: center" Finish
         tbody 
             tr ng-click="changeChoice($index)" ng-repeat="t in mytrips track by $index"  ng-class="{'selected': choosenTrip == t}" style="cursor: pointer"
-              td style="text-align: center"
+              td style="text-align: center; width: 10%"
                 | {{t.date}}
-              td style="text-align: center"
+              td style="text-align: center; width: 10%"
                 | {{t.time}}
               td style="text-align: center"
                 | {{t.beginning}}
