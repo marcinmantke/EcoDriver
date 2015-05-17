@@ -82,7 +82,7 @@ html ng-app="EcoApp"
     /! Carousel==================================================
     .container-fill
       div ng-controller="MainPageCtrl" 
-        carousel interval="myInterval" 
+        carousel interval="myInterval"
           slide active="slide.active" ng-repeat=("slide in slides") 
             img ng-src="{{slide.image}}" style="margin: auto;" /
             .carousel-caption
