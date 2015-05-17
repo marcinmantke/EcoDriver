@@ -1,12 +1,10 @@
 # encoding: UTF-8
 class TripsController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:index]
+  before_action :authenticate_user!, except: [:index]
   include ControllerUtil
 
   def index
-    if !user_signed_in?
-      redirect_to "/login"
-    end
+    redirect_to '/login' if user_signed_in?
   end
 
   def show
