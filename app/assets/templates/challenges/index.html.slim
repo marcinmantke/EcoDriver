@@ -20,7 +20,7 @@ div ng-if="challengeList"
               td
                 | {{trip.finish}}
               td
-                | {{trip.avg_fuel}}    
+                | {{trip.avg_fuel}}
     .grid__item.six-twelfths
       map center="{{choosenTrip.path[0]}}" zoom="16" ng-style="style(0.5, 0.9)" resize=""
         shape name="polyline" path="{{choosenTrip.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
@@ -47,6 +47,12 @@ div ng-if="challengeList"
         button.btn.btn-lg.btn-default.navbar-btn.btn-danger style="margin-right: 25px" ng-click="$parent.createView=false"
           | Cancel
   div style="margin-left: 5%; margin-right: 5%" ng-hide="createView"
+    .my-legend
+      .legend-scale
+        ul.legend-labels
+          li
+            span style="background:#B1FFB3;" 
+            | Challenges in which you participate
     table.table.table-hover watch="trips"
       thead
         tr
@@ -56,7 +62,7 @@ div ng-if="challengeList"
           th Created by
           th Finish date
       tbody
-          tr ng-click="changeChoiceChallenge($index)" ng-repeat="challenge in challenges track by $index" ng-class="{'selected': choosenChallenge == challenge}" style="cursor: pointer"
+          tr ng-click="changeChoiceChallenge($index)" ng-repeat="challenge in challenges track by $index" ng-class="{'joined': challenge.is_joined == 1}" style="cursor: pointer"
             td
               | {{challenge.route.beginning}}
             td
@@ -69,15 +75,15 @@ div ng-if="challengeList"
               | {{challenge.finish_date}}
 
 div ng-if="!challengeList"
-  button.btn.btn-default.navbar-btn.btn-danger style="margin-left: 10px" ng-click="$parent.challengeList=!$parent.challengeList"
+  button.btn.btn-danger style="margin-left: 10px" ng-click="$parent.challengeList=!$parent.challengeList"
     | Back
   button.btn.btn-success ng-click="joinChallenge()" style="margin-left: 2px" ng-hide="choosenChallenge.is_joined == 1"
     | Join
   input type="text" ng-model="$parent.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="Invite your friends!"
-  button.btn.btn-default.navbar-btn.btn-info ng-click="inviteUser()"
+  button.btn.btn-info ng-click="inviteUser()"
     | Invite
 
-  map center="{{challengePath[0]}}" zoom="14" ng-style="style(0.4, 0.4)" resize="" style="margin-left: auto; margin-right: auto"
+  map center="{{challengePath[0]}}" zoom="14" ng-style="style(0.4, 0.35)" resize="" style="margin-left: auto; margin-right: auto"
     shape name="polyline" path="{{challengePath}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
     marker id="finish" position="{{challengePath[challengePath.length-1]}}" title="Finish"
       info-window visible-on-marker="finish"
@@ -87,7 +93,7 @@ div ng-if="!challengeList"
       info-window visible-on-marker="start"
         div
           | Start
-  .grid
+  .grid  ng-style="style(1, 0.1)" resize=""
     .grid__item.two-twelfths.grid--left
       .sidebar__menu
         .sidebar__menu__header
