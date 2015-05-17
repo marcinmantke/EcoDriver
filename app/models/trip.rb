@@ -25,6 +25,7 @@ class Trip < ActiveRecord::Base
     hash_trip[:user] = user.username
     hash_trip[:engine_displacement] = engine_displacement.disp
     hash_trip[:engine_type] = engine_type.eng_type
+    hash_trip[:distance] = distance.round(2)
     hash_trip
   end
 
