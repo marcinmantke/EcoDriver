@@ -17,6 +17,7 @@ class TripsController < ApplicationController
                                                   :avg_rpm,
                                                   :avg_fuel,
                                                   :avg_speed,
+                                                  :challenge_id,
                                                   :date, :mark))
     json_respond_formatter fill_and_save params[:trip][:path]
   rescue StandardError

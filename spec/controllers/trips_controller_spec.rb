@@ -86,6 +86,13 @@ RSpec.describe TripsController, type: :controller do
         expect(JSON.parse(response.body)['success']).to eq(false)
       end
     end
+    context 'with challenge_id' do
+      it 'create ChallengeUser record' do
+        login_user
+        post :create, trip: attributes_for(:trip_with_challenge), format: :json
+        expect(ChallengesUser.count).to eq(1)
+      end
+    end
   end
 
   describe 'GET #mytrips' do

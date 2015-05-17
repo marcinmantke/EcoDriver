@@ -5,6 +5,8 @@ class Trip < ActiveRecord::Base
   has_many :check_points
   belongs_to :challenge
 
+  after_create :match_with_challenge
+
   def self.all_by_condition(condition)
     hash_trips = []
     trips = Trip.all.includes(:engine_type, :engine_displacement)
@@ -42,5 +44,9 @@ class Trip < ActiveRecord::Base
       path.last.push(check_point['longitude'])
     end
     path
+  end
+
+  def match_with_challenge
+    ChallengesUser.create_unique(user.id, id) unless challenge_id.nil?
   end
 end
