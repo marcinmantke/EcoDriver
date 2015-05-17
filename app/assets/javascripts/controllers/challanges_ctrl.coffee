@@ -50,13 +50,13 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
     Challenge.createChallenge($scope.choosenTrip.id, $scope.calendar.date).success (data) ->
       if data.success
         $scope.challenges.unshift(data.data)
+        $scope.trips.splice($scope.choosenTrip, 1)
         toastr.success('Challenge created', 'Success')
       else
         toastr.error('Please reload page and try again', 'Error')
 
   $scope.joinChallenge = () ->
     Challenge.joinChallenge($scope.choosenChallenge.id).success (data) ->
-      console.log $scope.choosenChallenge
       if(data.success)
         $scope.choosenChallenge.is_joined = 1
         toastr.success('You joined to challenge', 'Success')
@@ -87,7 +87,6 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
 
   $scope.inviteUser = () ->
     Challenge.inviteUser($scope.user, $scope.choosenChallenge.id).success (data) ->
-      console.log data
       if data == "true"
         toastr.success("Invitation has been sent", 'Success')
       else
