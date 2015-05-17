@@ -8,13 +8,13 @@ html ng-app="EcoApp"
     = csrf_meta_tags
   body
     .navbar.navbar-default
-      ul.navbar-header
+      ul.nav-justified
         button.navbar-toggle data-target=".navbar-responsive-collapse" data-toggle="collapse" type="button" 
           span.icon-bar
           span.icon-bar
           span.icon-bar
         a.navbar-brand href="/#/dashboard"
-          img alt="EcoDriver" src="/assets/logo1_1024.png" height="100%" /
+          img alt="EcoDriver" src="/assets/logoa.png" height="40px" /
       .navbar-collapse.collapse.navbar-responsive-collapse ng-controller="NavbarCtrl" 
         ul.nav.navbar-nav
           li ng-class="{active:isActive('/dashboard')}"
