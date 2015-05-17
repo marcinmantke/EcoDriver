@@ -92,6 +92,12 @@ RSpec.describe TripsController, type: :controller do
         post :create, trip: attributes_for(:trip_with_challenge), format: :json
         expect(ChallengesUser.count).to eq(1)
       end
+      it 'create only one ChallengeUser record' do
+        login_user
+        post :create, trip: attributes_for(:trip_with_challenge), format: :json
+        post :create, trip: attributes_for(:trip_with_challenge), format: :json
+        expect(ChallengesUser.count).to eq(1)
+      end
     end
   end
 
