@@ -2,6 +2,7 @@ div ng-if="challengeList"
   div ng-init="createView=false"
     button.btn.btn-default.navbar-btn.btn-info style="margin-left: 10px" ng-click="createView=!createView" ng-show="!createView"
       | Create challenge
+    input style="height: 34px; margin-left: 4px" placeholder=" country, city or street..." ng-model="search.route"
   div.grid.grid--center ng-if="createView"
     scrollable-table.grid__item.five-twelfths watch="trips" ng-style="style(0.5, 0.9)" resize=""
       table.table.table-hover 
@@ -62,7 +63,7 @@ div ng-if="challengeList"
           th Created by
           th Finish date
       tbody
-          tr ng-click="changeChoiceChallenge($index)" ng-repeat="challenge in challenges track by $index" ng-class="{'joined': challenge.is_joined == 1}" style="cursor: pointer"
+          tr ng-click="changeChoiceChallenge($index)" ng-repeat="challenge in challenges | filter:search:strict" ng-class="{'joined': challenge.is_joined == 1}" style="cursor: pointer"
             td
               | {{challenge.route.beginning}}
             td
