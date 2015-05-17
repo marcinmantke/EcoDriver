@@ -22,11 +22,18 @@ class Trip < ActiveRecord::Base
   def to_hash
     hash_trip = serializable_hash
     hash_trip.merge!(datetime_formatted)
+    hash_trip.merge!(engine_info)
     hash_trip[:user] = user.username
-    hash_trip[:engine_displacement] = engine_displacement.disp
-    hash_trip[:engine_type] = engine_type.eng_type
     hash_trip[:distance] = distance.round(2)
     hash_trip
+  end
+
+  def engine_info
+    hash = {
+      engine_displacement: engine_displacement.disp,
+      engine_type: engine_type.eng_type
+    }
+    hash
   end
 
   def datetime_formatted
