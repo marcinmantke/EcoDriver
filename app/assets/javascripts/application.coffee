@@ -13,12 +13,12 @@
 #= require_self
 #= require jquery
 #= require angular
-#= require angular-rails-templates
 #= require angular-ui-bootstrap-bower
+#= require bootstrap-css
+#= require angular-rails-templates
 #= require jquery-ui
 #= require ui-autocomplete
-#= require bootstrap-css
-#= require angular-animate
+
 #= require angular-toastr
 #= require lodash
 #= require ngmap
