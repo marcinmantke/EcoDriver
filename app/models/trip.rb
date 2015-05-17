@@ -47,6 +47,6 @@ class Trip < ActiveRecord::Base
   end
 
   def match_with_challenge
-    ChallengesUser.create_unique(user.id, id) unless challenge_id.nil?
+    ChallengesUser.create_unique(user.id, challenge_id) unless challenge_id.nil?
   end
 end
