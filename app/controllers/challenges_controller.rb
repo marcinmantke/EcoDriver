@@ -30,9 +30,10 @@ class ChallengesController < ApplicationController
   end
 
   def join
-    success =
+    response = { success:
       ChallengesUser.create_unique(current_user.id, params[:challenge_id])
-    json_respond_formatter(success)
+    }
+    json_respond_formatter(response)
   end
 
   def show_path

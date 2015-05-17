@@ -27,7 +27,7 @@ class Challenge < ActiveRecord::Base
 
   def joined?(user_id)
     user_challenges = ChallengesUser.select(:challenge_id)
-                      .where(user_id: user_id)
+                      .where(user_id: user_id).collect(&:challenge_id)
     return 1 if user_challenges.include?(id)
     0
   end
