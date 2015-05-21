@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   get 'whoami' => 'trips#who_am_i'
 
   get 'trips/:id', to: 'trips#show'
-  post 'trips/by_car_type', to: 'trips#all_trips_by_car_type'
-  post 'trips/by_distance', to: 'trips#all_trips_by_distance'
+  post 'trips/ranking', to: 'trips#ranking'
 
   post 'save_trip', to: 'trips#create'
 
@@ -35,6 +34,7 @@ Rails.application.routes.draw do
       delete 'logout' => 'sessions#destroy', :as => 'logout'
       post 'update_car_type' => 'users#update_car_type'
       post 'get_gear_params' => 'users#gear_params'
+      get 'engine_params' => 'users#engine_params'
     end
   end
 end

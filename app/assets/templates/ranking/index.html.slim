@@ -1,144 +1,61 @@
 div
-  tabset justified="true"
-    tab heading=("By Distance")
-      .grid  ng-style="style(1, 0.1)" resize=""
-        .grid__item.two-twelfths.grid--left
-          .sidebar__menu
-            .sidebar__menu__header
-              | Distance range
-            div class="btn-group-vertical btn-group-lg" style="width: 100%" 
-              .label class="btn btn-success" ng-model="$parent.radioModel" btn-radio="'0-10'" uncheckable="" ng-change="getTripsByDistance()"
-                | <10km
-              .label class="btn btn-success" ng-model="$parent.radioModel" btn-radio="'10-30'" uncheckable="" ng-change="getTripsByDistance()"
-                | 10-30km
-              .label class="btn btn-success" ng-model="$parent.radioModel" btn-radio="'30-60'" uncheckable="" ng-change="getTripsByDistance()"
-                | 30-60km
-              .label class="btn btn-success" ng-model="$parent.radioModel" btn-radio="'60-100'" uncheckable="" g-change="getTripsByDistance()"
-                | 60-100km
-              .label class="btn btn-success" ng-model="$parent.radioModel" btn-radio="'100-200'" uncheckable="" ng-change="getTripsByDistance()"
-                | 100-200km
-              .label class="btn btn-success" ng-model="$parent.radioModel" btn-radio="'200-400'" uncheckable="" ng-change="getTripsByDistance()"
-                | 200-400km
-              .label class="btn btn-success" ng-model="$parent.radioModel" btn-radio="'400-999999999'" uncheckable="" ng-change="getTripsByDistance()"
-                | 400km<
-        .grid__item.nine-twelfths.grid--right
-          table.table.table-hover style="width: 100%; margin-left: 4%"
-            thead
-              tr
-                th style="text-align: center"
-                  | #
-                th style="text-align: center"
-                  | User
-                th style="text-align: center"
-                  | Distance
-                th style="text-align: center"
-                  | Average fuel consumption
-                th style="text-align: center"
-                  | Average speed
-                th style="text-align: center"
-                  | Average RPM
-                th style="text-align: center"
-                  | Engine Type
-                th style="text-align: center"
-                  | Engine Displacement
-                th style="text-align: center"
-                  | Gears change rating
-                th style="text-align: center"
-                  | Date
-            tbody 
-              tr ng-repeat="t in tripsByDistance"
-                td  style="text-align: center"
-                  | {{$index+1}}
-                td style="text-align: center"
-                  | {{t.user}}
-                td style="text-align: center"
-                  | {{t.distance}}
-                td style="text-align: center"
-                  | {{t.avg_fuel}}
-                td style="text-align: center"
-                  | {{t.avg_speed}}
-                td style="text-align: center"
-                  | {{t.avg_rpm}}
-                td style="text-align: center"
-                  | {{t.engine_type}}
-                td style="text-align: center"
-                  | {{t.engine_displacement}}
-                td style="text-align: center"
-                  | {{t.mark}}
-                td style="text-align: center"
-                  | {{t.date}}
+  div style="margin-left: 5%"
+    ui-select.combobox ng-model="distanceSelected" theme="bootstrap" on-select="setDistanceRange($select.selected.value)"
+      ui-select-match placeholder=("Select a distance range...")
+        | {{$select.selected.display}}
+      ui-select-choices repeat=("distanceRange in distanceRanges")
+        | {{distanceRange.display}}
 
-    tab heading=("By Engine Type")
-      .grid  ng-style="style(1, 0.1)" resize=""
-        .grid__item.two-twelfths.grid--left
-          .sidebar__menu
-            .sidebar__menu__header
-              | Fuel type
-            div class="btn-group-vertical btn-group-lg" style="width: 100%" 
-              .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'petrol'" uncheckable="" ng-change="getTripsByEngineType()"
-                | petrol
-              .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'diesel'" uncheckable="" ng-change="getTripsByEngineType()"
-                | diesel
-              .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'gas'" uncheckable="" ng-change="getTripsByEngineType()"
-                | gas
-            .sidebar__menu__header
-              | Displacment
-            div class="btn-group-vertical btn-group-lg" style="width: 100% ; margin-bottom: 10px" 
-              .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'<1.0'" uncheckable="" ng-change="getTripsByEngineType()"
-                | <1.0l
-              .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.0-1.5'" uncheckable="" ng-change="getTripsByEngineType()"
-                | 1.0-1.5l
-              .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.6-2.0'" uncheckable="" ng-change="getTripsByEngineType()"
-                | 1.6-2.0l
-              .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.1-2.5'" uncheckable="" ng-change="getTripsByEngineType()"
-                | 2.1-2.5l
-              .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.6-3.0'" uncheckable="" ng-change="getTripsByEngineType()"
-                | 2.6-3.0l
-              .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'>3.0'" uncheckable="" ng-change="getTripsByEngineType()"
-                | 3.0l<
-        .grid__item.nine-twelfths.grid--right
-          table.table.table-hover style="width: 100%; margin-left: 4%"
-            thead
-              tr
-                th style="text-align: center"
-                  | #
-                th style="text-align: center"
-                  | User
-                th style="text-align: center"
-                  | Distance
-                th style="text-align: center"
-                  | Average fuel consumption
-                th style="text-align: center"
-                  | Average speed
-                th style="text-align: center"
-                  | Average RPM
-                th style="text-align: center"
-                  | Engine Type
-                th style="text-align: center"
-                  | Engine Displacement
-                th style="text-align: center"
-                  | Gears change rating
-                th style="text-align: center"
-                  | Date
-            tbody 
-              tr ng-repeat="t in tripsByType"
-                td  style="text-align: center"
-                  | {{$index+1}}
-                td style="text-align: center"
-                  | {{t.user}}
-                td style="text-align: center"
-                  | {{t.distance}}
-                td style="text-align: center"
-                  | {{t.avg_fuel}}
-                td style="text-align: center"
-                  | {{t.avg_speed}}
-                td style="text-align: center"
-                  | {{t.avg_rpm}}
-                td style="text-align: center"
-                  | {{t.engine_type}}
-                td style="text-align: center"
-                  | {{t.engine_displacement}}
-                td style="text-align: center"
-                  | {{t.mark}}
-                td style="text-align: center"
-                  | {{t.date}}
+    ui-select.combobox ng-model="engineDisplacementSelected" theme="bootstrap" on-select="setEngineDisplacement($select.selected)"
+      ui-select-match placeholder=("Select an engine displacement...")
+        | {{$select.selected}}
+      ui-select-choices repeat=("engineDisplacement in engineDisplacements")
+        | {{engineDisplacement}}l
+
+    ui-select.combobox ng-model="engineTypeSelected" theme="bootstrap" on-select="setEngineTypes($select.selected)"
+      ui-select-match placeholder=("Select an engine type...")
+        | {{$select.selected}}l
+      ui-select-choices repeat=("engineType in engineTypes")
+        | {{engineType}}
+        
+  table.table.table-hover style="width: 100%; margin-left: 4%"
+    thead
+      tr
+        th style="text-align: center"
+          | #
+        th style="text-align: center"
+          | User
+        th style="text-align: center"
+          | Distance
+        th style="text-align: center"
+          | Average fuel consumption
+        th style="text-align: center"
+          | Average speed
+        th style="text-align: center"
+          | Average RPM
+        th style="text-align: center"
+          | Engine Type
+        th style="text-align: center"
+          | Engine Displacement
+        th style="text-align: center"
+          | Gears change rating
+    tbody 
+      tr ng-repeat="t in trips"
+        td  style="text-align: center"
+          | {{$index+1}}
+        td style="text-align: center"
+          | {{t.user}}
+        td style="text-align: center"
+          | {{t.distance}}
+        td style="text-align: center"
+          | {{t.avg_fuel}}
+        td style="text-align: center"
+          | {{t.avg_speed}}
+        td style="text-align: center"
+          | {{t.avg_rpm}}
+        td style="text-align: center"
+          | {{t.engine_type}}
+        td style="text-align: center"
+          | {{t.engine_displacement}}
+        td style="text-align: center"
+          | {{t.mark}}

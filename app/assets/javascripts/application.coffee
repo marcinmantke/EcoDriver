@@ -18,7 +18,7 @@
 #= require angular-rails-templates
 #= require jquery-ui
 #= require ui-autocomplete
-
+#= require angular-ui-select
 #= require angular-toastr
 #= require lodash
 #= require ngmap

@@ -40,7 +40,7 @@ gem 'rails-assets-lodash'
 gem 'rails-assets-ui-autocomplete'
 gem 'rails-assets-jquery-ui'
 gem 'rails-assets-angular-toastr', '~> 0.4.0'
-
+gem 'rails-assets-angular-ui-select'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

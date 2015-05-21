@@ -112,6 +112,8 @@ GEM
       rails-assets-angular (>= 1, < 1.3.0)
     rails-assets-angular-ui-router (0.2.14)
       rails-assets-angular (>= 1.0.8)
+    rails-assets-angular-ui-select (0.11.2)
+      rails-assets-angular (>= 1.2.18)
     rails-assets-bootstrap-css (3.2.0)
     rails-assets-csswizardry-grids (2.2.0)
     rails-assets-jquery (2.1.4)
@@ -230,6 +232,7 @@ DEPENDENCIES
   rails-assets-angular-toastr (~> 0.4.0)
   rails-assets-angular-ui-bootstrap-bower (~> 0.12.1)
   rails-assets-angular-ui-router (~> 0.2.13)
+  rails-assets-angular-ui-select
   rails-assets-bootstrap-css (~> 3.2.0)
   rails-assets-csswizardry-grids (~> 2.2.0)
   rails-assets-jquery-ui
