@@ -12,12 +12,12 @@ angular.module('EcoApp').controller 'RankingCtrl', ($http, $scope, Trip)->
   $scope.getRankingTrips = ()->
     Trip.ranking($scope.engineType, $scope.engineDisplacement, $scope.limits[0], $scope.limits[1]).success (data)->
       $scope.trips = data
-      console.log data
 
   $scope.setDistanceRange = (distanceRange) ->
     $scope.distanceRange = distanceRange
-    $scope.limits = distanceRange.split("-")
-    $scope.getRankingTrips()
+    if distanceRange
+      $scope.limits = distanceRange.split("-")
+      $scope.getRankingTrips()
 
   $scope.setEngineType = (engineType) ->
     $scope.engineType = engineType

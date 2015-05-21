@@ -1,22 +1,22 @@
 div
   div style="margin-left: 5%"
     ui-select.combobox ng-model="distanceSelected" theme="bootstrap" on-select="setDistanceRange($select.selected.value)"
-      ui-select-match placeholder=("Select a distance range...")
+      ui-select-match allow-clear="" placeholder=("Select a distance range...")
         | {{$select.selected.display}}
       ui-select-choices repeat=("distanceRange in distanceRanges")
         | {{distanceRange.display}}
 
-    ui-select.combobox ng-model="engineDisplacementSelected" theme="bootstrap" on-select="setEngineDisplacement($select.selected)"
-      ui-select-match placeholder=("Select an engine displacement...")
-        | {{$select.selected}}
+    ui-select.combobox ng-model="engineDisplacementSelected" theme="bootstrap" on-select="setEngineDisplacement($select.selected.disp)"
+      ui-select-match allow-clear="" placeholder=("Select an engine displacement...")
+        | {{$select.selected.disp}}
       ui-select-choices repeat=("engineDisplacement in engineDisplacements")
-        | {{engineDisplacement}}l
+        | {{engineDisplacement.disp}}l
 
-    ui-select.combobox ng-model="engineTypeSelected" theme="bootstrap" on-select="setEngineType($select.selected)"
-      ui-select-match placeholder=("Select an engine type...")
-        | {{$select.selected}}
+    ui-select.combobox ng-model="engineTypeSelected" theme="bootstrap" on-select="setEngineType($select.selected.eng_type)"
+      ui-select-match allow-clear="" placeholder=("Select an engine type...")
+        | {{$select.selected.eng_type}}
       ui-select-choices repeat=("engineType in engineTypes")
-        | {{engineType}}
+        | {{engineType.eng_type}}
         
   table.table.table-hover style="width: 100%; margin-left: 4%"
     thead
