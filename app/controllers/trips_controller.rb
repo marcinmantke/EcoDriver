@@ -81,11 +81,10 @@ class TripsController < ApplicationController
   end
 
   def prepare_condition(engine_type, engine_displacement, lower_limit, upper_limit)
-    conditions = ''
-    conditions << "engine_type = #{engine_type}" unless engine_type.nil?
-    conditions << "engine_displacements.disp = '#{engine_displacement}'" unless engine_displacement.nil?
-    conditions << "SUM(distance) > #{lower_limit}" unless lower_limit.nil?
-    conditions << "SUM(distance) <= #{upper_limit}" unless upper_limit.nil?
+    conditions = []
+    conditions.push "engine_types.eng_type = '#{engine_type}'" unless engine_type.nil?
+    conditions.push "engine_displacements.disp = '#{engine_displacement}'" unless engine_displacement.nil?
+    conditions.push "SUM(distance) > #{lower_limit} AND SUM(distance) <= #{upper_limit}" unless lower_limit.nil? && upper_limit.nil?
     conditions
   end
 
