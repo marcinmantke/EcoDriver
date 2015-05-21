@@ -74,17 +74,25 @@ class TripsController < ApplicationController
 
   def ranking
     conditions = prepare_condition(params[:engine_type],
-                                       params[:engine_displacement],
-                                       params[:lower_limit],
-                                       params[:upper_limit])
+                                   params[:engine_displacement],
+                                   params[:lower_limit],
+                                   params[:upper_limit])
     json_respond_formatter(Trip.ranking(conditions))
   end
 
-  def prepare_condition(engine_type, engine_displacement, lower_limit, upper_limit)
+  def prepare_condition(engine_type, engine_displacement,
+    lower_limit, upper_limit)
     conditions = []
-    conditions.push "engine_types.eng_type = '#{engine_type}'" unless engine_type.nil?
-    conditions.push "engine_displacements.disp = '#{engine_displacement}'" unless engine_displacement.nil?
-    conditions.push "SUM(distance) > #{lower_limit} AND SUM(distance) <= #{upper_limit}" unless lower_limit.nil? && upper_limit.nil?
+    unless engine_type.nil?
+      conditions.push "engine_types.eng_type = '#{engine_type}'"
+    end
+    unless engine_displacement.nil?
+      conditions.push "engine_displacements.disp = '#{engine_displacement}'"
+    end
+    unless lower_limit.nil? && upper_limit.nil?
+      conditions.push "SUM(distance) > #{lower_limit} AND
+        SUM(distance) <= #{upper_limit}"
+    end
     conditions
   end
 
