@@ -1,4 +1,4 @@
-angular.module('EcoApp').controller 'RankingCtrl', ($http, $scope, Trip)->
+angular.module('EcoApp').controller 'RankingCtrl', ($http, $scope, Trip, Challenge)->
   $scope.limits = []
   $scope.limits[0] = null
   $scope.limits[1] = null
@@ -39,3 +39,21 @@ angular.module('EcoApp').controller 'RankingCtrl', ($http, $scope, Trip)->
   ]
 
   $scope.getRankingTrips()
+
+  $scope.autocompleteOption =
+    options:
+      html: true
+      focusOpen: false
+      onlySelectValid: true
+      source: (request, response) ->
+        Challenge.getAllUsers().success (users) ->
+          data = []
+          for user in users
+            data.push user.username
+          data = $scope.autocompleteOption.methods.filter(data, request.term)
+          if !data.length
+            data.push
+              label: 'not found'
+              value: ''
+          response data
+    methods: {}
