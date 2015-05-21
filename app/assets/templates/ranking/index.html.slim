@@ -1,5 +1,5 @@
-div
-  div style="margin-left: 5%"
+div style="margin-left: 15px;margin-right: 15px"  
+  div 
     ui-select.combobox ng-model="distanceSelected" theme="bootstrap" on-select="setDistanceRange($select.selected.value)"
       ui-select-match allow-clear="" placeholder=("Select a distance range...")
         | {{$select.selected.display}}
@@ -17,45 +17,46 @@ div
         | {{$select.selected.eng_type}}
       ui-select-choices repeat=("engineType in engineTypes")
         | {{engineType.eng_type}}
-        
-  table.table.table-hover style="width: 100%; margin-left: 4%"
-    thead
-      tr
-        th style="text-align: center"
-          | #
-        th style="text-align: center"
-          | User
-        th style="text-align: center"
-          | Distance
-        th style="text-align: center"
-          | Average fuel consumption
-        th style="text-align: center"
-          | Average speed
-        th style="text-align: center"
-          | Average RPM
-        th style="text-align: center"
-          | Engine Type
-        th style="text-align: center"
-          | Engine Displacement
-        th style="text-align: center"
-          | Gears change rating
-    tbody 
-      tr ng-repeat="t in trips"
-        td  style="text-align: center"
-          | {{$index+1}}
-        td style="text-align: center"
-          | {{t.user}}
-        td style="text-align: center"
-          | {{t.distance}}
-        td style="text-align: center"
-          | {{t.avg_fuel}}
-        td style="text-align: center"
-          | {{t.avg_speed}}
-        td style="text-align: center"
-          | {{t.avg_rpm}}
-        td style="text-align: center"
-          | {{t.engine_type}}
-        td style="text-align: center"
-          | {{t.engine_displacement}}
-        td style="text-align: center"
-          | {{t.mark}}
+  
+  div
+    table.table.table-hover
+      thead
+        tr
+          th style="text-align: center"
+            | #
+          th style="text-align: center"
+            | User
+          th style="text-align: center"
+            | Distance
+          th style="text-align: center"
+            | Average speed
+          th style="text-align: center"
+            | Average RPM
+          th style="text-align: center"
+            | Engine Type
+          th style="text-align: center"
+            | Engine Displacement
+          th style="text-align: center"
+            | Gears change rating
+          th style="text-align: center"
+            | Average fuel consumption
+      tbody 
+        tr ng-repeat="t in trips"
+          td  style="text-align: center"
+            | {{$index+1}}
+          td style="text-align: center"
+            | {{t.user}}
+          td style="text-align: center"
+            | {{t.distance}}
+          td style="text-align: center"
+            | {{t.avg_speed}}
+          td style="text-align: center"
+            | {{t.avg_rpm}}
+          td style="text-align: center"
+            | {{t.engine_type}}
+          td style="text-align: center"
+            | {{t.engine_displacement}}
+          td style="text-align: center"
+            | {{t.mark}}
+          td style="text-align: center"
+            | {{t.avg_fuel}}
