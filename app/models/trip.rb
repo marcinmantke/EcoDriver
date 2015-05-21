@@ -19,6 +19,26 @@ class Trip < ActiveRecord::Base
     hash_trips
   end
 
+  def self.ranking(condition)
+    hash_trips = []
+    trips = Trip.group(:engine_type_id)
+            .group(:engine_displacement_id)
+            .group(:user_id)
+            .select('AVG(avg_fuel) as avg_fuel, AVG(avg_speed) as avg_speed, AVG(avg_rpm) as avg_rpm, SUM(distance) as distance, AVG(mark) as mark, user_id, engine_type_id, engine_displacement_id')
+            .includes(:engine_displacement, :engine_type)
+            .having(condition)
+            .order(avg_fuel: :asc)
+            .references(:engine_displacement, :engine_type)
+
+    trips.each do |trip|
+      hash_trips.push trip.serializable_hash
+      hash_trips.last[:engine_displacement] = trip.engine_displacement.disp
+      hash_trips.last[:engine_type] = trip.engine_type.eng_type
+      hash_trips.last[:user] = trip.user.username
+    end     
+    hash_trips
+  end
+
   def to_hash
     hash_trip = serializable_hash
     hash_trip.merge!(datetime_formatted)

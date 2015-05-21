@@ -72,25 +72,21 @@ class TripsController < ApplicationController
     json_respond_formatter(current_user.formatted_trips)
   end
 
-  def all_trips_by_car_type
-    conditions = prepare_condition_eng(params[:engine_type],
-                                       params[:engine_displacement])
-    json_respond_formatter(Trip.all_by_condition(conditions))
+  def ranking
+    conditions = prepare_condition(params[:engine_type],
+                                       params[:engine_displacement],
+                                       params[:lower_limit],
+                                       params[:upper_limit])
+    json_respond_formatter(Trip.ranking(conditions))
   end
 
-  def all_trips_by_distance
-    unless params[:lower_limit].nil? && params[:upper_limit].nil?
-      conditions =
-        "distance > #{params['lower_limit']}
-        AND distance <= #{params['upper_limit']}"
-    end
-    json_respond_formatter(Trip.all_by_condition(conditions))
-  end
-
-  def prepare_condition_eng(engine_type, engine_displacement)
-    conditions = { 'engine_types.eng_type' => engine_type,
-                   'engine_displacements.disp' => engine_displacement }
-    conditions.delete_if { |_key, val| val.blank? }
+  def prepare_condition(engine_type, engine_displacement, lower_limit, upper_limit)
+    conditions = ''
+    conditions << "engine_type = #{engine_type}" unless engine_type.nil?
+    conditions << "engine_displacements.disp = '#{engine_displacement}'" unless engine_displacement.nil?
+    conditions << "SUM(distance) > #{lower_limit}" unless lower_limit.nil?
+    conditions << "SUM(distance) <= #{upper_limit}" unless upper_limit.nil?
+    conditions
   end
 
   def who_am_i
