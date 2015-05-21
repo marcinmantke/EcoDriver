@@ -25,8 +25,8 @@ class Android::UsersController < ApplicationController
 
   def engine_params
     response = {
-      types: EngineType.select(:eng_type).group(:eng_type).collect(&:eng_type),
-      displacements: EngineDisplacement.select(:disp).group(:disp).order(id: :asc).collect(&:disp)
+      types: EngineType.select(:eng_type),
+      displacements: EngineDisplacement.select(:disp)
     }
     json_respond_formatter response
   end
