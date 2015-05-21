@@ -12,9 +12,9 @@ div
       ui-select-choices repeat=("engineDisplacement in engineDisplacements")
         | {{engineDisplacement}}l
 
-    ui-select.combobox ng-model="engineTypeSelected" theme="bootstrap" on-select="setEngineTypes($select.selected)"
+    ui-select.combobox ng-model="engineTypeSelected" theme="bootstrap" on-select="setEngineType($select.selected)"
       ui-select-match placeholder=("Select an engine type...")
-        | {{$select.selected}}l
+        | {{$select.selected}}
       ui-select-choices repeat=("engineType in engineTypes")
         | {{engineType}}
         
