@@ -30,12 +30,11 @@ class Trip < ActiveRecord::Base
               SUM(distance) as distance, AVG(mark) as mark,
               user_id, engine_type_id, engine_displacement_id')
             .having(condition)
-            .order(avg_fuel: :asc)
 
     trips.each do |trip|
       hash_trips.push trip.to_hash
     end
-    hash_trips
+    hash_trips.sort_by { |hsh| hsh[:avg_fuel] }
   end
 
   def to_hash
