@@ -24,11 +24,11 @@ class Trip < ActiveRecord::Base
     trips = Trip.group(:engine_type_id)
             .group(:engine_displacement_id)
             .group(:user_id)
+            .references(:engine_displacement, :engine_type)
             .select('date, AVG(avg_fuel) as avg_fuel,
               AVG(avg_speed) as avg_speed, AVG(avg_rpm) as avg_rpm,
               SUM(distance) as distance, AVG(mark) as mark,
               user_id, engine_type_id, engine_displacement_id')
-            .includes(:engine_displacement, :engine_type)
             .having(condition)
             .order(avg_fuel: :asc)
 

@@ -84,10 +84,12 @@ class TripsController < ApplicationController
     lower_limit, upper_limit)
     conditions = []
     unless engine_type.nil?
-      conditions.push "engine_types.eng_type = '#{engine_type}'"
+      engine_type_id = EngineType.find_by(eng_type: engine_type).id
+      conditions.push "engine_type_id = '#{engine_type_id}'"
     end
     unless engine_displacement.nil?
-      conditions.push "engine_displacements.disp = '#{engine_displacement}'"
+      engine_disp_id = EngineDisplacement.find_by(disp: engine_displacement).id
+      conditions.push "engine_displacement_id = '#{engine_disp_id}'"
     end
     unless lower_limit.nil? && upper_limit.nil?
       conditions.push "SUM(distance) > #{lower_limit} AND
