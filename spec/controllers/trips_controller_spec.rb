@@ -17,8 +17,10 @@ RSpec.describe TripsController, type: :controller do
                                 user_id: 2,
                                 engine_type_id: 1,
                                 engine_displacement_id: 1,
-                                finish: 'Atlantic Ocean',
-                                beginning: 'Atlantic Ocean'),
+                                beginning: 'Australia,' \
+                                ' Australian Capital Territory,' \
+                                ' Canberra, City, Vernon Cir',
+                                finish: 'Australia, New South Wales, 23'),
                     success: true }).to_json)
       end
     end
