@@ -15,10 +15,10 @@ FactoryGirl.define do
     avg_fuel 8.9
     date '2015-05-14T21:23:11.510Z'
     mark 5.0
-    path [{ 'longitude' => '12.0',
-            'latitude' => '-48.00312' },
-          { 'longitude' => '11.0',
-            'latitude' => '-47.00312' }]
+    path [{ 'longitude' => '149.12881',
+            'latitude' => '-35.28302' },
+          { 'longitude' => '149.12836',
+            'latitude' => '-35.28473' }]
 
     initialize_with { attributes }
   end
@@ -31,10 +31,10 @@ FactoryGirl.define do
     challenge_id 1
     date '2015-05-14T21:23:11.510Z'
     mark 5.0
-    path [{ 'longitude' => '12.0',
-            'latitude' => '-48.00312' },
-          { 'longitude' => '11.0',
-            'latitude' => '-47.00312' }]
+    path [{ 'longitude' => '149.12881',
+            'latitude' => '-35.28302' },
+          { 'longitude' => '149.12836',
+            'latitude' => '-35.28473' }]
 
     initialize_with { attributes }
   end
