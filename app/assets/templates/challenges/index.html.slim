@@ -1,166 +1,167 @@
-div ng-if="challengeList"  
-  div ng-init="createView=false"
-    button.btn.btn-default.navbar-btn.btn-info style="margin-left: 10px" ng-click="createView=!createView" ng-show="!createView"
-      | Create challenge
-    input style="height: 34px; margin-left: 4px" placeholder=" country, city or street..." ng-model="search.route"
-  div.grid.grid--center ng-if="createView"
-    scrollable-table.grid__item.five-twelfths watch="trips" ng-style="style(0.5, 0.9)" resize=""
-      table.table.table-hover 
+div.main_panel
+  div ng-if="challengeList"  
+    div ng-init="createView=false"
+      button.btn.btn-default.navbar-btn.btn-info style="margin-left: 10px" ng-click="createView=!createView" ng-show="!createView"
+        | Create challenge
+      input style="height: 34px; margin-left: 4px" placeholder=" country, city or street..." ng-model="search.route"
+    div.grid.grid--center ng-if="createView"
+      scrollable-table.grid__item.five-twelfths watch="trips" ng-style="style(0.42, 0.9)" resize=""
+        table.table.table-hover 
+          thead
+            tr
+              th style="text-align: center" Date
+              th style="text-align: center" Start
+              th style="text-align: center" Finish
+              th style="text-align: center" Average fuel consumption
+          tbody
+              tr ng-click="changeChoice($index)" ng-repeat="trip in trips track by $index"  ng-class="{'selected': choosenTrip == trip}" style="cursor: pointer"
+                td 
+                  | {{trip.date}} 
+                td
+                  | {{trip.beginning}}
+                td
+                  | {{trip.finish}}
+                td
+                  | {{trip.avg_fuel}}
+      .grid__item.six-twelfths
+        map center="{{choosenTrip.path[0]}}" zoom="16" ng-style="style(0.42, 0.9)" resize=""
+          shape name="polyline" path="{{choosenTrip.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
+          marker id="start" position="{{choosenTrip.path[0]}}" title="Start"
+          info-window visible-on-marker="start"
+            div
+              | Start
+          marker id="finish" position="{{choosenTrip.path[choosenTrip.path.length-1]}}" title="Finish"
+           info-window visible-on-marker="finish"
+            div
+              | Finish
+      div
+        .grid
+          .grid__item.one-twelfth style="margin-top: 10px; text-align: right"
+            h4.b Finish date:
+          .grid__item.one-eighth style="margin-top: 10px"
+            p class="input-group" style="min-width: 70px"
+              input class="form-control" datepicker-options="calendar.dateOptions" datepicker-popup="{{calendar.format}}" is-open="calendar.opened" min-date="calendar.minDate" ng-required="true" ng-model="calendar.date" type="text" readonly="" show-button-bar="false"
+              span class="input-group-btn"
+                button.btn.btn-default ng-click="calendar.open($event)"
+                  i class="glyphicon glyphicon-calendar"
+          button.btn.btn-lg.btn-default.navbar-btn.btn-success style="margin-right: 15px; margin-left: 15px" ng-click="saveChallenge(); $parent.createView=false"
+            | Save
+          button.btn.btn-lg.btn-default.navbar-btn.btn-danger style="margin-right: 25px" ng-click="$parent.createView=false"
+            | Cancel
+    div style="margin-left: 5%; margin-right: 5%" ng-hide="createView"
+      .my-legend
+        .legend-scale
+          ul.legend-labels
+            li
+              span style="background:#B1FFB3;" 
+              | Challenges in which you participate
+      table.table.table-hover watch="trips"
         thead
           tr
-            th style="text-align: center" Date
-            th style="text-align: center" Start
-            th style="text-align: center" Finish
-            th style="text-align: center" Average fuel consumption
+            th Start
+            th Finish
+            th Distance
+            th Created by
+            th Finish date
         tbody
-            tr ng-click="changeChoice($index)" ng-repeat="trip in trips track by $index"  ng-class="{'selected': choosenTrip == trip}" style="cursor: pointer"
+            tr ng-click="changeChoiceChallenge($index)" ng-repeat="challenge in challenges | filter:search:strict" ng-class="{'joined': challenge.is_joined == 1}" style="cursor: pointer"
+              td
+                | {{challenge.route.beginning}}
+              td
+                | {{challenge.route.finish}}
+              td
+                | {{challenge.route.distance}}
               td 
-                | {{trip.date}} 
-              td
-                | {{trip.beginning}}
-              td
-                | {{trip.finish}}
-              td
-                | {{trip.avg_fuel}}
-    .grid__item.six-twelfths
-      map center="{{choosenTrip.path[0]}}" zoom="16" ng-style="style(0.5, 0.9)" resize=""
-        shape name="polyline" path="{{choosenTrip.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
-        marker id="start" position="{{choosenTrip.path[0]}}" title="Start"
+                | {{challenge.created_by}}
+              td 
+                | {{challenge.finish_date}}
+
+  div ng-if="!challengeList"
+    button.btn.btn-danger style="margin-left: 10px" ng-click="$parent.challengeList=!$parent.challengeList"
+      | Back
+    button.btn.btn-success ng-click="joinChallenge()" style="margin-left: 2px" ng-hide="choosenChallenge.is_joined == 1"
+      | Join
+    input type="text" ng-model="$parent.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="Invite your friends!"
+    button.btn.btn-info ng-click="inviteUser()"
+      | Invite
+
+    map center="{{challengePath[0]}}" zoom="14" ng-style="style(0.4, 0.35)" resize="" style="margin-left: auto; margin-right: auto"
+      shape name="polyline" path="{{challengePath}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
+      marker id="finish" position="{{challengePath[challengePath.length-1]}}" title="Finish"
+        info-window visible-on-marker="finish"
+          div
+            | Finish
+      marker id="start" position="{{challengePath[0]}}" title="Start"
         info-window visible-on-marker="start"
           div
             | Start
-        marker id="finish" position="{{choosenTrip.path[choosenTrip.path.length-1]}}" title="Finish"
-         info-window visible-on-marker="finish"
-          div
-            | Finish
-    div
-      .grid
-        .grid__item.one-twelfth style="margin-top: 10px; text-align: right"
-          h4.b Finish date:
-        .grid__item.one-eighth style="margin-top: 10px"
-          p class="input-group" style="min-width: 70px"
-            input class="form-control" datepicker-options="calendar.dateOptions" datepicker-popup="{{calendar.format}}" is-open="calendar.opened" min-date="calendar.minDate" ng-required="true" ng-model="calendar.date" type="text" readonly="" show-button-bar="false"
-            span class="input-group-btn"
-              button.btn.btn-default ng-click="calendar.open($event)"
-                i class="glyphicon glyphicon-calendar"
-        button.btn.btn-lg.btn-default.navbar-btn.btn-success style="margin-right: 15px; margin-left: 15px" ng-click="saveChallenge(); $parent.createView=false"
-          | Save
-        button.btn.btn-lg.btn-default.navbar-btn.btn-danger style="margin-right: 25px" ng-click="$parent.createView=false"
-          | Cancel
-  div style="margin-left: 5%; margin-right: 5%" ng-hide="createView"
-    .my-legend
-      .legend-scale
-        ul.legend-labels
-          li
-            span style="background:#B1FFB3;" 
-            | Challenges in which you participate
-    table.table.table-hover watch="trips"
-      thead
-        tr
-          th Start
-          th Finish
-          th Distance
-          th Created by
-          th Finish date
-      tbody
-          tr ng-click="changeChoiceChallenge($index)" ng-repeat="challenge in challenges | filter:search:strict" ng-class="{'joined': challenge.is_joined == 1}" style="cursor: pointer"
-            td
-              | {{challenge.route.beginning}}
-            td
-              | {{challenge.route.finish}}
-            td
-              | {{challenge.route.distance}}
-            td 
-              | {{challenge.created_by}}
-            td 
-              | {{challenge.finish_date}}
-
-div ng-if="!challengeList"
-  button.btn.btn-danger style="margin-left: 10px" ng-click="$parent.challengeList=!$parent.challengeList"
-    | Back
-  button.btn.btn-success ng-click="joinChallenge()" style="margin-left: 2px" ng-hide="choosenChallenge.is_joined == 1"
-    | Join
-  input type="text" ng-model="$parent.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="Invite your friends!"
-  button.btn.btn-info ng-click="inviteUser()"
-    | Invite
-
-  map center="{{challengePath[0]}}" zoom="14" ng-style="style(0.4, 0.35)" resize="" style="margin-left: auto; margin-right: auto"
-    shape name="polyline" path="{{challengePath}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
-    marker id="finish" position="{{challengePath[challengePath.length-1]}}" title="Finish"
-      info-window visible-on-marker="finish"
-        div
-          | Finish
-    marker id="start" position="{{challengePath[0]}}" title="Start"
-      info-window visible-on-marker="start"
-        div
-          | Start
-  .grid  ng-style="style(1, 0.1)" resize=""
-    .grid__item.two-twelfths.grid--left
-      .sidebar__menu
-        .sidebar__menu__header
-          | Fuel type
-        div class="btn-group-vertical btn-group-lg" style="width: 100%" 
-          .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'petrol'" uncheckable="" ng-change="getTripsByEngineType()"
-            | petrol
-          .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'diesel'" uncheckable="" ng-change="getTripsByEngineType()"
-            | diesel
-          .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'gas'" uncheckable="" ng-change="getTripsByEngineType()"
-            | gas
-        .sidebar__menu__header
-          | Displacment
-        div class="btn-group-vertical btn-group-lg" style="width: 100% ; margin-bottom: 10px" 
-          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'<1.0'" uncheckable="" ng-change="getTripsByEngineType()"
-            | <1.0l
-          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.0-1.5'" uncheckable="" ng-change="getTripsByEngineType()"
-            | 1.0-1.5l
-          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.6-2.0'" uncheckable="" ng-change="getTripsByEngineType()"
-            | 1.6-2.0l
-          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.1-2.5'" uncheckable="" ng-change="getTripsByEngineType()"
-            | 2.1-2.5l
-          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.6-3.0'" uncheckable="" ng-change="getTripsByEngineType()"
-            | 2.6-3.0l
-          .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'>3.0'" uncheckable="" ng-change="getTripsByEngineType()"
-            | 3.0l<
-    .grid__item.nine-twelfths.grid--right
-      table.table.table-hover style="width: 92%; margin-left: 4%"
-        thead
-          tr
-            th style="text-align: center"
-              | #
-            th style="text-align: center"
-              | User
-            th style="text-align: center"
-              | Average fuel consumption
-            th style="text-align: center"
-              | Average speed
-            th style="text-align: center"
-              | Average RPM
-            th style="text-align: center"
-              | Engine Type
-            th style="text-align: center"
-              | Engine Displacement
-            th style="text-align: center"
-              | Gears change rating
-            th style="text-align: center"
-              | Data
-        tbody 
-          tr ng-repeat="t in challengeTrips"
-            td  style="text-align: center"
-              | {{$index+1}}
-            td style="text-align: center"
-              | {{t.user}}
-            td style="text-align: center"
-              | {{t.avg_fuel}}
-            td style="text-align: center"
-              | {{t.avg_speed}}
-            td style="text-align: center"
-              | {{t.avg_rpm}}
-            td style="text-align: center"
-              | {{t.engine_type}}
-            td style="text-align: center"
-              | {{t.engine_displacement}}
-            td style="text-align: center"
-              | {{t.mark}}
-            td style="text-align: center"
-              | {{t.date}}
-    
+    grid  ng-style="style(1, 0.1)" resize=""
+      .grid__item.two-twelfths.grid--left
+        .sidebar__menu
+          .sidebar__menu__header
+            | Fuel type
+          div class="btn-group-vertical btn-group-lg" style="width: 100%" 
+            .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'petrol'" uncheckable="" ng-change="getTripsByEngineType()"
+              | petrol
+            .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'diesel'" uncheckable="" ng-change="getTripsByEngineType()"
+              | diesel
+            .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'gas'" uncheckable="" ng-change="getTripsByEngineType()"
+              | gas
+          .sidebar__menu__header
+            | Displacment
+          div class="btn-group-vertical btn-group-lg" style="width: 100% ; margin-bottom: 10px" 
+            .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'<1.0'" uncheckable="" ng-change="getTripsByEngineType()"
+              | <1.0l
+            .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.0-1.5'" uncheckable="" ng-change="getTripsByEngineType()"
+              | 1.0-1.5l
+            .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.6-2.0'" uncheckable="" ng-change="getTripsByEngineType()"
+              | 1.6-2.0l
+            .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.1-2.5'" uncheckable="" ng-change="getTripsByEngineType()"
+              | 2.1-2.5l
+            .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.6-3.0'" uncheckable="" ng-change="getTripsByEngineType()"
+              | 2.6-3.0l
+            .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'>3.0'" uncheckable="" ng-change="getTripsByEngineType()"
+              | 3.0l<
+      .grid__item.nine-twelfths.grid--right
+        table.table.table-hover style="width: 92%; margin-left: 4%"
+          thead
+            tr
+              th style="text-align: center"
+                | #
+              th style="text-align: center"
+                | User
+              th style="text-align: center"
+                | Average fuel consumption
+              th style="text-align: center"
+                | Average speed
+              th style="text-align: center"
+                | Average RPM
+              th style="text-align: center"
+                | Engine Type
+              th style="text-align: center"
+                | Engine Displacement
+              th style="text-align: center"
+                | Gears change rating
+              th style="text-align: center"
+                | Data
+          tbody 
+            tr ng-repeat="t in challengeTrips"
+              td  style="text-align: center"
+                | {{$index+1}}
+              td style="text-align: center"
+                | {{t.user}}
+              td style="text-align: center"
+                | {{t.avg_fuel}}
+              td style="text-align: center"
+                | {{t.avg_speed}}
+              td style="text-align: center"
+                | {{t.avg_rpm}}
+              td style="text-align: center"
+                | {{t.engine_type}}
+              td style="text-align: center"
+                | {{t.engine_displacement}}
+              td style="text-align: center"
+                | {{t.mark}}
+              td style="text-align: center"
+                | {{t.date}}
+      

@@ -1,6 +1,6 @@
-div
+div.main_panel
   grid.grid--center
-    scrollable-table.grid__item.six-twelfths watch="trips" ng-style="style(0.6, 0.9)" resize=""
+    scrollable-table.grid__item.six-twelfths watch="trips" ng-style="style(0.5, 0.9)" resize=""
       table.table.table-hover
         thead
           tr
@@ -20,7 +20,7 @@ div
                 | {{t.finish}}              
     .grid__item.five-twelfths      
       div       
-        map center="{{choosenTrip.path[0]}}" zoom="{{choosenTrip.map.zoom}}" ng-style="style(0.4, 0.5)" resize=""  
+        map center="{{choosenTrip.path[0]}}" zoom="{{choosenTrip.map.zoom}}" ng-style="style(0.35, 0.5)" resize=""  
           shape name="polyline" path="{{choosenTrip.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
           marker id="start" position="{{choosenTrip.path[0]}}" title="Start"
           info-window visible-on-marker="start"
