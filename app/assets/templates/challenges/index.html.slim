@@ -3,7 +3,7 @@ div.main_panel
     div ng-init="createView=false"
       button.btn.btn-default.navbar-btn.btn-info style="margin-left: 10px" ng-click="createView=!createView" ng-show="!createView"
         | Create challenge
-      input style="height: 34px; margin-left: 4px" placeholder=" country, city or street..." ng-model="search.route"
+      input.combo_textbox style="height: 34px; margin-left: 4px" placeholder=" country, city or street..." ng-model="search.route"
     div.grid.grid--center ng-if="createView"
       scrollable-table.grid__item.five-twelfths watch="trips" ng-style="style(0.42, 0.9)" resize=""
         table.table.table-hover 
@@ -81,7 +81,7 @@ div.main_panel
       | Back
     button.btn.btn-success ng-click="joinChallenge()" style="margin-left: 2px" ng-hide="choosenChallenge.is_joined == 1"
       | Join
-    input type="text" ng-model="$parent.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="Invite your friends!"
+    input.combo_textbox type="text" ng-model="$parent.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="Invite your friends!"
     button.btn.btn-info ng-click="inviteUser()"
       | Invite
 

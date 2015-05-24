@@ -18,7 +18,7 @@ div.main_panel
       ui-select-choices repeat=("engineType in engineTypes")
         | {{engineType.eng_type}}
 
-    input type="text" ng-model="search.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="Search user..."
+    input.combo_textbox type="text" ng-model="search.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="Search user..."
   
   div
     table.table.table-hover
