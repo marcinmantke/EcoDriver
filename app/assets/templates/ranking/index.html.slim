@@ -40,7 +40,7 @@ div.main_panel
             | Engine Displacement
           th style="text-align: center"
             | Gears change rating
-          th style="text-align: center"
+          th style="text-align: center; background-color: #AEED7C"
             | Average fuel consumption
       tbody 
         tr ng-repeat="t in trips | filter:search:strict"
@@ -60,5 +60,5 @@ div.main_panel
             | {{t.engine_displacement}}
           td style="text-align: center"
             | {{t.mark}}
-          td style="text-align: center"
+          td style="text-align: center; background-color: #AEED7C"
             | {{t.avg_fuel}}

@@ -119,8 +119,6 @@ div.main_panel
             th style="text-align: center"
               | User
             th style="text-align: center"
-              | Average fuel consumption
-            th style="text-align: center"
               | Average speed
             th style="text-align: center"
               | Average RPM
@@ -132,14 +130,14 @@ div.main_panel
               | Gears change rating
             th style="text-align: center"
               | Data
+            th style="text-align: center; background-color: #AEED7C"
+              | Average fuel consumption
         tbody 
           tr ng-repeat="t in challengeTrips  | filter:search:strict"
             td  style="text-align: center"
               | {{$index+1}}
             td style="text-align: center"
               | {{t.user}}
-            td style="text-align: center"
-              | {{t.avg_fuel}}
             td style="text-align: center"
               | {{t.avg_speed}}
             td style="text-align: center"
@@ -152,4 +150,6 @@ div.main_panel
               | {{t.mark}}
             td style="text-align: center"
               | {{t.date}}
+            td style="text-align: center; background-color: #AEED7C"
+              | {{t.avg_fuel}}
       
