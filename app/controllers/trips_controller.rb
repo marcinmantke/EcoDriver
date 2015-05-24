@@ -22,7 +22,9 @@ class TripsController < ApplicationController
                                                   :date, :mark))
     json_respond_formatter fill_and_save params[:trip][:path]
   rescue StandardError => exc
-    response = { data: exc.message, success: false }
+    response = { data: exc.message,
+                 trace: exc.backtrace.join(';'),
+                 success: false }
     json_respond_formatter response
   end
 
