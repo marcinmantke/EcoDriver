@@ -28,8 +28,11 @@ class CheckPoint < ActiveRecord::Base
     url = 'https://roads.googleapis.com/v1/snapToRoads?'
     url += path_str + '&key=' + api_key
     encoded_url = URI.encode(url)
-    result = Net::HTTP.get(URI.parse(encoded_url))
-    res_temp = ActiveSupport::JSON.decode(result)['snappedPoints']
+    parsed_url = URI.parse(encoded_url)
+    http = Net::HTTP.new(parsed_url.host, parsed_url.port)
+    http.use_ssl = true
+    result = http.get(parsed_url)
+    res_temp = ActiveSupport::JSON.decode(result.body)['snappedPoints']
     res_temp
   end
 
