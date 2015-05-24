@@ -10,9 +10,13 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
     $scope.challenges = data
     $scope.choosenChallenge = $scope.challenges[0]
 
+  Trip.getGearParams().success (data) ->
+    $scope.engineDisplacements = data.displacements
+    $scope.engineTypes = data.types
 
-  $scope.getTripsByEngineType = ()->
-    Challenge.getChallengeTrips($scope.choosenChallenge.id, $scope.radioModelFuel, $scope.radioModelDisplacement).success (data) ->
+
+  $scope.getTripsByEngineType = (engineType, engineDisplacement)->
+    Challenge.getChallengeTrips($scope.choosenChallenge.id, engineType, engineDisplacement).success (data) ->
         $scope.challengeTrips = data.trips
         $scope.challengePath = data.path
 
@@ -23,7 +27,7 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   $scope.changeChoiceChallenge = (index) ->
     $scope.choosenChallenge = $scope.challenges[index]
     $scope.challengeList = !$scope.challengeList
-    $scope.getTripsByEngineType()
+    $scope.getTripsByEngineType(null, null)
     
 
   $scope.calendar =

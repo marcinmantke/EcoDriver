@@ -48,7 +48,7 @@ div.main_panel
             | Save
           button.btn.btn-lg.btn-default.navbar-btn.btn-danger style="margin-right: 25px" ng-click="$parent.createView=false"
             | Cancel
-    div style="margin-left: 5%; margin-right: 5%" ng-hide="createView"
+    div ng-hide="createView"
       .my-legend
         .legend-scale
           ul.legend-labels
@@ -95,73 +95,61 @@ div.main_panel
         info-window visible-on-marker="start"
           div
             | Start
-    grid  ng-style="style(1, 0.1)" resize=""
-      .grid__item.two-twelfths.grid--left
-        .sidebar__menu
-          .sidebar__menu__header
-            | Fuel type
-          div class="btn-group-vertical btn-group-lg" style="width: 100%" 
-            .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'petrol'" uncheckable="" ng-change="getTripsByEngineType()"
-              | petrol
-            .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'diesel'" uncheckable="" ng-change="getTripsByEngineType()"
-              | diesel
-            .label class="btn btn-success" ng-model="$parent.radioModelFuel" btn-radio="'gas'" uncheckable="" ng-change="getTripsByEngineType()"
-              | gas
-          .sidebar__menu__header
-            | Displacment
-          div class="btn-group-vertical btn-group-lg" style="width: 100% ; margin-bottom: 10px" 
-            .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'<1.0'" uncheckable="" ng-change="getTripsByEngineType()"
-              | <1.0l
-            .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.0-1.5'" uncheckable="" ng-change="getTripsByEngineType()"
-              | 1.0-1.5l
-            .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'1.6-2.0'" uncheckable="" ng-change="getTripsByEngineType()"
-              | 1.6-2.0l
-            .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.1-2.5'" uncheckable="" ng-change="getTripsByEngineType()"
-              | 2.1-2.5l
-            .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'2.6-3.0'" uncheckable="" ng-change="getTripsByEngineType()"
-              | 2.6-3.0l
-            .label class="btn btn-success" ng-model="$parent.radioModelDisplacement" btn-radio="'>3.0'" uncheckable="" ng-change="getTripsByEngineType()"
-              | 3.0l<
-      .grid__item.nine-twelfths.grid--right
-        table.table.table-hover style="width: 92%; margin-left: 4%"
-          thead
-            tr
-              th style="text-align: center"
-                | #
-              th style="text-align: center"
-                | User
-              th style="text-align: center"
-                | Average fuel consumption
-              th style="text-align: center"
-                | Average speed
-              th style="text-align: center"
-                | Average RPM
-              th style="text-align: center"
-                | Engine Type
-              th style="text-align: center"
-                | Engine Displacement
-              th style="text-align: center"
-                | Gears change rating
-              th style="text-align: center"
-                | Data
-          tbody 
-            tr ng-repeat="t in challengeTrips"
-              td  style="text-align: center"
-                | {{$index+1}}
-              td style="text-align: center"
-                | {{t.user}}
-              td style="text-align: center"
-                | {{t.avg_fuel}}
-              td style="text-align: center"
-                | {{t.avg_speed}}
-              td style="text-align: center"
-                | {{t.avg_rpm}}
-              td style="text-align: center"
-                | {{t.engine_type}}
-              td style="text-align: center"
-                | {{t.engine_displacement}}
-              td style="text-align: center"
-                | {{t.mark}}
-              td style="text-align: center"
-                | {{t.date}}
+    hr
+    div style="margin-top: 10px"
+      ui-select.combobox ng-model="engineDisplacementSelected" theme="bootstrap" on-select="getTripsByEngineType(null, $select.selected.disp)"
+        ui-select-match allow-clear="" placeholder=("Select an engine displacement...")
+          | {{$select.selected.disp}}
+        ui-select-choices repeat=("engineDisplacement in engineDisplacements")
+          | {{engineDisplacement.disp}}l
+
+      ui-select.combobox ng-model="engineTypeSelected" theme="bootstrap" on-select="getTripsByEngineType($select.selected.eng_type, null)"
+        ui-select-match allow-clear="" placeholder=("Select an engine type...")
+          | {{$select.selected.eng_type}}
+        ui-select-choices repeat=("engineType in engineTypes")
+          | {{engineType.eng_type}}
+
+      input.combo_textbox type="text" ng-model="search.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="Search user..."
+    div
+      table.table.table-hover
+        thead
+          tr
+            th style="text-align: center"
+              | #
+            th style="text-align: center"
+              | User
+            th style="text-align: center"
+              | Average fuel consumption
+            th style="text-align: center"
+              | Average speed
+            th style="text-align: center"
+              | Average RPM
+            th style="text-align: center"
+              | Engine Type
+            th style="text-align: center"
+              | Engine Displacement
+            th style="text-align: center"
+              | Gears change rating
+            th style="text-align: center"
+              | Data
+        tbody 
+          tr ng-repeat="t in challengeTrips  | filter:search:strict"
+            td  style="text-align: center"
+              | {{$index+1}}
+            td style="text-align: center"
+              | {{t.user}}
+            td style="text-align: center"
+              | {{t.avg_fuel}}
+            td style="text-align: center"
+              | {{t.avg_speed}}
+            td style="text-align: center"
+              | {{t.avg_rpm}}
+            td style="text-align: center"
+              | {{t.engine_type}}
+            td style="text-align: center"
+              | {{t.engine_displacement}}
+            td style="text-align: center"
+              | {{t.mark}}
+            td style="text-align: center"
+              | {{t.date}}
       
