@@ -21,8 +21,9 @@ class TripsController < ApplicationController
                                                   :challenge_id,
                                                   :date, :mark))
     json_respond_formatter fill_and_save params[:trip][:path]
-  rescue StandardError
-    json_respond_formatter success: false
+  rescue StandardError => exc
+    response = { data: exc.message, success: false }
+    json_respond_formatter response
   end
 
   def check_car_params
