@@ -27,13 +27,18 @@ class CheckPoint < ActiveRecord::Base
     api_key = 'AIzaSyDRljTMN1vNOQL2zxIMh93xA2yni1akkqU'
     url = 'https://roads.googleapis.com/v1/snapToRoads?'
     url += path_str + '&key=' + api_key
+    result = CheckPoint.make_https_query(url)
+    res_temp = ActiveSupport::JSON.decode(result.body)['snappedPoints']
+    res_temp
+  end
+
+  def self.make_https_query(url)
     encoded_url = URI.encode(url)
     parsed_url = URI.parse(encoded_url)
     http = Net::HTTP.new(parsed_url.host, parsed_url.port)
     http.use_ssl = true
-    result = http.get(parsed_url)
-    res_temp = ActiveSupport::JSON.decode(result.body)['snappedPoints']
-    res_temp
+    result = http.get(parsed_url.request_uri)
+    result
   end
 
   def self.save_checkpoints(points, trip)
