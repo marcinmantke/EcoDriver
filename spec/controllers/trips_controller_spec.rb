@@ -1,8 +1,17 @@
 require 'rails_helper'
+require 'net/http'
 
 RSpec.describe TripsController, type: :controller do
   describe 'POST #create' do
     context 'with valid attributes' do
+      it 'tests google api' do
+        url = 'https://roads.googleapis.com/v1/snapToRoads?' \
+        'path=-35.28302,149.12881|-35.28473,149.12836' \
+        '&key=AIzaSyDRljTMN1vNOQL2zxIMh93xA2yni1akkqU'
+        result = Net::HTTP.get(URI.parse(url))
+        res_temp = ActiveSupport::JSON.decode(result)['snappedPoints']
+        expect(res_temp.length).to eq(2)
+      end
       it 'creates the trip' do
         login_user
         post :create, trip: attributes_for(:trip_with_path), format: :json
