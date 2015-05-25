@@ -9,8 +9,11 @@ RSpec.describe TripsController, type: :controller do
         'path=-35.28302,149.12881|-35.28473,149.12836' \
         '&key=AIzaSyDRljTMN1vNOQL2zxIMh93xA2yni1akkqU'
         encoded_url = URI.encode(url)
-        result = Net::HTTP.get(URI.parse(encoded_url))
-        res_temp = ActiveSupport::JSON.decode(result)['snappedPoints']
+        parsed_url = URI.parse(encoded_url)
+        http = Net::HTTP.new(parsed_url.host, parsed_url.port)
+        http.use_ssl = true
+        result = http.get(parsed_url.request_uri)
+        res_temp = ActiveSupport::JSON.decode(result.body)['snappedPoints']
         expect(res_temp.length).to eq(2)
       end
       it 'creates the trip' do

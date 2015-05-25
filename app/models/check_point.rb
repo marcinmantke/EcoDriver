@@ -10,7 +10,7 @@ class CheckPoint < ActiveRecord::Base
       res_temp = CheckPoint.points_from_api(path_temp)
       points += res_temp
     end
-    CheckPoint.save_checkpoints(points, trip)
+    CheckPoint.save_checkpoints(points, trip, path)
   end
 
   def self.points_from_api(path)
@@ -41,11 +41,15 @@ class CheckPoint < ActiveRecord::Base
     result
   end
 
-  def self.save_checkpoints(points, trip)
-    points.each do |point|
+  def self.save_checkpoints(points, trip, path)
+    points.each_with_index do |point, index|
       CheckPoint.create(longitude: point['location']['longitude'],
                         latitude: point['location']['latitude'],
-                        trip: trip)
+                        trip: trip,
+                        speed: path[index][:speed],
+                        rpm: path[index][:rpm],
+                        fuel_consumption: path[index][:fuel_consumption],
+                        gear: path[index][:gear])
     end
   end
 end

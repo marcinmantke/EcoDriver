@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524170037) do
+ActiveRecord::Schema.define(version: 20150525171705) do
 
   create_table "challenges", force: true do |t|
     t.integer  "route_id",    null: false
@@ -29,11 +29,15 @@ ActiveRecord::Schema.define(version: 20150524170037) do
   add_index "challenges_users", ["user_id"], name: "index_challenges_users_on_user_id", using: :btree
 
   create_table "check_points", force: true do |t|
-    t.decimal  "longitude",  precision: 23, scale: 20, null: false
-    t.decimal  "latitude",   precision: 23, scale: 20, null: false
+    t.decimal  "longitude",                   precision: 23, scale: 20, null: false
+    t.decimal  "latitude",                    precision: 23, scale: 20, null: false
     t.integer  "trip_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rpm",                                                   null: false
+    t.integer  "speed",                                                 null: false
+    t.float    "fuel_consumption", limit: 24,                           null: false
+    t.integer  "gear",                                                  null: false
   end
 
   create_table "engine_displacements", force: true do |t|

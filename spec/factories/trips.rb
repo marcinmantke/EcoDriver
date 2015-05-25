@@ -16,9 +16,17 @@ FactoryGirl.define do
     date '2015-05-14T21:23:11.510Z'
     mark 5.0
     path [{ 'longitude' => '149.12881',
-            'latitude' => '-35.28302' },
+            'latitude' => '-35.28302',
+            'rpm' => '1000',
+            'speed' => '121',
+            'fuel_consumption' => '9.9',
+            'gear' => '1' },
           { 'longitude' => '149.12836',
-            'latitude' => '-35.28473' }]
+            'latitude' => '-35.28473',
+            'rpm' => '2000',
+            'speed' => '74',
+            'fuel_consumption' => '12.81',
+            'gear' => '6'  }]
 
     initialize_with { attributes }
   end
@@ -32,9 +40,17 @@ FactoryGirl.define do
     date '2015-05-14T21:23:11.510Z'
     mark 5.0
     path [{ 'longitude' => '149.12881',
-            'latitude' => '-35.28302' },
+            'latitude' => '-35.28302',
+            'rpm' => '1000',
+            'speed' => '121',
+            'fuel_consumption' => '9.9',
+            'gear' => '1' },
           { 'longitude' => '149.12836',
-            'latitude' => '-35.28473' }]
+            'latitude' => '-35.28473',
+            'rpm' => '2000',
+            'speed' => '74',
+            'fuel_consumption' => '12.81',
+            'gear' => '6'  }]
 
     initialize_with { attributes }
   end
