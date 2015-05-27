@@ -4,7 +4,10 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
     for trip in data
       if trip.challenge == null
         $scope.trips.push trip
+      for point, index in trip.path
+        trip.path[index] = {lat: parseFloat(point[0]), lng: parseFloat(point[1])}
     $scope.choosenTrip = $scope.trips[0]
+    
 
   Challenge.getChallenges().success (data) ->
     $scope.challenges = data
@@ -14,6 +17,67 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
     $scope.engineDisplacements = data.displacements
     $scope.engineTypes = data.types
 
+  $scope.startPoly = null
+  $scope.endPoly = null
+  $scope.challengePoly = null
+  $scope.createView = false
+  $scope.startIndex = 1
+  $scope.endIndex = 2
+
+
+  initMap = () ->
+    if $scope.startPoly != null
+      $scope.startPoly.setMap null
+    if $scope.endPoly != null
+      $scope.endPoly.setMap null
+    if $scope.challengePoly != null
+      $scope.challengePoly.setMap null
+    $scope.startPoly = new (google.maps.Polyline)(
+      strokeColor: '#00FF00'
+      strokeOpacity: 1.0
+      strokeWeight: 3
+      path: $scope.choosenTrip.path.slice(0,$scope.startIndex+1))
+    $scope.endPoly = new (google.maps.Polyline)(
+      strokeColor: '#00FF00'
+      strokeOpacity: 1.0
+      strokeWeight: 3
+      path: $scope.choosenTrip.path.slice($scope.endIndex, $scope.choosenTrip.path.length))
+    $scope.challengePoly = new (google.maps.Polyline)(
+      strokeColor: '#FF0000'
+      strokeOpacity: 1.0
+      strokeWeight: 3
+      path: $scope.choosenTrip.path.slice($scope.startIndex,$scope.endIndex+1))
+
+    $scope.startMarker = new google.maps.Marker({
+                map: $scope.map,
+                position: $scope.choosenTrip.path[$scope.startIndex],
+                draggable: true})
+    $scope.finishMarker = new google.maps.Marker({
+                map: $scope.map,
+                position: $scope.choosenTrip.path[$scope.endIndex],
+                draggable: true})
+
+    google.maps.event.addListener $scope.startMarker, 'dragend', (event) ->
+      $scope.updateMarker(event, true)
+
+    google.maps.event.addListener $scope.finishMarker, 'dragend', (event) ->
+      $scope.updateMarker(event, false)
+
+    $scope.startInfoWindow = new google.maps.InfoWindow({
+      content: "Start",
+      })
+    $scope.startInfoWindow.open($scope.map, $scope.startMarker)
+
+    $scope.finishInfoWindow = new google.maps.InfoWindow({
+      content: "Finish",
+      })
+    $scope.finishInfoWindow.open($scope.map, $scope.finishMarker)
+
+    $scope.startPoly.setMap $scope.map
+    $scope.endPoly.setMap $scope.map
+    $scope.challengePoly.setMap $scope.map
+    $scope.map.setCenter $scope.choosenTrip.path[0]
+    $scope.map.setZoom 16
 
   $scope.getTripsByEngineType = (engineType, engineDisplacement)->
     Challenge.getChallengeTrips($scope.choosenChallenge.id, engineType, engineDisplacement).success (data) ->
@@ -23,11 +87,14 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
 
   $scope.changeChoice = (index) ->
     $scope.choosenTrip = $scope.trips[index]
-
+    initMap()
+    
   $scope.changeChoiceChallenge = (index) ->
     $scope.choosenChallenge = $scope.challenges[index]
     $scope.challengeList = !$scope.challengeList
     $scope.getTripsByEngineType(null, null)
+
+
     
 
   $scope.calendar =
@@ -95,3 +162,30 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
         toastr.success("Invitation has been sent", 'Success')
       else
         toastr.error("You have already invited " + $scope.user, 'Error')
+
+  $scope.updateMarker = (event, isStartMarker) ->
+    index = 0
+    while(index < $scope.choosenTrip.path.length)
+      console.log "ddd"
+      if google.maps.geometry.poly.isLocationOnEdge(event.latLng,
+        new (google.maps.Polyline)(
+          path: $scope.choosenTrip.path.slice(index,index+2)), 0.001)
+        console.log "aaa"
+        if isStartMarker
+          $scope.startIndex = index
+          console.log "bbb"
+        else
+          $scope.endIndex = index+1
+          console.log "ccc"
+        break
+      else
+        index += 1
+    $scope.startMarker.setMap(null)
+    $scope.finishMarker.setMap(null)
+    initMap()
+
+  $scope.$on 'mapInitialized', (evt, map) ->
+    $scope.map = map
+    if $scope.createView == true
+      initMap()
+      console.log "asd"

@@ -1,10 +1,10 @@
 div.main_panel
-  div ng-if="challengeList"  
-    div ng-init="createView=false"
-      button.btn.btn-default.navbar-btn.btn-info style="margin-left: 10px" ng-click="createView=!createView" ng-show="!createView"
+  div ng-if="challengeList"  ng-model="createView"
+    div 
+      button.btn.btn-default.navbar-btn.btn-info style="margin-left: 10px" ng-click="$parent.createView=!$parent.createView" ng-show="!$parent.createView"
         | Create challenge
       input.combo_textbox style="height: 34px; margin-left: 4px" placeholder=" country, city or street..." ng-model="search.route"
-    div.grid.grid--center ng-if="createView"
+    div.grid.grid--center ng-if="$parent.createView"
       scrollable-table.grid__item.five-twelfths watch="trips" ng-style="style(0.42, 0.9)" resize=""
         table.table.table-hover 
           thead
@@ -24,17 +24,7 @@ div.main_panel
                 td
                   | {{trip.avg_fuel}}
       .grid__item.six-twelfths
-        map center="{{choosenTrip.path[0]}}" zoom="16" ng-style="style(0.42, 0.9)" resize=""
-          shape name="polyline" path="{{choosenTrip.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
-          marker id="start" position="{{choosenTrip.path[0]}}" title="Start"
-          info-window visible-on-marker="start"
-            div
-              | Start
-          marker id="finish" position="{{choosenTrip.path[choosenTrip.path.length-1]}}" title="Finish"
-           info-window visible-on-marker="finish"
-            div
-              | Finish
-      div
+        map zoom="16" ng-style="style(0.42, 0.9)" resize=""
         .grid
           .grid__item.one-twelfth style="margin-top: 10px; text-align: right"
             h4.b Finish date:
