@@ -20,6 +20,8 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   $scope.startPoly = null
   $scope.endPoly = null
   $scope.challengePoly = null
+  $scope.startMarker = null
+  $scope.finishMarker = null
   $scope.createView = false
   $scope.startIndex = 1
   $scope.endIndex = 2
@@ -32,6 +34,10 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
       $scope.endPoly.setMap null
     if $scope.challengePoly != null
       $scope.challengePoly.setMap null
+    if $scope.startMarker != null
+      $scope.startMarker.setMap null
+    if $scope.finishMarker != null
+      $scope.finishMarker.setMap null
     $scope.startPoly = new (google.maps.Polyline)(
       strokeColor: '#00FF00'
       strokeOpacity: 1.0
@@ -87,6 +93,8 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
 
   $scope.changeChoice = (index) ->
     $scope.choosenTrip = $scope.trips[index]
+    $scope.startIndex = 1
+    $scope.endIndex = 2
     initMap()
     
   $scope.changeChoiceChallenge = (index) ->
@@ -165,23 +173,17 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
 
   $scope.updateMarker = (event, isStartMarker) ->
     index = 0
-    while(index < $scope.choosenTrip.path.length)
-      console.log "ddd"
+    while(index < $scope.choosenTrip.path.length - 1)
       if google.maps.geometry.poly.isLocationOnEdge(event.latLng,
         new (google.maps.Polyline)(
           path: $scope.choosenTrip.path.slice(index,index+2)), 0.001)
-        console.log "aaa"
         if isStartMarker
           $scope.startIndex = index
-          console.log "bbb"
         else
           $scope.endIndex = index+1
-          console.log "ccc"
         break
       else
         index += 1
-    $scope.startMarker.setMap(null)
-    $scope.finishMarker.setMap(null)
     initMap()
 
   $scope.$on 'mapInitialized', (evt, map) ->
