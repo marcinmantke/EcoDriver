@@ -56,5 +56,5 @@ pl:
       not_found: "nie znaleziono"
       not_locked: "nie był zablokowany"
       not_saved:
-        one: "%{resource} nie został zapisany z powodu błędu:"
-        other: "%{resource} nie został zapisany z powodu następujących błędów:"
+        one: "Użytkownik nie został zapisany z powodu błędu:"
+        few: "Użytkownik nie został zapisany z powodu następujących błędów:"
