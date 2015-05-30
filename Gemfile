@@ -58,6 +58,8 @@ gem 'therubyracer', '~> 0.12.1'
 gem 'devise', '~> 3.4.1'
 gem 'geocoder'
 
+gem 'rails-i18n'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.2.1'
   gem 'factory_girl_rails', '~> 4.5.0'
