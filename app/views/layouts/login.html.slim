@@ -101,9 +101,9 @@ html ng-app="EcoApp"
       .row.featurette
         .col-md-7
           h2.featurette-heading
-            | Save money!
-            span.text-muted  Spend them on new car.
-          p.lead Did you know, that by driving ecologically you can save approx. 30% on fuel? When you drive a lot, you can save lots of money and spend them on anything you want! Now, when you know WHAT to do, we can show you HOW to do it! So don't waste your time and money and start being eco.
+            =t("mainpage.save_header")
+            span.text-muted  =t("mainpage.save_header_sec")
+          p.lead =t("mainpage.save_content")
         .col-md-5
           = image_tag("petrol.jpg", :alt => "", :title => "title")
       hr.featurette-divider/

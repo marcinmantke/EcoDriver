@@ -9,5 +9,6 @@ module EcoDriver
     Rails.application.config.assets.precompile += %w( welcome_page.css )
     Rails.application.config.encoding = 'utf-8'
     Rails.application.config.autoload_paths += %W(#{config.root}/lib)
+    Rails.application.config.i18n.default_locale = :pl
   end
 end

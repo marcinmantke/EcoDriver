@@ -20,4 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  mainpage:
+    save_header: 'Save money!'
+    save_header_sec: 'Spend them on new car.'
+    save_content: > 
+      Did you know, that by driving ecologically you can save approx. 30% on fuel? 
+      When you drive a lot, you can save lots of money and spend them on anything you want! 
+      Now, when you know WHAT to do, we can show you HOW to do it! 
+      So don't waste your time and money and start being eco.
