@@ -10,3 +10,11 @@ pl:
               blank: ': pole nie może być puste.'
             password:
               blank: ': pole nie może być puste.'
+  mainpage:
+    save_header: 'Oszczędzaj pieniądze! '
+    save_header_sec: 'Wydaj je na nowy samochód.'
+    save_content: > 
+      Czy wiesz, że jeżdżąc ekologicznie możesz zaoszczędzić na paliwie do 30%? 
+      Jeśli dużo jeździsz, możesz zaoszczędzić sporą sumę pieniędzy i wydać je na cokolowiek zapragniesz! 
+      Teraz, kiedy już wiesz CO trzeba zrobić, dowiedz się JAK to zrobić! 
+      Nie marnuj więc czasu i pieniędzy, i zacznij być eko.
