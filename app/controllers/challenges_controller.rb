@@ -2,26 +2,23 @@ class ChallengesController < ApplicationController
   include ControllerUtil
 
   def create
-    route = Trip.find(params[:trip_id])
-    finish_date = params[:finish_date].to_date
-    if check_conditions(route, finish_date)
-      challenge = Challenge.create(route: route, finish_date: finish_date)
-      response = {  success: true,
-                    data: {
-                      route: challenge.route,
-                      finish_date: challenge.finish_date,
-                      created_by: challenge.route.user.username
-                    } }
+    challenge = params[:challenge]
+    if check_conditions(challenge)
+      Challenge.create(route_id: challenge[:trip_id],
+                       finish_date: challenge[:finish_date],
+                       start_point: challenge[:start_point],
+                       finish_point: challenge[:finish_point])
+      response = { success: true }
     else
-      response = {  success: false, data: {} }
+      response = { success: false }
     end
-
     json_respond_formatter(response)
   end
 
-  def check_conditions(route, finish_date)
+  def check_conditions(params)
+    route = Trip.find params[:trip_id]
     route.user.id == current_user.id &&
-      finish_date > Time.zone.today &&
+      params[:finish_date].to_date > Time.zone.today &&
       route.challenge.nil?
   end
 

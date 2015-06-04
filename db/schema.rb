@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150525171705) do
+ActiveRecord::Schema.define(version: 20150604140040) do
 
   create_table "challenges", force: true do |t|
-    t.integer  "route_id",    null: false
-    t.date     "finish_date", null: false
+    t.integer  "route_id",     null: false
+    t.date     "finish_date",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "start_point",  null: false
+    t.integer  "finish_point", null: false
   end
 
   create_table "challenges_users", id: false, force: true do |t|
