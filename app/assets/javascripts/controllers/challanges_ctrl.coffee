@@ -17,6 +17,7 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
     $scope.engineTypes = data.types
 
   $scope.startPoly = null
+  $scope.circles = []
   $scope.endPoly = null
   $scope.challengePoly = null
   $scope.startMarker = null
@@ -45,6 +46,9 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
       $scope.startMarker.setMap null
     if $scope.finishMarker != null
       $scope.finishMarker.setMap null
+    for circle in $scope.circles
+      circle.setMap null
+    $scope.circles.clear
 
   initPolylines = () ->
     if $scope.startIndex < $scope.endIndex
@@ -65,13 +69,12 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
       path: $scope.choosenTrip.path.slice(start, end))
     i = 0
     while i < polyline.getPath().getLength()
-      marker = new (google.maps.Marker)(
+      $scope.circles.push new (google.maps.Marker)(
         icon:
           url: 'https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png'
           size: new (google.maps.Size)(7, 7)
           anchor: new (google.maps.Point)(4, 4)
         position: polyline.getPath().getAt(i)
-        title: polyline.getPath().getAt(i).toUrlValue(6)
         map: $scope.map)
       i++
     return polyline
