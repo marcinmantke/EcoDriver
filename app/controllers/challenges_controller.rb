@@ -4,10 +4,7 @@ class ChallengesController < ApplicationController
   def create
     challenge = params[:challenge]
     if check_conditions(challenge)
-      Challenge.create(route_id: challenge[:trip_id],
-                       finish_date: challenge[:finish_date],
-                       start_point: challenge[:start_point],
-                       finish_point: challenge[:finish_point])
+      Challenge.create_from_params(params[:challenge])
       response = { success: true }
     else
       response = { success: false }
@@ -35,7 +32,7 @@ class ChallengesController < ApplicationController
 
   def show_path
     challenge = Challenge.find(params.permit(:id)['id'])
-    path = challenge.route.check_points
+    path = challenge.path
     json_respond_formatter(path)
   end
 
@@ -45,8 +42,7 @@ class ChallengesController < ApplicationController
                                    params[:engine_displacement])
     json_respond_formatter(trips:
         challenge.trips.all_by_condition(conditions),
-                           path:
-        path_formater(challenge.route))
+                           path: challenge.path)
   end
 
   def all_users
@@ -60,16 +56,6 @@ class ChallengesController < ApplicationController
       current_user.id, user.id,
       params['challenge'])
     json_respond_formatter(success)
-  end
-
-  def path_formater(trip)
-    path = []
-    CheckPoint.where(trip: trip).each do |check_point|
-      path.push([])
-      path.last.push(check_point['latitude'])
-      path.last.push(check_point['longitude'])
-    end
-    path
   end
 
   def prepare_condition(engine_type, engine_displacement)

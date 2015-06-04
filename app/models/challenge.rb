@@ -36,4 +36,31 @@ class Challenge < ActiveRecord::Base
     route.update(challenge_id: id)
     ChallengesUser.create_unique(route.user.id, id)
   end
+
+  def self.create_from_params(params)
+    route = Trip.find(params[:trip_id])
+    if Challenge.check_start_finish(params)
+      params[:start_point] = 0
+      params[:finish_point] = route.check_points.count - 1
+    end
+    Challenge.create(route: route,
+                     finish_date: params[:finish_date],
+                     start_point: params[:start_point],
+                     finish_point: params[:finish_point])
+  end
+
+  def self.check_start_finish(params)
+    params[:start_point].nil? || params[:finish_point].nil?
+  end
+
+  def path
+    path = route.check_points.to_a
+    if start_point < finish_point
+      path = path[start_point..finish_point]
+    else
+      path.reverse!
+      path = path[finish_point..start_point]
+    end
+    path
+  end
 end

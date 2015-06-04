@@ -108,7 +108,12 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   $scope.getTripsByEngineType = (engineType, engineDisplacement)->
     Challenge.getChallengeTrips($scope.choosenChallenge.id, engineType, engineDisplacement).success (data) ->
         $scope.challengeTrips = data.trips
-        $scope.challengePath = data.path
+        $scope.challengePath = []
+        for point in data.path
+          formatted_point = []
+          formatted_point.push parseFloat(point.latitude)
+          formatted_point.push parseFloat(point.longitude)
+          $scope.challengePath.push formatted_point
 
 
   $scope.changeChoice = (index) ->
