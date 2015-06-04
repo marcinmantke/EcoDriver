@@ -25,6 +25,7 @@ en:
     register: 'Sign up'
     dont_have_acc: "Don\'t have an account? "
     have_acc: 'Already have an account? '
+    remember: 'Remember me'
     save_header: 'Save money! '
     save_header_sec: 'Spend them on new car.'
     save_content: > 

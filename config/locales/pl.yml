@@ -15,6 +15,7 @@ pl:
     register: 'Zarejestruj się'
     dont_have_acc: 'Nie masz konta? '
     have_acc: 'Masz już konto? '
+    remember: 'Zapamiętaj mnie'
     save_header: 'Oszczędzaj pieniądze! '
     save_header_sec: 'Wydaj je na nowy samochód.'
     save_content: > 

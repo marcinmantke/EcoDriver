@@ -41,7 +41,7 @@ html ng-app="EcoApp"
                             .form__buttons
                               .grid
                                 .grid__item.one-half
-                                  = f.submit "Log in", class: "btn btn-success"
+                                  = f.submit t("mainpage.login"), class: "btn btn-success"
 
                     div class="modal-body" ng-show="isRegistrationPage"
                       ul
@@ -59,7 +59,7 @@ html ng-app="EcoApp"
                           .form__buttons
                             .grid
                               .grid__item.one-half
-                                = f.submit "Sign up", class: "btn btn-success"
+                                = f.submit t("mainpage.register"), class: "btn btn-success"
 
                     div class="modal-footer"
                       div ng-show="isRegistrationPage"
