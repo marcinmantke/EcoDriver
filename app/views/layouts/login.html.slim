@@ -20,8 +20,8 @@ html ng-app="EcoApp"
                 div ng-controller="LoginCtrl"
                   script id="LoginModalContent.html" type="text/ng-template" 
                     div class="modal-header"
-                      h4 class="modal-title" ng-hide="isRegistrationPage" Log in
-                      h4 class="modal-title" ng-show="isRegistrationPage" Sign up
+                      h4 class="modal-title" ng-hide="isRegistrationPage" =t("mainpage.login")
+                      h4 class="modal-title" ng-show="isRegistrationPage" =t("mainpage.register")
 
                     div class="modal-body" ng-hide="isRegistrationPage"
                       div class="form-group"
@@ -63,11 +63,11 @@ html ng-app="EcoApp"
 
                     div class="modal-footer"
                       div ng-show="isRegistrationPage"
-                        | Already have an account? 
-                        button.btn.btn-default.navbar-btn.btn-info ng-click="isRegistrationPage=false" Log in
+                        =t("mainpage.have_acc") 
+                        button.btn.btn-default.navbar-btn.btn-info ng-click="isRegistrationPage=false" =t("mainpage.login")
                       div ng-hide="isRegistrationPage"
-                        | Don't have an account? 
-                        button.btn.btn-default.navbar-btn.btn-warning ng-click="isRegistrationPage=true" Sign up
+                        =t("mainpage.dont_have_acc")
+                        button.btn.btn-default.navbar-btn.btn-warning ng-click="isRegistrationPage=true" =t("mainpage.register")
                   - if !flash.empty?
                     div ng-bind="showModal()"
                   - else
@@ -76,8 +76,8 @@ html ng-app="EcoApp"
                         div ng-bind="showModal()" 
                   
 
-                  button.btn.btn-default.navbar-btn.btn-info ng-click="onLoginClicked()" Log in
-                  button.btn.btn-default.navbar-btn.btn-warning ng-click="onRegistrationClicked()" Sign up
+                  button.btn.btn-default.navbar-btn.btn-info ng-click="onLoginClicked()" =t("mainpage.login")
+                  button.btn.btn-default.navbar-btn.btn-warning ng-click="onRegistrationClicked()" =t("mainpage.register")
 
     /! Carousel==================================================
     .container-fill
@@ -110,18 +110,18 @@ html ng-app="EcoApp"
       .row.featurette
         .col-md-7.col-md-push-5
           h2.featurette-heading
-            | Compete with other users!
-            span.text-muted  Try to be the best.
-          p.lead We provide car comeptitions other than F1 and WRC. Our goal is not to be the fastest, but the most ecological! Record your trips, create and join challenges and compete, not only with other users, but with yourself!
+            =t("mainpage.compete_header")
+            span.text-muted  =t("mainpage.compete_header_sec")
+          p.lead =t("mainpage.compete_content")
         .col-md-5.col-md-pull-7
           = image_tag("compete.jpg", :alt => "", :title => "title")
       hr.featurette-divider/
       .row.featurette
         .col-md-7
           h2.featurette-heading
-            | Track your progress!
-            span.text-muted  Compare your tracks and see for yourself.
-          p.lead Record your tracks, analyze them and learn on mistakes. Then check your trips history and check if you've improved! With our little help, you can be not only more ecological, but also more wealthy!
+            =t("mainpage.track_header")
+            span.text-muted  =t("mainpage.track_header_sec")
+          p.lead =t("mainpage.track_content")
         .col-md-5
           = image_tag("tracks.png", :alt => "", :title => "title")
       hr.featurette-divider/

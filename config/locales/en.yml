@@ -21,10 +21,27 @@
 
 en:
   mainpage:
-    save_header: 'Save money!'
+    login: 'Log in'
+    register: 'Sign up'
+    dont_have_acc: "Don\'t have an account? "
+    have_acc: 'Already have an account? '
+    save_header: 'Save money! '
     save_header_sec: 'Spend them on new car.'
     save_content: > 
       Did you know, that by driving ecologically you can save approx. 30% on fuel? 
       When you drive a lot, you can save lots of money and spend them on anything you want! 
       Now, when you know WHAT to do, we can show you HOW to do it! 
       So don't waste your time and money and start being eco.
+    compete_header: 'Compete with other users! '
+    compete_header_sec: 'Try to be the best.'
+    compete_content: >
+        We provide car comeptitions other than F1 and WRC. 
+        Our goal is not to be the fastest, but the most ecological! 
+        Record your trips, create and join challenges and compete, 
+        not only with other users, but with yourself!
+    track_header: 'Track your progress! '
+    track_header_sec: 'Compare your tracks and see for yourself.'
+    track_content: >
+        Record your tracks, analyze them and learn on mistakes. 
+        Then check your trips history and check if you've improved! 
+        With our little help, you can be not only more ecological, but also more wealthy! 

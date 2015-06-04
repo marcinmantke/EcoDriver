@@ -11,6 +11,10 @@ pl:
             password:
               blank: ': pole nie może być puste.'
   mainpage:
+    login: 'Zaloguj się'
+    register: 'Zarejestruj się'
+    dont_have_acc: 'Nie masz konta? '
+    have_acc: 'Masz już konto? '
     save_header: 'Oszczędzaj pieniądze! '
     save_header_sec: 'Wydaj je na nowy samochód.'
     save_content: > 
@@ -18,3 +22,16 @@ pl:
       Jeśli dużo jeździsz, możesz zaoszczędzić sporą sumę pieniędzy i wydać je na cokolowiek zapragniesz! 
       Teraz, kiedy już wiesz CO trzeba zrobić, dowiedz się JAK to zrobić! 
       Nie marnuj więc czasu i pieniędzy, i zacznij być eko.
+    compete_header: 'Rywalizuj z innymi! '
+    compete_header_sec: 'Staraj się być najlepszy.'
+    compete_content: >
+        Dostarczamy rywalizację na poziomie innym, niż F1 lub WRC. 
+        Naszym celem nie jest bycie najszybszym, ale najbardziej ekologicznym! 
+        Nagrywaj swoje przejazdy, twórz i dołączaj do wyzwań i czerp radość z rywalizacji 
+        nie tylko z innymi użytkownikami, ale przede wszystkim z samym sobą!
+    track_header: 'Śledź swoje postępy! '
+    track_header_sec: 'Porównuj swoje przejazdy i sam się przekonaj.'
+    track_content: >
+        Nagrywaj swoje przejazdy, analizuj je i ucz się na błędach. 
+        Potem zobacz historię przejazdów i przekonaj się jak bardzo poprawiła się Twoja jazda! 
+        Z naszą niewielką pomocą, możesz być nie tylko bardziej ekologiczny, ale też bogatszy!
