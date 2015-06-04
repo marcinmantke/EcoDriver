@@ -14,21 +14,6 @@ angular.module('EcoApp').controller 'RankingCtrl', ($http, $scope, Trip, Challen
     Trip.ranking($scope.engineType, $scope.engineDisplacement, $scope.limits[0], $scope.limits[1]).success (data)->
       $scope.trips = data
 
-  $scope.setDistanceRange = (distanceRange) ->
-    $scope.distanceRange = distanceRange
-    if distanceRange
-      $scope.limits = distanceRange.split("-")
-      $scope.getRankingTrips()
-
-  $scope.setEngineType = (engineType) ->
-    $scope.engineType = engineType
-    $scope.getRankingTrips()
-
-  $scope.setEngineDisplacement = (engineDisplacement) ->
-    $scope.engineDisplacement = engineDisplacement
-    $scope.getRankingTrips()
-
-
 
   $scope.distanceRanges = [
     { display: '0 - 100 km', value: '0-100' },
@@ -58,3 +43,26 @@ angular.module('EcoApp').controller 'RankingCtrl', ($http, $scope, Trip, Challen
               value: ''
           response data
     methods: {}
+
+  $scope.$watch 'distanceSelected', (newValue, oldValue) ->
+    
+    if newValue
+      $scope.limits = newValue.value.split("-")
+    else
+      $scope.limits[0] = null
+      $scope.limits[1] = null
+    $scope.getRankingTrips()
+
+  $scope.$watch 'engineDisplacementSelected', (newValue, oldValue) ->
+    if newValue
+      $scope.engineDisplacement = newValue.disp
+    else
+      $scope.engineDisplacement = null
+    $scope.getRankingTrips()
+
+  $scope.$watch 'engineTypeSelected', (newValue, oldValue) ->
+    if newValue
+      $scope.engineType = newValue.eng_type
+    else
+      $scope.engineType = null
+    $scope.getRankingTrips()
