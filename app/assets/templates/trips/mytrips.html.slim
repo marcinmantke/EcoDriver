@@ -20,16 +20,7 @@ div.main_panel
                 | {{t.finish}}              
     .grid__item.five-twelfths      
       div       
-        map center="{{choosenTrip.path[0]}}" zoom="{{choosenTrip.map.zoom}}" ng-style="style(0.35, 0.5)" resize=""  
-          shape name="polyline" path="{{choosenTrip.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
-          marker id="start" position="{{choosenTrip.path[0]}}" title="Start"
-          info-window visible-on-marker="start"
-            div
-              | Start
-          marker id="finish" position="{{choosenTrip.path[choosenTrip.path.length-1]}}" title="Finish"
-           info-window visible-on-marker="finish"
-            div
-              | Finish
+        map zoom="16" ng-style="style(0.35, 0.5)" resize=""
       .grid__item style="margin-top: 10px; font-size: 18px"
         div.details
               b Distance: 
