@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
 
   def after_sign_in_path_for(_resource)
     '/#/dashboard'
@@ -47,5 +48,13 @@ class ApplicationController < ActionController::Base
     else
       'login'
     end
+  end
+ 
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def default_url_options(options = {})
+  { locale: I18n.locale }.merge options
   end
 end
