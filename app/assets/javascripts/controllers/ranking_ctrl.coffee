@@ -10,6 +10,7 @@ angular.module('EcoApp').controller 'RankingCtrl', ($http, $scope, Trip, Challen
     $scope.engineTypes = data.types
 
   $scope.getRankingTrips = ()->
+    console.log $scope
     Trip.ranking($scope.engineType, $scope.engineDisplacement, $scope.limits[0], $scope.limits[1]).success (data)->
       $scope.trips = data
 

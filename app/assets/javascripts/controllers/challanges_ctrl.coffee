@@ -6,7 +6,6 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
         $scope.trips.push trip
       for point, index in trip.path
         trip.path[index] = {lat: parseFloat(point[0]), lng: parseFloat(point[1])}
-    $scope.choosenTrip = $scope.trips[0]
     
 
   Challenge.getChallenges().success (data) ->
@@ -26,8 +25,16 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   $scope.startIndex = 1
   $scope.endIndex = 2
 
-
   initMap = () ->
+    clearShapes()
+    initPolylines()
+    initMarkers()
+
+    $scope.startPoly.setMap $scope.map
+    $scope.endPoly.setMap $scope.map
+    $scope.challengePoly.setMap $scope.map
+
+  clearShapes = () ->
     if $scope.startPoly != null
       $scope.startPoly.setMap null
     if $scope.endPoly != null
@@ -38,22 +45,38 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
       $scope.startMarker.setMap null
     if $scope.finishMarker != null
       $scope.finishMarker.setMap null
-    $scope.startPoly = new (google.maps.Polyline)(
-      strokeColor: '#00FF00'
-      strokeOpacity: 1.0
-      strokeWeight: 3
-      path: $scope.choosenTrip.path.slice(0,$scope.startIndex+1))
-    $scope.endPoly = new (google.maps.Polyline)(
-      strokeColor: '#00FF00'
-      strokeOpacity: 1.0
-      strokeWeight: 3
-      path: $scope.choosenTrip.path.slice($scope.endIndex, $scope.choosenTrip.path.length))
-    $scope.challengePoly = new (google.maps.Polyline)(
-      strokeColor: '#FF0000'
-      strokeOpacity: 1.0
-      strokeWeight: 3
-      path: $scope.choosenTrip.path.slice($scope.startIndex,$scope.endIndex+1))
 
+  initPolylines = () ->
+    if $scope.startIndex < $scope.endIndex
+      start = $scope.startIndex
+      end = $scope.endIndex
+    else
+      end = $scope.startIndex
+      start = $scope.endIndex
+    $scope.startPoly = initPolyline(0,start+1, '#00FF00')
+    $scope.endPoly = initPolyline(end, $scope.choosenTrip.path.length, '#00FF00')
+    $scope.challengePoly = initPolyline(start, end+1, '#FF0000')
+
+  initPolyline = (start, end, color) ->
+    polyline = new (google.maps.Polyline)(
+      strokeColor: color
+      strokeOpacity: 1.0
+      strokeWeight: 3
+      path: $scope.choosenTrip.path.slice(start, end))
+    i = 0
+    while i < polyline.getPath().getLength()
+      marker = new (google.maps.Marker)(
+        icon:
+          url: 'https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png'
+          size: new (google.maps.Size)(7, 7)
+          anchor: new (google.maps.Point)(4, 4)
+        position: polyline.getPath().getAt(i)
+        title: polyline.getPath().getAt(i).toUrlValue(6)
+        map: $scope.map)
+      i++
+    return polyline
+
+  initMarkers = () ->
     $scope.startMarker = new google.maps.Marker({
                 map: $scope.map,
                 position: $scope.choosenTrip.path[$scope.startIndex],
@@ -79,12 +102,6 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
       })
     $scope.finishInfoWindow.open($scope.map, $scope.finishMarker)
 
-    $scope.startPoly.setMap $scope.map
-    $scope.endPoly.setMap $scope.map
-    $scope.challengePoly.setMap $scope.map
-    $scope.map.setCenter $scope.choosenTrip.path[0]
-    $scope.map.setZoom 16
-
   $scope.getTripsByEngineType = (engineType, engineDisplacement)->
     Challenge.getChallengeTrips($scope.choosenChallenge.id, engineType, engineDisplacement).success (data) ->
         $scope.challengeTrips = data.trips
@@ -96,14 +113,15 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
     $scope.startIndex = 1
     $scope.endIndex = 2
     initMap()
+    bounds = new (google.maps.LatLngBounds)
+    bounds.extend (new google.maps.LatLng($scope.choosenTrip.path[0].lat, $scope.choosenTrip.path[0].lng))
+    bounds.extend (new google.maps.LatLng($scope.choosenTrip.path[$scope.choosenTrip.path.length-1].lat, $scope.choosenTrip.path[$scope.choosenTrip.path.length-1].lng))
+    $scope.map.fitBounds bounds
     
   $scope.changeChoiceChallenge = (index) ->
     $scope.choosenChallenge = $scope.challenges[index]
     $scope.challengeList = !$scope.challengeList
-    $scope.getTripsByEngineType(null, null)
-
-
-    
+    $scope.getTripsByEngineType(null, null)   
 
   $scope.calendar =
     opened: false
@@ -172,22 +190,38 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
         toastr.error("You have already invited " + $scope.user, 'Error')
 
   $scope.updateMarker = (event, isStartMarker) ->
-    index = 0
-    while(index < $scope.choosenTrip.path.length - 1)
-      if google.maps.geometry.poly.isLocationOnEdge(event.latLng,
-        new (google.maps.Polyline)(
-          path: $scope.choosenTrip.path.slice(index,index+2)), 0.001)
-        if isStartMarker
-          $scope.startIndex = index
-        else
-          $scope.endIndex = index+1
-        break
+    pi = Math.PI
+    R = 6371
+    distances = []
+    closest = -1
+    i = 0
+    lat1 = event.latLng.lat()
+    lng1 = event.latLng.lng()
+    while i < $scope.choosenTrip.path.length
+      lat2 = $scope.choosenTrip.path[i].lat
+      lng2 = $scope.choosenTrip.path[i].lng
+      chLat = lat2 - lat1
+      chLng = lng2 - lng1
+      dLat = chLat * pi / 180
+      dLng = chLng * pi / 180
+      rLat1 = lat1 * pi / 180
+      rLat2 = lat2 * pi / 180
+      a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLng / 2) * Math.sin(dLng / 2) * Math.cos(rLat1) * Math.cos(rLat2)
+      c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+      d = R * c
+      distances[i] = d
+      if closest == -1 or d < distances[closest]
+        closest = i
+      i++
+    if distances[closest] < 0.02
+      if isStartMarker
+        $scope.startIndex = closest
       else
-        index += 1
+        $scope.endIndex = closest
     initMap()
 
   $scope.$on 'mapInitialized', (evt, map) ->
     $scope.map = map
     if $scope.createView == true
+      $scope.changeChoice(0)
       initMap()
-      console.log "asd"
