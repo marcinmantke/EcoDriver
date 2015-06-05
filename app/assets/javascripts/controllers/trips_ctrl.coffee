@@ -126,23 +126,15 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
                 position: $scope.paths[$scope.choosenTrip][0],
                 draggable: false,
                 zIndex: 0,
-                disableAutoPan: true})
+                disableAutoPan: true,
+                icon : new google.maps.MarkerImage('/assets/start.png')})
     $scope.finishMarker = new google.maps.Marker({
                 map: $scope.map,
                 position: $scope.paths[$scope.choosenTrip][$scope.paths[$scope.choosenTrip].length-1],
                 draggable: false,
                 zIndex: 0,
-                disableAutoPan: true})
-
-    $scope.startInfoWindow = new google.maps.InfoWindow({
-      content: "Start",
-      })
-    $scope.startInfoWindow.open($scope.map, $scope.startMarker)
-
-    $scope.finishInfoWindow = new google.maps.InfoWindow({
-      content: "Finish",
-      })
-    $scope.finishInfoWindow.open($scope.map, $scope.finishMarker)
+                disableAutoPan: true,
+                icon : new google.maps.MarkerImage('/assets/finish.png')})
 
   $scope.$on 'mapInitialized', (evt, map) ->
     $scope.map = map

@@ -88,27 +88,19 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
     $scope.startMarker = new google.maps.Marker({
                 map: $scope.map,
                 position: $scope.choosenTrip.path[$scope.startIndex],
-                draggable: true})
+                draggable: true,
+                icon : new google.maps.MarkerImage('/assets/start.png')})
     $scope.finishMarker = new google.maps.Marker({
                 map: $scope.map,
                 position: $scope.choosenTrip.path[$scope.endIndex],
-                draggable: true})
+                draggable: true,
+                icon : new google.maps.MarkerImage('/assets/finish.png')})
 
     google.maps.event.addListener $scope.startMarker, 'dragend', (event) ->
       $scope.updateMarker(event, true)
 
     google.maps.event.addListener $scope.finishMarker, 'dragend', (event) ->
       $scope.updateMarker(event, false)
-
-    $scope.startInfoWindow = new google.maps.InfoWindow({
-      content: "Start",
-      })
-    $scope.startInfoWindow.open($scope.map, $scope.startMarker)
-
-    $scope.finishInfoWindow = new google.maps.InfoWindow({
-      content: "Finish",
-      })
-    $scope.finishInfoWindow.open($scope.map, $scope.finishMarker)
 
   $scope.getTripsByEngineType = (engineType, engineDisplacement)->
     Challenge.getChallengeTrips($scope.choosenChallenge.id, engineType, engineDisplacement).success (data) ->
