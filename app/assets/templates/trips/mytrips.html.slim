@@ -24,18 +24,18 @@ div.main_panel
       .grid__item style="margin-top: 10px; font-size: 18px"
         div.details
               b Distance: 
-              | {{ choosenTrip.distance }} km
+              | {{ mytrips[choosenTrip].distance }} km
               br /
               b Average fuel consumption: 
-              | {{ choosenTrip.avg_fuel }} L/100km
+              | {{ mytrips[choosenTrip].avg_fuel }} L/100km
               br /
               b Average RPM: 
-              | {{ choosenTrip.avg_rpm }} RPM
+              | {{ mytrips[choosenTrip].avg_rpm }} RPM
               br /
               b Average speed: 
-              | {{ choosenTrip.avg_speed }} km/h
+              | {{ mytrips[choosenTrip].avg_speed }} km/h
               br /
               b Eco mark: 
-              | {{ choosenTrip.mark }} pts
+              | {{ mytrips[choosenTrip].mark }} pts
       div
         canvas#line.chart.chart-line data="data" labels="labels" series="series" options="options"

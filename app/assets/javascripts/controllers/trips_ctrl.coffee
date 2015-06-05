@@ -3,19 +3,21 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
 
   Trip.getMyTrips().success (data, status, headers, config) ->
     $scope.mytrips = data
-    $scope.choosenTrip = $scope.mytrips[0]
-    $scope.setLabels($scope.choosenTrip)
-    $scope.setData($scope.choosenTrip)
-    for trip in $scope.mytrips
-      for point, index in trip.path
-        trip.path[index] = {lat: parseFloat(point[0]), lng: parseFloat(point[1])}
+    console.log data
+    $scope.paths = []
+    for trip, index in $scope.mytrips
+      $scope.paths.push []
+      for point in trip.path
+        $scope.paths[index].push {lat: parseFloat(point.latitude), lng: parseFloat(point.longitude)}
     $scope.changeChoice(0)
     initMap()
+
 
   $scope.polylines = []
   $scope.circles = []
   $scope.startMarker = null
   $scope.finishMarker = null
+  $scope.infoWindow = null
 
   $scope.labels = []
   $scope.series = ['Trip']
@@ -33,24 +35,24 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
 
   $scope.setData = (trip) ->
     i = 0
-    data = [[]]
+    data = []
+    data.push []
     while i < trip.path.length
-      #console.log($scope.choosenTrip.path[i][3])
-      data[0].push($scope.choosenTrip.path[i].speed)
+      #console.log($scope.paths[$scope.choosenTrip][i][3])
+      data[0].push($scope.mytrips[$scope.choosenTrip].path[i].speed)
       i++
     $scope.data = data 
 
   $scope.changeChoice = (index) ->
-    $scope.choosenTrip = $scope.mytrips[index]
-    $scope.setLabels($scope.choosenTrip)
-    $scope.setData($scope.choosenTrip)
+    $scope.choosenTrip = index
+    $scope.setLabels($scope.mytrips[index])
+    $scope.setData($scope.mytrips[index])
   
     initMap()
     bounds = new google.maps.LatLngBounds
-    bounds.extend (new google.maps.LatLng($scope.choosenTrip.path[0].lat, $scope.choosenTrip.path[0].lng))
-    bounds.extend (new google.maps.LatLng($scope.choosenTrip.path[$scope.choosenTrip.path.length-1].lat, $scope.choosenTrip.path[$scope.choosenTrip.path.length-1].lng))
+    bounds.extend (new google.maps.LatLng($scope.paths[$scope.choosenTrip][0].lat, $scope.paths[$scope.choosenTrip][0].lng))
+    bounds.extend (new google.maps.LatLng($scope.paths[$scope.choosenTrip][$scope.paths[$scope.choosenTrip].length-1].lat, $scope.paths[$scope.choosenTrip][$scope.paths[$scope.choosenTrip].length-1].lng))
     $scope.map.fitBounds bounds
-    $scope.map.setCenter($scope.choosenTrip.path[$scope.choosenTrip.path.length/2-2])
 
   initMap = () ->
     clearShapes()
@@ -71,9 +73,11 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
 
   initPolylines = () ->
     i = 0
-    while i < $scope.choosenTrip.path.length-1
+    while i < $scope.paths[$scope.choosenTrip].length-1
       $scope.polylines.push initPolyline(i,i+2, '#00FF00')
+      initCircle(i)
       i++
+    initCircle($scope.paths[$scope.choosenTrip].length-1)
 
   initPolyline = (start, end, color) ->
     polyline = new (google.maps.Polyline)(
@@ -81,28 +85,49 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
       strokeColor: color
       strokeOpacity: 1.0
       strokeWeight: 3
-      path: $scope.choosenTrip.path.slice(start, end))
-    i = 0
-    while i < polyline.getPath().getLength()
-      $scope.circles.push new (google.maps.Marker)(
-        icon:
-          url: 'https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png'
-          size: new (google.maps.Size)(7, 7)
-          anchor: new (google.maps.Point)(4, 4)
-        position: polyline.getPath().getAt(i)
-        map: $scope.map)
-      i++
+      path: $scope.paths[$scope.choosenTrip].slice(start, end))
     return polyline
+
+  initCircle = (index) ->
+    circle = new google.maps.Marker(
+      icon:
+        url: 'https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png'
+        size: new (google.maps.Size)(7, 7)
+        anchor: new (google.maps.Point)(4, 4)
+      position: $scope.paths[$scope.choosenTrip][index]
+      map: $scope.map
+      )
+    google.maps.event.addListener circle, 'mouseover', ->
+      if $scope.infoWindow == null
+        $scope.infoWindow = new google.maps.InfoWindow({
+          content: "<b>Speed</b>: #{$scope.mytrips[$scope.choosenTrip].path[index].speed} km/h<br />
+          <b>RPM</b>: #{$scope.mytrips[$scope.choosenTrip].path[index].rpm}<br />
+          <b>Fuel consumption</b>: #{$scope.mytrips[$scope.choosenTrip].path[index].fuel_consumption} L/100km<br />
+          <b>Gear</b>: #{$scope.mytrips[$scope.choosenTrip].path[index].gear}",
+          zIndex: 99999999,
+          disableAutoPan: true
+        })
+        $scope.infoWindow.open($scope.map, circle)
+    google.maps.event.addListener circle, 'mouseout', ->
+      if $scope.infoWindow != null
+        $scope.infoWindow.close($scope.map, circle)
+        $scope.infoWindow.setMap null
+        $scope.infoWindow = null
+    $scope.circles.push circle
 
   initMarkers = () ->
     $scope.startMarker = new google.maps.Marker({
                 map: $scope.map,
-                position: $scope.choosenTrip.path[0],
-                draggable: false})
+                position: $scope.paths[$scope.choosenTrip][0],
+                draggable: false,
+                zIndex: 0,
+                disableAutoPan: true})
     $scope.finishMarker = new google.maps.Marker({
                 map: $scope.map,
-                position: $scope.choosenTrip.path[$scope.choosenTrip.path.length-1],
-                draggable: false})
+                position: $scope.paths[$scope.choosenTrip][$scope.paths[$scope.choosenTrip].length-1],
+                draggable: false,
+                zIndex: 0,
+                disableAutoPan: true})
 
     $scope.startInfoWindow = new google.maps.InfoWindow({
       content: "Start",
