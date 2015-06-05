@@ -47,14 +47,21 @@ class User < ActiveRecord::Base
   end
 
   def stats
-    {
+    hash = {
       engine: engine_type.eng_type,
       disp: engine_displacement.disp,
-      trips_number: trips.count || 0,
+      trips_number: trips.count || 0
+    }
+    hash.merge!(stats_formatted)
+  end
+
+  def stats_formatted
+    hash = {
       mileage: trips.sum(:distance).round(2) || 0,
       avg_fuel: trips.average(:avg_fuel).round(2) || 0,
       avg_speed: trips.average(:avg_speed).round(2) || 0
     }
+    hash
   end
 
   def invitations_challenges
