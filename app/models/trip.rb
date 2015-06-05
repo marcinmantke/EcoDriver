@@ -75,9 +75,7 @@ class Trip < ActiveRecord::Base
   def path_formated
     path = []
     check_points.each do |check_point|
-      path.push([])
-      path.last.push(check_point['latitude'])
-      path.last.push(check_point['longitude'])
+      path.push(check_point.serializable_hash)
     end
     path
   end

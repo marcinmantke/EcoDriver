@@ -20,6 +20,8 @@
 #= require ui-autocomplete
 #= require angular-ui-select
 #= require angular-toastr
+#= require chartjs
+#= require angular-chart.js/angular-chart
 #= require lodash
 #= require ngmap
 #= require angular-ui-router

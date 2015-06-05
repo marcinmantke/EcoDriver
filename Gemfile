@@ -41,6 +41,9 @@ gem 'rails-assets-ui-autocomplete'
 gem 'rails-assets-jquery-ui'
 gem 'rails-assets-angular-toastr', '~> 0.4.0'
 gem 'rails-assets-angular-ui-select'
+gem 'rails-assets-chartjs'
+gem 'rails-assets-angular-chart.js'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
