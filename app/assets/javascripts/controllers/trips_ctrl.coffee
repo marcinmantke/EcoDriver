@@ -83,7 +83,15 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
   initPolylines = () ->
     i = 0
     while i < $scope.paths[$scope.choosenTrip].length-1
-      $scope.polylines.push initPolyline(i,i+2, '#00FF00')
+      avg_fuel_consumption = ($scope.mytrips[$scope.choosenTrip].path[i].fuel_consumption + $scope.mytrips[$scope.choosenTrip].path[i+1].fuel_consumption)/2
+      if avg_fuel_consumption <= 8
+        color = '#00FF00'
+      else if avg_fuel_consumption > 8 && avg_fuel_consumption <= 11
+        color = '#FFFF00'
+      else
+        color = '#FF0000'
+
+      $scope.polylines.push initPolyline(i,i+2, color)
       initCircle(i)
       i++
     initCircle($scope.paths[$scope.choosenTrip].length-1)
