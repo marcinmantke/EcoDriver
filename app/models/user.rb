@@ -50,10 +50,10 @@ class User < ActiveRecord::Base
     {
       engine: engine_type.eng_type,
       disp: engine_displacement.disp,
-      trips_number: trips.count,
-      mileage: trips.sum(:distance).round(2),
-      avg_fuel: trips.average(:avg_fuel).round(2),
-      avg_speed: trips.average(:avg_speed).round(2)
+      trips_number: trips.count || 0,
+      mileage: trips.sum(:distance).round(2) || 0,
+      avg_fuel: trips.average(:avg_fuel).round(2) || 0,
+      avg_speed: trips.average(:avg_speed).round(2) || 0
     }
   end
 
