@@ -23,6 +23,15 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
   $scope.series = ['Trip']
   $scope.data = [[]]
   $scope.options = { pointDot : false, pointHitDetectionRadius : 1 }
+
+  icon_circle = {
+    path: google.maps.SymbolPath.CIRCLE,
+    fillColor: 'green',
+    fillOpacity: .4,
+    scale: 4.5,
+    strokeColor: 'white',
+    strokeWeight: 1
+  }
     
 
   $scope.setLabels = (trip) ->
@@ -90,10 +99,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
 
   initCircle = (index) ->
     circle = new google.maps.Marker(
-      icon:
-        url: 'https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png'
-        size: new (google.maps.Size)(7, 7)
-        anchor: new (google.maps.Point)(4, 4)
+      icon: icon_circle
       position: $scope.paths[$scope.choosenTrip][index]
       map: $scope.map
       )
@@ -104,8 +110,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
           <b>RPM</b>: #{$scope.mytrips[$scope.choosenTrip].path[index].rpm}<br />
           <b>Fuel consumption</b>: #{$scope.mytrips[$scope.choosenTrip].path[index].fuel_consumption} L/100km<br />
           <b>Gear</b>: #{$scope.mytrips[$scope.choosenTrip].path[index].gear}",
-          zIndex: 99999999,
-          disableAutoPan: true
+          zIndex: 99999999
         })
         $scope.infoWindow.open($scope.map, circle)
     google.maps.event.addListener circle, 'mouseout', ->

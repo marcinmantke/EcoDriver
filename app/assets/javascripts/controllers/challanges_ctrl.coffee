@@ -5,8 +5,7 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
       if trip.challenge == null
         $scope.trips.push trip
       for point, index in trip.path
-        trip.path[index] = {lat: parseFloat(point[0]), lng: parseFloat(point[1])}
-    
+        trip.path[index] = {lat: parseFloat(point.latitude), lng: parseFloat(point.longitude)}  
 
   Challenge.getChallenges().success (data) ->
     $scope.challenges = data
@@ -25,6 +24,15 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   $scope.createView = false
   $scope.startIndex = 1
   $scope.endIndex = 2
+
+  icon_circle = {
+    path: google.maps.SymbolPath.CIRCLE,
+    fillColor: 'green',
+    fillOpacity: .4,
+    scale: 4.5,
+    strokeColor: 'white',
+    strokeWeight: 1
+  }
 
   initMap = () ->
     clearShapes()
@@ -70,10 +78,7 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
     i = 0
     while i < polyline.getPath().getLength()
       $scope.circles.push new (google.maps.Marker)(
-        icon:
-          url: 'https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png'
-          size: new (google.maps.Size)(7, 7)
-          anchor: new (google.maps.Point)(4, 4)
+        icon: icon_circle
         position: polyline.getPath().getAt(i)
         map: $scope.map)
       i++
@@ -222,9 +227,9 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
         closest = i
       i++
     if distances[closest] < 0.02
-      if isStartMarker
+      if isStartMarker && $scope.endIndex != closest
         $scope.startIndex = closest
-      else
+      else if !isStartMarker && $scope.startIndex != closest
         $scope.endIndex = closest
     initMap()
 
