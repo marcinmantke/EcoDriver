@@ -4,6 +4,9 @@ angular.module('EcoApp').controller 'DashboardCtrl', ($rootScope, $scope, Trip, 
 
   Trip.getMyTrips().success (data) ->
     $scope.mytrips = data
+    for trip in $scope.mytrips
+      for point, index in trip.path
+        trip.path[index] = [parseFloat(point.latitude), parseFloat(point.longitude)]
 
   Challenge.invitations().success (data) ->
     $scope.challenges = data  

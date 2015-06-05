@@ -68,10 +68,9 @@ div.main_panel
                         | Show map
                   tr ng-repeat-end="" ng-if="mapShow"
                     td colspan="7"
-                      map center="{{t.path[0]}}" zoom="{{t.map.zoom}}"
+                      map center="{{t.path[0]}}"
                         shape name="polyline" path="{{t.path}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
                         marker id="start" position="{{t.path[0]}}" title="Start" icon="'/assets/start.png'"
-                            | Start
                         marker id="finish" position="{{t.path[t.path.length-1]}}" title="Finish" icon="'/assets/finish.png'"
 
           div.challenges
