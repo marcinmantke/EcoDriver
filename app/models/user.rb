@@ -56,10 +56,13 @@ class User < ActiveRecord::Base
   end
 
   def stats_formatted
+    mileage = trips.sum(:distance) || 0
+    fuel = trips.average(:avg_fuel) || 0
+    speed = trips.average(:avg_speed) || 0
     hash = {
-      mileage: trips.sum(:distance).round(2) || 0,
-      avg_fuel: trips.average(:avg_fuel).round(2) || 0,
-      avg_speed: trips.average(:avg_speed).round(2) || 0
+      mileage: mileage.round(2),
+      avg_fuel: fuel.round(2),
+      avg_speed: speed.round(2)
     }
     hash
   end
