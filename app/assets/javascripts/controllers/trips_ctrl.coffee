@@ -99,8 +99,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
           <b>RPM</b>: #{$scope.mytrips[$scope.choosenTrip].path[start].rpm}<br />
           <b>Fuel consumption</b>: #{$scope.mytrips[$scope.choosenTrip].path[start].fuel_consumption} L/100km<br />
           <b>Gear</b>: #{$scope.mytrips[$scope.choosenTrip].path[start].gear}",
-          position: event.latLng,
-          disableAutoPan: true
+          position: event.latLng
         })
         $scope.infoWindow.open($scope.map)
     google.maps.event.addListener polyline, 'mouseout', ->
