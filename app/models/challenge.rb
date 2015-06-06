@@ -50,7 +50,8 @@ class Challenge < ActiveRecord::Base
   end
 
   def self.check_start_finish(params)
-    params[:start_point].nil? || params[:finish_point].nil?
+    params[:start_point].nil? || params[:finish_point].nil? ||
+      params[:start_point] == params[:finish_point]
   end
 
   def path

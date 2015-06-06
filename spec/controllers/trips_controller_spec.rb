@@ -26,8 +26,8 @@ RSpec.describe TripsController, type: :controller do
         post :create, trip: attributes_for(:trip_with_path), format: :json
         expect(response.body)
           .to eq(({ data: build(:trip,
-                                id: 3,
-                                user_id: 3,
+                                id: 5,
+                                user_id: 5,
                                 engine_type_id: 1,
                                 engine_displacement_id: 1,
                                 beginning: 'Australia,' \
