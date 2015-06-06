@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604140040) do
+ActiveRecord::Schema.define(version: 20150606100634) do
 
   create_table "challenges", force: true do |t|
     t.integer  "route_id",     null: false
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20150604140040) do
     t.integer "gear_up_min"
     t.integer "gear_up_max"
     t.integer "gear_down"
+  end
+
+  create_table "fuel_consumptions", force: true do |t|
+    t.integer  "engine_displacement_id",            null: false
+    t.integer  "engine_type_id",                    null: false
+    t.float    "low",                    limit: 24, null: false
+    t.float    "high",                   limit: 24, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "invitations", force: true do |t|
