@@ -14,7 +14,6 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
 
 
   $scope.polylines = []
-  $scope.circles = []
   $scope.startMarker = null
   $scope.finishMarker = null
   $scope.infoWindow = null
@@ -23,15 +22,6 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
   $scope.series = ['Trip']
   $scope.data = [[]]
   $scope.options = { pointDot : false, pointHitDetectionRadius : 1 }
-
-  icon_circle = {
-    path: google.maps.SymbolPath.CIRCLE,
-    fillColor: 'green',
-    fillOpacity: .4,
-    scale: 4.5,
-    strokeColor: 'white',
-    strokeWeight: 1
-  }
     
 
   $scope.setLabels = (trip) ->
@@ -80,57 +70,46 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
       $scope.startMarker.setMap null
     if $scope.finishMarker != null
       $scope.finishMarker.setMap null
-    for circle in $scope.circles
-      circle.setMap null
-    $scope.circles.clear
 
   initPolylines = () ->
     i = 0
     while i < $scope.paths[$scope.choosenTrip].length-1
-      avg_fuel_consumption = ($scope.mytrips[$scope.choosenTrip].path[i].fuel_consumption + $scope.mytrips[$scope.choosenTrip].path[i+1].fuel_consumption)/2
-      if avg_fuel_consumption <= $scope.fuel_consumption_low
+      fuel_consumption = $scope.mytrips[$scope.choosenTrip].path[i].fuel_consumption
+      if fuel_consumption <= $scope.fuel_consumption_low
         color = '#00FF00'
-      else if avg_fuel_consumption > $scope.fuel_consumption_low && avg_fuel_consumption <= $scope.fuel_consumption_high
+      else if fuel_consumption > $scope.fuel_consumption_low && fuel_consumption <= $scope.fuel_consumption_high
         color = '#FFFF00'
       else
         color = '#FF0000'
 
       $scope.polylines.push initPolyline(i,i+2, color)
-      initCircle(i)
       i++
-    initCircle($scope.paths[$scope.choosenTrip].length-1)
 
   initPolyline = (start, end, color) ->
     polyline = new (google.maps.Polyline)(
       map: $scope.map
       strokeColor: color
-      strokeOpacity: 1.0
-      strokeWeight: 3
+      strokeOpacity: 0.7
+      strokeWeight: 4
       path: $scope.paths[$scope.choosenTrip].slice(start, end))
-    return polyline
-
-  initCircle = (index) ->
-    circle = new google.maps.Marker(
-      icon: icon_circle
-      position: $scope.paths[$scope.choosenTrip][index]
-      map: $scope.map
-      )
-    google.maps.event.addListener circle, 'mouseover', ->
+    google.maps.event.addListener polyline, 'mouseover', (event)->
       if $scope.infoWindow == null
         $scope.infoWindow = new google.maps.InfoWindow({
-          content: "<b>Speed</b>: #{$scope.mytrips[$scope.choosenTrip].path[index].speed} km/h<br />
-          <b>RPM</b>: #{$scope.mytrips[$scope.choosenTrip].path[index].rpm}<br />
-          <b>Fuel consumption</b>: #{$scope.mytrips[$scope.choosenTrip].path[index].fuel_consumption} L/100km<br />
-          <b>Gear</b>: #{$scope.mytrips[$scope.choosenTrip].path[index].gear}",
-          zIndex: 99999999
+          content: "<b>Speed</b>: #{$scope.mytrips[$scope.choosenTrip].path[start].speed} km/h<br />
+          <b>RPM</b>: #{$scope.mytrips[$scope.choosenTrip].path[start].rpm}<br />
+          <b>Fuel consumption</b>: #{$scope.mytrips[$scope.choosenTrip].path[start].fuel_consumption} L/100km<br />
+          <b>Gear</b>: #{$scope.mytrips[$scope.choosenTrip].path[start].gear}",
+          position: event.latLng,
+          disableAutoPan: true
         })
-        $scope.infoWindow.open($scope.map, circle)
-    google.maps.event.addListener circle, 'mouseout', ->
+        $scope.infoWindow.open($scope.map)
+    google.maps.event.addListener polyline, 'mouseout', ->
+      sleep(200)
       if $scope.infoWindow != null
-        $scope.infoWindow.close($scope.map, circle)
+        $scope.infoWindow.close()
         $scope.infoWindow.setMap null
         $scope.infoWindow = null
-    $scope.circles.push circle
+    return polyline
 
   initMarkers = () ->
     $scope.startMarker = new google.maps.Marker({
@@ -150,3 +129,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
 
   $scope.$on 'mapInitialized', (evt, map) ->
     $scope.map = map
+
+  sleep = (ms) ->
+    start = new Date().getTime()
+    continue while new Date().getTime() - start < ms
