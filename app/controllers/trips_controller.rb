@@ -94,4 +94,16 @@ class TripsController < ApplicationController
       format.json { render json: response }
     end
   end
+
+  def fuel_consumption_intervals
+    fuel_consumption = FuelConsumption
+                       .where(engine_type_id: params[:eng_type],
+                              engine_displacement_id: params[:eng_disp]).first
+    response = { success: true, data: fuel_consumption }
+
+    respond_to do |format|
+      format.html {  fail ActionController::RoutingError.new('Not Found') }
+      format.json { render json: response }
+    end
+  end
 end

@@ -7,14 +7,12 @@ Rails.application.routes.draw do
   root 'trips#index'
 
   get 'dashboard' => 'trips#dashboard'
-
   get 'mytrips' => 'trips#mytrips'
   get 'whoami' => 'trips#who_am_i'
-
   get 'trips/:id', to: 'trips#show'
   post 'trips/ranking', to: 'trips#ranking'
-
   post 'save_trip', to: 'trips#create'
+  post 'fuel_consumption_intervals', to: 'trips#fuel_consumption_intervals'
 
   post 'challenge/create', to: 'challenges#create'
   get 'challenge/all', to: 'challenges#all'

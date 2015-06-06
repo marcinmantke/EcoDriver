@@ -11,3 +11,6 @@ angular.module('EcoApp').factory 'Trip', ($http) ->
 
   getDashboard: () ->
     $http.get('/dashboard.json')
+
+  getFuelConsumptionIntervals: (engine_type, engine_displacement) ->
+    $http.post('/fuel_consumption_intervals.json', {eng_type: engine_type, eng_disp: engine_displacement})

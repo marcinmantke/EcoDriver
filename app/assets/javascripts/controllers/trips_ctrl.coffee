@@ -57,11 +57,15 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
     $scope.setLabels($scope.mytrips[index])
     $scope.setData($scope.mytrips[index])
   
-    initMap()
-    bounds = new google.maps.LatLngBounds
-    bounds.extend (new google.maps.LatLng($scope.paths[$scope.choosenTrip][0].lat, $scope.paths[$scope.choosenTrip][0].lng))
-    bounds.extend (new google.maps.LatLng($scope.paths[$scope.choosenTrip][$scope.paths[$scope.choosenTrip].length-1].lat, $scope.paths[$scope.choosenTrip][$scope.paths[$scope.choosenTrip].length-1].lng))
-    $scope.map.fitBounds bounds
+    Trip.getFuelConsumptionIntervals($scope.mytrips[index].engine_type_id,
+      $scope.mytrips[index].engine_displacement_id).success (data) ->
+        $scope.fuel_consumption_low = data.data.low
+        $scope.fuel_consumption_high = data.data.high
+        initMap()
+        bounds = new google.maps.LatLngBounds
+        bounds.extend (new google.maps.LatLng($scope.paths[$scope.choosenTrip][0].lat, $scope.paths[$scope.choosenTrip][0].lng))
+        bounds.extend (new google.maps.LatLng($scope.paths[$scope.choosenTrip][$scope.paths[$scope.choosenTrip].length-1].lat, $scope.paths[$scope.choosenTrip][$scope.paths[$scope.choosenTrip].length-1].lng))
+        $scope.map.fitBounds bounds
 
   initMap = () ->
     clearShapes()
@@ -84,9 +88,9 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
     i = 0
     while i < $scope.paths[$scope.choosenTrip].length-1
       avg_fuel_consumption = ($scope.mytrips[$scope.choosenTrip].path[i].fuel_consumption + $scope.mytrips[$scope.choosenTrip].path[i+1].fuel_consumption)/2
-      if avg_fuel_consumption <= 8
+      if avg_fuel_consumption <= $scope.fuel_consumption_low
         color = '#00FF00'
-      else if avg_fuel_consumption > 8 && avg_fuel_consumption <= 11
+      else if avg_fuel_consumption > $scope.fuel_consumption_low && avg_fuel_consumption <= $scope.fuel_consumption_high
         color = '#FFFF00'
       else
         color = '#FF0000'
