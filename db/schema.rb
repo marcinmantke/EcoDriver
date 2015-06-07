@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606100634) do
+ActiveRecord::Schema.define(version: 20150607144430) do
 
   create_table "challenges", force: true do |t|
     t.integer  "route_id",     null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150606100634) do
     t.integer  "speed",                                                 null: false
     t.float    "fuel_consumption", limit: 24,                           null: false
     t.integer  "gear",                                                  null: false
+    t.float    "recorded_at",      limit: 24,                           null: false
   end
 
   create_table "engine_displacements", force: true do |t|

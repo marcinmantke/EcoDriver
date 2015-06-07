@@ -20,13 +20,15 @@ FactoryGirl.define do
             'rpm' => '1000',
             'speed' => '121',
             'fuel_consumption' => '9.9',
-            'gear' => '1' },
+            'gear' => '1',
+            'recorded_at' => '0' },
           { 'longitude' => '149.12836',
             'latitude' => '-35.28473',
             'rpm' => '2000',
             'speed' => '74',
             'fuel_consumption' => '12.81',
-            'gear' => '6'  }]
+            'gear' => '6',
+            'recorded_at' => '1'  }]
 
     initialize_with { attributes }
   end
@@ -44,13 +46,15 @@ FactoryGirl.define do
             'rpm' => '1000',
             'speed' => '121',
             'fuel_consumption' => '9.9',
-            'gear' => '1' },
+            'gear' => '1',
+            'recorded_at' => '0' },
           { 'longitude' => '149.12836',
             'latitude' => '-35.28473',
             'rpm' => '2000',
             'speed' => '74',
             'fuel_consumption' => '12.81',
-            'gear' => '6'  }]
+            'gear' => '6',
+            'recorded_at' => '1'  }]
 
     initialize_with { attributes }
   end

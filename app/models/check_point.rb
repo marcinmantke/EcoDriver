@@ -43,13 +43,18 @@ class CheckPoint < ActiveRecord::Base
 
   def self.save_checkpoints(points, trip, path)
     points.each_with_index do |point, index|
-      CheckPoint.create(longitude: point['location']['longitude'],
-                        latitude: point['location']['latitude'],
-                        trip: trip,
-                        speed: path[index][:speed],
-                        rpm: path[index][:rpm],
-                        fuel_consumption: path[index][:fuel_consumption],
-                        gear: path[index][:gear])
+      create_checkpoint(point, trip, index, path)
     end
+  end
+
+  def self.create_checkpoint(point, trip, index, path)
+    CheckPoint.create(longitude: point['location']['longitude'],
+                      latitude: point['location']['latitude'],
+                      trip: trip,
+                      speed: path[index][:speed],
+                      rpm: path[index][:rpm],
+                      fuel_consumption: path[index][:fuel_consumption],
+                      gear: path[index][:gear],
+                      recorded_at: path[index][:recorded_at])
   end
 end
