@@ -25,13 +25,17 @@ html ng-app="EcoApp"
       .navbar-collapse.collapse.navbar-responsive-collapse ng-controller="NavbarCtrl" 
         ul.nav.navbar-nav
           li ng-class="{active:isActive('/dashboard')}"
-            a href="/#/dashboard"  Dashboard
+            a href="/#/dashboard"
+              =t("navbar.dashboard") 
           li ng-class="{active:isActive('/mytrips')}"
-            a href="/#/mytrips"  My trips
+            a href="/#/mytrips"
+              =t("navbar.my_trips") 
           li ng-class="{active:isActive('/ranking')}"
-            a href="/#/ranking"  Ranking
+            a href="/#/ranking"
+              =t("navbar.ranking") 
           li ng-class="{active:isActive('/challenges')}"
-            a href="/#/challenges"  Challenges
+            a href="/#/challenges"
+              =t("navbar.challenges") 
 
         ul.nav.navbar-nav.navbar-right
           li.dropdown
@@ -40,10 +44,12 @@ html ng-app="EcoApp"
               b.caret
             ul.dropdown-menu
               li
-                a href="/#/"  Edit profile
+                a href="/#/"
+                  =t("navbar.edit_profile") 
               li.divider
               li
-                a href="/logout"  Logout
+                a href="/logout"
+                  =t("navbar.logout") 
 
 = yield
 

@@ -45,4 +45,11 @@ en:
     track_content: >
         Record your tracks, analyze them and learn on mistakes. 
         Then check your trips history and check if you've improved! 
-        With our little help, you can be not only more ecological, but also more wealthy! 
+        With our little help, you can be not only more ecological, but also more wealthy!
+  navbar:
+    dashboard: 'Dashboard'
+    my_trips: 'My trips'
+    ranking: 'Ranking'
+    challenges: 'Challenges'
+    edit_profile: 'Edit profile'
+    logout: 'Logout'
