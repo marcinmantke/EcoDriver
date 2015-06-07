@@ -17,7 +17,7 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       AVG_SPEED: 'Average speed',
       diesel: 'diesel',
       petrol: 'petrol',
-      lpg: 'lpg',
+      LPG: 'lpg',
       RECENT_TRIPS: 'Recent trips',
       DISTANCE: 'Distance',
       AVG_RPM: 'Average RPM',
