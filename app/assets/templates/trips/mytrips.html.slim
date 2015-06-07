@@ -11,9 +11,12 @@ div.main_panel
         table.table.table-hover
           thead
             tr
-              th style="text-align: center; width: 17%" Date
-              th style="text-align: center; width: 37%" Start
-              th style="text-align: center; width: 37%" Finish
+              th style="text-align: center; width: 17%"
+                | {{'DATE' | translate}}
+              th style="text-align: center; width: 37%"
+                | {{'START' | translate}}
+              th style="text-align: center; width: 37%"
+                | {{'FINISH' | translate}}
           tbody 
               tr ng-click="changeChoice($index)" ng-repeat="t in mytrips track by $index"  ng-class="{'selected': mytrips[choosenTrip] == t}" style="cursor: pointer"
                 td style="text-align: center; width: 17%"
@@ -26,7 +29,6 @@ div.main_panel
         div       
           map zoom="16" ng-style="style(0.4, 0.39)" resize="" style="margin-bottom: 1.5%"
         div
-          h2 All-In-One
           canvas#line.chart.chart-line data="data" labels="labels" series="series" options="options" legend="true" ng-style="style(0.4, 0.39)" resize=""
 /      div
 /        h2 All-In-One

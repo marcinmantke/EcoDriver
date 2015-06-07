@@ -31,6 +31,12 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       ACCEPT: 'Accept',
       REJECT: 'Reject',
 
+      #mytrips
+      SPEED: 'Speed',
+      RPM: 'RPM',
+      FUEL_CONSUMPTION: 'Fuel consumption',
+      GEAR: 'Gear',
+
       #ranking
       SELECT_DISTANCE: 'Select a distance range',
       SELECT_ENG_TYPE: 'Select an engine type'
@@ -76,6 +82,12 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       FINISH_DATE: 'Koniec wyzwania',
       ACCEPT: 'Zaakceptuj',
       REJECT: 'Odrzuć'
+
+      #mytrips
+      SPEED: 'Prędkość',
+      RPM: 'Obroty',
+      FUEL_CONSUMPTION: 'Spalanie',
+      GEAR: 'Bieg',
 
       #ranking
       SELECT_DISTANCE: 'Wybierz zakres dystansu',

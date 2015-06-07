@@ -20,7 +20,8 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
   $scope.infoWindow = null
 
   $scope.labels = []
-  $scope.series = ['Speed', 'RPM', 'Fuel consumption', 'Gear']
+  $scope.series = [$filter('translate')('SPEED'), $filter('translate')('RPM'),
+    $filter('translate')('FUEL_CONSUMPTION'), $filter('translate')('GEAR')]
   $scope.data = [[]]
 
   $scope.options = {
@@ -33,15 +34,15 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
     multiTooltipTemplate: (objectValue) -> 
       console.log(objectValue)
       objectValue.label = ''
-      if objectValue.datasetLabel == 'Speed'
-        return "Speed: " + objectValue.value*5 + " km/h"
-      if objectValue.datasetLabel == 'RPM'
-        return "RPM: " + objectValue.value*100
-      if objectValue.datasetLabel == "Fuel consumption"
+      if objectValue.datasetLabel == $filter('translate')('SPEED')
+        return $filter('translate')('SPEED') + ": " + objectValue.value*5 + " km/h"
+      if objectValue.datasetLabel == $filter('translate')('RPM')
+        return $filter('translate')('RPM') + ": " + objectValue.value*100
+      if objectValue.datasetLabel == $filter('translate')('FUEL_CONSUMPTION')
         number = $filter('number')(objectValue.value, 1)
-        return "Fuel consumption: " + number + " l/100km"
-      if objectValue.datasetLabel == "Gear"
-        return "Gear: " + objectValue.value
+        return $filter('translate')('FUEL_CONSUMPTION') + ": " + number + " l/100km"
+      if objectValue.datasetLabel == $filter('translate')('GEAR')
+        return $filter('translate')('GEAR') + ": " + objectValue.value
   }
 
   $scope.optionsSpeed = { 
@@ -232,7 +233,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
             hi: 140
         }
       ]
-      title: 'Average speed'
+      title: $filter('translate')('AVG_SPEED')
       label: 'km/h'
       titleMinFontSize: 14
       showInnerShadow: true
@@ -249,7 +250,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
         max: (data.mileage/data.trips_number).toFixed(2)
         decimals: 2
         levelColors: ["#3175C1"]
-        title: 'Distance'
+        title: $filter('translate')('DISTANCE')
         label: 'km'
         titleMinFontSize: 14
         showInnerShadow: true
@@ -264,7 +265,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
       max: 10.0
       decimals: 1
       levelColors: ["#FF0000", "#FF3232", "#FFFF4C", "#FFFF00", "#00FF00"]
-      title: 'Eco mark'
+      title: $filter('translate')('GEAR_RATE')
       titleMinFontSize: 14
       showInnerShadow: true
       shadowOpacity = 0.5
@@ -307,7 +308,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
         }
       ]
       noGradient: true
-      title: 'Average fuel consumption'
+      title: $filter('translate')('AVG_FUEL_CONSUMPTION')
       label: 'l/100km'
       titleMinFontSize: 14
       showInnerShadow: true
@@ -353,7 +354,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
         }
       ]
       noGradient: false
-      title: 'Average RPM'
+      title: $filter('translate')('AVG_RPM')
       label: 'rpm'
       titleMinFontSize: 14
       showInnerShadow: true
