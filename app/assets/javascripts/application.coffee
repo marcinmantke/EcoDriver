@@ -22,6 +22,8 @@
 #= require angular-toastr
 #= require chartjs
 #= require angular-chart.js/angular-chart
+#= require raphael
+#= require justgage2
 #= require lodash
 #= require ngmap
 #= require angular-ui-router

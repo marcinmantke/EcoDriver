@@ -95,11 +95,15 @@ class TripsController < ApplicationController
     end
   end
 
-  def fuel_consumption_intervals
+  def economic_ranges
     fuel_consumption = FuelConsumption
                        .where(engine_type_id: params[:eng_type],
                               engine_displacement_id: params[:eng_disp]).first
-    response = { success: true, data: fuel_consumption }
+    data = {
+      fuel_consumption: fuel_consumption,
+      engine_type: fuel_consumption.engine_type
+    }
+    response = { success: true, data: data }
 
     respond_to do |format|
       format.html {  fail ActionController::RoutingError.new('Not Found') }

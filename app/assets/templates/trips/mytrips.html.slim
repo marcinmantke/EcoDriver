@@ -1,41 +1,32 @@
 div.main_panel
-  grid.grid--center
-    scrollable-table.grid__item.six-twelfths watch="trips" ng-style="style(0.5, 0.9)" resize=""
-      table.table.table-hover
-        thead
-          tr
-            th style="text-align: center; width: 10%" Date
-            th style="text-align: center; width: 10%" Time
-            th style="text-align: center" Start
-            th style="text-align: center" Finish
-        tbody 
-            tr ng-click="changeChoice($index)" ng-repeat="t in mytrips track by $index"  ng-class="{'selected': choosenTrip == t}" style="cursor: pointer"
-              td style="text-align: center; width: 10%"
-                | {{t.date}}
-              td style="text-align: center; width: 10%"
-                | {{t.time}}
-              td style="text-align: center"
-                | {{t.beginning}}
-              td style="text-align: center"
-                | {{t.finish}}              
-    .grid__item.five-twelfths      
-      div       
-        map zoom="16" ng-style="style(0.35, 0.5)" resize=""
-      .grid__item style="margin-top: 10px; font-size: 18px"
-        div.details
-              b Distance: 
-              | {{ mytrips[choosenTrip].distance }} km
-              br /
-              b Average fuel consumption: 
-              | {{ mytrips[choosenTrip].avg_fuel }} L/100km
-              br /
-              b Average RPM: 
-              | {{ mytrips[choosenTrip].avg_rpm }} RPM
-              br /
-              b Average speed: 
-              | {{ mytrips[choosenTrip].avg_speed }} km/h
-              br /
-              b Eco mark: 
-              | {{ mytrips[choosenTrip].mark }} pts
-      div
-        canvas#line.chart.chart-line data="data" labels="labels" series="series" options="options"
+  div.grid.grid--center
+    div id="distance" style="margin: 0px; padding: 0px; display: inline-block" ng-style="style(0.17, 0.15)" resize=""
+    div id="avg_speed" style="margin: 0px; padding: 0px;  display: inline-block" ng-style="style(0.17, 0.15)" resize=""
+    div id="avg_rpm" style="margin: 0px; padding: 0px;  display: inline-block" ng-style="style(0.17, 0.15)" resize=""
+    div id="avg_fuel" style="margin: 0px; padding: 0px;  display: inline-block" ng-style="style(0.17, 0.15)" resize=""
+    div id="mark" style="margin: 0px; padding: 0px;  display: inline-block" ng-style="style(0.17, 0.15)" resize=""
+  div
+    grid.grid--center
+      scrollable-table.grid__item.six-twelfths watch="trips" ng-style="style(0.5, 0.79)" resize=""
+        table.table.table-hover
+          thead
+            tr
+              th style="text-align: center; width: 10%" Date
+              th style="text-align: center; width: 7%" Time
+              th style="text-align: center; width: 37%" Start
+              th style="text-align: center; width: 37%" Finish
+          tbody 
+              tr ng-click="changeChoice($index)" ng-repeat="t in mytrips track by $index"  ng-class="{'selected': mytrips[choosenTrip] == t}" style="cursor: pointer"
+                td style="text-align: center; width: 10%"
+                  | {{t.date}}
+                td style="text-align: center; width: 7%"
+                  | {{t.time}}
+                td style="text-align: center; width: 37%"
+                  | {{t.beginning}}
+                td style="text-align: center; width: 37%"
+                  | {{t.finish}}              
+      .grid__item.five-twelfths      
+        div       
+          map zoom="16" ng-style="style(0.4, 0.39)" resize="" style="margin-bottom: 1.5%"
+        div
+          canvas#line.chart.chart-line data="data" labels="labels" series="series" options="options" ng-style="style(0.4, 0.39" resize=""

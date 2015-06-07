@@ -43,6 +43,8 @@ gem 'rails-assets-angular-toastr', '~> 0.4.0'
 gem 'rails-assets-angular-ui-select'
 gem 'rails-assets-chartjs'
 gem 'rails-assets-angular-chart.js'
+gem 'rails-assets-justgage2', '~> 1.0.1'
+gem 'rails-assets-raphael'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

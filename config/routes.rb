@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'trips/:id', to: 'trips#show'
   post 'trips/ranking', to: 'trips#ranking'
   post 'save_trip', to: 'trips#create'
-  post 'fuel_consumption_intervals', to: 'trips#fuel_consumption_intervals'
+  post 'economic_ranges', to: 'trips#economic_ranges'
 
   post 'challenge/create', to: 'challenges#create'
   get 'challenge/all', to: 'challenges#all'

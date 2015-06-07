@@ -124,9 +124,12 @@ GEM
     rails-assets-jquery (2.1.4)
     rails-assets-jquery-ui (1.11.4)
       rails-assets-jquery (>= 1.6)
+    rails-assets-justgage2 (1.0.1)
+      rails-assets-raphael (~> 2.1.2)
     rails-assets-lodash (3.8.0)
     rails-assets-ngmap (1.7.10)
     rails-assets-normalize-scss (3.0.3)
+    rails-assets-raphael (2.1.4)
     rails-assets-ui-autocomplete (0.6.1)
     rails-i18n (4.0.4)
       i18n (~> 0.6)
@@ -243,9 +246,11 @@ DEPENDENCIES
   rails-assets-chartjs
   rails-assets-csswizardry-grids (~> 2.2.0)
   rails-assets-jquery-ui
+  rails-assets-justgage2 (~> 1.0.1)
   rails-assets-lodash
   rails-assets-ngmap (~> 1.7.7)
   rails-assets-normalize-scss (~> 3.0.2)
+  rails-assets-raphael
   rails-assets-ui-autocomplete
   rails-i18n
   rspec-rails (~> 3.2.1)
