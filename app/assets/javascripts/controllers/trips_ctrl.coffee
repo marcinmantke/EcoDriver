@@ -36,7 +36,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
     labels = []
     while i < trip.path.length
       if i%(parseInt(trip.path.length/4)) == 0 || i == (trip.path.length-1)
-        labels.push(i)
+        labels.push(trip.path[i].recorded_at)
       else
         labels.push('')
       i++
