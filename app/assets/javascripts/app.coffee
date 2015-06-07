@@ -37,7 +37,19 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       SELECT_ENG_DISP: 'Select an engine displacement',
       USER: 'User',
       GEAR_RATE: 'Gears change rating',
-      SEARCH_USER: 'Search user'
+      SEARCH_USER: 'Search user',
+
+      #challenge
+      CREATE_CHALLENGE: 'Create challenge',
+      ADDRES_SEARCH: 'Search addres',
+      CHALLENGE_PARTICIPATE: 'Challenges in which you participate',
+      CREATED_BY: 'Created by',
+      CREATE: 'Create',
+      CANCEL: 'Cancel',
+      BACK: 'Back',
+      JOIN: 'Join',
+      INVITE: 'Invite',
+      INVITE_PLACEHOLDER: 'Invite your friends'
     })
 
     .translations('pl', {
@@ -62,8 +74,8 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       FINISH: 'Koniec',
       INVITED_BY: 'Zaproszenie wysłał',
       FINISH_DATE: 'Koniec wyzwania',
-      ACCEPT: 'Accept',
-      REJECT: 'Reject'
+      ACCEPT: 'Zaakceptuj',
+      REJECT: 'Odrzuć'
 
       #ranking
       SELECT_DISTANCE: 'Wybierz zakres dystansu',
@@ -71,7 +83,19 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       SELECT_ENG_DISP: 'Wybierz pojemność silnika',
       USER: 'Użytkownik',
       GEAR_RATE: 'Ocena zmiany biegów',
-      SEARCH_USER: 'Wyszukaj użytkownika'
+      SEARCH_USER: 'Wyszukaj użytkownika',
+
+      #challenge
+      CREATE_CHALLENGE: 'Utwórz wyzwanie',
+      ADDRES_SEARCH: 'Wyszukaj adres',
+      CHALLENGE_PARTICIPATE: 'Wyzwania, w których bierzesz udział',
+      CREATED_BY: 'Twórca',
+      CREATE: 'Utwórz',
+      CANCEL: 'Anuluj'
+      BACK: 'Wróć',
+      JOIN: 'Dołącz',
+      INVITE: 'Zaproś',
+      INVITE_PLACEHOLDER: 'Zaproś swoich znajomych'
     })
 
     .registerAvailableLanguageKeys(['en, pl'])

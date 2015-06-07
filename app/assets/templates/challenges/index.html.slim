@@ -1,22 +1,26 @@
 div.main_panel
   div ng-if="challengeList"  ng-model="createView"
-    div 
-      button.btn.btn-default.navbar-btn.btn-info style="margin-left: 10px" ng-click="$parent.createView=!$parent.createView" ng-show="!$parent.createView"
-        | Create challenge
-      input.combo_textbox style="height: 34px; margin-left: 4px" placeholder=" country, city or street..." ng-model="search.route"
+    div  ng-show="!$parent.createView"
+      button.btn.btn-default.navbar-btn.btn-info style="margin-left: 10px" ng-click="$parent.createView=!$parent.createView"
+        | {{'CREATE_CHALLENGE' | translate}}
+      input.combo_textbox style="height: 34px; margin-left: 4px" placeholder=" {{'ADDRES_SEARCH' | translate}}..." ng-model="search.route"
     div.grid.grid--center ng-if="$parent.createView"
       scrollable-table.grid__item.five-twelfths watch="trips" ng-style="style(0.42, 0.9)" resize=""
         table.table.table-hover 
           thead
             tr
-              th style="text-align: center" Date
-              th style="text-align: center" Start
-              th style="text-align: center" Finish
-              th style="text-align: center" Average fuel consumption
+              th style="text-align: center" 
+                | {{'DATE' | translate}}
+              th style="text-align: center"
+                | {{'START' | translate}}
+              th style="text-align: center"
+                | {{'FINISH' | translate}}
+              th style="text-align: center"
+                | {{'AVG_FUEL_CONSUMPTION' | translate}}
           tbody
               tr ng-click="changeChoice($index)" ng-repeat="trip in trips track by $index"  ng-class="{'selected': choosenTrip == trip}" style="cursor: pointer"
                 td 
-                  | {{trip.date}} 
+                  | {{trip.date | date}} 
                 td
                   | {{trip.beginning}}
                 td
@@ -27,7 +31,8 @@ div.main_panel
         map zoom="16" ng-style="style(0.42, 0.9)" resize=""
         .grid
           .grid__item.one-twelfth style="margin-top: 10px; text-align: right"
-            h4.b Finish date:
+            h4.b
+              | {{'FINISH_DATE' | translate}}:
           .grid__item.one-eighth style="margin-top: 10px"
             p class="input-group" style="min-width: 70px"
               input class="form-control" datepicker-options="calendar.dateOptions" datepicker-popup="{{calendar.format}}" is-open="calendar.opened" min-date="calendar.minDate" ng-required="true" ng-model="calendar.date" type="text" readonly="" show-button-bar="false"
@@ -35,24 +40,34 @@ div.main_panel
                 button.btn.btn-default ng-click="calendar.open($event)"
                   i class="glyphicon glyphicon-calendar"
           button.btn.btn-lg.btn-default.navbar-btn.btn-success style="margin-right: 15px; margin-left: 15px" ng-click="saveChallenge(); $parent.createView=false"
-            | Save
+            | {{'CREATE' | translate}}
           button.btn.btn-lg.btn-default.navbar-btn.btn-danger style="margin-right: 25px" ng-click="$parent.$parent.createView=false"
-            | Cancel
+            | {{'CANCEL' | translate}}
     div ng-hide="createView"
       .my-legend
         .legend-scale
           ul.legend-labels
             li
               span style="background:#B1FFB3;" 
-              | Challenges in which you participate
+              | {{'CHALLENGE_PARTICIPATE' | translate}}
       table.table.table-hover watch="trips"
         thead
           tr
-            th Start
-            th Finish
-            th Distance
-            th Created by
-            th Finish date
+            th 
+              | {{'START' | translate}}
+
+            th 
+              | {{'FINISH' | translate}}
+
+            th  
+              | {{'DISTANCE' | translate}}
+
+            th  
+              | {{'CREATED_BY' | translate}}
+
+            th 
+              | {{'FINISH_DATE' | translate}}
+
         tbody
             tr ng-click="changeChoiceChallenge($index)" ng-repeat="challenge in challenges | filter:search:strict" ng-class="{'joined': challenge.is_joined == 1}" style="cursor: pointer"
               td
@@ -68,12 +83,12 @@ div.main_panel
 
   div ng-if="!challengeList"
     button.btn.btn-danger style="margin-left: 10px" ng-click="$parent.challengeList=!$parent.challengeList"
-      | Back
+      | {{'BACK' | translate}}
     button.btn.btn-success ng-click="joinChallenge()" style="margin-left: 2px" ng-hide="choosenChallenge.is_joined == 1"
-      | Join
-    input.combo_textbox type="text" ng-model="$parent.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="Invite your friends!"
+      | {{'JOIN' | translate}}
+    input.combo_textbox type="text" ng-model="$parent.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="{{'INVITE_PLACEHOLDER' | translate}}!"
     button.btn.btn-info ng-click="inviteUser()"
-      | Invite
+      | {{'INVITE' | translate}}
 
     map center="{{challengePath[0]}}" zoom="14" ng-style="style(0.4, 0.35)" resize="" style="margin-left: auto; margin-right: auto"
       shape name="polyline" path="{{challengePath}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
@@ -82,18 +97,18 @@ div.main_panel
     hr
     div style="margin-top: 10px"
       ui-select.combobox ng-model="engineDisplacementSelected" theme="bootstrap" on-select="getTripsByEngineType(null, $select.selected.disp)"
-        ui-select-match allow-clear="" placeholder=("Select an engine displacement...")
+        ui-select-match allow-clear="" placeholder=("{{'SELECT_ENG_DISP' | translate}}...")
           | {{$select.selected.disp}}
         ui-select-choices repeat=("engineDisplacement in engineDisplacements")
           | {{engineDisplacement.disp}}l
 
       ui-select.combobox ng-model="engineTypeSelected" theme="bootstrap" on-select="getTripsByEngineType($select.selected.eng_type, null)"
-        ui-select-match allow-clear="" placeholder=("Select an engine type...")
+        ui-select-match allow-clear="" placeholder=("{{'SELECT_ENG_TYPE' | translate}}...")
           | {{$select.selected.eng_type}}
         ui-select-choices repeat=("engineType in engineTypes")
           | {{engineType.eng_type}}
 
-      input.combo_textbox type="text" ng-model="search.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="Search user..."
+      input.combo_textbox type="text" ng-model="search.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="{{'SEARCH_USER' | translate}}..."
     div
       table.table.table-hover
         thead
@@ -101,21 +116,21 @@ div.main_panel
             th style="text-align: center"
               | #
             th style="text-align: center"
-              | User
+              | {{'USER' | translate}}
             th style="text-align: center"
-              | Average speed
+              | {{'AVG_SPEED' | translate}}
             th style="text-align: center"
-              | Average RPM
+              | {{'AVG_RPM' | translate}}
             th style="text-align: center"
-              | Engine Type
+              | {{'FUEL_TYPE' | translate}}
             th style="text-align: center"
-              | Engine Displacement
+              | {{'ENG_DISP' | translate}}
             th style="text-align: center"
-              | Gears change rating
+              | {{'GEAR_RATE' | translate}}
             th style="text-align: center"
-              | Data
+              | {{'DATE' | translate}}
             th style="text-align: center; background-color: #AEED7C"
-              | Average fuel consumption
+              | {{'AVG_FUEL_CONSUMPTION' | translate}}
         tbody 
           tr ng-repeat="t in challengeTrips  | filter:search:strict"
             td  style="text-align: center"
