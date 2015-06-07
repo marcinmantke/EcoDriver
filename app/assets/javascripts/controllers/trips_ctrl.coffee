@@ -1,4 +1,4 @@
-angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
+angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
 
   Trip.getMyTrips().success (data, status, headers, config) ->
     $scope.mytrips = data
@@ -20,9 +20,53 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
   $scope.infoWindow = null
 
   $scope.labels = []
-  $scope.series = ['Trip']
+  $scope.series = ['Speed', 'RPM', 'Fuel consumption', 'Gear']
   $scope.data = [[]]
-  $scope.options = { pointDot : false, pointHitDetectionRadius : 1}
+
+  $scope.options = {
+    bezierCurve : false,
+    pointDot : false, 
+    pointHitDetectionRadius : 1,
+    datasetFill : false,
+    scaleLabel: "<%=value%>",
+    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+    multiTooltipTemplate: (objectValue) -> 
+      console.log(objectValue)
+      objectValue.label = ''
+      if objectValue.datasetLabel == 'Speed'
+        return "Speed: " + objectValue.value*5 + " km/h"
+      if objectValue.datasetLabel == 'RPM'
+        return "RPM: " + objectValue.value*100
+      if objectValue.datasetLabel == "Fuel consumption"
+        number = $filter('number')(objectValue.value, 2)
+        return "Fuel consumption: " + number + " l/100km"
+      if objectValue.datasetLabel == "Gear"
+        return "Gear: " + objectValue.value
+  }
+
+  $scope.optionsSpeed = { 
+    pointDot : false, pointHitDetectionRadius : 1, 
+    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %> km/h", 
+    scaleLabel: "<%=value%> km/h"
+  }
+
+  $scope.optionsRpm = { 
+    pointDot : false, pointHitDetectionRadius : 1, 
+    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value/100 %> RPM", 
+    scaleLabel: "<%=value%> RPM"
+  }
+
+  $scope.optionsFuel = { 
+    pointDot : false, pointHitDetectionRadius : 1, 
+    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %> l/100km", 
+    scaleLabel: "<%=value%> l/100km"
+  }
+
+  $scope.optionsGear = { 
+    pointDot : false, pointHitDetectionRadius : 1, 
+    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %> gear", 
+    scaleLabel: "<%=value%> gear",
+  }
 
   gage_avg_speed = null
   gage_avg_rpm = null
@@ -45,18 +89,34 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
 
   $scope.setData = (trip) ->
     i = 0
-    data = []
-    data.push []
+    dataSpeed = [[]]
+    dataRpm = [[]]
+    dataFuel = [[]]
+    dataGear = [[]]
     while i < trip.path.length
-      #console.log($scope.paths[$scope.choosenTrip][i][3])
-      data[0].push($scope.mytrips[$scope.choosenTrip].path[i].speed)
+      dataSpeed[0].push(trip.path[i].speed/5)
+      dataRpm[0].push(trip.path[i].rpm/100)
+      dataFuel[0].push(trip.path[i].fuel_consumption)
+      dataGear[0].push(trip.path[i].gear)
       i++
-    $scope.data = data 
+    $scope.dataSpeed = dataSpeed 
+    $scope.dataRpm = dataRpm
+    $scope.dataFuel = dataFuel
+    $scope.dataGear = dataGear
+    $scope.data[0]=dataSpeed[0]
+    $scope.data[1]=dataRpm[0]
+    $scope.data[2]=dataFuel[0]
+    $scope.data[3]=dataGear[0]
 
   $scope.changeChoice = (index) ->
     $scope.choosenTrip = index
     $scope.setLabels($scope.mytrips[index])
     $scope.setData($scope.mytrips[index])
+    if $scope.data[0].length <= 50
+      $scope.pointHitDetectionRadius = 10
+    else
+      $scope.pointHitDetectionRadius = 1
+
   
     Trip.getFuelConsumptionIntervals($scope.mytrips[index].engine_type_id,
       $scope.mytrips[index].engine_displacement_id).success (data) ->

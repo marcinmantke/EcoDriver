@@ -26,4 +26,25 @@ div.main_panel
         div       
           map zoom="16" ng-style="style(0.4, 0.39)" resize="" style="margin-bottom: 1.5%"
         div
-          canvas#line.chart.chart-line data="data" labels="labels" series="series" options="options" ng-style="style(0.4, 0.39)" resize=""
+          h2 All-In-One
+          canvas#line.chart.chart-line data="data" labels="labels" series="series" options="options" legend="true" ng-style="style(0.4, 0.39)" resize=""
+      div
+        h2 All-In-One
+        canvas#line.chart.chart-line data="data" labels="labels" series="series" options="options" legend="true" ng-style="style(0.4, 0.39)" resize=""
+
+/      div
+/        div.row
+/          div.col-md-6
+/            h2 Speed chart
+/            canvas#line.chart.chart-line data="dataSpeed" labels="labels" series="series" options="optionsSpeed" ng-style="style(0.4, 0.39)" resize=""
+/          div.col-md-6
+/            h2 RPM chart
+/            canvas#line.chart.chart-line data="dataRpm" labels="labels" series="series" options="optionsRpm" ng-style="style(0.4, 0.39)" resize=""
+/        div.row
+/          div.col-md-6
+/            h2 Fuel consumption chart
+/            canvas#line.chart.chart-line data="dataFuel" labels="labels" series="series" options="optionsFuel" ng-style="style(0.4, 0.39)" resize=""
+/          div.col-md-6
+/            h2 Gear change chart
+/            canvas#line.chart.chart-line data="dataGear" labels="labels" series="series" options="optionsGear" ng-style="style(0.4, 0.39)" resize=""
+        
