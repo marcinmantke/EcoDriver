@@ -11,16 +11,13 @@ div.main_panel
         table.table.table-hover
           thead
             tr
-              th style="text-align: center; width: 10%" Date
-              th style="text-align: center; width: 7%" Time
+              th style="text-align: center; width: 17%" Date
               th style="text-align: center; width: 37%" Start
               th style="text-align: center; width: 37%" Finish
           tbody 
               tr ng-click="changeChoice($index)" ng-repeat="t in mytrips track by $index"  ng-class="{'selected': mytrips[choosenTrip] == t}" style="cursor: pointer"
-                td style="text-align: center; width: 10%"
-                  | {{t.date}}
-                td style="text-align: center; width: 7%"
-                  | {{t.time}}
+                td style="text-align: center; width: 17%"
+                  | {{ t.date | date }}, {{t.time}}
                 td style="text-align: center; width: 37%"
                   | {{t.beginning}}
                 td style="text-align: center; width: 37%"

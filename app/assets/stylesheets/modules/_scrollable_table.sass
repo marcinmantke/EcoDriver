@@ -1,77 +1,71 @@
 .scrollableContainer
   height: 100%
   position: relative
-  overflow: hidden
-  text-align: center
+  padding-top: 37px
+  margin-bottom: 30px
   .headerSpacer
     position: absolute
-    height: 36px
+    height: 20px
     top: 0
     right: 0
     left: 0
-  th .orderWrapper
-    position: absolute
-    top: 0
-    right: 2px
-    cursor: pointer
-    .order
-      font-size: 8pt
-      color: #BDBDBD
-    .active
-      color: #464646
+  th
+    .th-inner .title > span
+      display: block
+      overflow: hidden
+      text-overflow: ellipsis
+    .orderWrapper
+      position: absolute
+      top: 0
+      right: 2px
+      cursor: pointer
 
 .scrollArea
   height: 100%
-  overflow-x: auto
+  overflow-x: hidden
   overflow-y: auto
-  /*  the implementation of this is still quite buggy; specifically, it doesn't like the 
-   *    absolutely positioned headers within 
-   *-webkit-overflow-scrolling: touch;
   table
     overflow-x: hidden
     overflow-y: auto
     margin-bottom: 0
-    width: 100%
     border: none
-    /*border-collapse: separate;
-    .th
-      padding: 0 !important
-      border: none !important
-      min-width: 40px
-      border-bottom: 2px solid #ddd
+    th
+      height: 1px
+      padding: 0
+      border: none
+    .th-inner
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
+      position: absolute
+      top: 0
+      height: 36px
+      line-height: 36px
+      padding: 0 8px
+    tr th:first-child .th-inner
+      border-left: none
+    .th-inner.condensed
+      padding: 0 3px
+    tbody tr
+      td
+        &:first-child
+          border-left: none
+        &:last-child
+          border-right: none
+      &:first-child td
+        border-top: none
+      &:last-child td
+        border-bottom: 1px solid #ddd
+
+table .cr
+  min-width: 30px
+
 .selected
   background-color: #f5f5f5
 
 .joined
   background-color: #B1FFB3
 
-/*  to hack fix firefox border issue
-@-moz-document url-prefix()
-  .scrollArea table th .box
-    border-right: 1px solid #ddd
-    border-left: none
-
-
-.scrollableContainer
-  .scaler
-    position: absolute
-    top: 0px
-    width: 2px
-    height: 80%
-    background-color: #CFCFCF
-  th .resize-rod
-    position: absolute
-    top: 0
-    right: 0
-    cursor: col-resize
-    width: 4px
-    height: 100%
-
-.scrollable-resizing .scrollableContainer
-  cursor: col-resize
-  -moz-user-select: none
-  -webkit-user-select: none
-  -ms-user-select: none
 
 .my-legend
   .legend-title

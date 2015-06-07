@@ -1,7 +1,14 @@
+-lang = request.env['HTTP_ACCEPT_LANGUAGE'].slice(0,2);
+
 doctype html
 html ng-app="EcoApp"
   head
     title EcoDriver
+    -if lang == "pl"
+      script src="https://code.angularjs.org/1.2.16/i18n/angular-locale_pl.js"
+    -else
+      script src="https://code.angularjs.org/1.2.16/i18n/angular-locale_en.js"
+
     script src='//maps.googleapis.com/maps/api/js?sensor=false'
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application', media: 'all'

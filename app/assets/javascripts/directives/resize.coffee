@@ -14,8 +14,8 @@ angular.module('EcoApp').directive 'resize', ($window) ->
 
       scope.style = (width, height) ->
         {
-          'height': ((newValue.h - 100) * height) + 'px'
-          'width': ((newValue.w - 100) * width) + 'px'
+          'height': ((newValue.h - 100) * height) + 'px' if height != null
+          'width': ((newValue.w - 100) * width) + 'px' if width != null
         }
 
       return
