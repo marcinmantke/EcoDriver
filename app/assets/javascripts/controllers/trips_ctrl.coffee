@@ -38,7 +38,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
       if objectValue.datasetLabel == 'RPM'
         return "RPM: " + objectValue.value*100
       if objectValue.datasetLabel == "Fuel consumption"
-        number = $filter('number')(objectValue.value, 2)
+        number = $filter('number')(objectValue.value, 1)
         return "Fuel consumption: " + number + " l/100km"
       if objectValue.datasetLabel == "Gear"
         return "Gear: " + objectValue.value
@@ -80,7 +80,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
     labels = []
     while i < trip.path.length
       if i%(parseInt(trip.path.length/4)) == 0 || i == (trip.path.length-1)
-        labels.push(trip.path[i].recorded_at)
+        labels.push($filter('number')(trip.path[i].recorded_at, 2))
       else
         labels.push('')
       i++
