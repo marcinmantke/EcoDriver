@@ -4,51 +4,65 @@ div.main_panel
       .col-md-2
         div.sidebar
           li
-            h3 My current car:
+            h3 
+              | {{ 'CAR_STATS_HEADER' | translate }}:
             p
-              b Engine displacement:
+              b 
+                | {{ 'ENG_DISP' | translate }}:
               br/
               | {{ dashboard.disp }}
             p 
-              b Fuel type:
+              b
+                | {{ 'FUEL_TYPE' | translate }}:
               br /
-              | {{ dashboard.engine }}
+              | {{ dashboard.engine | translate }}
 
           li
-            h3 My stats:
+            h3 
+              | {{ 'MY_STATS' | translate }}:
             p 
-              b Overall mileage:
+              b
+                | {{ 'OVERALL_MIL' | translate }}:
               br/
               | {{ dashboard.mileage }} km
 
             p
-              b Number of trips:
+              b
+                | {{ 'TRIPS_NO' | translate }}:
               br/
               | {{ dashboard.trips_number }}
 
             p
-              b Average fuel consumption:
+              b
+                | {{ 'AVG_FUEL_CONSUMPTION' | translate }}:
               br/
               | {{ dashboard.avg_fuel }} L/100km
 
             p
-              b Average speed:
+              b
+                | {{ 'AVG_SPEED' | translate }}:
               br/
               | {{ dashboard.avg_speed }} km/h
 
       .col-md-10
         div.dashboard
           div.trips
-            h1 Recent trips
+            h1
+              | {{ 'RECENT_TRIPS' | translate }}
             table.table.table-hover width="100%"
               thead
                 tr
                   th #
-                  th Distance
-                  th Average fuel consumption
-                  th Average speed
-                  th Average RPM
-                  th Date
+                  th
+                    | {{ 'DISTANCE' | translate }}
+                  th
+                    | {{ 'AVG_FUEL_CONSUMPTION' | translate }}
+                  th
+                    | {{ 'AVG_SPEED' | translate }}
+                  th
+                    | {{ 'AVG_RPM' | translate }}
+                  th
+                    | {{ 'DATE' | translate }}
               tbody 
                   tr ng-repeat-start="t in mytrips | limitTo: 5"
                     td 
@@ -62,10 +76,10 @@ div.main_panel
                     td
                       | {{t.avg_rpm}}
                     td
-                      | {{t.date}}
+                      | {{t.date | date}}
                     td ng-click="mapShow = !mapShow" scroll-on-click="" 
                       button.btn.btn-default.navbar-btn.btn-success
-                        | Show map
+                        | {{ 'SHOW_MAP' | translate }}
                   tr ng-repeat-end="" ng-if="mapShow"
                     td colspan="7"
                       map center="{{t.path[0]}}"
@@ -74,15 +88,21 @@ div.main_panel
                         marker id="finish" position="{{t.path[t.path.length-1]}}" title="Finish" icon="'/assets/finish.png'"
 
           div.challenges
-            h1 Invitations to challenges
+            h1
+              | {{ 'INV_TO_CHALLENGE' | translate }}
             table.table.table-hover 
               thead
                 tr
-                  th Start
-                  th Finish
-                  th Distance
-                  th Created by
-                  th Finish date
+                  th 
+                    | {{ 'START' | translate }}
+                  th 
+                    | {{ 'FINISH' | translate }}
+                  th 
+                    | {{ 'DISTANCE' | translate }}
+                  th 
+                     | {{ 'INVITED_BY' | translate }}
+                  th 
+                    | {{ 'FINISH_DATE' | translate }}
                   th
                   th
               tbody
@@ -96,10 +116,10 @@ div.main_panel
                     td 
                       | {{challenge.created_by}}
                     td 
-                      | {{challenge.finish_date}}
+                      | {{challenge.finish_date | date}}
                     td
                       button.btn.btn-success ng-click="acceptInvitation(challenge)"
-                        | Accept
+                        | {{ 'ACCEPT' | translate }}
                     td
                       button.btn.btn-danger ng-click="rejectInvitation(challenge)"
-                        | Reject
+                        | {{ 'REJECT' | translate }}

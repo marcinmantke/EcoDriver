@@ -26,6 +26,7 @@
 #= require justgage2
 #= require lodash
 #= require ngmap
+#= require angular-translate
 #= require angular-ui-router
 #= require app
 #= require routes
