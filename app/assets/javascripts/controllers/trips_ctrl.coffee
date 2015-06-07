@@ -1,6 +1,5 @@
 angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
 
-
   Trip.getMyTrips().success (data, status, headers, config) ->
     $scope.mytrips = data
     console.log data
@@ -177,21 +176,22 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, Trip) ->
       shadowSize = 3
       shadowVerticalOffset = 10)
 
-    console.log gage_avg_speed
-
-    gage_distance = new JustGage(
-      id: 'distance'
-      value: $scope.mytrips[0].distance
-      min: 0
-      max: 150
-      levelColors: ["#FF0000", "#FF3232", "#FFFF4C", "#FFFF00", "#00FF00"]
-      title: 'Distance'
-      label: 'km'
-      titleMinFontSize: 14
-      showInnerShadow: true
-      shadowOpacity = 0.5
-      shadowSize = 3
-      shadowVerticalOffset = 10)
+    Trip.getDashboard().success (data) ->
+      console.log data
+      gage_distance = new JustGage(
+        id: 'distance'
+        value: $scope.mytrips[0].distance
+        min: 0
+        max: (data.mileage/data.trips_number).toFixed(2)
+        decimals: 2
+        levelColors: ["#3175C1"]
+        title: 'Distance'
+        label: 'km'
+        titleMinFontSize: 14
+        showInnerShadow: true
+        shadowOpacity = 0.5
+        shadowSize = 3
+        shadowVerticalOffset = 10)
 
     gage_mark = new JustGage(
       id: 'mark'
