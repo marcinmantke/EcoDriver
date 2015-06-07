@@ -1,24 +1,24 @@
 div.main_panel
   div 
     ui-select.combobox ng-model="$parent.distanceSelected" theme="bootstrap"
-      ui-select-match allow-clear="" placeholder=("Select a distance range...")
+      ui-select-match allow-clear="" placeholder=("{{'SELECT_DISTANCE' | translate}}...")
         | {{$select.selected.display}}
       ui-select-choices repeat=("distanceRange in distanceRanges")
         | {{distanceRange.display}}
 
     ui-select.combobox ng-model="$parent.engineDisplacementSelected" theme="bootstrap"
-      ui-select-match allow-clear="" placeholder=("Select an engine displacement...")
+      ui-select-match allow-clear="" placeholder=("{{'SELECT_ENG_DISP' | translate}}...")
         | {{$select.selected.disp}}
       ui-select-choices repeat=("engineDisplacement in engineDisplacements")
         | {{engineDisplacement.disp}}l
 
     ui-select.combobox ng-model="$parent.engineTypeSelected" theme="bootstrap"
-      ui-select-match allow-clear="" placeholder=("Select an engine type...")
+      ui-select-match allow-clear="" placeholder=("{{'SELECT_ENG_TYPE' | translate}}...")
         | {{$select.selected.eng_type}}
       ui-select-choices repeat=("engineType in engineTypes")
         | {{engineType.eng_type}}
 
-    input.combo_textbox type="text" ng-model="search.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="Search user..."
+    input.combo_textbox type="text" ng-model="search.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="{{'SEARCH_USER' | translate}}..."
   
   div
     table.table.table-hover
@@ -27,21 +27,21 @@ div.main_panel
           th style="text-align: center"
             | #
           th style="text-align: center"
-            | User
+            | {{'USER' | translate}}
           th style="text-align: center"
-            | Distance
+            | {{'DISTANCE' | translate}}
           th style="text-align: center"
-            | Average speed
+            | {{'AVG_SPEED' | translate}}
           th style="text-align: center"
-            | Average RPM
+            | {{'AVG_RPM' | translate}}
           th style="text-align: center"
-            | Engine Type
+            | {{'FUEL_TYPE' | translate}}
           th style="text-align: center"
-            | Engine Displacement
+            | {{'ENG_DISP' | translate}}
           th style="text-align: center"
-            | Gears change rating
+            | {{'GEAR_RATE' | translate}}
           th style="text-align: center; background-color: #AEED7C"
-            | Average fuel consumption
+            | {{'AVG_FUEL_CONSUMPTION' | translate}}
       tbody 
         tr ng-repeat="t in trips | filter:search:strict"
           td  style="text-align: center"

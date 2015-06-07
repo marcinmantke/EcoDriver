@@ -6,6 +6,7 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       angular.element(document.querySelector('meta[name=csrf-token]')).attr('content')
 
     $translateProvider.translations('en', {
+      #dashboard
       CAR_STATS_HEADER: 'My current car',
       ENG_DISP: 'Engine displacement',
       FUEL_TYPE: 'Fuel type',
@@ -28,7 +29,15 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       CREATED_BY: 'Created by',
       FINISH_DATE: 'Finish date',
       ACCEPT: 'Accept',
-      REJECT: 'Reject'
+      REJECT: 'Reject',
+
+      #ranking
+      SELECT_DISTANCE: 'Select a distance range',
+      SELECT_ENG_TYPE: 'Select an engine type'
+      SELECT_ENG_DISP: 'Select an engine displacement',
+      USER: 'User',
+      GEAR_RATE: 'Gears change rating',
+      SEARCH_USER: 'Search user'
     })
 
     .translations('pl', {
@@ -55,6 +64,14 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       FINISH_DATE: 'Koniec wyzwania',
       ACCEPT: 'Accept',
       REJECT: 'Reject'
+
+      #ranking
+      SELECT_DISTANCE: 'Wybierz zakres dystansu',
+      SELECT_ENG_TYPE: 'Wybierz typ paliwa',
+      SELECT_ENG_DISP: 'Wybierz pojemność silnika',
+      USER: 'Użytkownik',
+      GEAR_RATE: 'Ocena zmiany biegów',
+      SEARCH_USER: 'Wyszukaj użytkownika'
     })
 
     .registerAvailableLanguageKeys(['en, pl'])
