@@ -115,4 +115,3 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
     .determinePreferredLanguage()
 
     .fallbackLanguage('en');
-

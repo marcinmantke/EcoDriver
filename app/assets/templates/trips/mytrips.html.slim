@@ -22,9 +22,9 @@ div.main_panel
                 td style="text-align: center; width: 17%"
                   | {{ t.date | date }}, {{t.time}}
                 td style="text-align: center; width: 37%"
-                  | {{t.beginning}}
+                  | {{t.beginning | shortAddress}}
                 td style="text-align: center; width: 37%"
-                  | {{t.finish}}              
+                  | {{t.finish | shortAddress}}              
       .grid__item.five-twelfths      
         div       
           map zoom="16" ng-style="style(0.4, 0.39)" resize="" style="margin-bottom: 1.5%"
