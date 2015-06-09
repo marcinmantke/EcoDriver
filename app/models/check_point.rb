@@ -9,6 +9,7 @@ class CheckPoint < ActiveRecord::Base
       path_temp = path[i * 100..i * 100 + 99]
       res_temp = CheckPoint.points_from_api(path_temp)
       points += res_temp
+      sleep(1) if i % 10 == 9
     end
     CheckPoint.save_checkpoints(points, trip, path)
   end
