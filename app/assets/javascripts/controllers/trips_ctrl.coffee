@@ -265,7 +265,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
       max: 10.0
       decimals: 1
       levelColors: ["#FF0000", "#FF3232", "#FFFF4C", "#FFFF00", "#00FF00"]
-      title: $filter('translate')('GEAR_RATE')
+      title: $filter('translate')('ECO_MARK')
       titleMinFontSize: 14
       showInnerShadow: true
       shadowOpacity = 0.5
