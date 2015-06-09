@@ -28,10 +28,10 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   icon_circle = {
     path: google.maps.SymbolPath.CIRCLE,
     fillColor: 'green',
-    fillOpacity: .4,
-    scale: 4.5,
+    fillOpacity: 0,
+    scale: 0,
     strokeColor: 'white',
-    strokeWeight: 1
+    strokeWeight: 0
   }
 
   initMap = () ->

@@ -23,9 +23,9 @@ div.main_panel
                   td style="text-align: center; width: 15%" 
                     | {{trip.date | date}} 
                   td style="text-align: center; width: 32%" 
-                    | {{trip.beginning}}
+                    | {{trip.beginning | shortAddress}}
                   td style="text-align: center; width: 32%" 
-                    | {{trip.finish}}
+                    | {{trip.finish | shortAddress}}
                   td style="text-align: center; min-width: 10%" 
                     | {{trip.avg_fuel}}
         .grid__item.five-twelfths
@@ -71,9 +71,9 @@ div.main_panel
         tbody
             tr ng-click="changeChoiceChallenge($index)" ng-repeat="challenge in challenges | filter:search:strict" ng-class="{'joined': challenge.is_joined == 1}" style="cursor: pointer"
               td
-                | {{challenge.route.beginning}}
+                | {{challenge.route.beginning | shortAddress}}
               td
-                | {{challenge.route.finish}}
+                | {{challenge.route.finish | shortAddress}}
               td
                 | {{challenge.route.distance}}
               td 
