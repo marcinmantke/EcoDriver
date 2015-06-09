@@ -55,7 +55,13 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       BACK: 'Back',
       JOIN: 'Join',
       INVITE: 'Invite',
-      INVITE_PLACEHOLDER: 'Invite your friends'
+      INVITE_PLACEHOLDER: 'Invite your friends',
+
+      #welcome page
+      TITLE1: 'Want to try EcoDriving?',
+      TITLE2: 'Already convinced?',
+      CAPTION1: 'See what are the benefits!',
+      CAPTION2: 'Sign up!'
     })
 
     .translations('pl', {
@@ -107,7 +113,13 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       BACK: 'Wróć',
       JOIN: 'Dołącz',
       INVITE: 'Zaproś',
-      INVITE_PLACEHOLDER: 'Zaproś swoich znajomych'
+      INVITE_PLACEHOLDER: 'Zaproś swoich znajomych',
+
+      #welcome page
+      TITLE1: "Spróbuj EcoDriving'u!",
+      TITLE2: 'Chcesz zacząć zabawę?',
+      CAPTION1: 'Sprawdź korzyści!',
+      CAPTION2: 'Zarejestruj się!'
     })
 
     .registerAvailableLanguageKeys(['en, pl'])
