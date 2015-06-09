@@ -4,45 +4,45 @@ div.main_panel
       button.btn.btn-default.navbar-btn.btn-info style="margin-left: 10px" ng-click="$parent.createView=!$parent.createView"
         | {{'CREATE_CHALLENGE' | translate}}
       input.combo_textbox style="height: 34px; margin-left: 4px" placeholder=" {{'ADDRES_SEARCH' | translate}}..." ng-model="search.route"
-    div.grid.grid--center ng-if="$parent.createView"
-      scrollable-table.grid__item.five-twelfths watch="trips" ng-style="style(0.42, 0.9)" resize=""
-        table.table.table-hover 
-          thead
-            tr
-              th style="text-align: center" 
-                | {{'DATE' | translate}}
-              th style="text-align: center"
-                | {{'START' | translate}}
-              th style="text-align: center"
-                | {{'FINISH' | translate}}
-              th style="text-align: center"
-                | {{'AVG_FUEL_CONSUMPTION' | translate}}
-          tbody
-              tr ng-click="changeChoice($index)" ng-repeat="trip in trips track by $index"  ng-class="{'selected': choosenTrip == trip}" style="cursor: pointer"
-                td 
-                  | {{trip.date | date}} 
-                td
-                  | {{trip.beginning}}
-                td
-                  | {{trip.finish}}
-                td
-                  | {{trip.avg_fuel}}
-      .grid__item.six-twelfths
-        map zoom="16" ng-style="style(0.42, 0.9)" resize=""
-        .grid
-          .grid__item.one-twelfth style="margin-top: 10px; text-align: right"
-            h4.b
-              | {{'FINISH_DATE' | translate}}:
-          .grid__item.one-eighth style="margin-top: 10px"
-            p class="input-group" style="min-width: 70px"
-              input class="form-control" datepicker-options="calendar.dateOptions" datepicker-popup="{{calendar.format}}" is-open="calendar.opened" min-date="calendar.minDate" ng-required="true" ng-model="calendar.date" type="text" readonly="" show-button-bar="false"
-              span class="input-group-btn"
-                button.btn.btn-default ng-click="calendar.open($event)"
-                  i class="glyphicon glyphicon-calendar"
-          button.btn.btn-lg.btn-default.navbar-btn.btn-success style="margin-right: 15px; margin-left: 15px" ng-click="saveChallenge(); $parent.createView=false"
-            | {{'CREATE' | translate}}
-          button.btn.btn-lg.btn-default.navbar-btn.btn-danger style="margin-right: 25px" ng-click="$parent.$parent.createView=false"
-            | {{'CANCEL' | translate}}
+    div ng-if="$parent.createView"
+      grid.grid--center
+        scrollable-table.grid__item.six-twelfths watch="trips" ng-style="style(0.5, 0.9)" resize=""
+          table.table.table-hover 
+            thead
+              tr
+                th style="text-align: center; width: 15%" 
+                  | {{'DATE' | translate}}
+                th style="text-align: center; width: 32%"
+                  | {{'START' | translate}}
+                th style="text-align: center; width: 32%"
+                  | {{'FINISH' | translate}}
+                th style="text-align: center; min-width: 10%"
+                  | {{'FUEL_CONSUMPTION' | translate}}
+            tbody
+                tr ng-click="changeChoice($index)" ng-repeat="trip in trips track by $index"  ng-class="{'selected': choosenTrip == trip}" style="cursor: pointer"
+                  td style="text-align: center; width: 15%" 
+                    | {{trip.date | date}} 
+                  td style="text-align: center; width: 32%" 
+                    | {{trip.beginning}}
+                  td style="text-align: center; width: 32%" 
+                    | {{trip.finish}}
+                  td style="text-align: center; min-width: 10%" 
+                    | {{trip.avg_fuel}}
+        .grid__item.five-twelfths
+          map zoom="16" ng-style="style(0.42, 0.9)" resize=""
+      .grid__item.two-eighths
+      .grid__item.two-eighths style="margin-top: 10px"
+        label for="datapicker" style="text-align:right; clear: both; float:left; margin-right:15px; margin-top: 5px"
+          | {{'FINISH_DATE' | translate}}:
+        p class="input-group" style="min-width: 140px" id="datapicker"
+          input class="form-control" datepicker-options="calendar.dateOptions" datepicker-popup="{{calendar.format}}" is-open="calendar.opened" min-date="calendar.minDate" ng-required="true" ng-model="calendar.date" type="text" readonly="" show-button-bar="false" 
+          span class="input-group-btn"
+            button.btn.btn-default ng-click="calendar.open($event)" 
+              i class="glyphicon glyphicon-calendar"
+      button.btn.btn-default.navbar-btn.btn-success style="margin-right: 15px; margin-left: 15px" ng-click="saveChallenge(); $parent.createView=false"
+        | {{'CREATE' | translate}}
+      button.btn.btn-default.navbar-btn.btn-danger style="margin-right: 25px" ng-click="$parent.$parent.createView=false"
+        | {{'CANCEL' | translate}}
     div ng-hide="createView"
       .my-legend
         .legend-scale

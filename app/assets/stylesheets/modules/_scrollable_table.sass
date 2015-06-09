@@ -5,6 +5,7 @@
   margin-bottom: 30px
   .headerSpacer
     position: absolute
+    overflow-x: auto
     height: 20px
     top: 0
     right: 0
@@ -12,7 +13,6 @@
   th
     .th-inner .title > span
       display: block
-      overflow: hidden
       text-overflow: ellipsis
     .orderWrapper
       position: absolute
@@ -22,10 +22,10 @@
 
 .scrollArea
   height: 100%
-  overflow-x: hidden
+  overflow-x: auto
   overflow-y: auto
   table
-    overflow-x: hidden
+    overflow-x: auto
     overflow-y: auto
     margin-bottom: 0
     border: none
@@ -34,9 +34,6 @@
       padding: 0
       border: none
     .th-inner
-      overflow: hidden
-      text-overflow: ellipsis
-      white-space: nowrap
       position: absolute
       top: 0
       height: 36px
