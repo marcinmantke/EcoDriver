@@ -4,41 +4,41 @@ div.main_panel
       .col-md-2
         div.sidebar
           li
-            h3
-              | {{ 'CAR_STATS_HEADER' | translate }}:
+            h3 style="font-weight: 900; margin-left: auto; margin-right: auto"
+              | {{ 'CAR_STATS_HEADER' | translate }}
             div style="display: inline-block"
-              img src="assets/{{ dashboard.disp + '.png'}}" style="max-width: 45%; margin-right: 5%"
-              img src="assets/{{ dashboard.engine + '_img' | translate }}" style="max-width: 45%"
+              img src="assets/{{ dashboard.disp + '.png'}}" title="{{ 'ENG_DISP' | translate }}" style="max-width: 45%; margin-right: 5%"
+              img src="assets/{{ dashboard.engine + '_img' | translate }}" title="{{ 'FUEL_TYPE' | translate }}" style="max-width: 45%"
 
 
           li
-            h3 
-              | {{ 'MY_STATS' | translate }}:
-            p 
+            h3 style="font-weight: 900"
+              | {{ 'MY_STATS' | translate }}
+            p
               b
-                | {{ 'OVERALL_MIL' | translate }}:
+                | {{ 'OVERALL_MIL' | translate }}
               br/
+              img src="assets/overall_milage.png" title="{{ 'OVERALL_MIL' | translate }}" style="max-width: 35%"
               | {{ dashboard.mileage }} km
 
             p
               b
-                | {{ 'TRIPS_NO' | translate }}:
+                | {{ 'TRIPS_NO' | translate }}
               br/
+              img src="assets/tracks_count.png" title="{{ 'TRIPS_NO' | translate }}" style="max-width: 35%"
               | {{ dashboard.trips_number }}
 
-            p
-              b
-                | {{ 'AVG_FUEL_CONSUMPTION' | translate }}:
-              br/
-              | {{ dashboard.avg_fuel }} L/100km
+            p style="margin-bottom: -10%" 
+              b 
+                | {{ 'AVG_FUEL_CONSUMPTION' | translate }}
+              .div id="avg_fuel" style="max-weight: 45%"
 
-            p
+            p style="margin-bottom: -10%"
               b
-                | {{ 'AVG_SPEED' | translate }}:
-              br/
-              | {{ dashboard.avg_speed }} km/h
+                | {{ 'AVG_SPEED' | translate }}
+              .div id="avg_speed" style="max-height: 45%"
 
-      .col-md-10
+      .col-md-9
         div.dashboard
           div.trips
             h1

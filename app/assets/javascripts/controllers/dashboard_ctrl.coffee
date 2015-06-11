@@ -1,7 +1,28 @@
-angular.module('EcoApp').controller 'DashboardCtrl', ($rootScope, $scope, Trip, Challenge, toastr) ->
+angular.module('EcoApp').controller 'DashboardCtrl', ($rootScope, $scope, $filter, Trip, Challenge, toastr) ->
   Trip.getDashboard().success (data) ->
     $scope.dashboard = data
-    console.log data
+    gage_avg_fuel = new JustGage(
+      id: 'avg_fuel'
+      value: $scope.dashboard .avg_fuel,
+      min: 0,
+      max: ($scope.dashboard.fuel_consumption.high * 1.4).toFixed(1),
+      decimals: 1,
+      levelColors: ["#333333"],
+      label: 'l/100km',
+      labelFontColor: "#333333",
+      gaugeColor: '#5cb85c',
+      shadowOpacity: 0)
+
+    gage_avg_speed = new JustGage(
+      id: 'avg_speed'
+      value: $scope.dashboard.avg_speed
+      min: 0
+      max: 140
+      levelColors: ["#333333"]
+      labelFontColor: "#333333"
+      gaugeColor: '#5cb85c'
+      label: 'km/h'
+      shadowOpacity = 0)
 
   Trip.getMyTrips().success (data) ->
     $scope.mytrips = data

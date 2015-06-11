@@ -50,7 +50,9 @@ class User < ActiveRecord::Base
     hash = {
       engine: engine_type.eng_type,
       disp: engine_displacement.disp,
-      trips_number: trips.count || 0
+      trips_number: trips.count || 0,
+      fuel_consumption: FuelConsumption.where(engine_type: engine_type,
+                              engine_displacement: engine_displacement).first
     }
     hash.merge!(stats_formatted)
   end
