@@ -30,6 +30,9 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       FINISH_DATE: 'Finish date',
       ACCEPT: 'Accept',
       REJECT: 'Reject',
+      petrol_img: 'GAS-eng.png'
+      diesel_img: 'DIESEL.png'
+      LPG_img: 'LPG.png' 
 
       #mytrips
       SPEED: 'Speed',
@@ -89,6 +92,7 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       FINISH_DATE: 'Koniec wyzwania',
       ACCEPT: 'Zaakceptuj',
       REJECT: 'Odrzuć'
+      petrol_img: 'GAS-pol.png'
 
       #mytrips
       SPEED: 'Prędkość',

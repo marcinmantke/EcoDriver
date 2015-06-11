@@ -4,18 +4,12 @@ div.main_panel
       .col-md-2
         div.sidebar
           li
-            h3 
+            h3
               | {{ 'CAR_STATS_HEADER' | translate }}:
-            p
-              b 
-                | {{ 'ENG_DISP' | translate }}:
-              br/
-              | {{ dashboard.disp }}
-            p 
-              b
-                | {{ 'FUEL_TYPE' | translate }}:
-              br /
-              | {{ dashboard.engine | translate }}
+            div style="display: inline-block"
+              img src="assets/{{ dashboard.disp + '.png'}}" style="max-width: 45%; margin-right: 5%"
+              img src="assets/{{ dashboard.engine + '_img' | translate }}" style="max-width: 45%"
+
 
           li
             h3 
