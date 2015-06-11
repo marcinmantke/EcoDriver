@@ -51,8 +51,9 @@ class User < ActiveRecord::Base
       engine: engine_type.eng_type,
       disp: engine_displacement.disp,
       trips_number: trips.count || 0,
-      fuel_consumption: FuelConsumption.where(engine_type: engine_type,
-                              engine_displacement: engine_displacement).first
+      fuel_consumption: FuelConsumption.find_by(
+        engine_type: engine_type,
+        engine_displacement: engine_displacement)
     }
     hash.merge!(stats_formatted)
   end
