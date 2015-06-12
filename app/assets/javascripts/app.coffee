@@ -32,7 +32,8 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       REJECT: 'Reject',
       petrol_img: 'GAS-eng.png'
       diesel_img: 'DIESEL.png'
-      LPG_img: 'LPG.png' 
+      LPG_img: 'LPG.png'
+      INVITED_BY: 'Invite by'
 
       #mytrips
       SPEED: 'Speed',

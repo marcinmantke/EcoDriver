@@ -123,12 +123,13 @@ RSpec.describe TripsController, type: :controller do
       it 'renders all user\'s trips as json' do
         FactoryGirl.create(:engine_displacement)
         FactoryGirl.create(:engine_type)
+        FactoryGirl.create(:fuel_consumption)
         FactoryGirl.create(:full_trip, user_id: current_user_id)
         get :mytrips, format: :json
         expect(response).to be_success
         json = JSON.parse(response.body)
         expect(json).not_to be_empty
-        expect(json[0].length).to eq(19)
+        expect(json[0].length).to eq(20)
       end
       it 'renders empty array when user has no trips' do
         get :mytrips, format: :json

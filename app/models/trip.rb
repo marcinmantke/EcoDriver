@@ -83,4 +83,10 @@ class Trip < ActiveRecord::Base
   def match_with_challenge
     ChallengesUser.create_unique(user.id, challenge_id) unless challenge_id.nil?
   end
+
+  def economic_ranges
+    FuelConsumption.find_by(
+      engine_type: engine_type,
+      engine_displacement: engine_displacement).economic_ranges
+  end
 end

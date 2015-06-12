@@ -26,11 +26,13 @@ angular.module('EcoApp').controller 'DashboardCtrl', ($rootScope, $scope, $filte
 
   Trip.getMyTrips().success (data) ->
     $scope.mytrips = data
+    console.log $scope.mytrips
     for trip in $scope.mytrips
       for point, index in trip.path
         trip.path[index] = [parseFloat(point.latitude), parseFloat(point.longitude)]
 
   Challenge.invitations().success (data) ->
+    console.log data
     $scope.challenges = data  
 
   $scope.rejectInvitation = (challenge) ->
@@ -56,3 +58,27 @@ angular.module('EcoApp').controller 'DashboardCtrl', ($rootScope, $scope, $filte
         toastr.error('Please reload page and try again', 'Error')
     .error ->
       toastr.error('Please reload page and try again', 'Error')
+
+  $scope.avgFuelCircleClass = (trip) ->
+    if trip.avg_fuel <= trip.economic_ranges.fuel_consumption.low
+      return 'circle_green'
+    else if trip.avg_fuel > trip.economic_ranges.fuel_consumption.low && trip.avg_fuel <= trip.economic_ranges.fuel_consumption.high
+      return 'circle_yellow'
+    else
+      return 'circle_red'
+
+  $scope.avgSpeedCircleClass = (trip) ->
+    if trip.avg_speed <= 60
+      return 'circle_green'
+    else if trip.avg_speed > 60 && trip.avg_speed <= 90
+      return 'circle_yellow'
+    else
+      return 'circle_red'
+
+  $scope.avgRPMCircleClass = (trip) ->
+    if trip.avg_rpm > trip.economic_ranges.engine_type.gear_down && trip.avg_rpm <= trip.economic_ranges.engine_type.gear_up_min
+      return 'circle_green'
+    else if trip.avg_rpm > trip.economic_ranges.engine_type.gear_up_min && trip.avg_rpm <= trip.economic_ranges.engine_type.gear_up_max
+      return 'circle_yellow'
+    else
+      return 'circle_red'

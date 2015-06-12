@@ -21,7 +21,7 @@ class Challenge < ActiveRecord::Base
     hash_challenge = serializable_hash
     hash_challenge['created_by'] = route.user.username
     hash_challenge['is_joined'] = joined?(user_id)
-    hash_challenge['route'] = route.serializable_hash
+    hash_challenge['route'] = route.to_hash
     hash_challenge
   end
 

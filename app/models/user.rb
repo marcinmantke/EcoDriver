@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
       hash_trips.push trip.to_hash
       hash_trips.last[:path] = trip.path_formated
       hash_trips.last[:challenge] = trip.challenge
+      hash_trips.last[:economic_ranges] = trip.economic_ranges
     end
     hash_trips
   end
@@ -63,7 +64,7 @@ class User < ActiveRecord::Base
     fuel = trips.average(:avg_fuel) || 0
     speed = trips.average(:avg_speed) || 0
     hash = {
-      mileage: mileage.round(2),
+      mileage: mileage.round(0),
       avg_fuel: fuel.round(2),
       avg_speed: speed.round(2)
     }
@@ -75,6 +76,7 @@ class User < ActiveRecord::Base
     invitations.each do |invitation|
       challenges.push invitation.challenge.to_hash id
       challenges.last[:invitation_id] = invitation.id
+      challenges.last[:invited_by] = invitation.invited_by.username
     end
     challenges
   end

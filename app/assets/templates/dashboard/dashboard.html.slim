@@ -1,7 +1,7 @@
 div.main_panel
-  .container-fluid
+  .container-fluid style="padding-left: 0px"
     .row-fluid
-      .col-md-2
+      .col-md-2 style="padding: 0px"
         div.sidebar
           li
             h3 style="font-weight: 900; margin-left: auto; margin-right: auto"
@@ -38,41 +38,45 @@ div.main_panel
                 | {{ 'AVG_SPEED' | translate }}
               .div id="avg_speed" style="max-height: 45%"
 
-      .col-md-9
+      .col-md-10
         div.dashboard
           div.trips
             h1
               | {{ 'RECENT_TRIPS' | translate }}
             table.table.table-hover width="100%"
               thead
-                tr
-                  th #
-                  th
-                    | {{ 'DISTANCE' | translate }}
-                  th
-                    | {{ 'AVG_FUEL_CONSUMPTION' | translate }}
-                  th
-                    | {{ 'AVG_SPEED' | translate }}
-                  th
+                tr 
+                  th  style="text-align: center; vertical-align: middle"
+                    | #
+                  th  style="text-align: center; vertical-align: middle"
+                    | {{ 'DISTANCE' | translate }} [km]
+                  th  style="text-align: center; vertical-align: middle"
+                    | {{ 'AVG_FUEL_CONSUMPTION' | translate }} [l/100km]
+                  th  style="text-align: center; vertical-align: middle"
+                    | {{ 'AVG_SPEED' | translate }} [km/h]
+                  th style="text-align: center; vertical-align: middle"
                     | {{ 'AVG_RPM' | translate }}
-                  th
+                  th style="text-align: center; vertical-align: middle"
                     | {{ 'DATE' | translate }}
               tbody 
-                  tr ng-repeat-start="t in mytrips | limitTo: 5"
-                    td 
+                  tr ng-repeat-start="t in mytrips | limitTo: 5" style="height: 40px"
+                    td  style="text-align: center; vertical-align: middle"
                       | {{$index+1}}
-                    td
+                    td style="text-align: center; vertical-align: middle"
                       | {{t.distance}}
-                    td
+                    td style="text-align: center; vertical-align: middle"
+                      .circle ng-class='avgFuelCircleClass(t)'
                       | {{t.avg_fuel}}
-                    td
+                    td style="text-align: center; vertical-align: middle"
+                      .circle ng-class='avgSpeedCircleClass(t)'
                       | {{t.avg_speed}}
-                    td
+                    td style="text-align: center; vertical-align: middle"
+                      .circle ng-class='avgRPMCircleClass(t)'
                       | {{t.avg_rpm}}
-                    td
+                    td style="text-align: center; vertical-align: middle"
                       | {{t.date | date}}
                     td ng-click="mapShow = !mapShow" scroll-on-click="" 
-                      button.btn.btn-default.navbar-btn.btn-success
+                      button.btn.btn-default.navbar-btn.btn-success style="margin: 0px"
                         | {{ 'SHOW_MAP' | translate }}
                   tr ng-repeat-end="" ng-if="mapShow"
                     td colspan="7"
@@ -87,33 +91,33 @@ div.main_panel
             table.table.table-hover 
               thead
                 tr
-                  th 
+                  th style="text-align: center; vertical-align: middle"
                     | {{ 'START' | translate }}
-                  th 
+                  th  style="text-align: center; vertical-align: middle"
                     | {{ 'FINISH' | translate }}
-                  th 
+                  th  style="text-align: center; vertical-align: middle"
                     | {{ 'DISTANCE' | translate }}
-                  th 
+                  th  style="text-align: center; vertical-align: middle"
                      | {{ 'INVITED_BY' | translate }}
-                  th 
+                  th  style="text-align: center; vertical-align: middle"
                     | {{ 'FINISH_DATE' | translate }}
-                  th
-                  th
+                  th style="text-align: center; vertical-align: middle"
+                  th style="text-align: center; vertical-align: middle"
               tbody
                   tr ng-repeat="challenge in challenges | limitTo: 5"
-                    td
-                      | {{challenge.route.beginning}}
-                    td
-                      | {{challenge.route.finish}}
-                    td
+                    td  style="text-align: center; vertical-align: middle"
+                      | {{challenge.route.beginning | shortAddress}}
+                    td style="text-align: center; vertical-align: middle"
+                      | {{challenge.route.finish | shortAddress}}
+                    td style="text-align: center; vertical-align: middle"
                       | {{challenge.route.distance}}
-                    td 
-                      | {{challenge.created_by}}
-                    td 
+                    td  style="text-align: center; vertical-align: middle"
+                      | {{challenge.invited_by}}
+                    td  style="text-align: center; vertical-align: middle"
                       | {{challenge.finish_date | date}}
-                    td
+                    td style="text-align: center; vertical-align: middle"
                       button.btn.btn-success ng-click="acceptInvitation(challenge)"
                         | {{ 'ACCEPT' | translate }}
-                    td
+                    td style="text-align: center; vertical-align: middle"
                       button.btn.btn-danger ng-click="rejectInvitation(challenge)"
                         | {{ 'REJECT' | translate }}
