@@ -12,7 +12,6 @@ div.main_panel
               .engine_img
                 img src="assets/{{ dashboard.engine + '_img' | translate }}" title="{{ 'FUEL_TYPE' | translate }}"
 
-
           li
             h3 style="font-weight: 900"
               | {{ 'MY_STATS' | translate }}
@@ -22,6 +21,7 @@ div.main_panel
               br/
               img src="assets/overall_milage.png" title="{{ 'OVERALL_MIL' | translate }}" style="max-width: 35%"
               | {{ dashboard.mileage || '0' }} km
+            br/
 
             p
               b
@@ -29,17 +29,19 @@ div.main_panel
               br/
               img src="assets/tracks_count.png" title="{{ 'TRIPS_NO' | translate }}" style="max-width: 35%"
               | {{ dashboard.trips_number || '0' }}
+            br/
 
             p style="margin-bottom: -10%" ng-show="dashboard.engine != null"
               b 
                 | {{ 'AVG_FUEL_CONSUMPTION' | translate }}
               .div id="avg_fuel" style="max-weight: 45%"
+            br/
 
             p style="margin-bottom: -10%" ng-show="dashboard.engine != null"
               b
                 | {{ 'AVG_SPEED' | translate }}
               .div id="avg_speed" style="max-height: 45%"
-
+              
       .col-md-10
         div.dashboard
           div.trips
