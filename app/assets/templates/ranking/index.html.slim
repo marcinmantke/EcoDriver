@@ -28,19 +28,19 @@ div.main_panel
           th style="text-align: center"
             | {{'USER' | translate}}
           th style="text-align: center"
-            | {{'DISTANCE' | translate}} [km]
+            | {{'DISTANCE' | translate}}
           th style="text-align: center"
             | {{'FUEL_TYPE' | translate}}
           th style="text-align: center"
             | {{'ENG_DISP' | translate}}
+          th style="text-align: center; width: 10%"
+            | {{'ECO_MARK' | translate}}
           th style="text-align: center"
-            | {{'AVG_SPEED' | translate}} [km/h]
+            | {{'AVG_SPEED' | translate}}
           th style="text-align: center"
             | {{'AVG_RPM' | translate}}
           th style="text-align: center"
-            | {{'ECO_MARK' | translate}}
-          th style="text-align: center"
-            | {{'AVG_FUEL_CONSUMPTION' | translate}} [l/100km]
+            | {{'AVG_FUEL_CONSUMPTION' | translate}}
       tbody 
         tr ng-repeat="t in trips | filter:search:strict"
           td  style="text-align: center; vertical-align: middle"
@@ -48,22 +48,22 @@ div.main_panel
           td style="text-align: center; vertical-align: middle"
             | {{t.user}}
           td style="text-align: center; vertical-align: middle"
-            | {{t.distance}}
-          td style="width: 15%"
+            | {{t.distance}} km
+          td style="width: 15%; padding: 5 5 0 0"
             .engine_img style="margin-left: 30%"
               img src="assets/{{ t.engine_type + '_img' | translate }}" title="{{ t.engine_type | translate }}"
-          td style="width: 15%"
+          td style="width: 15%; padding: 5 5 0 0"
             .engine_img style="margin-left: 30%"
               img src="assets/{{ t.engine_displacement + '.png' }}" title="{{ t.engine_displacement | translate }}"
+          td style="text-align: center; vertical-align: middle; padding: 0; width: 10%"
+            .div
+              img src="assets/{{ markCircleClass(t) + '_star.png' }}" title="{{ t.mark }}" style="width: 100%"
           td style="text-align: center; vertical-align: middle"
             .circle ng-class='avgSpeedCircleClass(t)'
-            | {{t.avg_speed}}
+            | {{t.avg_speed}} km/h
           td style="text-align: center; vertical-align: middle"
             .circle ng-class='avgRPMCircleClass(t)'
-            | {{t.avg_rpm}}
-          td style="text-align: center; vertical-align: middle"
-            .circle ng-class='markCircleClass(t)'
-            | {{t.mark}}
-          td style="text-align: center; vertical-align: middle"
+            | {{t.avg_rpm}} RPM
+          td style="text-align: center; vertical-align: middle; font-weight: 800"
             .circle ng-class='avgFuelCircleClass(t)'
-            | {{t.avg_fuel}}
+            | {{t.avg_fuel}} L/100km

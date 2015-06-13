@@ -82,9 +82,13 @@ angular.module('EcoApp').controller 'RankingCtrl', ($http, $scope, Trip, Challen
     return 'circle_' + trip.colors.rpm
 
   $scope.markCircleClass = (trip) ->
-    if trip.mark <= 4
-      return 'circle_red'
-    else if trip.mark > 4 && trip.mark <= 7.5
-      return 'circle_yellow'
+    if trip.mark < 2
+      return 'one'
+    else if trip.mark >= 2 && trip.mark < 4
+      return 'two'
+    else if trip.mark >= 4 && trip.mark < 6
+      return 'three'
+    else if trip.mark >= 6 && trip.mark < 8
+      return 'four'
     else
-      return 'circle_green'
+      return 'five'
