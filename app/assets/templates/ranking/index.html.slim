@@ -19,7 +19,7 @@ div.main_panel
         | {{engineType.eng_type}}
 
     input.combo_textbox type="text" ng-model="search.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="{{'SEARCH_USER' | translate}}..."
-    
+
     table.table.table-hover
       thead
         tr
@@ -43,25 +43,27 @@ div.main_panel
             | {{'AVG_FUEL_CONSUMPTION' | translate}} [l/100km]
       tbody 
         tr ng-repeat="t in trips | filter:search:strict"
-          td  style="text-align: center"
+          td  style="text-align: center; vertical-align: middle"
             | {{$index+1}}
-          td style="text-align: center"
+          td style="text-align: center; vertical-align: middle"
             | {{t.user}}
-          td style="text-align: center"
+          td style="text-align: center; vertical-align: middle"
             | {{t.distance}}
-          td style="text-align: center"
-            | {{ t.engine_type | translate }}
-          td style="text-align: center"
-            | {{t.engine_displacement}}
-          td style="text-align: center"
+          td style="width: 15%"
+            .engine_img style="margin-left: 30%"
+              img src="assets/{{ t.engine_type + '_img' | translate }}" title="{{ t.engine_type | translate }}"
+          td style="width: 15%"
+            .engine_img style="margin-left: 30%"
+              img src="assets/{{ t.engine_displacement + '.png' }}" title="{{ t.engine_displacement | translate }}"
+          td style="text-align: center; vertical-align: middle"
             .circle ng-class='avgSpeedCircleClass(t)'
             | {{t.avg_speed}}
-          td style="text-align: center"
+          td style="text-align: center; vertical-align: middle"
             .circle ng-class='avgRPMCircleClass(t)'
             | {{t.avg_rpm}}
-          td style="text-align: center"
+          td style="text-align: center; vertical-align: middle"
             .circle ng-class='markCircleClass(t)'
             | {{t.mark}}
-          td style="text-align: center; background-color: #AEED7C"
+          td style="text-align: center; vertical-align: middle"
             .circle ng-class='avgFuelCircleClass(t)'
             | {{t.avg_fuel}}
