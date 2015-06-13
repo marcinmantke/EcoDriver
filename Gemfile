@@ -76,4 +76,5 @@ group :development, :test do
   gem 'simplecov-rcov'
   gem 'rubocop', require: false
   gem 'rubocop-rspec'
+  gem 'selenium-webdriver'
 end
