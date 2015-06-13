@@ -3,7 +3,7 @@ angular.module('EcoApp').controller 'DashboardCtrl', ($rootScope, $scope, $filte
     $scope.dashboard = data
     gage_avg_fuel = new JustGage(
       id: 'avg_fuel'
-      value: $scope.dashboard .avg_fuel,
+      value: $scope.dashboard.avg_fuel,
       min: 0,
       max: ($scope.dashboard.fuel_consumption.high * 1.4).toFixed(1),
       decimals: 1,
@@ -26,19 +26,16 @@ angular.module('EcoApp').controller 'DashboardCtrl', ($rootScope, $scope, $filte
 
   Trip.getMyTrips().success (data) ->
     $scope.mytrips = data
-    console.log $scope.mytrips
     for trip in $scope.mytrips
       for point, index in trip.path
         trip.path[index] = [parseFloat(point.latitude), parseFloat(point.longitude)]
 
   Challenge.invitations().success (data) ->
-    console.log data
     $scope.challenges = data  
 
   $scope.rejectInvitation = (challenge) ->
     Challenge.rejectInvitation(challenge.invitation_id)
     .success (data)->
-      console.log data
       if data.success == true
         $scope.challenges.splice(challenge, 1)
         toastr.info('Invitation rejected', 'Information')
@@ -50,7 +47,6 @@ angular.module('EcoApp').controller 'DashboardCtrl', ($rootScope, $scope, $filte
   $scope.acceptInvitation = (challenge) ->
     Challenge.acceptInvitation(challenge.invitation_id)
     .success (data)->
-      console.log data
       if data.success == true
         $scope.challenges.splice(challenge, 1)
         toastr.info('You joined to challenge', 'Information')

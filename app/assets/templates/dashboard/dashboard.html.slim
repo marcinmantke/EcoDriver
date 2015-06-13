@@ -3,12 +3,14 @@ div.main_panel
     .row-fluid
       .col-md-2 style="padding: 0px"
         div.sidebar
-          li
+          li ng-show="dashboard.engine != null"
             h3 style="font-weight: 900; margin-left: auto; margin-right: auto"
               | {{ 'CAR_STATS_HEADER' | translate }}
             div style="display: inline-block"
-              img src="assets/{{ dashboard.disp + '.png'}}" title="{{ 'ENG_DISP' | translate }}" style="max-width: 45%; margin-right: 5%"
-              img src="assets/{{ dashboard.engine + '_img' | translate }}" title="{{ 'FUEL_TYPE' | translate }}" style="max-width: 45%"
+              .engine_img 
+                img src="assets/{{ dashboard.disp + '.png'}}" title="{{ 'ENG_DISP' | translate }}" style="margin-right: 5%"
+              .engine_img
+                img src="assets/{{ dashboard.engine + '_img' | translate }}" title="{{ 'FUEL_TYPE' | translate }}"
 
 
           li
@@ -19,21 +21,21 @@ div.main_panel
                 | {{ 'OVERALL_MIL' | translate }}
               br/
               img src="assets/overall_milage.png" title="{{ 'OVERALL_MIL' | translate }}" style="max-width: 35%"
-              | {{ dashboard.mileage }} km
+              | {{ dashboard.mileage || '0' }} km
 
             p
               b
                 | {{ 'TRIPS_NO' | translate }}
               br/
               img src="assets/tracks_count.png" title="{{ 'TRIPS_NO' | translate }}" style="max-width: 35%"
-              | {{ dashboard.trips_number }}
+              | {{ dashboard.trips_number || '0' }}
 
-            p style="margin-bottom: -10%" 
+            p style="margin-bottom: -10%" ng-show="dashboard.engine != null"
               b 
                 | {{ 'AVG_FUEL_CONSUMPTION' | translate }}
               .div id="avg_fuel" style="max-weight: 45%"
 
-            p style="margin-bottom: -10%"
+            p style="margin-bottom: -10%" ng-show="dashboard.engine != null"
               b
                 | {{ 'AVG_SPEED' | translate }}
               .div id="avg_speed" style="max-height: 45%"

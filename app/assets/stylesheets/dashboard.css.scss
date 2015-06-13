@@ -4,7 +4,6 @@
     background-color: #5cb85c;
     border-radius: 10px;
     word-wrap: break-word;
-    width: 100%
 
 }
 
@@ -14,4 +13,29 @@
     margin-right: 10px;
     margin-bottom: 10px; 
 
+}
+
+
+.engine_img {
+  width: 45%;
+  hight: 45%;
+  float: left;
+  margin-right: 5px;
+}
+
+.engine_img>img {
+  width: 100%;
+}
+
+@-moz-document url-prefix() {
+    .engine_img>img {
+        width: 100%;
+    }
+}
+
+// Styles for IE10
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    engine_img>img {
+        width: 100%;
+    }
 }
