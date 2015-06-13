@@ -27,7 +27,7 @@ div.main_panel
                   td style="text-align: center; width: 32%" 
                     | {{trip.finish | shortAddress}}
                   td style="text-align: center; min-width: 10%" 
-                    | {{trip.avg_fuel}}
+                    | {{trip.avg_fuel}} L/100km
         .grid__item.five-twelfths
           map zoom="16" ng-style="style(0.42, 0.9)" resize=""
       .grid__item.two-eighths
@@ -43,112 +43,124 @@ div.main_panel
         | {{'CREATE' | translate}}
       button.btn.btn-default.navbar-btn.btn-danger style="margin-right: 25px" ng-click="$parent.$parent.createView=false"
         | {{'CANCEL' | translate}}
-    div ng-hide="createView"
-      .my-legend
-        .legend-scale
-          ul.legend-labels
-            li
-              span style="background:#B1FFB3;" 
-              | {{'CHALLENGE_PARTICIPATE' | translate}}
-      table.table.table-hover watch="trips"
-        thead
-          tr
-            th 
-              | {{'START' | translate}}
+    .container-fluid ng-hide="createView"
+      .row-fluid 
+        li.my-legend
+            .legend-scale
+              ul.legend-labels
+                li
+                  span style="background:#e8e8e8;" 
+                  | {{'CHALLENGE_PARTICIPATE' | translate}}
+        li
+          table.table.table-hover watch="trips"
+            thead
+              tr
+                th 
+                  | {{'START' | translate}}
 
-            th 
-              | {{'FINISH' | translate}}
+                th 
+                  | {{'FINISH' | translate}}
 
-            th  
-              | {{'DISTANCE' | translate}}
+                th  
+                  | {{'DISTANCE' | translate}}
 
-            th  
-              | {{'CREATED_BY' | translate}}
+                th  
+                  | {{'CREATED_BY' | translate}}
 
-            th 
-              | {{'FINISH_DATE' | translate}}
+                th 
+                  | {{'FINISH_DATE' | translate}}
 
-        tbody
-            tr ng-click="changeChoiceChallenge($index)" ng-repeat="challenge in challenges | filter:search:strict" ng-class="{'joined': challenge.is_joined == 1}" style="cursor: pointer"
-              td
-                | {{challenge.route.beginning | shortAddress}}
-              td
-                | {{challenge.route.finish | shortAddress}}
-              td
-                | {{challenge.route.distance}}
-              td 
-                | {{challenge.created_by}}
-              td 
-                | {{challenge.finish_date}}
+            tbody
+                tr ng-click="changeChoiceChallenge($index)" ng-repeat="challenge in challenges | filter:search:strict" ng-class="{'joined': challenge.is_joined == 1}" style="cursor: pointer"
+                  td
+                    | {{challenge.route.beginning | shortAddress}}
+                  td
+                    | {{challenge.route.finish | shortAddress}}
+                  td
+                    | {{challenge.route.distance}} km
+                  td 
+                    | {{challenge.created_by}}
+                  td 
+                    | {{challenge.finish_date | date}}
 
   div ng-if="!challengeList"
-    button.btn.btn-danger style="margin-left: 10px" ng-click="$parent.challengeList=!$parent.challengeList"
-      | {{'BACK' | translate}}
-    button.btn.btn-success ng-click="joinChallenge()" style="margin-left: 2px" ng-hide="choosenChallenge.is_joined == 1"
-      | {{'JOIN' | translate}}
-    input.combo_textbox type="text" ng-model="$parent.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="{{'INVITE_PLACEHOLDER' | translate}}!"
-    button.btn.btn-info ng-click="inviteUser()"
-      | {{'INVITE' | translate}}
 
-    map center="{{challengePath[0]}}" zoom="14" ng-style="style(0.4, 0.35)" resize="" style="margin-left: auto; margin-right: auto"
-      shape name="polyline" path="{{challengePath}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
-      marker id="finish" position="{{challengePath[challengePath.length-1]}}" title="Finish" icon="'/assets/finish.png'"
-      marker id="start" position="{{challengePath[0]}}" title="Start" icon="'/assets/start.png'"
-    hr
-    div style="margin-top: 10px"
-      ui-select.combobox ng-model="engineDisplacementSelected" theme="bootstrap" on-select="getTripsByEngineType(null, $select.selected.disp)"
-        ui-select-match allow-clear="" placeholder=("{{'SELECT_ENG_DISP' | translate}}...")
-          | {{$select.selected.disp}}
-        ui-select-choices repeat=("engineDisplacement in engineDisplacements")
-          | {{engineDisplacement.disp}}l
+    div 
+      map center="{{challengePath[0]}}" zoom="14" ng-style="style(0.4, 0.35)" resize="" style="margin-left: auto; margin-right: auto"
+        shape name="polyline" path="{{challengePath}}" stroke-color="#00FF00" stroke-opacity="1.0" stroke-weight="4"
+        marker id="finish" position="{{challengePath[challengePath.length-1]}}" title="Finish" icon="'/assets/finish.png'"
+        marker id="start" position="{{challengePath[0]}}" title="Start" icon="'/assets/start.png'"
 
-      ui-select.combobox ng-model="engineTypeSelected" theme="bootstrap" on-select="getTripsByEngineType($select.selected.eng_type, null)"
-        ui-select-match allow-clear="" placeholder=("{{'SELECT_ENG_TYPE' | translate}}...")
-          | {{$select.selected.eng_type}}
-        ui-select-choices repeat=("engineType in engineTypes")
-          | {{engineType.eng_type}}
-
-      input.combo_textbox type="text" ng-model="search.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="{{'SEARCH_USER' | translate}}..."
     div
-      table.table.table-hover
-        thead
-          tr
-            th style="text-align: center"
-              | #
-            th style="text-align: center"
-              | {{'USER' | translate}}
-            th style="text-align: center"
-              | {{'AVG_SPEED' | translate}}
-            th style="text-align: center"
-              | {{'AVG_RPM' | translate}}
-            th style="text-align: center"
-              | {{'FUEL_TYPE' | translate}}
-            th style="text-align: center"
-              | {{'ENG_DISP' | translate}}
-            th style="text-align: center"
-              | {{'GEAR_RATE' | translate}}
-            th style="text-align: center"
-              | {{'DATE' | translate}}
-            th style="text-align: center; background-color: #AEED7C"
-              | {{'AVG_FUEL_CONSUMPTION' | translate}}
-        tbody 
-          tr ng-repeat="t in challengeTrips  | filter:search:strict"
-            td  style="text-align: center"
-              | {{$index+1}}
-            td style="text-align: center"
-              | {{t.user}}
-            td style="text-align: center"
-              | {{t.avg_speed}}
-            td style="text-align: center"
-              | {{t.avg_rpm}}
-            td style="text-align: center"
-              | {{ t.engine_type | translate }}
-            td style="text-align: center"
-              | {{t.engine_displacement}}
-            td style="text-align: center"
-              | {{t.mark}}
-            td style="text-align: center"
-              | {{t.date}}
-            td style="text-align: center; background-color: #AEED7C"
-              | {{t.avg_fuel}}
+      div style="position: relative; right: 0; margin: 5px"
+        button.btn.btn-danger style="margin-left: 10px" ng-click="$parent.challengeList=!$parent.challengeList"
+          | {{'BACK' | translate}}
+        button.btn.btn-success ng-click="joinChallenge()" style="margin-left: 2px" ng-hide="choosenChallenge.is_joined == 1"
+          | {{'JOIN' | translate}}
+        input.combo_textbox type="text" ng-model="$parent.user" ui-autocomplete="autocompleteOption" style="height: 33px; width: 200px; margin-left: 5px" placeholder="{{'INVITE_PLACEHOLDER' | translate}}!"
+        button.btn.btn-info style="margin-left: 5px" ng-click="inviteUser()"
+          | {{'INVITE' | translate}}
+
+    hr
+    div
+      div style="text-align: center"
+        h2 
+          | {{'CHALLENGE_RANKING' | translate}}
+
+      div style="margin-top: 30px"
+        ui-select.combobox ng-model="engineDisplacementSelected" theme="bootstrap" on-select="getTripsByEngineType(null, $select.selected.disp)"
+          ui-select-match allow-clear="" placeholder=("{{'SELECT_ENG_DISP' | translate}}...")
+            | {{$select.selected.disp}}
+          ui-select-choices repeat=("engineDisplacement in engineDisplacements")
+            | {{engineDisplacement.disp}}l
+
+        ui-select.combobox ng-model="engineTypeSelected" theme="bootstrap" on-select="getTripsByEngineType($select.selected.eng_type, null)"
+          ui-select-match allow-clear="" placeholder=("{{'SELECT_ENG_TYPE' | translate}}...")
+            | {{$select.selected.eng_type}}
+          ui-select-choices repeat=("engineType in engineTypes")
+            | {{engineType.eng_type}}
+
+        input.combo_textbox type="text" ng-model="search.user" ui-autocomplete="autocompleteOption" style="height: 33px; margin-left: 5px" placeholder="{{'SEARCH_USER' | translate}}..."
+      div
+        table.table.table-hover
+          thead
+            tr
+              th style="text-align: center"
+                | #
+              th style="text-align: center"
+                | {{'USER' | translate}}
+              th style="text-align: center"
+                | {{'AVG_SPEED' | translate}}
+              th style="text-align: center"
+                | {{'AVG_RPM' | translate}}
+              th style="text-align: center"
+                | {{'FUEL_TYPE' | translate}}
+              th style="text-align: center"
+                | {{'ENG_DISP' | translate}}
+              th style="text-align: center"
+                | {{'ECO_MARK' | translate}}
+              th style="text-align: center"
+                | {{'DATE' | translate}}
+              th style="text-align: center; background-color: #AEED7C"
+                | {{'AVG_FUEL_CONSUMPTION' | translate}}
+          tbody 
+            tr ng-repeat="t in challengeTrips  | filter:search:strict"
+              td  style="text-align: center"
+                | {{$index+1}}
+              td style="text-align: center"
+                | {{t.user}}
+              td style="text-align: center"
+                | {{t.avg_speed}} km
+              td style="text-align: center"
+                | {{t.avg_rpm}} RPM
+              td style="text-align: center"
+                | {{ t.engine_type | translate }}
+              td style="text-align: center"
+                | {{t.engine_displacement}}
+              td style="text-align: center"
+                | {{t.mark}}
+              td style="text-align: center"
+                | {{t.date | date}}
+              td style="text-align: center; background-color: #AEED7C"
+                | {{t.avg_fuel}} L/100km
       

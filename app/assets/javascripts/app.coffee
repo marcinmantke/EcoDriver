@@ -61,6 +61,7 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       JOIN: 'Join',
       INVITE: 'Invite',
       INVITE_PLACEHOLDER: 'Invite your friends',
+      CHALLENGE_RANKING: 'Challenge ranking',
 
       #welcome page
       TITLE1: 'Want to try EcoDriving?',
@@ -121,6 +122,7 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       JOIN: 'Dołącz',
       INVITE: 'Zaproś',
       INVITE_PLACEHOLDER: 'Zaproś swoich znajomych',
+      CHALLENGE_RANKING: 'Ranking wyzwania',
 
       #welcome page
       TITLE1: "Spróbuj EcoDriving'u!",

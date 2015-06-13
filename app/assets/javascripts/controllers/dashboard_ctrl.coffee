@@ -7,10 +7,10 @@ angular.module('EcoApp').controller 'DashboardCtrl', ($rootScope, $scope, $filte
       min: 0,
       max: ($scope.dashboard.fuel_consumption.high * 1.4).toFixed(1),
       decimals: 1,
-      levelColors: ["#333333"],
+      levelColors: ["#000000"],
       label: 'l/100km',
-      labelFontColor: "#333333",
-      gaugeColor: '#5cb85c',
+      labelFontColor: "#000000",
+      gaugeColor: '##CCFF66',
       shadowOpacity: 0)
 
     gage_avg_speed = new JustGage(
@@ -18,9 +18,9 @@ angular.module('EcoApp').controller 'DashboardCtrl', ($rootScope, $scope, $filte
       value: $scope.dashboard.avg_speed
       min: 0
       max: 140
-      levelColors: ["#333333"]
-      labelFontColor: "#333333"
-      gaugeColor: '#5cb85c'
+      levelColors: ["#000000"]
+      labelFontColor: "#000000"
+      gaugeColor: '##CCFF66'
       label: 'km/h'
       shadowOpacity = 0)
 
