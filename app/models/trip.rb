@@ -46,7 +46,7 @@ class Trip < ActiveRecord::Base
                             engine_displacement:
                               engine_displacement)
     .color(avg_fuel)
-    color[:rpm] = engine_type.color(avg_fuel)
+    color[:rpm] = engine_type.color(avg_rpm)
     color
   end
 
