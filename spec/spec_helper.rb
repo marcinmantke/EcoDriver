@@ -8,5 +8,13 @@ SimpleCov.formatters = [
 ]
 SimpleCov.start
 
-RSpec.configure do |_config|
+RSpec.configure do |config|
+  config.before(:suite) do
+    @headless = Headless.new
+    @headless.start
+  end
+
+  config.after(:suite) do
+    @headless.destroy
+  end
 end
