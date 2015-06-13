@@ -77,5 +77,6 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-rspec'
   gem 'selenium-webdriver'
+  gem "chromedriver-helper"
   gem 'headless'
 end
