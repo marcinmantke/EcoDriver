@@ -33,8 +33,21 @@ class Trip < ActiveRecord::Base
 
     trips.each do |trip|
       hash_trips.push trip.to_hash
+      hash_trips.last[:colors] = trip.colors
     end
     hash_trips.sort_by { |hsh| hsh[:avg_fuel] }
+  end
+
+  def colors
+    color = {}
+    color[:fuel] =
+    FuelConsumption.find_by(engine_type:
+                              engine_type,
+                            engine_displacement:
+                              engine_displacement)
+    .color(avg_fuel)
+    color[:rpm] = engine_type.color(avg_fuel)
+    color
   end
 
   def to_hash
@@ -51,7 +64,8 @@ class Trip < ActiveRecord::Base
     hash = {
       avg_fuel: avg_fuel.round(1),
       avg_rpm: avg_rpm.round(0),
-      distance: distance.round(2)
+      distance: distance.round(2),
+      mark: mark.round(1)
     }
     hash
   end

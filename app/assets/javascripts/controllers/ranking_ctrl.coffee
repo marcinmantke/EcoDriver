@@ -5,14 +5,16 @@ angular.module('EcoApp').controller 'RankingCtrl', ($http, $scope, Trip, Challen
   $scope.engineDisplacement = null
   $scope.engineType = null
 
+  Trip.getFuelConsumptionIntervals
+
   Trip.getGearParams().success (data) ->
     $scope.engineDisplacements = data.displacements
     $scope.engineTypes = data.types
 
   $scope.getRankingTrips = ()->
-    console.log $scope
     Trip.ranking($scope.engineType, $scope.engineDisplacement, $scope.limits[0], $scope.limits[1]).success (data)->
       $scope.trips = data
+      console.log data
 
 
   $scope.distanceRanges = [
@@ -23,8 +25,6 @@ angular.module('EcoApp').controller 'RankingCtrl', ($http, $scope, Trip, Challen
     { display: '10 000 - 20 000 km', value: '10000-20000' },
     { display: 'more than 20 000 km', value: '20000-999999999999' }
   ]
-
-  $scope.getRankingTrips()
 
   $scope.autocompleteOption =
     options:
@@ -66,3 +66,25 @@ angular.module('EcoApp').controller 'RankingCtrl', ($http, $scope, Trip, Challen
     else
       $scope.engineType = null
     $scope.getRankingTrips()
+
+  $scope.avgFuelCircleClass = (trip) ->
+    return 'circle_' + trip.colors.fuel
+
+  $scope.avgSpeedCircleClass = (trip) ->
+    if trip.avg_speed <= 60
+      return 'circle_green'
+    else if trip.avg_speed > 60 && trip.avg_speed <= 90
+      return 'circle_yellow'
+    else
+      return 'circle_red'
+
+  $scope.avgRPMCircleClass = (trip) ->
+    return 'circle_' + trip.colors.rpm
+
+  $scope.markCircleClass = (trip) ->
+    if trip.mark <= 4
+      return 'circle_red'
+    else if trip.mark > 4 && trip.mark <= 7.5
+      return 'circle_yellow'
+    else
+      return 'circle_green'

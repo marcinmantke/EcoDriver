@@ -9,4 +9,14 @@ class FuelConsumption < ActiveRecord::Base
     }
     data
   end
+
+  def color(avg_fuel)
+    if avg_fuel <= low
+      return 'green'
+    elsif avg_fuel > low && avg_fuel <= high
+      return 'yellow'
+    else
+      return 'red'
+    end
+  end
 end

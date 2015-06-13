@@ -47,7 +47,7 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       SELECT_ENG_DISP: 'Select an engine displacement',
       USER: 'User',
       GEAR_RATE: 'Gears change rating',
-      ECO_MARK: 'Eko ocena'
+      ECO_MARK: 'Eco mark'
       SEARCH_USER: 'Search user',
 
       #challenge

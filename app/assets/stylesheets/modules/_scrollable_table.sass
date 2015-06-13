@@ -12,8 +12,7 @@
     left: 0
   th
     .th-inner .title > span
-      display: block
-      text-overflow: ellipsis
+      word-wrap: break-word
     .orderWrapper
       position: absolute
       top: 0
@@ -34,15 +33,14 @@
       padding: 0
       border: none
     .th-inner
+      margin-top: 5px
       position: absolute
       top: 0
-      height: 36px
-      line-height: 36px
-      padding: 0 8px
+      vertical-align: middle
+      background-color: inherit
+      width: inherit
     tr th:first-child .th-inner
       border-left: none
-    .th-inner.condensed
-      padding: 0 3px
     tbody tr
       td
         &:first-child
