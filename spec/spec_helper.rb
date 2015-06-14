@@ -10,7 +10,7 @@ SimpleCov.start
 
 Capybara.register_driver :chrome do |app|
   http_client = Selenium::WebDriver::Remote::Http::Default.new
-  http_client.timeout = 240
+  http_client.timeout = 360
   Capybara::Selenium::Driver.new(app, browser: :chrome,
                                       http_client: http_client)
 end
