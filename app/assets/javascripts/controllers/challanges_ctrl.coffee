@@ -318,15 +318,15 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
     while j < 3
       if trips[j] != null
         while i < trips[j].length
-          #dataSpeed.push(trips[j][i].speed)
-          #dataRpm.push(trips[j][i].rpm)
-          #dataFuel.push(trips[j][i].fuel_consumption)
-          #dataGear.push(trips[j][i].gear)
+          dataSpeed.push(trips[j][i].speed)
+          dataRpm.push(trips[j][i].rpm)
+          dataFuel.push(trips[j][i].fuel_consumption)
+          dataGear.push(trips[j][i].gear)
 
-          dataSpeed.push(trips[j][i].speed * Math.random())
-          dataRpm.push(trips[j][i].rpm * Math.random())
-          dataFuel.push(trips[j][i].fuel_consumption * Math.random())
-          dataGear.push(trips[j][i].gear * Math.random())
+          #dataSpeed.push(trips[j][i].speed * Math.random())
+          #dataRpm.push(trips[j][i].rpm * Math.random())
+          #dataFuel.push(trips[j][i].fuel_consumption * Math.random())
+          #dataGear.push(trips[j][i].gear * Math.random())
           i++
       j++
       i = 0
