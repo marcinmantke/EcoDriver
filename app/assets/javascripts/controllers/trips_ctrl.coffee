@@ -32,7 +32,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
     scaleLabel: "<%=value%>",
     legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
     multiTooltipTemplate: (objectValue) -> 
-      console.log(objectValue)
+      #console.log(objectValue)
       objectValue.label = ''
       if objectValue.datasetLabel == $filter('translate')('SPEED')
         return $filter('translate')('SPEED') + ": " + objectValue.value*5 + " km/h"
@@ -45,30 +45,7 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
         return $filter('translate')('GEAR') + ": " + objectValue.value
   }
 
-  $scope.optionsSpeed = { 
-    pointDot : false, pointHitDetectionRadius : 1, 
-    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %> km/h", 
-    scaleLabel: "<%=value%> km/h"
-  }
-
-  $scope.optionsRpm = { 
-    pointDot : false, pointHitDetectionRadius : 1, 
-    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value/100 %> RPM", 
-    scaleLabel: "<%=value%> RPM"
-  }
-
-  $scope.optionsFuel = { 
-    pointDot : false, pointHitDetectionRadius : 1, 
-    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %> l/100km", 
-    scaleLabel: "<%=value%> l/100km"
-  }
-
-  $scope.optionsGear = { 
-    pointDot : false, pointHitDetectionRadius : 1, 
-    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %> gear", 
-    scaleLabel: "<%=value%> gear",
-  }
-
+  
   gage_avg_speed = null
   gage_avg_rpm = null
   gage_distance = null
@@ -100,10 +77,6 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
       dataFuel[0].push(trip.path[i].fuel_consumption)
       dataGear[0].push(trip.path[i].gear)
       i++
-    $scope.dataSpeed = dataSpeed 
-    $scope.dataRpm = dataRpm
-    $scope.dataFuel = dataFuel
-    $scope.dataGear = dataGear
     $scope.data[0]=dataSpeed[0]
     $scope.data[1]=dataRpm[0]
     $scope.data[2]=dataFuel[0]
@@ -113,11 +86,6 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
     $scope.choosenTrip = index
     $scope.setLabels($scope.mytrips[index])
     $scope.setData($scope.mytrips[index])
-    if $scope.data[0].length <= 50
-      $scope.pointHitDetectionRadius = 10
-    else
-      $scope.pointHitDetectionRadius = 1
-
   
     Trip.getFuelConsumptionIntervals($scope.mytrips[index].engine_type_id,
       $scope.mytrips[index].engine_displacement_id).success (data) ->
@@ -362,83 +330,3 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
       shadowSize = 3
       shadowVerticalOffset = 10)
   
-  $scope.chartObject =
-    'type': 'AreaChart'
-    'displayed': true
-    'data':
-      'cols': [
-        {
-          'id': 'month'
-          'label': 'Month'
-          'type': 'string'
-          'p': {}
-        }
-        {
-          'id': 'laptop-id'
-          'label': 'Laptop'
-          'type': 'number'
-          'p': {}
-        }
-        {
-          'id': 'desktop-id'
-          'label': 'Desktop'
-          'type': 'number'
-          'p': {}
-        }
-        {
-          'id': 'server-id'
-          'label': 'Server'
-          'type': 'number'
-          'p': {}
-        }
-        {
-          'id': 'cost-id'
-          'label': 'Shipping'
-          'type': 'number'
-        }
-      ]
-      'rows': [
-        { 'c': [
-          { 'v': 'January' }
-          {
-            'v': 19
-            'f': '42 items'
-          }
-          {
-            'v': 12
-            'f': 'Ony 12 items'
-          }
-          {
-            'v': 7
-            'f': '7 servers'
-          }
-          { 'v': 4 }
-        ] }
-        { 'c': [
-          { 'v': 'February' }
-          { 'v': 13 }
-          {
-            'v': 1
-            'f': '1 unit (Out of stock this month)'
-          }
-          { 'v': 12 }
-          { 'v': 2 }
-        ] }
-        { 'c': [
-          { 'v': 'March' }
-          { 'v': 24 }
-          { 'v': 5 }
-          { 'v': 11 }
-          { 'v': 6 }
-        ] }
-      ]
-    'options':
-      'title': 'Sales per month'
-      'isStacked': 'true'
-      'fill': 20
-      'displayExactValues': true
-      'vAxis':
-        'title': 'Sales unit'
-        'gridlines': 'count': 10
-      'hAxis': 'title': 'Date'
-    'formatters': {}

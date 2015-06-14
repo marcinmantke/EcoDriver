@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ChallengesController, type: :controller do
+RSpec.describe ChallengesController, :controller do
   describe 'POST #create' do
     context 'with valid attributes' do
       let!(:login) { login_user }

@@ -1,4 +1,3 @@
-
 require 'simplecov'
 require 'simplecov-rcov'
 require 'capybara'

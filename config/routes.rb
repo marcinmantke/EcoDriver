@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'trips/ranking', to: 'trips#ranking'
   post 'save_trip', to: 'trips#create'
   post 'economic_ranges', to: 'trips#economic_ranges'
+  post 'get_path', to: 'trips#trip_path'
 
   post 'challenge/create', to: 'challenges#create'
   get 'challenge/all', to: 'challenges#all'

@@ -1,6 +1,6 @@
 # encoding: UTF-8
-class TripsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+class TripsController < ApplicationController # rubocop:disable ClassLength
+  before_action :authenticate_user!, except: [:index, :trip_path]
   include ControllerUtil
 
   def index
@@ -109,5 +109,37 @@ class TripsController < ApplicationController
       format.html {  fail ActionController::RoutingError.new('Not Found') }
       format.json { render json: response }
     end
+  end
+
+  def trip_path
+    user_trip_id = best_user_trip(params[:challenge_id])
+    data = assign_path_from_trip(params[:id_best],
+                                 params[:id_worst],
+                                 user_trip_id)
+    json_respond_formatter(data)
+  end
+
+  def best_user_trip(challenge_id)
+    best_user_trip = Trip
+                     .where(user_id: current_user.id,
+                            challenge_id: challenge_id)
+                     .order(avg_fuel: :asc).first
+    if best_user_trip.nil?
+      id = nil
+    else
+      id = best_user_trip.id
+    end
+    id
+  end
+
+  def assign_path_from_trip(id_best, id_worst, id_user)
+    data = []
+    path_best = CheckPoint.get_path(id_best) unless id_best.nil?
+    path_worst = CheckPoint.get_path(id_worst) unless id_worst.nil?
+    path_user = CheckPoint.get_path(id_user) unless id_user.nil?
+    data.push(path_best)
+    data.push(path_worst)
+    data.push(path_user)
+    data
   end
 end

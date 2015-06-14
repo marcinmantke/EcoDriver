@@ -58,4 +58,13 @@ class CheckPoint < ActiveRecord::Base
                       gear: path[index][:gear],
                       recorded_at: path[index][:recorded_at])
   end
+
+  def self.get_path(id)
+    hash_path = []
+    points = CheckPoint.where(trip_id: id)
+    points.each do |point|
+      hash_path.push point.serializable_hash
+    end
+    hash_path
+  end
 end

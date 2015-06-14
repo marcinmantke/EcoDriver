@@ -1,11 +1,13 @@
-angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $interval, $timeout, $compile, toastr, Trip, Challenge) ->
+angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $interval, $timeout, $compile, $filter, toastr, Trip, Challenge) ->
   Trip.getMyTrips().success (data)->
     $scope.trips = []
     for trip in data
       if trip.challenge == null
         $scope.trips.push trip
       for point, index in trip.path
-        trip.path[index] = {lat: parseFloat(point.latitude), lng: parseFloat(point.longitude)}  
+        trip.path[index] = {lat: parseFloat(point.latitude), lng: parseFloat(point.longitude)}
+    $scope.choosenTrip = $scope.trips[0]  
+    $scope.mytrip = []
 
   Challenge.getChallenges().success (data) ->
     $scope.challenges = data
@@ -14,6 +16,17 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   Trip.getGearParams().success (data) ->
     $scope.engineDisplacements = data.displacements
     $scope.engineTypes = data.types
+
+  getTripPath = (id_best, id_worst, id_challenge) ->
+    console.log(id_best, id_worst, id_challenge)
+    Trip.getTripPath(id_best, id_worst, id_challenge).success (data) ->
+        path = data
+        i = 0
+        while i < 3
+          if path[i] != null
+            $scope.setLabels(path[i])
+          i++
+        $scope.setData(path)
 
   $scope.startPoly = null
   $scope.circles = []
@@ -105,12 +118,23 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
   $scope.getTripsByEngineType = (engineType, engineDisplacement)->
     Challenge.getChallengeTrips($scope.choosenChallenge.id, engineType, engineDisplacement).success (data) ->
         $scope.challengeTrips = data.trips
+        if !angular.isUndefined($scope.challengeTrips[0])
+          best_id = $scope.challengeTrips[0].id
+        else
+          best_id = null
+
+        if !angular.isUndefined($scope.challengeTrips[$scope.challengeTrips.length-1])
+          worst_id = $scope.challengeTrips[$scope.challengeTrips.length-1].id
+        else
+          worst_id = null
+
         $scope.challengePath = []
         for point in data.path
           formatted_point = []
           formatted_point.push parseFloat(point.latitude)
           formatted_point.push parseFloat(point.longitude)
           $scope.challengePath.push formatted_point
+        getTripPath(best_id, worst_id, $scope.choosenChallenge.id)
 
 
   $scope.changeChoice = (index) ->
@@ -122,11 +146,14 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
     bounds.extend (new google.maps.LatLng($scope.choosenTrip.path[0].lat, $scope.choosenTrip.path[0].lng))
     bounds.extend (new google.maps.LatLng($scope.choosenTrip.path[$scope.choosenTrip.path.length-1].lat, $scope.choosenTrip.path[$scope.choosenTrip.path.length-1].lng))
     $scope.map.fitBounds bounds
+    #console.log($scope.challengeTrips[0])
     
   $scope.changeChoiceChallenge = (index) ->
     $scope.choosenChallenge = $scope.challenges[index]
+    console.log($scope.choosenChallenge)
     $scope.challengeList = !$scope.challengeList
-    $scope.getTripsByEngineType(null, null)   
+    $scope.getTripsByEngineType(null, null)
+
 
   $scope.calendar =
     opened: false
@@ -230,3 +257,85 @@ angular.module('EcoApp').controller 'ChallengesCtrl', ($scope, $http, $modal, $i
     if $scope.createView == true
       $scope.changeChoice(0)
       initMap()
+
+  
+  $scope.labels = []
+  $scope.series = ['Best trip', 'Worst trip', 'Your trip']
+  $scope.dataSpeed = []
+  $scope.dataRpm = []
+  $scope.dataFuel = []
+  $scope.dataGear = []
+
+  $scope.optionsSpeed = { 
+    pointDot : false, pointHitDetectionRadius : 1, 
+    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %> km/h", 
+    scaleLabel: "<%=value%> km/h"
+  }
+
+  $scope.optionsRpm = { 
+    pointDot : false, pointHitDetectionRadius : 1, 
+    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value/100 %> RPM", 
+    scaleLabel: "<%=value%> RPM"
+  }
+
+  $scope.optionsFuel = { 
+    pointDot : false, pointHitDetectionRadius : 1, 
+    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %> l/100km", 
+    scaleLabel: "<%=value%> l/100km"
+  }
+
+  $scope.optionsGear = { 
+    pointDot : false, pointHitDetectionRadius : 1, 
+    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %> gear", 
+    scaleLabel: "<%=value%> gear",
+  }
+
+  $scope.setLabels = (trip) ->
+    console.log(trip)
+    i = 0
+    labels = []
+    while i < trip.length
+      if i%(parseInt(trip.length/4)) == 0 || i == (trip.length-1)
+        labels.push($filter('number')(trip[i].recorded_at, 2))
+      else
+        labels.push('')
+      i++
+    $scope.steps = parseInt(i/5)
+    $scope.labels = labels
+
+  $scope.setData = (trips) ->
+    #console.log(trips[0].length)
+    $scope.dataSpeed = []
+    $scope.dataRpm = []
+    $scope.dataFuel = []
+    $scope.dataGear = []
+    i = 0
+    j = 0
+    dataSpeed = []
+    dataRpm = []
+    dataFuel = []
+    dataGear = []
+    while j < 3
+      if trips[j] != null
+        while i < trips[j].length
+          #dataSpeed.push(trips[j][i].speed)
+          #dataRpm.push(trips[j][i].rpm)
+          #dataFuel.push(trips[j][i].fuel_consumption)
+          #dataGear.push(trips[j][i].gear)
+
+          dataSpeed.push(trips[j][i].speed * Math.random())
+          dataRpm.push(trips[j][i].rpm * Math.random())
+          dataFuel.push(trips[j][i].fuel_consumption * Math.random())
+          dataGear.push(trips[j][i].gear * Math.random())
+          i++
+      j++
+      i = 0
+      $scope.dataSpeed.push(dataSpeed)
+      $scope.dataRpm.push(dataRpm)
+      $scope.dataFuel.push(dataFuel)
+      $scope.dataGear.push(dataGear)
+      dataSpeed = []
+      dataRpm = []
+      dataFuel = []
+      dataGear = []
+    #console.log($scope.dataSpeed)  
