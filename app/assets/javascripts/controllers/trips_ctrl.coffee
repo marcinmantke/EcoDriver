@@ -241,16 +241,22 @@ angular.module('EcoApp').controller 'TripsCtrl', ($scope, $filter, Trip) ->
       shadowVerticalOffset = 10)
 
   remove = (id) ->
-    document.getElementById(id).children[0].remove()
+    child = document.getElementById(id).children[0]
+    if child != null
+      child.remove()
 
 
   updateGages = () ->
     remove('avg_fuel') if gage_avg_fuel != null
     remove('avg_rpm') if gage_avg_rpm != null
 
-    gage_avg_speed.refresh($scope.mytrips[$scope.choosenTrip].avg_speed)
-    gage_distance.refresh($scope.mytrips[$scope.choosenTrip].distance)
-    gage_mark.refresh($scope.mytrips[$scope.choosenTrip].mark)
+    if gage_avg_speed != null
+      gage_avg_speed.refresh($scope.mytrips[$scope.choosenTrip].avg_speed)
+    if gage_distance  != null
+      gage_distance.refresh($scope.mytrips[$scope.choosenTrip].distance)
+
+    if gage_mark != null
+      gage_mark.refresh($scope.mytrips[$scope.choosenTrip].mark)
 
     gage_avg_fuel = new JustGage(
       id: 'avg_fuel'

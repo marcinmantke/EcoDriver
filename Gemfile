@@ -79,4 +79,5 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'headless'
+  gem 'railroady'
 end

@@ -62,6 +62,10 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       INVITE: 'Invite',
       INVITE_PLACEHOLDER: 'Invite your friends',
       CHALLENGE_RANKING: 'Challenge ranking',
+      CHALLENGE_SUCCESS: 'Challenge created',
+      CHALLENGE_ERROR: 'Please reload page and try again',
+      SUCCESS: 'Success',
+      ERROR: 'Error',
 
       #welcome page
       TITLE1: 'Want to try EcoDriving?',
@@ -123,6 +127,10 @@ angular.module('EcoApp', ['ui.bootstrap', 'templates', 'ui.router', 'ngMap', 'ui
       INVITE: 'Zaproś',
       INVITE_PLACEHOLDER: 'Zaproś swoich znajomych',
       CHALLENGE_RANKING: 'Ranking wyzwania',
+      CHALLENGE_SUCCESS: 'Wyzwanie utworzone',
+      CHALLENGE_ERROR: 'Spróbuj ponownie po przeładowaniu strony',
+      SUCCESS: 'Sukces',
+      ERROR: 'Błąd',
 
       #welcome page
       TITLE1: "Spróbuj EcoDriving'u!",
