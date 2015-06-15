@@ -37,12 +37,11 @@ class ChallengesController < ApplicationController
   end
 
   def all_challenge_trips
-    challenge = Challenge.find_by(params.permit(:id))
+    challenge = Challenge.where(params.permit(:id)).first
     conditions = prepare_condition(params[:engine_type],
                                    params[:engine_displacement])
     json_respond_formatter(trips:
-      challenge.trips.all_by_condition(conditions)
-      .uniq! { |e| e[:username] },
+        challenge.trips.all_by_condition(conditions),
                            path: challenge.path)
   end
 
