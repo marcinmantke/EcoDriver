@@ -135,6 +135,7 @@ GEM
     rails-assets-bootstrap-css (3.2.0)
     rails-assets-chartjs (1.0.2)
     rails-assets-csswizardry-grids (2.2.0)
+    rails-assets-font-awsome (4.3.0)
     rails-assets-jquery (2.1.4)
     rails-assets-jquery-ui (1.11.4)
       rails-assets-jquery (>= 1.6)
@@ -271,6 +272,7 @@ DEPENDENCIES
   rails-assets-bootstrap-css (~> 3.2.0)
   rails-assets-chartjs
   rails-assets-csswizardry-grids (~> 2.2.0)
+  rails-assets-font-awsome
   rails-assets-jquery-ui
   rails-assets-justgage2 (~> 1.0.1)
   rails-assets-lodash

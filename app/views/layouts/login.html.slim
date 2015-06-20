@@ -5,95 +5,114 @@ html ng-app="EcoApp"
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application', media: 'all'
     = csrf_meta_tags
-  body style="overflow-x: hidden"
+  body#page-top style="overflow-x: hidden"
+
+    header#myCarousel.carousel.slide style="text-align: center"
+      /! Wrapper for Slides
+      .carousel-inner
+        .item.active
+          /! Set the first background image using inline CSS below.
+          .fill style=("background-image:url('/assets/android_background.jpg');") 
+          .carousel-caption.carousel_container style="center;z-index: 0"
+              div.carousel_column style="flex-grow: 2; flex: 2"
+                = image_tag("android_screen_pl.png", height: '100%', width: '100%')
+              div.carousel_column style="flex-grow: 1 text-align: center;"
+                a.btn.btn-circle.btn-carousele href="#main_content"
+                  .fa.fa-angle-double-down.animated
+              div.carousel_column.text
+                | Aplikacja mobilna pozwoli Ci nagrywać swoje przejazdy. Bierz udział w wyzwaniach 
+                | i rywalizuj ze swoimi znajomymi o miano EcoDriver'a. Możesz również skorzystać 
+                | z trybu nauki aby podszkolić się w eko jeździe.
+        .item
+          .fill style=("background-image:url('/assets/web_background.jpg');") 
+          .carousel-caption.carousel_container style="center;z-index: 0"
+              div.carousel_column style="flex-grow: 2; flex: 2"
+                = image_tag("web_screen_pl.png", height: '100%', width: '100%')
+              div.carousel_column style="flex-grow: 1 text-align: center;"
+                a.btn.btn-circle.btn-carousele href="#main_content"
+                  .fa.fa-angle-double-down.animated
+              div.carousel_column.text
+                | W aplikacji internetowej możesz przeglądać swoje przejazdy. Porównuj swoje wyniki  
+                | z innymi użytkownikami, twórz wyzwania z zapisanych tras i śledź swoje postępy.
+      a.left.carousel-control data-slide="prev" ng-non-bindable="" href="#myCarousel" 
+        span.icon-prev
+      a.right.carousel-control data-slide="next" ng-non-bindable="" href="#myCarousel" 
+        span.icon-next
+
     .container-fluid style="margin: 0px; padding: 0px"
-      div.navbar.navbar-default.navbar-fixed-top
-            ul.navbar-header
-              button.navbar-toggle data-target=".navbar-responsive-collapse" data-toggle="collapse" type="button" 
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
-            a.navbar-brand href="#"
-              img alt="EcoDriver" src="/assets/logoa.png" height="40px" /
-            ul.nav.navbar-nav.navbar-right
-              li
-                div ng-controller="LoginCtrl"
-                  script id="LoginModalContent.html" type="text/ng-template" 
-                    div class="modal-header"
-                      h4 class="modal-title" ng-hide="isRegistrationPage" =t("mainpage.login")
-                      h4 class="modal-title" ng-show="isRegistrationPage" =t("mainpage.register")
 
-                    div class="modal-body" ng-hide="isRegistrationPage"
-                      div class="form-group"
-                        ul
-                          #errorswrap
-                          - flash.each do |name, msg|
-                            = content_tag :div, msg, id: "flash_#{name}"
-                          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-                            .form__row
-                            = f.text_field :login, autofocus: true, placeholder: 'username or email', class: 'form-control'
-                            .form__row
-                            = f.password_field :password, autocomplete: "off", placeholder: 'password', class: 'form-control'
-                            - if devise_mapping.rememberable?
-                                .form__row
-                                = f.check_box :remember_me
-                                = f.label :remember_me
-                            .form__buttons
-                              .grid
-                                .grid__item.one-half
-                                  = f.submit t("mainpage.login"), class: "btn btn-success", id: 'sign_in'
+      navbar.navbar-default.navbar-fixed-top style="background-color: transparent" ng-controller="LoginCtrl"
+        ul.navbar-header
+          button.navbar-toggle data-target=".navbar-responsive-collapse" data-toggle="collapse" type="button" 
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        a.navbar-brand style="height: 150%" href="#"
+          = image_tag("logo.png", alt: "EcoDriver", title: "EcoDriver", height: '40px')
+        ul.nav.navbar-nav.navbar-right
+          li
+            button.btn.btn-default.navbar-btn.my-navbar-btn id="open_sign_in" ng-click="onLoginClicked()" =t("mainpage.login")
+            button.btn.btn-default.navbar-btn.my-navbar-btn ng-click="onRegistrationClicked()" =t("mainpage.register")
+      
+      div
+        script id="LoginModalContent.html" type="text/ng-template" 
+          div class="modal-header"
+            h4 class="modal-title" ng-hide="isRegistrationPage" =t("mainpage.login")
+            h4 class="modal-title" ng-show="isRegistrationPage" =t("mainpage.register")
 
-                    div class="modal-body" ng-show="isRegistrationPage"
-                      ul
-                        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-                          #errorswrap
-                            = devise_error_messages!
-                          .form__row
-                          = f.text_field :username, autofocus: true, placeholder: 'username', class: 'form-control'
-                          .form__row
-                          = f.email_field :email, placeholder: 'email', class: 'form-control'
-                          .form__row
-                          = f.password_field :password, autocomplete: "off", placeholder: 'password', class: 'form-control', for: ""
-                          .form__row
-                          = f.password_field :password_confirmation, autocomplete: "off", placeholder: 'repeat password', class: 'form-control'
-                          .form__buttons
-                            .grid
-                              .grid__item.one-half
-                                = f.submit t("mainpage.register"), class: "btn btn-success"
+          div class="modal-body" ng-hide="isRegistrationPage"
+            div class="form-group"
+              ul
+                #errorswrap
+                - flash.each do |name, msg|
+                  = content_tag :div, msg, id: "flash_#{name}"
+                = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+                  .form__row
+                  = f.text_field :login, autofocus: true, placeholder: 'username or email', class: 'form-control'
+                  .form__row
+                  = f.password_field :password, autocomplete: "off", placeholder: 'password', class: 'form-control'
+                  - if devise_mapping.rememberable?
+                      .form__row
+                      = f.check_box :remember_me
+                      = f.label :remember_me
+                  .form__buttons
+                    .grid
+                      .grid__item.one-half
+                        = f.submit t("mainpage.login"), class: "btn btn-success", id: 'sign_in'
 
-                    div class="modal-footer"
-                      div ng-show="isRegistrationPage"
-                        =t("mainpage.have_acc") 
-                        button.btn.btn-default.navbar-btn.btn-info ng-click="isRegistrationPage=false" =t("mainpage.login")
-                      div ng-hide="isRegistrationPage"
-                        =t("mainpage.dont_have_acc")
-                        button.btn.btn-default.navbar-btn.btn-warning ng-click="isRegistrationPage=true" =t("mainpage.register")
-                  - if !flash.empty?
-                    div ng-bind="showModal()"
-                  - else
-                    - if !devise_error_messages!.empty?
-                      div ng-hide="$root.isRegistrationPage=true"
-                        div ng-bind="showModal()" 
-                  
+          div class="modal-body" ng-show="isRegistrationPage"
+            ul
+              = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+                #errorswrap
+                  = devise_error_messages!
+                .form__row
+                = f.text_field :username, autofocus: true, placeholder: 'username', class: 'form-control'
+                .form__row
+                = f.email_field :email, placeholder: 'email', class: 'form-control'
+                .form__row
+                = f.password_field :password, autocomplete: "off", placeholder: 'password', class: 'form-control', for: ""
+                .form__row
+                = f.password_field :password_confirmation, autocomplete: "off", placeholder: 'repeat password', class: 'form-control'
+                .form__buttons
+                  .grid
+                    .grid__item.one-half
+                      = f.submit t("mainpage.register"), class: "btn btn-success"
 
-                  button.btn.btn-default.navbar-btn.btn-info id="open_sign_in" ng-click="onLoginClicked()" =t("mainpage.login")
-                  button.btn.btn-default.navbar-btn.btn-warning ng-click="onRegistrationClicked()" =t("mainpage.register")
+          div class="modal-footer"
+            div ng-show="isRegistrationPage"
+              =t("mainpage.have_acc") 
+              button.btn.btn-default.navbar-btn.btn-info ng-click="isRegistrationPage=false" =t("mainpage.login")
+            div ng-hide="isRegistrationPage"
+              =t("mainpage.dont_have_acc")
+              button.btn.btn-default.navbar-btn.btn-warning ng-click="isRegistrationPage=true" =t("mainpage.register")
+        - if !flash.empty?
+          div ng-bind="showModal()"
+        - else
+          - if !devise_error_messages!.empty?
+            div ng-hide="$root.isRegistrationPage=true"
+              div ng-bind="showModal()"
 
-      div ng-controller="MainPageCtrl" ng-style="style(null, 0.7)" resize="" style="margin-top: 50px"
-        carousel interval="myInterval"
-          slide active="slide.active" ng-repeat=("slide in slides") 
-            img ng-src="{{slide.image}}" style="width: auto; hight: automargin: auto;" /
-            .carousel-caption
-              h2 ng-bind="slide.title"
-              h4 ng-bind="slide.caption" 
-
-      /! /.carousel
-      /!
-        | Marketing messaging and featurettes
-        | \==================================================
-      /! Wrap the rest of the page in another container to center all the content.
-
-    .container.market
+    .container.market#main_content
       /! START THE FEATURETTES
       hr.featurette-divider
       div.row.featurette
@@ -142,4 +161,22 @@ html ng-app="EcoApp"
               | Dawid Sibiński
               br/
               | Bartłomiej Grzegorek
+
+    javascript:
+      $('.carousel').carousel({
+          interval: 10000, //changes the speed
+          pause: false
+      })
+      $(window).on('scroll',function(){
+
+        // we round here to reduce a little workload
+        stop = Math.round($(window).scrollTop());
+        console.log(Math.round($(window).scrollTop()));
+        if (stop > 0) {
+          $('.navbar-default').css('background-color', '#5cb85e');
+        } else {
+          $(".navbar-default").css('background-color', 'transparent');
+        }
+
+      });
 

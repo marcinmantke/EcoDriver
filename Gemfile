@@ -47,6 +47,7 @@ gem 'rails-assets-justgage2', '~> 1.0.1'
 gem 'rails-assets-raphael'
 gem 'rails-assets-angular-translate'
 gem 'rails-assets-angular-i18n'
+gem 'rails-assets-font-awsome'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
