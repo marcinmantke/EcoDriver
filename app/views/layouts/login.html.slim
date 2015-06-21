@@ -15,14 +15,12 @@ html ng-app="EcoApp"
           .fill style=("background-image:url('/assets/android_background.jpg');") 
           .carousel-caption.carousel_container style="center;z-index: 0"
               div.carousel_column style="flex-grow: 2; flex: 2"
-                = image_tag("android_screen_pl.png", height: '100%', width: '100%')
+                = image_tag(t("carousele.android_img"), height: '100%', width: '100%')
               div.carousel_column style="flex-grow: 1 text-align: center;"
                 a.btn.btn-circle.btn-carousele href="#main_content"
                   .fa.fa-angle-double-down.animated
               div.carousel_column.text
-                | Aplikacja mobilna pozwoli Ci nagrywać swoje przejazdy. Bierz udział w wyzwaniach 
-                | i rywalizuj ze swoimi znajomymi o miano EcoDriver'a. Możesz również skorzystać 
-                | z trybu nauki aby podszkolić się w eko jeździe.
+                =t("carousele.android")
         .item
           .fill style=("background-image:url('/assets/web_background.jpg');") 
           .carousel-caption.carousel_container style="center;z-index: 0"
@@ -32,8 +30,7 @@ html ng-app="EcoApp"
                 a.btn.btn-circle.btn-carousele href="#main_content"
                   .fa.fa-angle-double-down.animated
               div.carousel_column.text
-                | W aplikacji internetowej możesz przeglądać swoje przejazdy. Porównuj swoje wyniki  
-                | z innymi użytkownikami, twórz wyzwania z zapisanych tras i śledź swoje postępy.
+                =t("carousele.web")
       a.left.carousel-control data-slide="prev" ng-non-bindable="" href="#myCarousel" 
         span.icon-prev
       a.right.carousel-control data-slide="next" ng-non-bindable="" href="#myCarousel" 

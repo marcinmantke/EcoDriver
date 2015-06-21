@@ -53,3 +53,13 @@ en:
     challenges: 'Challenges'
     edit_profile: 'Edit profile'
     logout: 'Logout'
+  carousele:
+    android: >
+      In the mobile application you can record your tracks.
+      Let's join to challenges and compete with other users.
+      You can also learn how to be ecodriver.
+    android_img: 'android_screen_eng.png'
+    web: >
+      You can browse your tracks in the web application.
+      Let's compare your results with other uses, create challenges
+      and check your progress.
