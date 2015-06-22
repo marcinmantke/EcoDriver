@@ -43,12 +43,14 @@ pl:
     challenges: 'Wyzwania'
     edit_profile: 'Edytuj profil'
     logout: 'Wyloguj'
+    google_play: 'https://developer.android.com/images/brand/pl_generic_rgb_wo_45.png'
   carousele:
     android: >
       Aplikacja mobilna pozwoli Ci nagrywać swoje przejazdy. Bierz udział w wyzwaniach 
       i rywalizuj ze swoimi znajomymi o miano EcoDriver'a. Możesz również skorzystać 
       z trybu nauki aby podszkolić się w eko jeździe.
     android_img: 'android_screen_pl.png'
+    google_play: 'https://developer.android.com/images/brand/pl_generic_rgb_wo_60.png'
     web: >
       W aplikacji internetowej możesz przeglądać swoje przejazdy. Porównuj swoje wyniki  
       z innymi użytkownikami, twórz wyzwania z zapisanych tras i śledź swoje postępy.

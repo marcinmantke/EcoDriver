@@ -53,6 +53,7 @@ en:
     challenges: 'Challenges'
     edit_profile: 'Edit profile'
     logout: 'Logout'
+    google_play: 'https://developer.android.com/images/brand/en_app_rgb_wo_45.png'
   carousele:
     android: >
       In the mobile application you can record your tracks.
@@ -63,3 +64,4 @@ en:
       You can browse your tracks in the web application.
       Let's compare your results with other uses, create challenges
       and check your progress.
+    google_play: 'https://developer.android.com/images/brand/en_generic_rgb_wo_60.png'

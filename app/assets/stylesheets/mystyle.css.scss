@@ -17,6 +17,8 @@ $dropDown       : true;
     > li {
       > a {
         color: $colDefault;
+        padding-top: 8px;
+        padding-bottom: 10px;
         &:hover,  &:focus {
           color: $colHighlight; }}
       @if $dropDown {

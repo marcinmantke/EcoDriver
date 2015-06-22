@@ -21,6 +21,7 @@ html ng-app="EcoApp"
                   .fa.fa-angle-double-down.animated
               div.carousel_column.text
                 =t("carousele.android")
+                =link_to(image_tag(t("carousele.google_play"), alt: "Android app on Google Play", width: '30%'), "https://play.google.com/store/apps/details?id=me.ecodriver.app.android", padding: '0px', target: '_blank')
         .item
           .fill style=("background-image:url('/assets/web_background.jpg');") 
           .carousel-caption.carousel_container style="center;z-index: 0"
@@ -48,6 +49,10 @@ html ng-app="EcoApp"
           = image_tag("logo.png", alt: "EcoDriver", title: "EcoDriver", height: '40px')
         ul.nav.navbar-nav.navbar-right
           li
+            =link_to(image_tag(t("navbar.google_play"), alt: "Android app on Google Play", height: '34px'), "https://play.google.com/store/apps/details?id=me.ecodriver.app.android", padding: '0px', target:'_blank')
+              
+          li
+
             button.btn.btn-default.navbar-btn.my-navbar-btn id="open_sign_in" ng-click="onLoginClicked()" =t("mainpage.login")
             button.btn.btn-default.navbar-btn.my-navbar-btn ng-click="onRegistrationClicked()" =t("mainpage.register")
       
