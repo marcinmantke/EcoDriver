@@ -46,6 +46,8 @@ en:
         Record your tracks, analyze them and learn on mistakes. 
         Then check your trips history and check if you've improved! 
         With our little help, you can be not only more ecological, but also more wealthy!
+    contact_header: 'Contact us'
+    contact_content: 'If you have any question, please send an email to '
   navbar:
     dashboard: 'Dashboard'
     my_trips: 'My trips'

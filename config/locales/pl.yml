@@ -36,6 +36,8 @@ pl:
         Nagrywaj swoje przejazdy, analizuj je i ucz się na błędach. 
         Potem zobacz historię przejazdów i przekonaj się jak bardzo poprawiła się Twoja jazda! 
         Z naszą niewielką pomocą, możesz być nie tylko bardziej ekologiczny, ale też bogatszy!
+    contact_header: 'Skontaktuj się z nami!'
+    contact_content: 'Jeśli masz do nas jakieś pytanie, wyślij je na adres '
   navbar:
     dashboard: 'Tablica'
     my_trips: 'Trasy'

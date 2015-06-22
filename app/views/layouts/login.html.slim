@@ -144,6 +144,16 @@ html ng-app="EcoApp"
         .col-md-5.image_container
           = image_tag("tracks.png", :alt => "", :title => "title")
       hr.featurette-divider/
+      .row.featurette
+        .col-md-7.col-md-push-5
+          h2.featurette-heading
+            =t("mainpage.contact_header")
+          p.lead 
+            =t("mainpage.contact_content")
+            a href="mailto:ecodriverme@gmail.com" ecodriverme@gmail.com
+        .col-md-5.col-md-pull-7
+          = image_tag("mail.png", :alt => "contact", :title => "contact") 
+      hr.featurette-divider/
       /! /END THE FEATURETTES
       /! FOOTER
     footer
